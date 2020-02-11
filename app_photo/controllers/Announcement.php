@@ -11,9 +11,10 @@ class Announcement extends CI_Controller {
                 show_404();
         }
 
-        
+        $this->load->model('announcement_model');
 
         $data['title'] = 'Liste des Annonces'; // Capitalize the first letter
+        $data['announcement'] = $this->announcement_model->get_announcement();
 
         $this->load->view('common/header', $data);
         $this->load->view('pages/announcements', $data);
