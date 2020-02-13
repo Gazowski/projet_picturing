@@ -4,7 +4,7 @@
         <?php foreach($ad as $row) {?>
           
           <article class="grid-child">
-                <!-- <img src="images/appareil.png" alt="" height="300px" width="300px" /> -->
+                <img src="<?= base_url($row['photo'])?>" alt="<?= $row['title'] ?>" height="300px" width="300px" />
                 <h3><?= $row['title'] ?></h3>
                 <p><?= $row['description'] ?></p>
                 <h3><?= $row['price'] ?> $</h3>
