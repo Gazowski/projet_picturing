@@ -1,11 +1,16 @@
+<?php //var_dump($ad); ?>
+
 <section class="grid-parent">
-    <article class="grid-child">
-        
-          <img src="images/appareil.png" alt="" height="300px" width="300px" />
-          <h3>nom appareil</h3>
-          <h4>description</h4>
-          <p>prix</p>
-    </article>
+        <?php foreach($ad as $row) {?>
+          
+          <article class="grid-child">
+                <img src="images/appareil.png" alt="" height="300px" width="300px" />
+                <h3><?= $row['title'] ?></h3>
+                <p><?= $row['description'] ?></p>
+                <h3><?= $row['price'] ?> $</h3>
+          </article>
+
+        <?php } ?>
   
  </section>>
     
