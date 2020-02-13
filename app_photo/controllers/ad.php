@@ -8,36 +8,36 @@
 defined('BASEPATH') OR exit('No direct script access allowed');
 
 class Ad extends CI_Controller {
-
+    public function __construct()
+    {
+        parent::__construct();
+        $this->load->model('ad_model');
+        
+        $this->load->view('pages/head');
+        $this->load->view('pages/header_catalog');
+    }
+    
     public function display_all()
     {
-        if ( ! file_exists(APPPATH.'views/pages/ads.php'))
-        {
-                // Whoops, we don't have a page for that!
-                show_404();
-        }
-
-        $this->load->model('ad_model');
-
-        $data['title'] = 'Liste des Annonces'; // Capitalize the first letter
-        $data['ad'] = $this->ad_model->get_ad();
-
-        $this->load->view('common/header', $data);
-        $this->load->view('pages/ads', $data);
-        $this->load->view('common/footer', $data);
-    }
-
-    public function test()
-    {
-        if ( ! file_exists(APPPATH.'views/pages/test.php'))
+        
+        if ( ! file_exists(APPPATH.'views/pages/tile.php'))
         {
             // Whoops, we don't have a page for that!
             show_404();
         }
-        $data['title'] = 'Test'; // Capitalize the first letter
-        $data['text'] = 'je suis une page de test';
-        $this->load->view('common/header', $data);
-        $this->load->view('pages/test', $data);
-        $this->load->view('common/footer', $data);
+        
+        
+        $data['title'] = 'Liste des Annonces'; // Capitalize the first letter
+        $data['ad'] = $this->ad_model->get_ad();
+        $data['filter'] = [
+            'newest_first' => 'plus récent',
+            'oldest_first' => 'plus ancien'
+        ];
+        
+        
+        $this->load->view('pages/menu', $data);
+        $this->load->view('pages/filter', $data);
+        $this->load->view('pages/tile', $data);
+        $this->load->view('pages/footer');
     }
 }
