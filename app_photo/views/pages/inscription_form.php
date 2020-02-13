@@ -1,6 +1,6 @@
 <form action="inscription.php" method="post">
     <fieldset class="">
-        <legend>Etat civil</legend>
+        <legend></legend>
         <label for="nom">Nom</label>
         <input id="nom" name="nom" type="text" /><br />
         <label for="prenom">Prénom </label>
