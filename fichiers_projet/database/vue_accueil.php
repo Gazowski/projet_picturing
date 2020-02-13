@@ -18,11 +18,11 @@
             </form>
 
             <nav class="crumbs">
-                <ol>
+                <ul>
                     <li class="crumb"><a href="bikes">Appareils</a></li>
                     <li class="crumb"><a href="bikes/bmx">Cours/Formation</a></li>
 
-                </ol>
+                </ul>
             </nav>
         </section>
     </header>
@@ -59,7 +59,7 @@
 
 </html>
 
-<!--------------------------------This is a comment. Comments are not displayed in the browser----------------------------------------->
+<!--------------------------------liste fournisseur----------------------------------------->
 
 
 <!DOCTYPE html>
@@ -85,14 +85,14 @@
 
             <aside>
                 <nav class="crumbs">
-                    <ol>
+                    <ul>
                         <li class="crumb"><a href="bikes">Fournisseurs</a></li>
                         <li class="crumb"><a href="bikes">clients</a></li>
                         <li class="crumb"><a href="bikes">Message</a></li>
                         <li class="crumb"><a href="bikes">Catégories</a></li>
                         <li class="crumb"><a href="bikes">Cours/Formation</a></li>
 
-                    </ol>
+                    </ul>
                 </nav>
 
             </aside>
@@ -101,18 +101,18 @@
 
             <table>
                 <tr>
-                    <th>Nom</th>
-                    <th>Prénom</th>
-                    <th>Adresse</th>
-                    <th>Courriel</th>
-                    <th>Statut</th>
+                    <th></th>
+                    <th></th>
+                    <th></th>
+                    <th></th>
+                    <th></th>
                 </tr>
                 <tr>
-                    <td>Giraud</td>
-                    <td>Pierre</td>
-                    <td>155 rue baldwin Montreal Quebec S3X 2W9</td>
-                    <td>pierre.giraud@edhec.com</td>
-                    <td>Or</td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
                 </tr>
             </table>
         </section>>
@@ -190,7 +190,7 @@
 <body>
 
     <form action="inscription.php" method="post">
-        <fieldset class="etat-civil">
+        <fieldset class="">
             <legend>Etat civil</legend>
             <label for="nom">Nom</label>
             <input id="nom" name="nom" type="text" /><br />
