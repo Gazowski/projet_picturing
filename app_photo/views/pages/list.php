@@ -1,21 +1,27 @@
 <section>
-
-    <h2>Liste des fournisseurs</h2>
+    <h2>Liste des membres</h2>
 
     <table>
         <tr>
-            <th></th>
-            <th></th>
-            <th></th>
-            <th></th>
-            <th></th>
+            <th>Prénom</th>
+            <th>Nom</th>
         </tr>
-        <tr>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-        </tr>
+
+        <?php
+
+            foreach($membre as $row)
+            
+                {
+                    
+                      echo "<tr class =''>
+                            
+                                <td>".$row->first_name."</td>
+                                <td>".$row->last_name."</td>
+                                                               
+                            </tr>";
+                }
+      
+
+        ?>
     </table>
 </section>
