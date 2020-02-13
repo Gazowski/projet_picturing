@@ -14,10 +14,10 @@
         <!-- Police de caractères -->
         <link href="https://fonts.googleapis.com/css?family=Montserrat:400,600,900&display=swap" rel="stylesheet">
         <!-- Feuilles de style -->
-        <link rel="stylesheet" href=".assets/styles/stylesheets/normalize.css">
-        <link rel="stylesheet" href=".assets/styles/sass/main.css">
+        <link rel="stylesheet" href="<?= base_url(); ?>assets/styles/sass/normalize.css">
+        <link rel="stylesheet" href="<?= base_url(); ?>assets/styles/sass/main.css">
 
         <!-- integration du script -->
-        <script type="module" src=".assets/scripts/main.js"></script>
+        <script type="module" src="<?= base_url(); ?>assets/scripts/main.js"></script>
 	</head>
 <body>

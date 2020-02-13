@@ -7,7 +7,7 @@
     <div>
         <a href=" http.www.google.fr">
 
-            <img src="images/facebook.jpeg" alt="logo Facebook" />
+            <!-- <img src="images/facebook.jpeg" alt="logo Facebook" /> -->
 
         </a>
     </div>

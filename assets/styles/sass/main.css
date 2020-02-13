@@ -5935,4 +5935,22 @@ readers do not read off random characters that represent icons */
   font-family: 'Font Awesome 5 Brands';
   font-weight: 400;
 }
+
+h1, h2, h3 {
+  font-family: "Montserrat", sans-serif;
+}
+
+a {
+  font-family: "Montserrat", sans-serif;
+}
+
+button {
+  font-family: "Montserrat", sans-serif;
+}
+
+body {
+  background-color: #ffff;
+  color: #383737;
+  font-family: "Montserrat", sans-serif;
+}
 /*# sourceMappingURL=main.css.map */
