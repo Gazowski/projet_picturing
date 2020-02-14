@@ -34,7 +34,7 @@
      
         
     <?php
-    var_dump($table);
+    //var_dump($table);
         foreach($table as $row) { ?>
             <tr class =''>
             <?php foreach($row as $value) {
