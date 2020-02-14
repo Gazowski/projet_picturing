@@ -15,7 +15,7 @@
 			<a href="https://www.instagram.com/" target="_blank"> <i class="fab fa-instagram" title="instagram"></i></a>
 			<a href="https://www.youtube.com/" target="_blank"><i class="fab fa-youtube" title="youtube"></i></a>
 		</div>
-
+ 
 </footer>
 </body>
 
