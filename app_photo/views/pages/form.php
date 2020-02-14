@@ -18,7 +18,7 @@
                 echo form_password($attribute);
                 break;
             case 'button':
-                echo form_button($attribute);
+                echo form_submit($attribute);
                 break;
         }
     }
