@@ -12,7 +12,7 @@
 
         <?php } ?>
   
- </section>>
+ </section>
     
  
 <!-- SCSS tuile
