@@ -1,6 +1,17 @@
-div.footer{
+.footer {
+    display: flex;
+    flex-direction: row;
     background-color: $c-dark-grey;
-}
-svg#logo_f{
+    p {
+        color: $c-light-grey;
+    }
     width: 50%;
+}
+
+.adress {
+    display: none;
+}
+
+#logo_f {
+    width: 100%;
 }
