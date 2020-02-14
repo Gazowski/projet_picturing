@@ -1,27 +1,56 @@
+<?php //var_dump($value); ?>
 <section>
-    <h2>Liste des membres</h2>
+<!--  <h2>Liste des membres</h2> -->
 
     <table>
-        <tr>
-            <th>Prénom</th>
-            <th>Nom</th>
-        </tr>
-
-        <?php
-
-            foreach($membre as $row)
+    <tr>
+    <?php
+        foreach($table[0] as $key =>$value)
             
-                {
-                    
-                      echo "<tr class =''>
-                            
-                                <td>".$row->first_name."</td>
-                                <td>".$row->last_name."</td>
-                                                               
-                            </tr>";
-                }
-      
+             { 
+    ?>
+             <th><?=$key?></th>
+                  <!--   <th>Prénom</th>
+                    <th>Nom</th>
+                    <th>Nom Entreprise</th>
+                    <th>Numéro Entreprise</th>
+                    <th>Adresse</th>
+                    <th>Télephone</th>
+                    <th>Courriel</th>
+                    <th>Lien site WEb</th>
+                    <th>Lien Réseaux Sociaux</th>
+                    <th>Role</th>
+                    <th>Profil Forunisseur</th>
+                    <th>Statut</th>
+                    <th>Date Inscription</th>
+                    <th>Date Validation</th>
+                    <th>Approuvé Par</th>  -->
+               
+    <?php 
+             }
+    ?>
+     </tr>
 
-        ?>
+     
+        
+    <?php
+    var_dump($table);
+        foreach($table as $row) { ?>
+            <tr class =''>
+            <?php foreach($row as $value) {
+                //var_dump($value);
+    ?>
+                 
+                        <td><?= $value ?></td> 
+
+                                                               
+                        
+        
+       
+        <?php   } ?>
+      
+        </tr>;
+        <?php }?>
+
     </table>
 </section>
