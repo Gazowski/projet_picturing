@@ -33,6 +33,7 @@ section.menu_logo_compte{
 	z-index: 1;
 	-webkit-user-select: none;
 	user-select: none;
+	width: auto;
 	a {
         color: $c-light-grey ; 
         text-decoration: none;
@@ -41,6 +42,7 @@ section.menu_logo_compte{
 			color: $c-medium-theme;
 		}
 	}
+
 	input {
 		display: block;
 		width: 40px;
@@ -70,6 +72,7 @@ section.menu_logo_compte{
 			}
 		}
 	}
+
 	span {
 		display: block;
 		width: 33px;
@@ -91,6 +94,7 @@ section.menu_logo_compte{
 		}
 	}
 }
+
 #menu {
 	position: absolute;
 	//width: 300px;

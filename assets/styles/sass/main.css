@@ -6006,6 +6006,7 @@ section.menu_logo_compte {
   -moz-user-select: none;
    -ms-user-select: none;
        user-select: none;
+  width: auto;
 }
 
 #menuToggle a {
@@ -6104,7 +6105,7 @@ section.menu_logo_compte {
   font-size: 22px;
 }
 
-.adress {
+.address {
   display: none;
 }
 
@@ -6147,7 +6148,7 @@ footer p {
   -webkit-box-pack: end;
       -ms-flex-pack: end;
           justify-content: flex-end;
-  margin: 3.5% 0;
+  margin: 4% 0;
   width: 30%;
 }
 
