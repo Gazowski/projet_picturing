@@ -1,5 +1,58 @@
 svg#logo {
-  width: 150px;
+  width: 200px;
+}
+
+section.entete {
+  padding-top: 30px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  margin: 0 auto;
+  width: 80%;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  justify-items: center;
+}
+
+.search_compte {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+  -ms-flex-pack: distribute;
+      justify-content: space-around;
+}
+
+div.mon_compte {
+  padding-left: 10px;
+}
+
+.crumbs ul {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+}
+
+a {
+  color: grey;
+  text-decoration: none;
+  list-style: none;
+}
+
+a:hover {
+  color: #bd006b;
+  text-decoration: none;
 }
 
 /*!
@@ -5956,5 +6009,6 @@ body {
   background-color: #ffff;
   color: #383737;
   font-family: "Montserrat", sans-serif;
+  margin: 0 auto;
 }
 /*# sourceMappingURL=main.css.map */

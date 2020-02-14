@@ -1,3 +1,38 @@
 svg#logo{
-    width: 150px;
+    width: 200px;
 }
+section.entete{
+    padding-top: 30px;
+    display: flex;
+    margin: 0 auto;
+    width: 80%;
+    justify-content: space-between;
+    justify-items: center;
+    
+}
+.search_compte{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+}
+div.mon_compte{
+    padding-left: 10px;
+}
+.crumbs ul{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    text-decoration: none;
+    list-style-type: none;
+    font-size: 0.9em;
+}
+
+a{
+    color: $c_medium_grey;
+    font-size: 2em; 
+}
+a:hover{
+    color: $c_medium_theme;   
+}
+
+

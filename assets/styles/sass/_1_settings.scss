@@ -22,7 +22,13 @@ ul{
     }
 }
 
+
 body{
     @include color($c_white,$c_dark_grey);
     font-family: $f_text;
+    margin: 0 auto;
+    
+   
+   
+    
 }
