@@ -1,34 +1,23 @@
+body{
+    @include color($c_white,$c_dark_grey);
+    font-family: $f_text;
+    margin: 0 auto;
+}
+
 h1,h2,h3{
     font-family: $f_title;
 }
 
 a{
-    font-family: $f_link;
+    text-decoration: none;
+    color: $c-medium-grey;
+    font-size: 0.9em;
     &:hover{
-
+        color: $c-medium-theme; 
     }
 }
 
 button{
     font-family: $f_button;
-    &:hover{
 
-    }
-}
-
-ul{
-    li{
-
-    }
-}
-
-
-body{
-    @include color($c_white,$c_dark_grey);
-    font-family: $f_text;
-    margin: 0 auto;
-    
-   
-   
-    
 }
