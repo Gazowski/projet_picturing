@@ -2,7 +2,7 @@
 
 <select name="filter" id="filter">
     <option value="">--choisie une option--</option>
-    <?php foreach($filter as $f) { ?>
-        <option value = <?= $filter[$f] ?>><?= $f ?></option>
+    <?php foreach($filter as $key=>$f) { ?>
+        <option value = <?= $key ?>><?= $f ?></option>
     <?php } ?>
 </select>
