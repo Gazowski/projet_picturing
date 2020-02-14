@@ -6158,6 +6158,20 @@ img {
      object-fit: cover;
 }
 
+.parent {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 13%;
+  width: 100%;
+  display: -ms-grid;
+  display: grid;
+  -ms-grid-columns: (minmax(280px, 1fr))[auto-fill];
+      grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  grid-gap: 1em;
+  grid-column-gap: 22px;
+  grid-row-gap: 16px;
+}
+
 .filter {
   margin-top: 2em;
 }
