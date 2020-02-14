@@ -28,11 +28,11 @@ div.mon_compte{
 }
 
 a{
-    color: $c_medium_grey;
+    color: green;
     font-size: 2em; 
-}
-a:hover{
-    color: $c_medium_theme;   
+    &:hover{
+        color: $c-medium-theme;   
+    }
 }
 
 
