@@ -35,7 +35,7 @@ class Ad extends CI_Controller {
         ];
         
         
-        $this->load->view('pages/menu', $data);
+        //$this->load->view('pages/menu', $data);
         $this->load->view('pages/filter', $data);
         $this->load->view('pages/tile', $data);
         $this->load->view('pages/footer');
