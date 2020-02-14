@@ -3,11 +3,11 @@ h1,h2,h3{
 }
 
 a{
-    font-family: $f_link;
+    text-decoration: none;
+    color: $c-medium-grey;
     &:hover{
-
+        color: $c-medium-theme; 
     }
-}
 
 button{
     font-family: $f_button;
@@ -27,8 +27,5 @@ body{
     @include color($c_white,$c_dark_grey);
     font-family: $f_text;
     margin: 0 auto;
-    
-   
-   
     
 }

@@ -5955,7 +5955,7 @@ body {
   margin: 0 auto;
 }
 
-svg#logo {
+#logo_h {
   width: 200px;
 }
 
@@ -5982,10 +5982,23 @@ section.entete {
           flex-direction: row;
   -ms-flex-pack: distribute;
       justify-content: space-around;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
 }
 
-div.mon_compte {
+.mon_compte {
   padding-left: 10px;
+  font-size: 0.7em;
+}
+
+.mon_compte a {
+  text-decoration: none;
+  color: #6b6a6a;
+}
+
+.mon_compte a:hover {
+  color: #bd006b;
 }
 
 .crumbs ul {
@@ -5999,17 +6012,17 @@ div.mon_compte {
   -webkit-box-pack: justify;
       -ms-flex-pack: justify;
           justify-content: space-between;
-  text-decoration: none;
   list-style-type: none;
   font-size: 0.9em;
 }
 
-a {
-  color: green;
-  font-size: 2em;
+.crumbs a {
+  color: #6b6a6a;
+  font-size: 0.9em;
+  text-decoration: none;
 }
 
-a:hover {
+.crumbs a:hover {
   color: #bd006b;
 }
 

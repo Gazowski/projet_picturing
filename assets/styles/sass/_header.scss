@@ -1,4 +1,4 @@
-svg#logo{
+#logo_h{
     width: 200px;
 }
 section.entete{
@@ -14,22 +14,27 @@ section.entete{
     display: flex;
     flex-direction: row;
     justify-content: space-around;
+    align-items: center;
+    
 }
-div.mon_compte{
+.mon_compte{
     padding-left: 10px;
+    font-size: 0.7em;
+    }
+    
 }
 .crumbs ul{
     display: flex;
     flex-direction: row;
     justify-content: space-between;
-    text-decoration: none;
     list-style-type: none;
     font-size: 0.9em;
 }
 
-a{
-    color: green;
-    font-size: 2em; 
+.crumbs a{
+    color: $c-medium-grey;
+    font-size: 0.9em;
+    text-decoration: none; 
     &:hover{
         color: $c-medium-theme;   
     }
