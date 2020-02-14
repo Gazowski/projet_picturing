@@ -16,6 +16,38 @@ class Member extends CI_Controller {
         $this->load->view('pages/head');
         $this->load->view('pages/header_catalog');
     }
+
+    /**
+     *  -   afficher authentification
+     *  -   valider authentification
+     *  -   creer variable session
+     *  -   retour a la page current 
+     */
+
+    public function login()
+    {
+        $data['title'] = 'Login';
+        $data['formaction'] = 'member/authentification';
+        $data['form'] = [
+            'text' => [
+                'name' => 'courriel',
+                'id' => 'courriel',
+                'required' => TRUE
+            ],
+            'password' => [
+                'name' => 'password',
+                'id' => 'password',
+                'required' => TRUE
+            ],
+            'button' => [
+                'type' => 'submit',
+                'value' => 'connection'
+            ]
+        ];
+        $this->load->view('pages/menu', $data);
+        $this->load->view('pages/form', $data);
+        $this->load->view('pages/footer');
+    }
     
     public function display_all()
     {
