@@ -5963,32 +5963,10 @@ button {
 
 #logo_h {
   width: 140px;
+  padding-right: 2.7rem;
 }
 
-.entete {
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-orient: vertical;
-  -webkit-box-direction: normal;
-      -ms-flex-direction: column;
-          flex-direction: column;
-  text-align: center;
-  width: 100%;
-}
-
-.search_compte {
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-}
-
-.mon_compte {
-  padding-left: 10px;
-  font-size: 0.7em;
-}
-
-.crumbs ul {
+section.menu_logo_compte {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -5996,18 +5974,25 @@ button {
   -webkit-box-direction: normal;
       -ms-flex-direction: row;
           flex-direction: row;
-  -webkit-box-pack: justify;
-      -ms-flex-pack: justify;
-          justify-content: space-between;
-  list-style-type: none;
-  font-size: 0.9em;
+  -webkit-box-pack: end;
+      -ms-flex-pack: end;
+          justify-content: flex-end;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  width: 100%;
+}
+
+.mon_compte {
+  font-size: 1em;
+  padding-right: 1.7rem;
 }
 
 #menuToggle {
   display: block;
   position: relative;
-  top: 50px;
-  left: 50px;
+  top: 35px;
+  left: 22px;
   z-index: 1;
   -webkit-user-select: none;
   -moz-user-select: none;
@@ -6090,8 +6075,7 @@ button {
 
 #menu {
   position: absolute;
-  width: 300px;
-  margin: -100px 0 0 -50px;
+  margin: -105px 0px 0 -53px;
   padding: 50px;
   padding-top: 125px;
   background: #383737;
@@ -6112,11 +6096,33 @@ button {
   font-size: 22px;
 }
 
-div.footer {
+.footer {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
   background-color: #383737;
+  width: 50%;
 }
 
-svg#logo_f {
-  width: 50%;
+.footer p {
+  color: #bcbcbc;
+}
+
+.adress {
+  display: none;
+}
+
+#logo_f {
+  width: 100%;
+}
+
+img {
+  width: 250px;
+  -o-object-fit: cover;
+     object-fit: cover;
 }
 /*# sourceMappingURL=main.css.map */

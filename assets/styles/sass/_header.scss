@@ -1,36 +1,30 @@
 #logo_h{
     width: 140px;
+    padding-right: 2.7rem;
 }
-.entete{
-    
-    display: flex;
-    flex-direction: column;
-    text-align: center;
-    width: 100%;
-    //padding-top: 30px;
-}
-.search_compte{
-    display: flex; 
-}
-.mon_compte{
-    padding-left: 10px;
-    font-size: 0.7em;
-    
-}
-.crumbs ul{
+section.menu_logo_compte{
+
     display: flex;
     flex-direction: row;
-    justify-content: space-between;
-    list-style-type: none;
-    font-size: 0.9em;
+    justify-content: flex-end;
+    align-items: center;
+    width: 100%;
+    
+ 
 }
+.mon_compte{
+    font-size: 1em;
+    padding-right: 1.7rem;
+
+}
+
 //--------navigation_mobile-----------//
 
 #menuToggle {
 	display: block;
 	position: relative;
-	top: 50px;
-	left: 50px;
+	top: 35px;
+	left: 22px;
 	z-index: 1;
 	-webkit-user-select: none;
 	user-select: none;
@@ -94,8 +88,8 @@
 }
 #menu {
 	position: absolute;
-	width: 300px;
-	margin: -100px 0 0 -50px;
+	//width: 300px;
+    margin: -105px 0px 0 -53px;
 	padding: 50px;
 	padding-top: 125px;
 	background: $c-dark-grey ;
