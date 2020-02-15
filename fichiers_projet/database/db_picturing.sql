@@ -1,13 +1,15 @@
 -- phpMyAdmin SQL Dump
--- version 4.6.4
+-- version 4.8.4
 -- https://www.phpmyadmin.net/
 --
--- Host: 127.0.0.1
--- Generation Time: Feb 13, 2020 at 07:55 PM
--- Server version: 5.7.14
--- PHP Version: 5.6.25
+-- Host: 127.0.0.1:3306
+-- Generation Time: Feb 15, 2020 at 07:03 PM
+-- Server version: 5.7.24
+-- PHP Version: 7.2.14
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
+SET AUTOCOMMIT = 0;
+START TRANSACTION;
 SET time_zone = "+00:00";
 
 
@@ -26,8 +28,9 @@ SET time_zone = "+00:00";
 -- Table structure for table `ad`
 --
 
-CREATE TABLE `ad` (
-  `id_ad` int(11) NOT NULL,
+DROP TABLE IF EXISTS `ad`;
+CREATE TABLE IF NOT EXISTS `ad` (
+  `id_ad` int(11) NOT NULL AUTO_INCREMENT,
   `category` int(11) NOT NULL,
   `location` varchar(250) DEFAULT NULL,
   `title` varchar(250) DEFAULT NULL,
@@ -36,8 +39,12 @@ CREATE TABLE `ad` (
   `photo` varchar(250) NOT NULL,
   `open_date` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP,
   `close_date` datetime DEFAULT NULL,
-  `owner` int(11) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+  `owner` int(11) UNSIGNED NOT NULL,
+  PRIMARY KEY (`id_ad`),
+  UNIQUE KEY `title` (`title`),
+  KEY `category` (`category`),
+  KEY `owner` (`owner`) USING BTREE
+) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `ad`
@@ -55,11 +62,15 @@ INSERT INTO `ad` (`id_ad`, `category`, `location`, `title`, `description`, `pric
 -- Table structure for table `banishement`
 --
 
-CREATE TABLE `banishement` (
-  `id_banishement` int(11) NOT NULL,
-  `banished_member` int(11) NOT NULL,
-  `admin_member` int(11) NOT NULL,
-  `date` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP
+DROP TABLE IF EXISTS `banishement`;
+CREATE TABLE IF NOT EXISTS `banishement` (
+  `id_banishement` int(11) NOT NULL AUTO_INCREMENT,
+  `banished_member` int(11) UNSIGNED NOT NULL,
+  `admin_member` int(11) UNSIGNED NOT NULL,
+  `date` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  PRIMARY KEY (`id_banishement`),
+  KEY `banished_member` (`banished_member`),
+  KEY `admin_member` (`admin_member`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 -- --------------------------------------------------------
@@ -68,11 +79,15 @@ CREATE TABLE `banishement` (
 -- Table structure for table `category`
 --
 
-CREATE TABLE `category` (
-  `id_category` int(11) NOT NULL,
+DROP TABLE IF EXISTS `category`;
+CREATE TABLE IF NOT EXISTS `category` (
+  `id_category` int(11) NOT NULL AUTO_INCREMENT,
   `name` varchar(50) NOT NULL,
-  `created_by` int(11) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+  `created_by` int(11) NOT NULL,
+  PRIMARY KEY (`id_category`),
+  UNIQUE KEY `name` (`name`),
+  KEY `created_by` (`created_by`)
+) ENGINE=InnoDB AUTO_INCREMENT=23 DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `category`
@@ -87,36 +102,39 @@ INSERT INTO `category` (`id_category`, `name`, `created_by`) VALUES
 -- --------------------------------------------------------
 
 --
--- Table structure for table `members`
+-- Table structure for table `groups`
 --
 
-CREATE TABLE `members` (
-  `id_members` int(11) NOT NULL,
-  `password` varchar(50) NOT NULL,
-  `first_name` varchar(50) NOT NULL,
-  `last_name` varchar(50) NOT NULL,
-  `entreprise_name` varchar(50) DEFAULT NULL,
-  `entreprise_number` varchar(50) DEFAULT NULL,
-  `address` varchar(50) NOT NULL,
-  `tel` int(50) NOT NULL,
-  `email` varchar(50) NOT NULL,
-  `website_link` varchar(50) DEFAULT NULL,
-  `social_networks_link` varchar(50) DEFAULT NULL,
-  `role` varchar(50) NOT NULL,
-  `provider_profil` varchar(50) DEFAULT NULL,
-  `status` varchar(50) NOT NULL,
-  `inscription_date` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP,
-  `validation_date` datetime NOT NULL,
-  `approved_by` int(11) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+DROP TABLE IF EXISTS `groups`;
+CREATE TABLE IF NOT EXISTS `groups` (
+  `id` mediumint(8) UNSIGNED NOT NULL AUTO_INCREMENT,
+  `name` varchar(20) NOT NULL,
+  `description` varchar(100) NOT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8;
 
 --
--- Dumping data for table `members`
+-- Dumping data for table `groups`
 --
 
-INSERT INTO `members` (`id_members`, `password`, `first_name`, `last_name`, `entreprise_name`, `entreprise_number`, `address`, `tel`, `email`, `website_link`, `social_networks_link`, `role`, `provider_profil`, `status`, `inscription_date`, `validation_date`, `approved_by`) VALUES
-(1, 'admin', 'admin', 'admin', NULL, NULL, 'adresse de l\'admin', 1234, 'email@admin.com', NULL, NULL, 'admin', NULL, 'valid', '2020-02-13 09:52:28', '2020-02-13 09:52:28', 1),
-(2, '1234', 'salah', 'salhi', NULL, NULL, 'laval', 1234, 'salah@email.com', NULL, NULL, 'supplier', '1', 'valid', '2020-02-13 10:36:33', '2020-02-13 10:36:33', 1);
+INSERT INTO `groups` (`id`, `name`, `description`) VALUES
+(1, 'admin', 'Administrator'),
+(2, 'members', 'General User');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `login_attempts`
+--
+
+DROP TABLE IF EXISTS `login_attempts`;
+CREATE TABLE IF NOT EXISTS `login_attempts` (
+  `id` int(11) UNSIGNED NOT NULL AUTO_INCREMENT,
+  `ip_address` varchar(45) NOT NULL,
+  `login` varchar(100) NOT NULL,
+  `time` int(11) UNSIGNED DEFAULT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 -- --------------------------------------------------------
 
@@ -124,13 +142,17 @@ INSERT INTO `members` (`id_members`, `password`, `first_name`, `last_name`, `ent
 -- Table structure for table `message`
 --
 
-CREATE TABLE `message` (
-  `id_message` int(11) NOT NULL,
+DROP TABLE IF EXISTS `message`;
+CREATE TABLE IF NOT EXISTS `message` (
+  `id_message` int(11) NOT NULL AUTO_INCREMENT,
   `title` varchar(250) NOT NULL,
   `date` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP,
   `text_message` varchar(250) DEFAULT NULL,
-  `writer` int(11) NOT NULL,
-  `ad` int(11) DEFAULT NULL
+  `writer` int(11) UNSIGNED NOT NULL,
+  `ad` int(11) DEFAULT NULL,
+  PRIMARY KEY (`id_message`),
+  KEY `writer` (`writer`),
+  KEY `ad` (`ad`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 -- --------------------------------------------------------
@@ -139,101 +161,89 @@ CREATE TABLE `message` (
 -- Table structure for table `rating`
 --
 
-CREATE TABLE `rating` (
-  `id_rating` int(11) NOT NULL,
-  `rated_user` int(11) NOT NULL,
-  `rater_user` int(11) NOT NULL,
+DROP TABLE IF EXISTS `rating`;
+CREATE TABLE IF NOT EXISTS `rating` (
+  `id_rating` int(11) NOT NULL AUTO_INCREMENT,
+  `rated_user` int(11) UNSIGNED NOT NULL,
+  `rater_user` int(11) UNSIGNED NOT NULL,
   `date` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP,
-  `rating` int(11) NOT NULL
+  `rating` int(11) NOT NULL,
+  PRIMARY KEY (`id_rating`),
+  KEY `rated_user` (`rated_user`),
+  KEY `rater_user` (`rater_user`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
---
--- Indexes for dumped tables
---
+-- --------------------------------------------------------
 
 --
--- Indexes for table `ad`
---
-ALTER TABLE `ad`
-  ADD PRIMARY KEY (`id_ad`),
-  ADD UNIQUE KEY `title` (`title`),
-  ADD KEY `owner` (`owner`),
-  ADD KEY `category` (`category`);
-
---
--- Indexes for table `banishement`
---
-ALTER TABLE `banishement`
-  ADD PRIMARY KEY (`id_banishement`),
-  ADD KEY `banished_member` (`banished_member`),
-  ADD KEY `admin_member` (`admin_member`);
-
---
--- Indexes for table `category`
---
-ALTER TABLE `category`
-  ADD PRIMARY KEY (`id_category`),
-  ADD UNIQUE KEY `name` (`name`),
-  ADD KEY `created_by` (`created_by`);
-
---
--- Indexes for table `members`
---
-ALTER TABLE `members`
-  ADD PRIMARY KEY (`id_members`),
-  ADD UNIQUE KEY `email` (`email`),
-  ADD KEY `approved_by` (`approved_by`);
-
---
--- Indexes for table `message`
---
-ALTER TABLE `message`
-  ADD PRIMARY KEY (`id_message`),
-  ADD KEY `writer` (`writer`),
-  ADD KEY `ad` (`ad`);
-
---
--- Indexes for table `rating`
---
-ALTER TABLE `rating`
-  ADD PRIMARY KEY (`id_rating`),
-  ADD KEY `rated_user` (`rated_user`),
-  ADD KEY `rater_user` (`rater_user`);
-
---
--- AUTO_INCREMENT for dumped tables
+-- Table structure for table `users`
 --
 
+DROP TABLE IF EXISTS `users`;
+CREATE TABLE IF NOT EXISTS `users` (
+  `id` int(11) UNSIGNED NOT NULL AUTO_INCREMENT,
+  `ip_address` varchar(45) NOT NULL,
+  `username` varchar(100) DEFAULT NULL,
+  `password` varchar(255) NOT NULL,
+  `email` varchar(254) NOT NULL,
+  `activation_selector` varchar(255) DEFAULT NULL,
+  `activation_code` varchar(255) DEFAULT NULL,
+  `forgotten_password_selector` varchar(255) DEFAULT NULL,
+  `forgotten_password_code` varchar(255) DEFAULT NULL,
+  `forgotten_password_time` int(11) UNSIGNED DEFAULT NULL,
+  `remember_selector` varchar(255) DEFAULT NULL,
+  `remember_code` varchar(255) DEFAULT NULL,
+  `created_on` int(11) UNSIGNED NOT NULL,
+  `last_login` int(11) UNSIGNED DEFAULT NULL,
+  `active` tinyint(1) UNSIGNED DEFAULT NULL,
+  `first_name` varchar(50) DEFAULT NULL,
+  `last_name` varchar(50) DEFAULT NULL,
+  `company` varchar(100) DEFAULT NULL,
+  `company_number` int(11) DEFAULT NULL,
+  `address` varchar(250) DEFAULT NULL,
+  `phone` varchar(20) DEFAULT NULL,
+  `website` varchar(250) DEFAULT NULL,
+  `social_network` varchar(250) DEFAULT NULL,
+  PRIMARY KEY (`id`),
+  UNIQUE KEY `uc_email` (`email`),
+  UNIQUE KEY `uc_activation_selector` (`activation_selector`),
+  UNIQUE KEY `uc_forgotten_password_selector` (`forgotten_password_selector`),
+  UNIQUE KEY `uc_remember_selector` (`remember_selector`)
+) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8;
+
 --
--- AUTO_INCREMENT for table `ad`
+-- Dumping data for table `users`
 --
-ALTER TABLE `ad`
-  MODIFY `id_ad` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+
+INSERT INTO `users` (`id`, `ip_address`, `username`, `password`, `email`, `activation_selector`, `activation_code`, `forgotten_password_selector`, `forgotten_password_code`, `forgotten_password_time`, `remember_selector`, `remember_code`, `created_on`, `last_login`, `active`, `first_name`, `last_name`, `company`, `company_number`, `address`, `phone`, `website`, `social_network`) VALUES
+(1, '127.0.0.1', 'administrator', '$2y$08$200Z6ZZbp3RAEXoaWcMA6uJOFicwNZaqk4oDhqTUiFXFe63MG.Daa', 'admin@admin.com', NULL, '', NULL, NULL, NULL, NULL, NULL, 1268889823, 1268889823, 1, 'Admin', 'istrator', 'ADMIN', NULL, NULL, '0', NULL, NULL),
+(2, '1.0.0.127', 'billy', '1234', 'bill.baroud@bill.com', NULL, NULL, NULL, NULL, NULL, NULL, NULL, 1234, NULL, 1, 'bill', 'baroud', 'maisonneuve', NULL, NULL, NULL, NULL, NULL);
+
+-- --------------------------------------------------------
+
 --
--- AUTO_INCREMENT for table `banishement`
+-- Table structure for table `users_groups`
 --
-ALTER TABLE `banishement`
-  MODIFY `id_banishement` int(11) NOT NULL AUTO_INCREMENT;
+
+DROP TABLE IF EXISTS `users_groups`;
+CREATE TABLE IF NOT EXISTS `users_groups` (
+  `id` int(11) UNSIGNED NOT NULL AUTO_INCREMENT,
+  `user_id` int(11) UNSIGNED NOT NULL,
+  `group_id` mediumint(8) UNSIGNED NOT NULL,
+  PRIMARY KEY (`id`),
+  UNIQUE KEY `uc_users_groups` (`user_id`,`group_id`),
+  KEY `fk_users_groups_users1_idx` (`user_id`),
+  KEY `fk_users_groups_groups1_idx` (`group_id`)
+) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8;
+
 --
--- AUTO_INCREMENT for table `category`
+-- Dumping data for table `users_groups`
 --
-ALTER TABLE `category`
-  MODIFY `id_category` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=23;
---
--- AUTO_INCREMENT for table `members`
---
-ALTER TABLE `members`
-  MODIFY `id_members` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
---
--- AUTO_INCREMENT for table `message`
---
-ALTER TABLE `message`
-  MODIFY `id_message` int(11) NOT NULL AUTO_INCREMENT;
---
--- AUTO_INCREMENT for table `rating`
---
-ALTER TABLE `rating`
-  MODIFY `id_rating` int(11) NOT NULL AUTO_INCREMENT;
+
+INSERT INTO `users_groups` (`id`, `user_id`, `group_id`) VALUES
+(1, 1, 1),
+(2, 1, 2);
+
 --
 -- Constraints for dumped tables
 --
@@ -243,40 +253,36 @@ ALTER TABLE `rating`
 --
 ALTER TABLE `ad`
   ADD CONSTRAINT `ad_ibfk_1` FOREIGN KEY (`category`) REFERENCES `category` (`id_category`),
-  ADD CONSTRAINT `ad_ibfk_2` FOREIGN KEY (`owner`) REFERENCES `members` (`id_members`);
+  ADD CONSTRAINT `ad_ibfk_2` FOREIGN KEY (`owner`) REFERENCES `users` (`id`);
 
 --
 -- Constraints for table `banishement`
 --
 ALTER TABLE `banishement`
-  ADD CONSTRAINT `banishement_ibfk_1` FOREIGN KEY (`banished_member`) REFERENCES `members` (`id_members`),
-  ADD CONSTRAINT `banishement_ibfk_2` FOREIGN KEY (`admin_member`) REFERENCES `members` (`id_members`);
-
---
--- Constraints for table `category`
---
-ALTER TABLE `category`
-  ADD CONSTRAINT `category_ibfk_2` FOREIGN KEY (`created_by`) REFERENCES `members` (`id_members`);
-
---
--- Constraints for table `members`
---
-ALTER TABLE `members`
-  ADD CONSTRAINT `members_ibfk_2` FOREIGN KEY (`approved_by`) REFERENCES `members` (`id_members`);
+  ADD CONSTRAINT `banishement_ibfk_1` FOREIGN KEY (`admin_member`) REFERENCES `users` (`id`),
+  ADD CONSTRAINT `banishement_ibfk_2` FOREIGN KEY (`banished_member`) REFERENCES `users` (`id`);
 
 --
 -- Constraints for table `message`
 --
 ALTER TABLE `message`
-  ADD CONSTRAINT `message_ibfk_2` FOREIGN KEY (`writer`) REFERENCES `members` (`id_members`),
-  ADD CONSTRAINT `message_ibfk_3` FOREIGN KEY (`ad`) REFERENCES `ad` (`id_ad`);
+  ADD CONSTRAINT `message_ibfk_1` FOREIGN KEY (`ad`) REFERENCES `ad` (`id_ad`),
+  ADD CONSTRAINT `message_ibfk_2` FOREIGN KEY (`writer`) REFERENCES `users` (`id`);
 
 --
 -- Constraints for table `rating`
 --
 ALTER TABLE `rating`
-  ADD CONSTRAINT `rating_ibfk_1` FOREIGN KEY (`rated_user`) REFERENCES `members` (`id_members`),
-  ADD CONSTRAINT `rating_ibfk_2` FOREIGN KEY (`rater_user`) REFERENCES `members` (`id_members`);
+  ADD CONSTRAINT `rating_ibfk_1` FOREIGN KEY (`rated_user`) REFERENCES `users` (`id`),
+  ADD CONSTRAINT `rating_ibfk_2` FOREIGN KEY (`rater_user`) REFERENCES `users` (`id`);
+
+--
+-- Constraints for table `users_groups`
+--
+ALTER TABLE `users_groups`
+  ADD CONSTRAINT `fk_users_groups_groups1` FOREIGN KEY (`group_id`) REFERENCES `groups` (`id`) ON DELETE CASCADE ON UPDATE NO ACTION,
+  ADD CONSTRAINT `fk_users_groups_users1` FOREIGN KEY (`user_id`) REFERENCES `users` (`id`) ON DELETE CASCADE ON UPDATE NO ACTION;
+COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
