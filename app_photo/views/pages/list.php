@@ -5,7 +5,7 @@
     <table>
     <tr>
     <?php
-        foreach($table[0] as $key =>$value)
+        foreach($table[0] as $key => $value)
             
              { 
     ?>
