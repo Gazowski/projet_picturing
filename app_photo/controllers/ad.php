@@ -12,9 +12,8 @@ class Ad extends CI_Controller {
     {
         parent::__construct();
         $this->load->model('ad_model');
+        $this->load->library(['ion_auth']);
         
-        $this->load->view('pages/head');
-        $this->load->view('pages/header_catalog');
     }
     
     public function display_all()
@@ -33,11 +32,9 @@ class Ad extends CI_Controller {
             'newest_first' => 'plus récent',
             'oldest_first' => 'plus ancien'
         ];
-        
-        
-        //$this->load->view('pages/menu', $data);
-        $this->load->view('pages/filter', $data);
-        $this->load->view('pages/tile', $data);
-        $this->load->view('pages/footer');
+
+
+        $is_admin = $this->ion_auth->is_admin();
+        $this->load->template('pages/tile',$data,$is_admin);
     }
 }
