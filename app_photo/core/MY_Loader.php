@@ -33,12 +33,12 @@ class MY_Loader extends CI_Loader {
             $menu = 'pages/menu';
         }
 
-        $this->view('pages/head', $vars, $return);
-        $this->view($header, $vars, $return);
-        $this->view($menu, $vars, $return);
-        ($page == 'pages/list' || $page == 'pages/tile') ? $this->load->view('pages/filter',$vars,$return) : '';
-        $this->view($page, $vars, $return);
-        $this->view('pages/footer', $vars, $return);
+        $this->view('pages/head', $vars);
+        $this->view($header, $vars);
+        $this->view($menu, $vars);
+        ($page == 'pages/list' || $page == 'pages/tile') ? $this->load->view('pages/filter',$vars) : '';
+        $this->view($page, $vars);
+        $this->view('pages/footer', $vars);
 
     }
 }
