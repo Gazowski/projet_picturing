@@ -12,42 +12,10 @@ class Member extends CI_Controller {
     {
         parent::__construct();
         $this->load->model('member_model');
-        
-        $this->load->view('pages/head');
-        $this->load->view('pages/header_catalog');
+        $this->load->library(['ion_auth']);
+
     }
 
-    /**
-     *  -   afficher authentification
-     *  -   valider authentification
-     *  -   creer variable session
-     *  -   retour a la page current 
-     */
-
-    public function login()
-    {
-        $data['title'] = 'Login';
-        $data['formaction'] = 'member/authentification';
-        $data['form'] = [
-            'text' => [
-                'name' => 'courriel',
-                'id' => 'courriel',
-                'required' => TRUE
-            ],
-            'password' => [
-                'name' => 'password',
-                'id' => 'password',
-                'required' => TRUE
-            ],
-            'button' => [
-                'type' => 'submit',
-                'value' => 'connection'
-            ]
-        ];
-        $this->load->view('pages/menu', $data);
-        $this->load->view('pages/form', $data);
-        $this->load->view('pages/footer');
-    }
     
  //////logique pour afficher la liste des membres pour les admins////   
     public function display_all()
@@ -63,16 +31,14 @@ class Member extends CI_Controller {
         $data['title'] = 'Liste des Membres'; // Capitalize the first letter
         $data['table'] = $this->member_model->get_member();
        
-      
-        $this->load->view('pages/menu', $data);
-        $this->load->view('pages/list', $data);
-        $this->load->view('pages/footer');
+        $is_admin = $this->ion_auth->is_admin();
+        $this->load->template('pages/list',$data,$is_admin);
     }
 
 
 //////logique pour afficher la liste des membres pour les fournisseurs////
     
-public function supplier_all()
+public function display_all_supplier()
     {
         
         if ( ! file_exists(APPPATH.'views/pages/list.php'))
@@ -87,8 +53,7 @@ public function supplier_all()
        
       
       
-        $this->load->view('pages/menu', $data);
-        $this->load->view('pages/list', $data);
-        $this->load->view('pages/footer');
+        $is_admin = $this->ion_auth->is_admin();
+        $this->load->template('pages/list',$data,$is_admin);
     }
 }
