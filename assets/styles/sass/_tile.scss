@@ -26,6 +26,9 @@ img{
     padding-right: .5em;
     background-color: $c-medium-theme;
     color: white;
+    h3{
+      font-weight: normal;
+    }
   }
  
 
@@ -34,20 +37,27 @@ img{
     flex-direction: column;
     justify-content: space-between;
     border: 1px solid $c-light-grey;
-    width: 88%;
+    width: 80%;
     margin: 0 auto;
-  }
-  .child h3 {
-    font-weight: normal;
-    padding-left: .9rem;
-  
+    box-shadow: 0 1px 2px rgba(0,0,0,0.15);
+    transition: box-shadow 0.3s ease-in-out;
+    > h3 {
+      font-weight: normal;
+      padding-left: .9rem;
+      margin: 0px;
+    }
+    p{
+      padding : 0.5rem 1rem 0.5rem 1rem;
+      color: $c-medium-grey;
+      margin: 0px;
+      font-size: .8em;
+    }
+    &:hover {
+      box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+    }
 
   }
-  .child p{
-    padding: 1rem;
-    color: $c-medium-grey;
-    margin: 0px;
-  }
+  
 
   
 
