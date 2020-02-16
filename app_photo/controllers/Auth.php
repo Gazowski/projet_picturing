@@ -745,9 +745,9 @@ class Auth extends CI_Controller
 				redirect("auth", 'refresh');
 			}
 			else
-            		{
+            {
 				$this->session->set_flashdata('message', $this->ion_auth->errors());
-            		}			
+            }			
 		}
 			
 		// display the create group form

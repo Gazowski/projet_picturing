@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1:3306
--- Generation Time: Feb 15, 2020 at 07:03 PM
+-- Generation Time: Feb 15, 2020 at 09:20 PM
 -- Server version: 5.7.24
 -- PHP Version: 7.2.14
 
@@ -51,10 +51,10 @@ CREATE TABLE IF NOT EXISTS `ad` (
 --
 
 INSERT INTO `ad` (`id_ad`, `category`, `location`, `title`, `description`, `price`, `photo`, `open_date`, `close_date`, `owner`) VALUES
-(1, 11, NULL, 'appareil photo neuf', 'joli appareil photo neuf pas cher', '1000', 'assets/img/fujifilm_s1500.png', '2020-02-13 11:39:38', NULL, 2),
-(2, 12, NULL, 'appareil photo usagé', 'appareil reflex peu', '333', 'assets/img/nikon_d5600.png', '2020-02-13 11:39:38', NULL, 2),
-(3, 21, NULL, 'reparation zoom', 'réparation de tout vos zoom', '100', 'assets/img/reparation.png', '2020-02-13 11:39:38', NULL, 2),
-(4, 22, NULL, 'photo corporative', 'une seance de photo au sein de votre entreprise', '500', 'assets/img/tirage_photos.png', '2020-02-13 11:39:38', NULL, 2);
+(1, 1, NULL, 'appareil photo neuf', 'joli appareil photo neuf pas cher', '1000', 'assets/img/fujifilm_s1500.png', '2020-02-13 11:39:38', NULL, 2),
+(2, 2, NULL, 'appareil photo usagé', 'appareil reflex peu', '333', 'assets/img/nikon_d5600.png', '2020-02-13 11:39:38', NULL, 2),
+(3, 3, NULL, 'reparation zoom', 'réparation de tout vos zoom', '100', 'assets/img/reparation.png', '2020-02-13 11:39:38', NULL, 2),
+(4, 4, NULL, 'photo corporative', 'une seance de photo au sein de votre entreprise', '500', 'assets/img/tirage_photos.png', '2020-02-13 11:39:38', NULL, 2);
 
 -- --------------------------------------------------------
 
@@ -82,6 +82,7 @@ CREATE TABLE IF NOT EXISTS `banishement` (
 DROP TABLE IF EXISTS `category`;
 CREATE TABLE IF NOT EXISTS `category` (
   `id_category` int(11) NOT NULL AUTO_INCREMENT,
+  `category` varchar(50) NOT NULL,
   `name` varchar(50) NOT NULL,
   `created_by` int(11) NOT NULL,
   PRIMARY KEY (`id_category`),
@@ -93,11 +94,11 @@ CREATE TABLE IF NOT EXISTS `category` (
 -- Dumping data for table `category`
 --
 
-INSERT INTO `category` (`id_category`, `name`, `created_by`) VALUES
-(11, 'appareil photo neuf', 1),
-(12, 'appareil photo usagé', 1),
-(21, 'réparation', 1),
-(22, 'seance photo', 1);
+INSERT INTO `category` (`id_category`, `category`, `name`, `created_by`) VALUES
+(1, 'produit', 'appareil photo neuf', 1),
+(2, 'produit', 'appareil photo usagé', 1),
+(3, 'service', 'réparation', 1),
+(4, 'service', 'seance photo', 1);
 
 -- --------------------------------------------------------
 
@@ -111,7 +112,7 @@ CREATE TABLE IF NOT EXISTS `groups` (
   `name` varchar(20) NOT NULL,
   `description` varchar(100) NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8;
 
 --
 -- Dumping data for table `groups`
@@ -119,7 +120,9 @@ CREATE TABLE IF NOT EXISTS `groups` (
 
 INSERT INTO `groups` (`id`, `name`, `description`) VALUES
 (1, 'admin', 'Administrator'),
-(2, 'members', 'General User');
+(2, 'members', 'General User'),
+(3, 'client', 'membre qui désire acheter un service ou un produit'),
+(4, 'Fournisseur', 'membre qui désire vendre des services ou des produits');
 
 -- --------------------------------------------------------
 
@@ -134,7 +137,15 @@ CREATE TABLE IF NOT EXISTS `login_attempts` (
   `login` varchar(100) NOT NULL,
   `time` int(11) UNSIGNED DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8;
+
+--
+-- Dumping data for table `login_attempts`
+--
+
+INSERT INTO `login_attempts` (`id`, `ip_address`, `login`, `time`) VALUES
+(1, '::1', 'bill', 1581794211),
+(2, '::1', 'admin', 1581794232);
 
 -- --------------------------------------------------------
 
@@ -216,7 +227,7 @@ CREATE TABLE IF NOT EXISTS `users` (
 --
 
 INSERT INTO `users` (`id`, `ip_address`, `username`, `password`, `email`, `activation_selector`, `activation_code`, `forgotten_password_selector`, `forgotten_password_code`, `forgotten_password_time`, `remember_selector`, `remember_code`, `created_on`, `last_login`, `active`, `first_name`, `last_name`, `company`, `company_number`, `address`, `phone`, `website`, `social_network`) VALUES
-(1, '127.0.0.1', 'administrator', '$2y$08$200Z6ZZbp3RAEXoaWcMA6uJOFicwNZaqk4oDhqTUiFXFe63MG.Daa', 'admin@admin.com', NULL, '', NULL, NULL, NULL, NULL, NULL, 1268889823, 1268889823, 1, 'Admin', 'istrator', 'ADMIN', NULL, NULL, '0', NULL, NULL),
+(1, '127.0.0.1', 'administrator', '$2y$12$yHML2PEkkL35NkGWKV.nVevBdB8aiebuOAD6.4.2ru7HoNiqW.6.y', 'admin@admin.com', NULL, '', NULL, NULL, NULL, NULL, NULL, 1268889823, 1581796814, 1, 'Admin', 'istrator', 'ADMIN', NULL, NULL, '0', NULL, NULL),
 (2, '1.0.0.127', 'billy', '1234', 'bill.baroud@bill.com', NULL, NULL, NULL, NULL, NULL, NULL, NULL, 1234, NULL, 1, 'bill', 'baroud', 'maisonneuve', NULL, NULL, NULL, NULL, NULL);
 
 -- --------------------------------------------------------
