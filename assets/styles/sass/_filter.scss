@@ -8,6 +8,9 @@
 .filter {
 	display: flex;
 	justify-content: space-between;
+	align-items: center;
+	width: 69%;
+	margin: .3em auto; //media query 900px
 }
 
 select {
