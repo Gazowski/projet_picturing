@@ -10,14 +10,25 @@ section.menu_logo_compte{
     align-items: center;
     width: 100%;
 }
+section.menu_logo_compte_el{
+	display: none;
+}
 
-.ligne{
+.line{
     margin-top: 2rem;
     margin-bottom: 20px;
     border-bottom: 1px solid $c-light-grey;
-    width: 85%;
+    width: 69%;
     margin: 0 auto; 
 }
+.line_t{
+   
+    border-bottom: 1px solid $c-light-grey;
+    width: 29%;
+	margin: 0 auto 2em;
+	 
+}
+
 
 .mon_compte{
     font-size: 1em;
@@ -119,15 +130,75 @@ section.menu_logo_compte{
 //--------menu_navigation_tablette-----------//
 
 @media (min-width: 600px) {
+	
 	#logo_h{
 		width: 140px;
 		padding-right: 17.7rem;
 	}
+	section.menu_logo_compte_el{
+		display: none;
+	}
 	
   }
-
+//--------menu_navigation_Grand écran-----------//
   @media (min-width: 900px) {
-	  
+	
+	#logo_h_el{
+		width: 200px;
+		padding-right: 2.7rem;
+	}    
+	
+	#menuToggle {
+		display: none;
+	}
+	
+	section.menu_logo_compte{
+		display :none;
+	}
+	
+	section.menu_logo_compte_el{
+		margin: 2em auto ;
+		width: 69%;
+		display: contents;
+		display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+		align-items : center;
+	}
+	.ligne{
+		margin-top: 2rem;
+		margin-bottom: 20px;
+		border-bottom: 1px solid $c-light-grey;
+		width: 69%;
+		margin: 0 auto; 
+	}
+	div.search_compte_el{
+		display: flex;
+		flex-direction: row;
+	}
+	div.compte_el{
+		padding-right: 1em;
+	}
+	div.menu_search_compte_el{
+		display: flex;
+		flex-direction: column;
+	}
+	#menu_el{
+		display: flex;
+		flex-direction: row;
+		justify-content: space-between;
+	}
+
+	//---------css barre de recherche----------------------------//
+	#icone_search{
+		position: relative;
+		float: right;
+		top: 6px;
+    	right: 20px;
+	  }
+
+	
+	
 	
   }
 

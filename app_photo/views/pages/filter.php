@@ -8,16 +8,20 @@
         <?php } ?>
     </select>
 </section> -->
+<div class="filter">
 
-
-
-
-<div class="select">
-<select name="filter" id="filter">
-<option value="">Filtrer les annonces</option>  
-<?php foreach($filter as $key=>$f) { ?>
-            <option value = <?= $key ?>><?= $f ?></option>
-        <?php } ?>
-  </select>
+    <div class="select">
+        <select name="filter" id="filter">
+            <option value="">Filtrer les annonces</option>  
+            <?php foreach($filter as $key=>$f) { ?>
+                <option value = <?= $key ?>><?= $f ?></option>
+            <?php } ?>
+        </select>
+    </div>
+    
+    <div class="button">
+        <a href="<?= base_url(); ?>create_ad"> Ajouter une annonce</a>
+    </div>
+    
 </div>
 

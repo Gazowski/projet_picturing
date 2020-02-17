@@ -1,14 +1,3 @@
-body{
-    @include color($c_white,$c_dark_grey);
-    font-family: $f_text;
-    margin: 0 auto;
-    min-height: 100%;
-}
-
-h1,h2,h3{
-    font-family: $f_title;
-}
-
 a{
     color: $c-medium-grey;
     font-size: 0.9em;
@@ -18,6 +7,73 @@ a{
     }
 }
 
-button{
+body{
+    @include color($c_white,$c_dark_grey);
+    font-family: $f_text;
+    margin: 0 auto;
+    min-height: 100%;
+}
+
+h1,h3{
+    font-family: $f_title;    
+    font-weight: normal;
+}
+
+h2 {
+    font-family: $f_title; 
+    font-weight: normal;   
+    text-align: center;
+    color : $c-medium-grey;
+}
+
+a {
+    color: $c-medium-grey;
+    //font-size: 0.9em;
+    text-decoration: none;
+    list-style-type: none;
+}
+
+.button{
+    align-items: center;
+    color: white;
+    cursor: pointer;
+    background-color: $c-dark-grey;
+    border: none;
     font-family: $f_button;
+    margin: .5em;
+    padding: .3em 1em;
+    a {
+        color: white;
+        //font-size: .8em;
+    }
+
+    &:hover{
+        background-color: $c-medium-theme;
+    }
+}
+
+.content_form{
+    align-content: right;
+    padding: 2em;
+}
+
+.form {
+    border: 1px solid $c-light-grey;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    margin: 10em auto;
+    width: 30em;
+}
+
+.titre_form{
+    color: white;
+    display: flex;
+    justify-content: space-around;
+    padding-right: .5em;
+    background-color: $c-medium-theme;
+    h1{
+        font-weight: normal;
+    }
 }
