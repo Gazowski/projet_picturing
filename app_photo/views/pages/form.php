@@ -17,6 +17,24 @@
                 echo form_label($attribute['name']);
                 echo form_password($attribute);
                 break;
+            break;
+            case 'title':
+                echo form_label($attribute['name']);
+                echo form_password($attribute);
+                break;
+            case 'description':
+                echo form_label($attribute['name']);
+                echo form_password($attribute);
+                break;
+                
+            case 'description':
+                echo form_label($attribute['name']);
+                echo form_password($attribute);
+                    break
+             case 'price':
+                 echo form_label($attribute['name']);
+                echo form_password($attribute);
+                        break
             case 'button':
                 echo form_submit($attribute);
                 break;

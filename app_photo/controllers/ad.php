@@ -37,4 +37,44 @@ class Ad extends CI_Controller {
         $is_admin = $this->ion_auth->is_admin();
         $this->load->template('pages/tile',$data,$is_admin);
     }
+
+
+
+    public function create_ad()
+    {
+        $data['title'] = 'ad';
+        $data['formaction'] = 'ad/authentification';
+        $data['form'] = [
+            'text' => [
+                'name' => 'titre',
+                'id' => 'titre',
+                'required' => TRUE
+            ],
+            'text' => [
+                'name' => 'description',
+                'id' => 'description',
+                'required' => TRUE
+            ],
+            'text' => [
+                'name' => 'prix',
+                'id' => 'prix',
+                'required' => TRUE
+            ]
+            ],
+            'text' => [
+                'name' => 'date_creation',
+                'id' => 'prix', 
+                'type' => 'date'
+            ]
+            ],
+            'text' => [
+                'name' => 'date_fermeture',
+                'id' => 'date_fermeture',
+                'type' => 'date'
+            ]
+        ];
+        $this->load->view('pages/menu', $data);
+        $this->load->view('pages/form', $data);
+        $this->load->view('pages/footer');
+    }
 }
