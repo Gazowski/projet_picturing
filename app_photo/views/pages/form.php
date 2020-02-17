@@ -30,11 +30,11 @@
             case 'description':
                 echo form_label($attribute['name']);
                 echo form_password($attribute);
-                    break
+            break;
              case 'price':
                  echo form_label($attribute['name']);
                 echo form_password($attribute);
-                        break
+             break;
             case 'button':
                 echo form_submit($attribute);
                 break;
