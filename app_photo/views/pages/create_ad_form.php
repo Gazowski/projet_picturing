@@ -12,60 +12,74 @@
  */
 ?>
 
-<h1><?php echo lang('create_user_heading');?></h1>
-<p><?php echo lang('create_user_subheading');?></p>
+<h2><?= $title ?></h2>
 
 <div id="infoMessage"><?php echo $message;?></div>
 
-<?php echo form_open("auth/create_user");?>
+<?php echo form_open("pages/create_ad_form");?>
 
       <p>
-            <?php echo lang('create_user_fname_label', 'first_name');?> <br />
-            <?php echo form_input($first_name);?>
+            <?php echo form_label($title['name']);?> <br />
+            <?php echo form_input($title);?>
       </p>
 
-      <p>
-            <?php echo lang('create_user_lname_label', 'last_name');?> <br />
-            <?php echo form_input($last_name);?>
-      </p>
       
-      <?php
-      if($identity_column!=='email') {
-          echo '<p>';
-          echo lang('create_user_identity_label', 'identity');
-          echo '<br />';
-          echo form_error('identity');
-          echo form_input($identity);
-          echo '</p>';
-      }
-      ?>
+
+      <ul>
+            <?php 
+                  foreach ($types as $type)
+                  {
+            ?>
+                        <li><?php echo $type->name; ?>
+                        <?php
+                              if(!empty($type->subs)) 
+                                    { 
+                                          echo '<ul>';
+                                                foreach ($type->subs as $sub)  {
+                                                      echo '<li>' . $sub->name . '</li>';
+                                                }
+                                          echo '</ul>';
+                                    }
+                        ?>
+                        </li>
+                        <?php
+                  }
+                        ?>
+      </ul>
 
       <p>
-            <?php echo lang('create_user_company_label', 'company');?> <br />
-            <?php echo form_input($company);?>
+            <?php echo form_label($category['name']);?> <br />
+            <?php echo form_input($category);?>
+      </p>
+
+
+      <p>
+            <?php echo form_label($description['name']);?> <br />
+            <?php echo form_input($description);?>
+      </p>
+    
+
+      <p>
+            <?php echo form_label($prix['name']);?> <br />
+            <?php echo form_input($prix);?>
       </p>
 
       <p>
-            <?php echo lang('create_user_email_label', 'email');?> <br />
-            <?php echo form_input($email);?>
+             <?php echo form_label($photo['name']);?> <br />
+             <?php echo form_input($photo);?>
       </p>
 
       <p>
-            <?php echo lang('create_user_phone_label', 'phone');?> <br />
-            <?php echo form_input($phone);?>
+            <?php echo form_label($location['name']);?> <br />
+            <?php echo form_input($location);?>
       </p>
 
-      <p>
-            <?php echo lang('create_user_password_label', 'password');?> <br />
-            <?php echo form_input($password);?>
-      </p>
-
-      <p>
-            <?php echo lang('create_user_password_confirm_label', 'password_confirm');?> <br />
-            <?php echo form_input($password_confirm);?>
-      </p>
+    
 
 
       <p><?php echo form_submit('submit', lang('create_user_submit_btn'));?></p>
 
 <?php echo form_close();?>
+
+
+
