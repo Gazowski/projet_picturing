@@ -14,8 +14,8 @@ class Users {
     // from a property definition.
     public function __construct()
     {
-            // Assign the CodeIgniter super-object
-            $this->CI =& get_instance();
+        // Assign the CodeIgniter super-object
+        $this->CI =& get_instance();
     }
 
     public function get_all_ads()
@@ -36,6 +36,45 @@ class Users {
             'oldest_first' => 'plus ancien'
         ];
 
-        $this->load->template('pages/tile',$data);
+        $this->CI->load->template('pages/tile',$data);
     }
 }
+
+class Customer extends Users 
+{
+    public function __construct()
+    {
+        parent::__construct();
+    }
+
+}
+
+
+
+
+
+// class Admin extends Golden_supplier
+// {
+//     public function __construct()
+//     {
+//         parent::__construct();
+//         $this->CI->load->model('member_model');
+
+//     }
+
+//     public function display_all_member()
+//     {
+        
+//         if ( ! file_exists(APPPATH.'views/pages/list.php'))
+//         {
+//             // Whoops, we don't have a page for that!
+//             show_404();
+//         }
+        
+        
+//         $data['title'] = 'Liste des Membres'; // Capitalize the first letter
+//         $data['table'] = $this->CI->member_model->get_member();
+
+//         $this->load->template('pages/list',$data,TRUE);
+//     }
+// }
