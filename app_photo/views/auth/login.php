@@ -1,10 +1,10 @@
-<div class="login">
+<div class="form">
 
-  <div class="titre_login">
+  <div class="titre_form">
     <h1><?php echo lang('login_heading');?></h1>
   </div>
 
-  <div class="content_login">
+  <div class="content_form">
     <p><?php echo lang('login_subheading');?></p>
 
     <div id="infoMessage"><?php echo $message;?></div>
@@ -28,8 +28,8 @@
 
 
       <p><?php 
-        $attributes = array('class' => 'button');
-        echo form_submit('submit', lang('login_submit_btn'), $attributes);?></p>
+
+        echo form_submit('submit', lang('login_submit_btn'));?></p>
 
     <?php echo form_close();?>
 

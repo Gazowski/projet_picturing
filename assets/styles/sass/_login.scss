@@ -6,20 +6,19 @@
     justify-content: space-between;
     margin: 10em auto;
     width: 30em;
-}
-
-.content_login{
-    align-content: right;
-    padding: 2em;
-}
-
-.titre_login{
-    color: white;
-    display: flex;
-    justify-content: space-around;
-    padding-right: .5em;
-    background-color: $c-medium-theme;
-    h1{
-        font-weight: normal;
+    .content_form{
+        align-content: right;
+        padding: 2em;
+    }
+    
+    .titre_form{
+        color: white;
+        display: flex;
+        justify-content: space-around;
+        padding-right: .5em;
+        background-color: $c-medium-theme;
+        h1{
+            font-weight: normal;
+        }
     }
 }

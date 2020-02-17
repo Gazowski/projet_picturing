@@ -5,26 +5,32 @@
 /* Custom Select */
 /* Arrow */
 /* Transition */
+.filter {
+	display: flex;
+	justify-content: space-between;
+}
+
 select {
-	
-	font-family: $f-button;
-    appearance: none;
-	outline: 0;
-	box-shadow: none;
-	border: 0 !important;
+	appearance: none;
 	background: #2c3e50;
 	background-image: none;
-	flex: 1;
-	padding: 0 .5em;
+	border: 0 !important;
+	box-shadow: none;
 	color: #fff;
 	cursor: pointer;
+	flex: 1;
+	font-family: $f-button;
+	outline: 0;
+	padding: 0 .5em;
+
 	&::-ms-expand {
 		display: none;
 	}
 }
+
 .select {
 	
-	margin: 0 auto;
+	margin-left: .5em;
     position: relative;
 	display: flex;
 	width: 16em;
@@ -47,6 +53,7 @@ select {
 		-o-transition: .25s all ease;
 		transition: .25s all ease;
 	}
+
 	&:hover {
 		&::after {
             color: $c-dark-grey;
