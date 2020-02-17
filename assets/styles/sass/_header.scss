@@ -1,16 +1,16 @@
 #logo_h{
-
     width: 140px;
     padding-right: 2.7rem;
 }
-section.menu_logo_compte{
 
+section.menu_logo_compte{
     display: flex;
     flex-direction: row;
     justify-content: flex-end;
     align-items: center;
     width: 100%;
 }
+
 .ligne{
     margin-top: 2rem;
     margin-bottom: 20px;
@@ -18,6 +18,7 @@ section.menu_logo_compte{
     width: 85%;
     margin: 0 auto; 
 }
+
 .mon_compte{
     font-size: 1em;
     padding-right: 1.7rem;

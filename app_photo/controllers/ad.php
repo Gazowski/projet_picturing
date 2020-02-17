@@ -59,13 +59,11 @@ class Ad extends CI_Controller {
                 'name' => 'prix',
                 'id' => 'prix',
                 'required' => TRUE
-            ]
             ],
             'text' => [
                 'name' => 'date_creation',
                 'id' => 'prix', 
                 'type' => 'date'
-            ]
             ],
             'text' => [
                 'name' => 'date_fermeture',
