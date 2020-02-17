@@ -20,4 +20,11 @@ class Ad_model extends CI_Model {
             $query = $this->db->get_where('ad', array('id_ad' => $ad));
             return $query->row_array();
         }
+
+        public function add_ad($data)
+        {
+            return $this->db->insert('ad',$data);
+        }
+
+        public function 
 }
