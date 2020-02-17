@@ -10,9 +10,11 @@
  *  - photo
  *  - location
  */
+
+ var_dump($title);
 ?>
 
-<h2><?= $title ?></h2>
+<h2><?= $page_title ?></h2>
 
 <div id="infoMessage"><?php echo $message;?></div>
 
@@ -24,32 +26,19 @@
       </p>
 
       
+    <p>
+      <?php echo form_label($type['name']); ?>
+      <?php foreach($type['option'] as $option)
+        {
+            $opt[] = $option->category; 
+        } 
+        echo form_dropdown($type['name'], $opt); ?>
+    </p>
 
-      <ul>
-            <?php 
-                  foreach ($types as $type)
-                  {
-            ?>
-                        <li><?php echo $type->name; ?>
-                        <?php
-                              if(!empty($type->subs)) 
-                                    { 
-                                          echo '<ul>';
-                                                foreach ($type->subs as $sub)  {
-                                                      echo '<li>' . $sub->name . '</li>';
-                                                }
-                                          echo '</ul>';
-                                    }
-                        ?>
-                        </li>
-                        <?php
-                  }
-                        ?>
-      </ul>
 
       <p>
             <?php echo form_label($category['name']);?> <br />
-            <?php echo form_input($category);?>
+            <?php echo form_dropdown($category['name'],$category['option']);?>
       </p>
 
 
@@ -72,12 +61,10 @@
       <p>
             <?php echo form_label($location['name']);?> <br />
             <?php echo form_input($location);?>
-      </p>
-
-    
+      </p>  
 
 
-      <p><?php echo form_submit('submit', lang('create_user_submit_btn'));?></p>
+      <p><?php echo form_submit('submit', 'ajouter');?></p>
 
 <?php echo form_close();?>
 
