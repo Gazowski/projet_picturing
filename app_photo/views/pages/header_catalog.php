@@ -28,15 +28,20 @@
             <div class="mon_compte">
                  <a><i class="fas fa-user"></i><a href=""></a>
             </div>
-    </section>
-    <div class="ligne"></div>
+           
+        </div>
         <div>
-            <div class="search_compte">
-                <!-- <form action="/search" id="searchthis" method="get">
+            
+            <!-- <div class="search_compte">
+                <form action="/search" id="searchthis" method="get">
                     <input id="search" name="q" type="text" placeholder="Rechercher" />
                     <input id="search-btn" type="submit" value="Rechercher" />
-                </form> -->
-            </div>
-        </div>
+                </form>
+            </div> -->
+        
+            <div class="ligne"></div>
+        
+    </section>
+    
     </section>
 </header>

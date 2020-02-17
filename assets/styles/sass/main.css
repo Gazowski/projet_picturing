@@ -6189,7 +6189,7 @@ img {
   grid-column-gap: 16px;
   grid-row-gap: 25px;
   margin-top: 2rem;
-  margin-bottom: 6rem;
+  margin-bottom: 2rem;
 }
 
 .prix {
@@ -6256,6 +6256,13 @@ img {
         grid-template-columns: repeat(4, 1fr);
     grid-column-gap: 16px;
     grid-row-gap: 25px;
+  }
+}
+
+@media (min-width: 600px) {
+  .parent {
+    width: 75%;
+    margin: 0 auto;
   }
 }
 
