@@ -1,5 +1,8 @@
 <?php //var_dump($ad); ?>
-
+   
+  <h2>SELECTION</h2>
+  
+  <div class="line_t"></div>
 <div class="parent">
         <?php foreach($ad as $row) {?>
           

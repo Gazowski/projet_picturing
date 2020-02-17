@@ -7,12 +7,20 @@ body{
 
 h1,h2,h3{
     font-family: $f_title;
+    font-weight: normal;
+    
+
+}
+h2{
+    text-align: center;
+    color : $c-medium-grey;
 }
 
 a{
     color: $c-medium-grey;
     font-size: 0.9em;
     text-decoration: none;
+    list-style-type: none;
     &:hover{
         color: $c-medium-theme; 
     }

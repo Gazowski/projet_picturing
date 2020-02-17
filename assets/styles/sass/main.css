@@ -5946,12 +5946,19 @@ body {
 
 h1, h2, h3 {
   font-family: "Montserrat", sans-serif;
+  font-weight: normal;
+}
+
+h2 {
+  text-align: center;
+  color: #6b6a6a;
 }
 
 a {
   color: #6b6a6a;
   font-size: 0.9em;
   text-decoration: none;
+  list-style-type: none;
 }
 
 a:hover {
@@ -5984,12 +5991,22 @@ section.menu_logo_compte {
   width: 100%;
 }
 
-.ligne {
+section.menu_logo_compte_el {
+  display: none;
+}
+
+.line {
   margin-top: 2rem;
   margin-bottom: 20px;
   border-bottom: 1px solid #bcbcbc;
-  width: 85%;
+  width: 69%;
   margin: 0 auto;
+}
+
+.line_t {
+  border-bottom: 1px solid #bcbcbc;
+  width: 29%;
+  margin: 0 auto 2em;
 }
 
 .mon_compte {
@@ -6110,6 +6127,86 @@ section.menu_logo_compte {
   #logo_h {
     width: 140px;
     padding-right: 17.7rem;
+  }
+  section.menu_logo_compte_el {
+    display: none;
+  }
+}
+
+@media (min-width: 900px) {
+  #logo_h_el {
+    width: 200px;
+    padding-right: 2.7rem;
+  }
+  #menuToggle {
+    display: none;
+  }
+  section.menu_logo_compte {
+    display: none;
+  }
+  section.menu_logo_compte_el {
+    margin: 2em auto;
+    width: 69%;
+    display: contents;
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-orient: horizontal;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: row;
+            flex-direction: row;
+    -webkit-box-pack: justify;
+        -ms-flex-pack: justify;
+            justify-content: space-between;
+    -webkit-box-align: center;
+        -ms-flex-align: center;
+            align-items: center;
+  }
+  .ligne {
+    margin-top: 2rem;
+    margin-bottom: 20px;
+    border-bottom: 1px solid #bcbcbc;
+    width: 69%;
+    margin: 0 auto;
+  }
+  div.search_compte_el {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-orient: horizontal;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: row;
+            flex-direction: row;
+  }
+  div.compte_el {
+    padding-right: 1em;
+  }
+  div.menu_search_compte_el {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: column;
+            flex-direction: column;
+  }
+  #menu_el {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-orient: horizontal;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: row;
+            flex-direction: row;
+    -webkit-box-pack: justify;
+        -ms-flex-pack: justify;
+            justify-content: space-between;
+  }
+  #icone_search {
+    position: relative;
+    float: right;
+    top: 6px;
+    right: 20px;
   }
 }
 
