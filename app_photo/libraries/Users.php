@@ -103,7 +103,7 @@ class Users {
 			$this->data['category'] = [
 				'name' => 'categorie',
 				'id' => 'category',
-				'option' => ['choisir un type'],
+				'option' => ['-- choisir un type --'],
 				'type' => 'select',
 				'value' => $this->CI->form_validation->set_value('category'),
 			];
