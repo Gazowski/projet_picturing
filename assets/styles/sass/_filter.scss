@@ -1,3 +1,53 @@
-.filter{
-    margin-top: 2em;
+// .filter{
+//     margin-top: 2em;
+// }
+
+/* Remove IE arrow */
+/* Custom Select */
+/* Arrow */
+/* Transition */
+select {
+    font-family: $f-button;
+    appearance: none;
+	outline: 0;
+	box-shadow: none;
+	border: 0 !important;
+	background: #2c3e50;
+	background-image: none;
+	flex: 1;
+	padding: 0 .5em;
+	color: #fff;
+	cursor: pointer;
+	&::-ms-expand {
+		display: none;
+	}
+}
+.select {
+    margin: 0 auto;
+    position: relative;
+	display: flex;
+	width: 18em;
+	height: 2em;
+	line-height: 3;
+	background: $c-dark-grey ;
+	overflow: hidden;
+	border-radius: .25em;
+	&::after {
+		content: '\25BC';
+		position: absolute;
+		top: 0;
+		right: 0;
+		padding: 0 1em;
+		background: $c-medium-theme;
+		cursor: pointer;
+		pointer-events: none;
+		-webkit-transition: .25s all ease;
+		-o-transition: .25s all ease;
+		transition: .25s all ease;
+	}
+	&:hover {
+		&::after {
+            color: $c-dark-grey;
+		}
+	}
 }
