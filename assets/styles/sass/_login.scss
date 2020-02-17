@@ -1,0 +1,25 @@
+.login {
+    border: 1px solid $c-light-grey;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    margin: 10em auto;
+    width: 30em;
+}
+
+.content_login{
+    align-content: right;
+    padding: 2em;
+}
+
+.titre_login{
+    color: white;
+    display: flex;
+    justify-content: space-around;
+    padding-right: .5em;
+    background-color: $c-medium-theme;
+    h1{
+        font-weight: normal;
+    }
+}
