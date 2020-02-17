@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1:3306
--- Generation Time: Feb 15, 2020 at 09:20 PM
+-- Generation Time: Feb 17, 2020 at 02:41 AM
 -- Server version: 5.7.24
 -- PHP Version: 7.2.14
 
@@ -139,14 +139,6 @@ CREATE TABLE IF NOT EXISTS `login_attempts` (
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8;
 
---
--- Dumping data for table `login_attempts`
---
-
-INSERT INTO `login_attempts` (`id`, `ip_address`, `login`, `time`) VALUES
-(1, '::1', 'bill', 1581794211),
-(2, '::1', 'admin', 1581794232);
-
 -- --------------------------------------------------------
 
 --
@@ -220,15 +212,16 @@ CREATE TABLE IF NOT EXISTS `users` (
   UNIQUE KEY `uc_activation_selector` (`activation_selector`),
   UNIQUE KEY `uc_forgotten_password_selector` (`forgotten_password_selector`),
   UNIQUE KEY `uc_remember_selector` (`remember_selector`)
-) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8;
 
 --
 -- Dumping data for table `users`
 --
 
 INSERT INTO `users` (`id`, `ip_address`, `username`, `password`, `email`, `activation_selector`, `activation_code`, `forgotten_password_selector`, `forgotten_password_code`, `forgotten_password_time`, `remember_selector`, `remember_code`, `created_on`, `last_login`, `active`, `first_name`, `last_name`, `company`, `company_number`, `address`, `phone`, `website`, `social_network`) VALUES
-(1, '127.0.0.1', 'administrator', '$2y$12$yHML2PEkkL35NkGWKV.nVevBdB8aiebuOAD6.4.2ru7HoNiqW.6.y', 'admin@admin.com', NULL, '', NULL, NULL, NULL, NULL, NULL, 1268889823, 1581796814, 1, 'Admin', 'istrator', 'ADMIN', NULL, NULL, '0', NULL, NULL),
-(2, '1.0.0.127', 'billy', '1234', 'bill.baroud@bill.com', NULL, NULL, NULL, NULL, NULL, NULL, NULL, 1234, NULL, 1, 'bill', 'baroud', 'maisonneuve', NULL, NULL, NULL, NULL, NULL);
+(1, '127.0.0.1', 'administrator', '$2y$12$yHML2PEkkL35NkGWKV.nVevBdB8aiebuOAD6.4.2ru7HoNiqW.6.y', 'admin@admin.com', NULL, '', NULL, NULL, NULL, NULL, NULL, 1268889823, 1581895883, 1, 'Admin', 'istrator', 'ADMIN', NULL, NULL, '0', NULL, NULL),
+(2, '1.0.0.127', 'billy', '1234', 'bill.baroud@bill.com', NULL, NULL, NULL, NULL, NULL, NULL, NULL, 1234, NULL, 1, 'bill', 'baroud', 'maisonneuve', NULL, NULL, NULL, NULL, NULL),
+(3, '::1', 'robert@bidochon.com', '$2y$10$0zhTu/7nKvxZY0J1NUuFFelzWXJXn0P1Q2cMimQwgIj2AqM.mC.Pa', 'robert@bidochon.com', NULL, NULL, NULL, NULL, NULL, NULL, NULL, 1581901478, 1581906620, 1, 'robert', 'bidochon', 'les bidochon', NULL, NULL, '1234', NULL, NULL);
 
 -- --------------------------------------------------------
 
@@ -245,7 +238,7 @@ CREATE TABLE IF NOT EXISTS `users_groups` (
   UNIQUE KEY `uc_users_groups` (`user_id`,`group_id`),
   KEY `fk_users_groups_users1_idx` (`user_id`),
   KEY `fk_users_groups_groups1_idx` (`group_id`)
-) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8;
 
 --
 -- Dumping data for table `users_groups`
@@ -253,7 +246,8 @@ CREATE TABLE IF NOT EXISTS `users_groups` (
 
 INSERT INTO `users_groups` (`id`, `user_id`, `group_id`) VALUES
 (1, 1, 1),
-(2, 1, 2);
+(2, 1, 2),
+(3, 3, 4);
 
 --
 -- Constraints for dumped tables
