@@ -5997,6 +5997,7 @@ section.menu_logo_compte {
 }
 
 #menuToggle {
+  width: 10%;
   display: block;
   position: relative;
   top: 35px;
@@ -6006,7 +6007,6 @@ section.menu_logo_compte {
   -moz-user-select: none;
    -ms-user-select: none;
        user-select: none;
-  width: auto;
 }
 
 #menuToggle a {

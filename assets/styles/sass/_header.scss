@@ -27,6 +27,7 @@ section.menu_logo_compte{
 //--------menu_navigation_mobile-----------//
 
 #menuToggle {
+	width: 10%;
 	display: block;
 	position: relative;
 	top: 35px;
@@ -34,7 +35,7 @@ section.menu_logo_compte{
 	z-index: 1;
 	-webkit-user-select: none;
 	user-select: none;
-	width: auto;
+	
 	a {
         color: $c-light-grey ; 
         text-decoration: none;
