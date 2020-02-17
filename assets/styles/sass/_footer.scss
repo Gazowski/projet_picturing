@@ -3,13 +3,13 @@
 }
 
 footer {
-    background-color: $c-dark-grey;
+    position: fixed;
     bottom: 0;
+    background-color: $c-dark-grey;
     display: flex;
     flex-direction: row;
     justify-content: space-around;
     margin-bottom: 0em;
-    position: fixed;
     width: 100%;
     a {
         color: $c-light-grey;
