@@ -11,75 +11,65 @@
  *  - location
  */
 ?>
+<div class="form">
+      <div class="titre_form">  
+            <h1><?= $page_title ?></h1>
+      </div>
 
-<h2><?= $title ?></h2>
+      <div class="content_form">
+            <div id="infoMessage"><?php echo $message;?></div>
 
-<div id="infoMessage"><?php echo $message;?></div>
+      <?php echo form_open("pages/create_ad_form");?>
 
-<?php echo form_open("pages/create_ad_form");?>
+            <p>
+                  <?php echo form_label($title['name']);?> <br />
+                  <?php echo form_input($title);?>
+            </p>
 
+            
       <p>
-            <?php echo form_label($title['name']);?> <br />
-            <?php echo form_input($title);?>
+            <?php echo form_label($type['name']); ?>
+            <?php foreach($type['option'] as $option)
+            {
+                  $opt[] = $option->category; 
+            } 
+            echo form_dropdown($type['name'], $opt); ?>
       </p>
 
+
+            <p>
+                  <?php echo form_label($category['name']);?> <br />
+                  <?php echo form_dropdown($category['name'],$category['option']);?>
+            </p>
+
+
+            <p>
+                  <?php echo form_label($description['name']);?> <br />
+                  <?php echo form_input($description);?>
+            </p>
       
 
-      <ul>
-            <?php 
-                  foreach ($types as $type)
-                  {
-            ?>
-                        <li><?php echo $type->name; ?>
-                        <?php
-                              if(!empty($type->subs)) 
-                                    { 
-                                          echo '<ul>';
-                                                foreach ($type->subs as $sub)  {
-                                                      echo '<li>' . $sub->name . '</li>';
-                                                }
-                                          echo '</ul>';
-                                    }
-                        ?>
-                        </li>
-                        <?php
-                  }
-                        ?>
-      </ul>
+            <p>
+                  <?php echo form_label($price['name']);?> <br />
+                  <?php echo form_input($price);?>
+            </p>
 
-      <p>
-            <?php echo form_label($category['name']);?> <br />
-            <?php echo form_input($category);?>
-      </p>
+            <p>
+                  <?php echo form_label($photo['name']);?> <br />
+                  <?php echo form_input($photo);?>
+            </p>
+
+            <p>
+                  <?php echo form_label($location['name']);?> <br />
+                  <?php echo form_input($location);?>
+            </p>  
 
 
-      <p>
-            <?php echo form_label($description['name']);?> <br />
-            <?php echo form_input($description);?>
-      </p>
-    
+            <p><?php echo form_submit('submit', 'ajouter');?></p>
 
-      <p>
-            <?php echo form_label($price['name']);?> <br />
-            <?php echo form_input($price);?>
-      </p>
+      <?php echo form_close();?>
 
-      <p>
-             <?php echo form_label($photo['name']);?> <br />
-             <?php echo form_input($photo);?>
-      </p>
-
-      <p>
-            <?php echo form_label($location['name']);?> <br />
-            <?php echo form_input($location);?>
-      </p>
-
-    
-
-
-      <p><?php echo form_submit('submit', lang('create_user_submit_btn'));?></p>
-
-<?php echo form_close();?>
-
+      </div>
+</div>
 
 
