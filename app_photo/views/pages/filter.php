@@ -1,4 +1,4 @@
-<section class="filter">
+<!-- <section class="filter">
     <label for="filter">filter:</label>
 
     <select name="filter" id="filter">
@@ -7,4 +7,17 @@
             <option value = <?= $key ?>><?= $f ?></option>
         <?php } ?>
     </select>
-</section>
+</section> -->
+
+
+
+
+<div class="select">
+<select name="filter" id="filter">
+<option value="">Filtrer les annonces</option>  
+<?php foreach($filter as $key=>$f) { ?>
+            <option value = <?= $key ?>><?= $f ?></option>
+        <?php } ?>
+  </select>
+</div>
+
