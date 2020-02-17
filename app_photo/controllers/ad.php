@@ -11,31 +11,25 @@ class Ad extends CI_Controller {
     public function __construct()
     {
         parent::__construct();
+        $this->load->database();
         //$this->load->model('ad_model');
-        $this->load->library(['users']);
+        $this->load->library(['users','ion_auth']);
+        $this->load->model('ion_auth_model');
         
     }
     
     public function display_all()
     {
+        /**
+         * lignes suivantes a EFFACER
+         * essai sur la methode get_users_groups() de ion_auth_model
+         */
+        var_dump($this->ion_auth->logged_in());
+        var_dump($this->ion_auth->get_users_groups()->result());
+
+        /**
+         * ligne a conserver
+         */
         $this->users->get_all_ads();
-        
-        // if ( ! file_exists(APPPATH.'views/pages/tile.php'))
-        // {
-        //     // Whoops, we don't have a page for that!
-        //     show_404();
-        // }
-        
-        
-        // $data['title'] = 'Liste des Annonces'; // Capitalize the first letter
-        // $data['ad'] = $this->ad_model->get_ad();
-        // $data['filter'] = [
-        //     'newest_first' => 'plus récent',
-        //     'oldest_first' => 'plus ancien'
-        // ];
-
-
-        // $is_admin = $this->ion_auth->is_admin();
-        // $this->load->template('pages/tile',$data,$is_admin);
     }
 }
