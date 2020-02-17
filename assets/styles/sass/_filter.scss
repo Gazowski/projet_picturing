@@ -1,13 +1,13 @@
 // .filter{
 //     margin-top: 2em;
 // }
-
 /* Remove IE arrow */
 /* Custom Select */
 /* Arrow */
 /* Transition */
 select {
-    font-family: $f-button;
+	
+	font-family: $f-button;
     appearance: none;
 	outline: 0;
 	box-shadow: none;
@@ -23,19 +23,21 @@ select {
 	}
 }
 .select {
-    margin: 0 auto;
+	
+	margin: 0 auto;
     position: relative;
 	display: flex;
-	width: 18em;
+	width: 16em;
 	height: 2em;
 	line-height: 3;
 	background: $c-dark-grey ;
 	overflow: hidden;
-	border-radius: .25em;
+	margin-top: 2rem;
+
 	&::after {
 		content: '\25BC';
 		position: absolute;
-		top: 0;
+		top: -6;
 		right: 0;
 		padding: 0 1em;
 		background: $c-medium-theme;

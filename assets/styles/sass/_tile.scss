@@ -22,7 +22,7 @@ img{
    
   .prix{
     display: flex;
-    justify-content: right;
+    justify-content: flex-end;
     padding-right: .5em;
     background-color: $c-medium-theme;
     color: white;

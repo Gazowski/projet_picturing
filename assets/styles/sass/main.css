@@ -6138,18 +6138,18 @@ select::-ms-expand {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
-  width: 18em;
+  width: 16em;
   height: 2em;
   line-height: 3;
   background: #383737;
   overflow: hidden;
-  border-radius: .25em;
+  margin-top: 2rem;
 }
 
 .select::after {
   content: '\25BC';
   position: absolute;
-  top: 0;
+  top: -6;
   right: 0;
   padding: 0 1em;
   background: #bd006b;
@@ -6188,9 +6188,9 @@ img {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
-  -webkit-box-pack: right;
-      -ms-flex-pack: right;
-          justify-content: right;
+  -webkit-box-pack: end;
+      -ms-flex-pack: end;
+          justify-content: flex-end;
   padding-right: .5em;
   background-color: #bd006b;
   color: white;
