@@ -2,7 +2,7 @@
 <?php
     echo form_open($formaction);
     foreach($form as $input => $attribute){
-        //var_dump($input,$attribute);
+        var_dump($input,$attribute);
         
         switch($input) {
             case 'text':
@@ -16,16 +16,15 @@
             case 'password':
                 echo form_label($attribute['name']);
                 echo form_password($attribute);
-                break;
             break;
             case 'title':
                 echo form_label($attribute['name']);
                 echo form_password($attribute);
-                break;
+            break;
             case 'description':
                 echo form_label($attribute['name']);
                 echo form_password($attribute);
-                break;
+            break;
                 
             case 'description':
                 echo form_label($attribute['name']);
@@ -37,7 +36,7 @@
              break;
             case 'button':
                 echo form_submit($attribute);
-                break;
+            break;
         }
     }
 ?>

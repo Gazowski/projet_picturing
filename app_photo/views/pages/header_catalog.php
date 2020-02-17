@@ -19,8 +19,7 @@
                     </div>
                 </nav>
             </div> 
-    
-    
+            
     <section class="menu_logo_compte">
         
             <div class="logo">
