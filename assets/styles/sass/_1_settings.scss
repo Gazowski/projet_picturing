@@ -2,6 +2,7 @@ body{
     @include color($c_white,$c_dark_grey);
     font-family: $f_text;
     margin: 0 auto;
+    min-height: 100%;
 }
 
 h1,h2,h3{
@@ -9,9 +10,9 @@ h1,h2,h3{
 }
 
 a{
-    text-decoration: none;
     color: $c-medium-grey;
     font-size: 0.9em;
+    text-decoration: none;
     &:hover{
         color: $c-medium-theme; 
     }
@@ -19,5 +20,4 @@ a{
 
 button{
     font-family: $f_button;
-
 }

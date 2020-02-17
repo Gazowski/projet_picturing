@@ -2,15 +2,15 @@
     display: none;
 }
 
-.color_logo_f {
-    fill: red;
-}
-
 footer {
     background-color: $c-dark-grey;
+    bottom: 0;
     display: flex;
     flex-direction: row;
     justify-content: space-around;
+    margin-bottom: 0em;
+    position: fixed;
+    width: 100%;
     a {
         color: $c-light-grey;
         margin: 0 2%;
@@ -26,9 +26,9 @@ footer {
 }
 
 .medias {
-    font-size: 2em;
+    font-size: 8vw;
     display: flex;
     justify-content: flex-end;
-    margin: 4% 0;
+    margin: 5% 0;
     width: 30%;
 }
