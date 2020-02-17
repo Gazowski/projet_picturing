@@ -60,8 +60,8 @@
     
 
       <p>
-            <?php echo form_label($prix['name']);?> <br />
-            <?php echo form_input($prix);?>
+            <?php echo form_label($price['name']);?> <br />
+            <?php echo form_input($price);?>
       </p>
 
       <p>
