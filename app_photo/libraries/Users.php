@@ -15,7 +15,10 @@ class Users {
     public function __construct()
     {
         // Assign the CodeIgniter super-object
-        $this->CI =& get_instance();
+		$this->CI =& get_instance();
+		$this->CI->load->helper(array('form', 'url'));
+		$this->CI->load->library('form_validation');
+
     }
 
     public function get_all_ads()
@@ -42,26 +45,22 @@ class Users {
     public function create_ad()
     {
         $this->CI->load->model('ad_model');
-        $this->data['title'] = 'Ajouter une annonce';
-
-		if (!$this->ion_auth->logged_in() /*|| !$this->ion_auth->is_admin()*/)
-		{
-			redirect('auth', 'refresh');
-		}
+        $this->data['page_title'] = 'Ajouter une annonce';
 
 		// validate form input
-		$this->form_validation->set_rules('title', 'Titre de l\'annonce', 'trim|required');
-		$this->form_validation->set_rules('category', 'Catégorie', 'trim|decimal|required');
-		$this->form_validation->set_rules('type', 'Type', 'trim|decimal|required');
-		$this->form_validation->set_rules('description','Description', 'trim');
-		$this->form_validation->set_rules('price', 'Prix', 'trim|decimal|required');
-		$this->form_validation->set_rules('photo','Photo','trim');
-		$this->form_validation->set_rules('location','Adresse','trim');
+		$this->CI->form_validation->set_rules('title', 'Titre de l\'annonce', 'trim|required');
+		$this->CI->form_validation->set_rules('category', 'Catégorie', 'trim|decimal|required');
+		$this->CI->form_validation->set_rules('types', 'Type', 'trim|decimal|required');
+		$this->CI->form_validation->set_rules('description','Description', 'trim');
+		$this->CI->form_validation->set_rules('price', 'Prix', 'trim|decimal|required');
+		$this->CI->form_validation->set_rules('photo','Photo','trim');
+		$this->CI->form_validation->set_rules('location','Adresse','trim');
 
-		if ($this->form_validation->run() === TRUE)
+		if ($this->CI->form_validation->run() === TRUE)
 		{
 			$data = [
 				'title' => $this->input->post('title'),
+				//'types' => $this->input->post('types'),
 				'category' => $this->input->post('category'),
 				'description' => $this->input->post('description'),
 				'price' => $this->input->post('price'),
@@ -70,7 +69,7 @@ class Users {
 			];
         }
         // ajout de l'annonce dans la DB
-		if ($this->form_validation->run() === TRUE && $this->CI->ad_model->add_ad($data))
+		if ($this->CI->form_validation->run() === TRUE && $this->CI->ad_model->add_ad($data))
 		{
 
 
@@ -78,7 +77,7 @@ class Users {
 
 			// check to see if we are creating the ad
 			// redirect them back to the admin page
-			// $this->session->set_flashdata('message', $this->ion_auth->messages());
+			// $this->session->set_flashdata('message', $this->CI->ion_auth->messages());
 			// redirect("", 'refresh');
 		}
 		else
@@ -86,54 +85,54 @@ class Users {
 			// display the create ad form
             // set the flash data error message if there is one
             // MESSAGE ERREUR _____ A ADAPTER !!!!!!!!!!!!!!
-			$this->data['message'] = (validation_errors() ? validation_errors() : ($this->ion_auth->errors() ? $this->ion_auth->errors() : $this->session->flashdata('message')));
+			$this->data['message'] = (validation_errors() ? validation_errors() : ($this->CI->ion_auth->errors() ? $this->CI->ion_auth->errors() : $this->CI->session->flashdata('message')));
 
 			$this->data['title'] = [
 				'name' => 'titre',
 				'id' => 'title',
 				'type' => 'text',
-				'value' => $this->form_validation->set_value('title'),
-			];
-			$this->data['category'] = [
-				'name' => 'categorie',
-                'id' => 'category',
-                'option' => $this->CI->ad_model->get_category(),
-				'type' => 'select',
-				'value' => $this->form_validation->set_value('category'),
+				'value' => $this->CI->form_validation->set_value('title'),
 			];
 			$this->data['type'] = [
 				'name' => 'type',
                 'id' => 'type',
-                'option' => ['choisir une catégorie'],
+                'option' => $this->CI->ad_model->get_category(),
 				'type' => 'select',
-				'value' => $this->form_validation->set_value('type'),
+				'value' => $this->CI->form_validation->set_value('type'),
+			];
+			$this->data['category'] = [
+				'name' => 'categorie',
+				'id' => 'category',
+				'option' => ['choisir un type'],
+				'type' => 'select',
+				'value' => $this->CI->form_validation->set_value('category'),
 			];
 			$this->data['description'] = [
 				'name' => 'description',
 				'id' => 'description',
 				'type' => 'text',
-				'value' => $this->form_validation->set_value('description'),
+				'value' => $this->CI->form_validation->set_value('description'),
 			];
 			$this->data['price'] = [
 				'name' => 'prix',
 				'id' => 'price',
 				'type' => 'text',
-				'value' => $this->form_validation->set_value('price'),
+				'value' => $this->CI->form_validation->set_value('price'),
 			];
 			$this->data['photo'] = [
 				'name' => 'photo',
 				'id' => 'photo',
 				'type' => 'text',
-				'value' => $this->form_validation->set_value('photo'),
+				'value' => $this->CI->form_validation->set_value('photo'),
 			];
 			$this->data['location'] = [
 				'name' => 'adresse',
 				'id' => 'location',
 				'type' => 'text',
-				'value' => $this->form_validation->set_value('location'),
+				'value' => $this->CI->form_validation->set_value('location'),
 			];
 
-			$this->CI->load->template('create_ad',$this->data);
+			$this->CI->load->template('pages/create_ad_form',$this->data);
 		}
     }
 }
