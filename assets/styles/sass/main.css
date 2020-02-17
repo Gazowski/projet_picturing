@@ -6254,7 +6254,6 @@ img {
     width: 84%;
     -ms-grid-columns: (1fr)[4];
         grid-template-columns: repeat(4, 1fr);
-    grid-column-gap: 16px;
     grid-row-gap: 25px;
   }
 }
