@@ -65,8 +65,9 @@ select {
 		}
 	}
 }
-//--------menu_navigation_Grand écran-----------//
-@media (min-width: 900px) {
+
+//--------menu_navigation_Tablette-----------//
+@media (min-width: 600px) {
 	.filter {
 		align-items: center;
 		flex-direction: row;
@@ -75,10 +76,11 @@ select {
 		margin: .3em auto; //media query 900px
 		width: 69%;
 	}
-		
+	
 }
-//--------menu_navigation_Tablette-----------//
-@media (min-width: 600px) {
+
+//--------menu_navigation_Grand écran-----------//
+@media (min-width: 900px) {
 	.filter {
 		align-items: center;
 		flex-direction: row;

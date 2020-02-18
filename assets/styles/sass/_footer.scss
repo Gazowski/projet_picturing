@@ -3,9 +3,7 @@
 }
 
 footer {
-    bottom: 0;
     background-color: $c-dark-grey;
-    position: fixed;
     width: 100%;
 }
 
@@ -73,6 +71,11 @@ footer {
         }
     }
     
+    footer {
+        bottom: 0;
+        position: absolute;
+    }
+
     .logo_f {
         width: 10%;
     }
