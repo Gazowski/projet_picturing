@@ -5,12 +5,13 @@
 /* Custom Select */
 /* Arrow */
 /* Transition */
+
 .filter {
+	align-items: center;
 	display: flex;
 	justify-content: space-between;
-	align-items: center;
-	width: 69%;
 	margin: .3em auto; //media query 900px
+	width: 69%;
 }
 
 select {
@@ -33,28 +34,27 @@ select {
 
 .select {
 	
-	margin-left: .5em;
-    position: relative;
+	background: $c-dark-grey ;
 	display: flex;
-	width: 16em;
 	height: 2em;
 	line-height: 3;
-	background: $c-dark-grey ;
+	margin-left: .5em;
 	overflow: hidden;
-	margin-top: 2rem;
+    position: relative;
+	width: 16em;
 
 	&::after {
-		content: '\25BC';
-		position: absolute;
-		top: -6;
-		right: 0;
-		padding: 0 1em;
 		background: $c-medium-theme;
+		content: '\25BC';
 		cursor: pointer;
+		padding: 0 1em;
 		pointer-events: none;
+		position: absolute;
+		right: 0;
+		top: -6;
+		transition: .25s all ease;
 		-webkit-transition: .25s all ease;
 		-o-transition: .25s all ease;
-		transition: .25s all ease;
 	}
 
 	&:hover {

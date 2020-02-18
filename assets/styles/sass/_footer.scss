@@ -3,15 +3,18 @@
 }
 
 footer {
-    position: fixed;
     bottom: 0;
     background-color: $c-dark-grey;
+    position: fixed;
+    width: 100%;
+}
+
+.content_f {
     display: flex;
     flex-direction: row;
     justify-content: space-around;
     margin-bottom: 0em;
     //height: 10%;
-    width: 100%;
     a {
         color: $c-light-grey;
         margin: 0 2%;
@@ -32,4 +35,49 @@ footer {
     justify-content: flex-end;
     margin: 5% 0;
     width: 30%;
+}
+
+//--------footer_navigation_tablette-----------//
+
+@media (min-width: 600px) {
+    /*
+    .address {
+        color: $c-light-grey;
+        display: flex;
+        width: 69%;
+    }*/
+}
+
+//--------footer_navigation_Grand écran-----------//
+
+@media (min-width: 900px) {
+    
+    .address {
+        color: $c-light-grey;
+        display: flex;
+        flex-direction: column;
+        p {
+            font-size: .5em;
+            margin-left: .2em;
+        }
+    }
+    
+    .content_f {
+        align-items: center;
+        justify-content: space-between;
+        margin: auto;
+        width: 69%;
+        a {
+            color: $c-light-grey;
+            margin: 0 2%;
+        }
+    }
+    
+    .logo_f {
+        width: 10%;
+    }
+
+    .medias {
+        font-size: 2vw;
+    }
 }
