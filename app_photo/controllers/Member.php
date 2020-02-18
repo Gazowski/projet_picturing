@@ -21,7 +21,7 @@ class Member extends CI_Controller {
 
     /**
      * load_member_category()
-     * charge la class en fonction de la category de l'utilisateur connecté
+     * REDEFINIR SON UTILITÉ
      */
 
     private function load_member_category()
@@ -35,16 +35,9 @@ class Member extends CI_Controller {
         ];
 
         $this->user_category = $this->ion_auth->logged_in() ? $category[$this->ion_auth->get_users_groups()->result()] : 'Users';
-        $this->load->library([$this->user_category]);
+        //$this->load->library([$this->user_category]);
     }
 
-    /**
-     * affichage des tous les membres
-     */
-    public function display_all_members()
-    {
-        $this->user_category->display_all_members();
-    }
 
 
 //////logique pour afficher la liste des membres pour les fournisseurs////
@@ -67,4 +60,24 @@ class Member extends CI_Controller {
         $is_admin = $this->ion_auth->is_admin();
         $this->load->template('pages/list',$data,$is_admin);
     }
+
+    /**
+     * affichage des tous les membres
+     */
+    public function display_all_members()
+    {
+        
+        if ( ! file_exists(APPPATH.'views/pages/list.php'))
+        {
+            // Whoops, we don't have a page for that!
+            show_404();
+        }       
+        
+        $data['title'] = 'Liste des Membres'; // Capitalize the first letter
+        $data['table'] = $this->member_model->get_member();
+        
+        
+        $is_admin = $this->ion_auth->is_admin();
+        $this->load->template('pages/list',$data,$is_admin);
+    } 
 }
