@@ -36,7 +36,7 @@ class Ad_model extends CI_Model {
 
     public function get_category_name($category)
     {
-        $this->db->select('name');
+        $this->db->select('id_category,name');
         $this->db->where('category',$category);
         return $this->db->get('category')->result_array();
     }
