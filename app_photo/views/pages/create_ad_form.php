@@ -19,7 +19,7 @@
       <div class="content_form">
             <div id="infoMessage"><?php echo $message;?></div>
 
-      <?php echo form_open("pages/create_ad_form");?>
+      <?php echo form_open("create_ad");?>
 
             <p>
                   <?php echo form_label($title['name']);?> <br />
