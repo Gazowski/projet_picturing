@@ -33,9 +33,9 @@
         </div>
             
     </section>
-    <div class="ligne"></div>
+    
         <div>
-        <div class="ligne"></div>  
+      
     </section>
   
 
