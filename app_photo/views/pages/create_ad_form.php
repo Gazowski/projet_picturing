@@ -26,42 +26,22 @@
                   <?php echo form_input($title);?>
             </p>
 
-            
-      <p>
-            <?php echo form_label($type['name']); ?>
-            <?php foreach($type['option'] as $option)
-            {
-                  $opt[] = $option->category; 
-            } 
-            echo form_dropdown($type['name'], $opt); ?>
-      </p>
-
       
     <p>
       <?php echo form_label($type['name']); ?>
       <?php 
       $opt = ['default' => '-- choisir un type --'];
-      foreach($type['option'] as $option)
+      foreach($type['option'] as $key=>$option)
         {
-            
-            $opt[$option] = $option->category;
+            $opt[$option->category] = $option->category;
         } 
-        var_dump($opt);
         echo form_dropdown($type['name'], $opt,'', 'data-js-input="type"'); ?>
     </p>
 
-            <p>
-                  <?php echo form_label($category['name']);?> <br />
-                  <?php echo form_dropdown($category['name'],$category['option']);?>
-            </p>
-
-<<<<<<< HEAD
       <p>
             <?php echo form_label($category['name']);?> <br />
             <?php echo form_dropdown($category['name'],$category['option'],'','data-js-input="category"');?>
       </p>
-=======
->>>>>>> ce107b0eca54190c74ba91b136204804e6aba164
 
             <p>
                   <?php echo form_label($description['name']);?> <br />

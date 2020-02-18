@@ -47,13 +47,29 @@ class Ad extends CI_Controller {
     
     }
 
-    public function get_category_name($category)
+    public function get_category_name()
     {
         if (!$this->ion_auth->logged_in() /*|| !$this->ion_auth->is_admin()*/)
 		{
 			redirect('auth', 'refresh');
         }
-        
-        $this->ad_model->get_category_name();
+        //$category = $this->input->post();
+        $category = $this->clean_data(file_get_contents("php://input"));
+        $result = $this->ad_model->get_category_name($category);
+        $select = '';
+        foreach($result as $row)
+        {
+            $select .= "<option value='" . $row['name'] . "'>" . $row['name'] . "</option>";
+        }
+        //var_dump($select);
+        echo $select;
+    }
+
+    public function clean_data($data)
+    {
+        $request_payload = $data;
+        $request_payload = urldecode($request_payload);
+        $request_payload = htmlspecialchars($request_payload,ENT_NOQUOTES); // ENT_NOQUOTES permet d'ignorer les guillemets générés par JSON 
+        return json_decode($request_payload);
     }
 }

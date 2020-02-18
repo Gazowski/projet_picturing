@@ -41,7 +41,7 @@ export let requeteAjax = (data,callback) => {
         if(data.donnees_a_envoyer){
             donnees = JSON.stringify(data.donnees_a_envoyer)
             donnees = encodeURIComponent(donnees)
-            //console.log(donnees)
+            console.log(donnees)
         }
         xhr.send(donnees)
     }

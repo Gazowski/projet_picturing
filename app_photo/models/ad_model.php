@@ -34,4 +34,11 @@ class Ad_model extends CI_Model {
         return $query->result();
     }
 
+    public function get_category_name($category)
+    {
+        $this->db->select('name');
+        $this->db->where('category',$category);
+        return $this->db->get('category')->result_array();
+    }
+
 }
