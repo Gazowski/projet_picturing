@@ -5982,7 +5982,7 @@ a {
   border: none;
   font-family: "Montserrat", sans-serif;
   margin: .5em;
-  padding: .3em 1em;
+  padding: 0.3em 2.1em;
 }
 
 .button a {
@@ -6013,7 +6013,7 @@ a {
   -webkit-box-pack: justify;
       -ms-flex-pack: justify;
           justify-content: space-between;
-  margin: 10em auto;
+  margin: 1em auto;
   width: calc(100% - 4em);
 }
 
