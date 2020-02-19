@@ -16,13 +16,13 @@ class Member_model extends CI_Model {
             if ($member === FALSE)
             {
                     $this->db->select('*');
-                    $this->db->from('members');
+                    $this->db->from('users');
                   
                     $query = $this->db->get();
                     return $query->result_array();
             }
     
-            $query = $this->db->get_where('members', array('id_members' => $member));
+            $query = $this->db->get_where('users', array('id_users' => $member));
             return $query->row_array();
         }
 
@@ -31,15 +31,15 @@ class Member_model extends CI_Model {
         {
             if ($supplier === FALSE)
             {
-                    $this->db->select('prénom, nom, nom_entreprise, numéro_entreprise,adresse,
-                                     téléphone, courriel, lien_site_web, lien_réseaux_sociaux');
-                    $this->db->from('members');
+                    $this->db->select('first_name, last_name, company, company_number,address,
+                                     phone, courriel, website, social_network');
+                    $this->db->from('users');
 
                     $query = $this->db->get();
                     return $query->result_array();
             }
     
-            $query = $this->db->get_where('members', array('id_members' => $supplier));
+            $query = $this->db->get_where('users', array('id_users' => $supplier));
             return $query->row_array();
         }
 }
