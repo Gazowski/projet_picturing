@@ -35,3 +35,10 @@
     <p><a href="forgot_password"><?php echo lang('login_forgot_password');?></a></p>
   </div>
 </div>
+
+<div class="form">
+  <div class="content_form">
+    Pas encore de compte ?
+    <a href="<?= base_url(); ?>index.php/auth/create_user" class="button">S'enregistrer</a>
+  </div>
+</div>
