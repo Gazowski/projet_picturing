@@ -81,27 +81,11 @@ input[type ="text"],input[type = "password"]{
     h1{
       font-size: 1.3em;
     }
+    select, .select{
+        width:100%;
+    }
 }
-form select{
-    //@include centrer;
-    width: 100%;
-    margin: 0 auto;
-    appearance: none;
-	background: $c-dark-grey;
-	background-image: none;
-	border: 0 !important;
-	box-shadow: none;
-	color: #fff;
-	cursor: pointer;
-	flex: 1;
-	font-family: $f-button;
-	outline: 0;
-	padding: 0 .5em;
 
-	&::-ms-expand {
-		display: none;
-	}
-}
 
 .titre_form{
     color: white;
