@@ -12,6 +12,7 @@ body{
     font-family: $f_text;
     margin: 0 auto;
     min-height: 100%;
+    box-sizing: border-box;
 }
 
 h1,h3{
@@ -56,6 +57,9 @@ a {
     align-content: right;
     padding: 2em;
 }
+input[type ="text"],input[type = "password"]{
+    width: 99%;
+}
 
 .form {
     border: 1px solid $c-light-grey;
@@ -63,7 +67,6 @@ a {
     display: flex;
     flex-direction: column;
     justify-content: space-between;
-    
     margin: 1em auto;
     width: calc(100% - 4em);
 }
@@ -72,7 +75,7 @@ a {
     color: white;
     display: flex;
     justify-content: space-around;
-    padding-right: .5em;
+    
     background-color: $c-medium-theme;
     h1{
         font-weight: normal;
@@ -81,19 +84,26 @@ a {
 
 //--------menu_navigation_Tablette-----------//
 @media (min-width: 600px) {
+    .form {
+        width: calc(70% - 4em);
+    }
+    .button{
+    
+        margin: .5em;
+        
+        
+    }
 	
 	
 }
 
 //--------menu_navigation_Grand écran-----------//
 @media (min-width: 900px) {
-	body {
-        height: 100%;
-		margin-bottom: 150px; //pour le footer
+    .form {
+        width: calc(35% - 4em);
     }
+
+	
     
-    html {
-        height: 100%;
-        position: relative; //pour le footer
-    }	
+   	
 }

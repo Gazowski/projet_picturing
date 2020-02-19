@@ -5952,6 +5952,8 @@ body {
   font-family: "Montserrat", sans-serif;
   margin: 0 auto;
   min-height: 100%;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
 }
 
 h1, h3 {
@@ -5999,6 +6001,10 @@ a {
   padding: 2em;
 }
 
+input[type="text"], input[type="password"] {
+  width: 99%;
+}
+
 .form {
   border: 1px solid #bcbcbc;
   -webkit-box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
@@ -6024,7 +6030,6 @@ a {
   display: flex;
   -ms-flex-pack: distribute;
       justify-content: space-around;
-  padding-right: .5em;
   background-color: #bd006b;
 }
 
@@ -6032,14 +6037,18 @@ a {
   font-weight: normal;
 }
 
-@media (min-width: 900px) {
-  body {
-    height: 100%;
-    margin-bottom: 150px;
+@media (min-width: 600px) {
+  .form {
+    width: calc(70% - 4em);
   }
-  html {
-    height: 100%;
-    position: relative;
+  .button {
+    margin: .5em;
+  }
+}
+
+@media (min-width: 900px) {
+  .form {
+    width: calc(35% - 4em);
   }
 }
 
