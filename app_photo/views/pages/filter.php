@@ -20,7 +20,7 @@
     </div>
     
     <div class="button">
-        <a href="<?= base_url(); ?>create_ad"> Ajouter une annonce</a>
+        <a href="<?= base_url(); ?>index.php/create_ad"> Ajouter une annonce</a>
     </div>
     
 </div>

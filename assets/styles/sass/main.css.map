@@ -28,8 +28,7 @@
         "_header.scss",
         "_filter.scss",
         "_tile.scss",
-        "_footer.scss",
-        "_login.scss"
+        "_footer.scss"
     ],
     "names": [],
     "file": "main.css"

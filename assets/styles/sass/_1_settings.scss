@@ -41,7 +41,7 @@ a {
     border: none;
     font-family: $f_button;
     margin: .5em;
-    padding: .3em 1em;
+    padding: 0.3em 2.1em;
     a {
         color: white;
         //font-size: .8em;
@@ -63,8 +63,9 @@ a {
     display: flex;
     flex-direction: column;
     justify-content: space-between;
-    margin: 10em auto;
-    width: 30em;
+    
+    margin: 1em auto;
+    width: calc(100% - 4em);
 }
 
 .titre_form{

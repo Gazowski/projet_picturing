@@ -5982,7 +5982,7 @@ a {
   border: none;
   font-family: "Montserrat", sans-serif;
   margin: .5em;
-  padding: .3em 1em;
+  padding: 0.3em 2.1em;
 }
 
 .button a {
@@ -6013,8 +6013,8 @@ a {
   -webkit-box-pack: justify;
       -ms-flex-pack: justify;
           justify-content: space-between;
-  margin: 10em auto;
-  width: 30em;
+  margin: 1em auto;
+  width: calc(100% - 4em);
 }
 
 .titre_form {
@@ -6585,50 +6585,6 @@ footer {
   .medias {
     font-size: 2vw;
     margin-left: 15em;
-  }
-}
-
-.form {
-  border: 1px solid #bcbcbc;
-  -webkit-box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
-          box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-orient: vertical;
-  -webkit-box-direction: normal;
-      -ms-flex-direction: column;
-          flex-direction: column;
-  -webkit-box-pack: justify;
-      -ms-flex-pack: justify;
-          justify-content: space-between;
-  margin: 10em auto;
-  width: 80%;
-}
-
-.form .content_form {
-  -ms-flex-line-pack: right;
-      align-content: right;
-  padding: 2em;
-}
-
-.form .titre_form {
-  color: white;
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  -ms-flex-pack: distribute;
-      justify-content: space-around;
-  background-color: #bd006b;
-}
-
-.form .titre_form h1 {
-  font-weight: normal;
-}
-
-@media (min-width: 900px) {
-  .form {
-    width: 40%;
   }
 }
 /*# sourceMappingURL=main.css.map */
