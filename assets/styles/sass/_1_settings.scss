@@ -64,7 +64,7 @@ a {
     flex-direction: column;
     justify-content: space-between;
     margin: 10em auto;
-    width: 30em;
+    width: calc(100% - 4em);
 }
 
 .titre_form{
