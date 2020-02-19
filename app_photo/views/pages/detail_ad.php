@@ -36,15 +36,15 @@
 <section class="">
     <ul class="">
         <?php foreach($message as $row) {?>
-                    <li class="">
-                        <div class="">    
-                            <h3><?= $row['title'] ?></h3>
-                            <p><?= $row['date'] ?></p>
-                            <h3><?= $row['text_message'] ?></h3>
-                            <h3><?= $row['writer'] ?></h3>
-                            <p><?= $row['ad'] ?></p>
-                        </div>
-                    </li>
+            <li class="">
+                <div class="">    
+                    <h3><?= $row['title'] ?></h3>
+                    <p><?= $row['date'] ?></p>
+                    <h3><?= $row['text_message'] ?></h3>
+                    <h3><?= $row['writer'] ?></h3>
+                    <p><?= $row['ad'] ?></p>
+                </div>
+            </li>
         <?php } ?>
 
     </ul>
