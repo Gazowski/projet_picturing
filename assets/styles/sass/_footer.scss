@@ -10,7 +10,7 @@ footer {
 .content_f {
     display: flex;
     flex-direction: row;
-    justify-content: space-around;
+    justify-content: space-between;
     margin-bottom: 0em;
     //height: 10%;
     a {
@@ -23,7 +23,7 @@ footer {
 }
 
 .logo_f {
-    margin: 5% 0;
+    margin: 5% 5%;
     width: 30%;
 }
 
@@ -31,7 +31,7 @@ footer {
     font-size: 8vw;
     display: flex;
     justify-content: flex-end;
-    margin: 5% 0;
+    margin: 5% 5%;
     width: 30%;
 }
 
@@ -54,33 +54,36 @@ footer {
         color: $c-light-grey;
         display: flex;
         flex-direction: column;
+        margin-left: .7em;
+        padding: 0;
+        width: 50%;
         p {
-            font-size: .5em;
-            margin-left: .2em;
+            font-size: .8vw;
+            margin: .1em 0 .1em .2em;
+            padding: 0;
         }
     }
     
     .content_f {
         align-items: center;
-        justify-content: space-between;
+        display: flex;
+        justify-content: flex-start;
         margin: auto;
-        width: 69%;
+        width: 75%;
         a {
             color: $c-light-grey;
             margin: 0 2%;
         }
     }
-    
-    footer {
-        bottom: 0;
-        position: absolute;
-    }
 
     .logo_f {
-        width: 10%;
+        margin-right: .5em;
+        padding: 0;
+        width: 40%;
     }
 
     .medias {
         font-size: 2vw;
+        margin-left: 15em;
     }
 }

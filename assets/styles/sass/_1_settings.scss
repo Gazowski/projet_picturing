@@ -57,6 +57,7 @@ a {
     align-content: right;
     padding: 2em;
 }
+
 input[type ="text"],input[type = "password"]{
     width: 99%;
 }
@@ -97,14 +98,5 @@ input[type ="text"],input[type = "password"]{
 
 //--------menu_navigation_Grand écran-----------//
 @media (min-width: 900px) {
-    .form {
-        width: calc(35% - 4em);
-    }
-    .button{
-        margin-left: 9.5em;
-    }
-
 	
-    
-   	
 }
