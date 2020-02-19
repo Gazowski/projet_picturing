@@ -1,5 +1,9 @@
+
 <h2><?= $title ?></h2>
 <?php
+/**
+ * vue de base non utilisée
+ */
     echo form_open($formaction);
     foreach($form as $input => $attribute){
         var_dump($input,$attribute);
