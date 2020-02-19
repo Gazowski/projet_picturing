@@ -56,9 +56,9 @@ footer {
         flex-direction: column;
         margin-left: .5em;
         padding: 0;
-        width: 30%;
+        width: 50%;
         p {
-            font-size: .5em;
+            font-size: .7em;
             margin: .1em 0 .1em .2em;
             padding: 0;
         }
@@ -69,7 +69,7 @@ footer {
         display: flex;
         justify-content: flex-start;
         margin: auto;
-        width: 69%;
+        width: 75%;
         a {
             color: $c-light-grey;
             margin: 0 2%;
@@ -77,8 +77,9 @@ footer {
     }
 
     .logo_f {
+        margin-right: .5em;
         padding: 0;
-        width: 30%;
+        width: 40%;
     }
 
     .medias {
