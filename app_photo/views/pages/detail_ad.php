@@ -11,7 +11,7 @@
     
     <div class="child">
         <aside>
-          <img src="<?= base_url(['photo'])?>" alt="<?= 'title'] ?>"/>
+          <img src="<?= base_url(['photo'])?>" alt="<?= ['title'] ?>"/>
         </aside>
         <div>
           <h3><?= ['title'] ?></h3>
