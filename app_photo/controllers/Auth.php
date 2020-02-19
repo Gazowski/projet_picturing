@@ -483,6 +483,7 @@ class Auth extends CI_Controller
 		{
 			$this->form_validation->set_rules('email', $this->lang->line('create_user_validation_email_label'), 'trim|required|valid_email|is_unique[' . $tables['users'] . '.email]');
 		}
+		$this->form_validation->set_rules('group', $this->lang->line('create_user_validation_group_label'), 'trim');
 		$this->form_validation->set_rules('phone', $this->lang->line('create_user_validation_phone_label'), 'trim');
 		$this->form_validation->set_rules('company', $this->lang->line('create_user_validation_company_label'), 'trim');
 		$this->form_validation->set_rules('company_number', $this->lang->line('create_user_validation_company_number_label'), 'trim');
@@ -501,6 +502,7 @@ class Auth extends CI_Controller
 			$additional_data = [
 				'first_name' => $this->input->post('first_name'),
 				'last_name' => $this->input->post('last_name'),
+				'group' => $this->input->post('group'),
 				'company' => $this->input->post('company'),
 				'phone' => $this->input->post('phone'),
 				'company_number' => $this->input->post('company_number'),
@@ -533,6 +535,13 @@ class Auth extends CI_Controller
 				'id' => 'last_name',
 				'type' => 'text',
 				'value' => $this->form_validation->set_value('last_name'),
+			];
+			$this->data['group'] = [
+				'name' => 'group',
+				'id' => 'group',
+				'option' => $this->ion_auth->groups()->result(),
+				'type' => 'text',
+				'value' => $this->form_validation->set_value('group'),
 			];
 			$this->data['identity'] = [
 				'name' => 'identity',
