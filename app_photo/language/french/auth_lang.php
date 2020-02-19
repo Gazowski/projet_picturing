@@ -55,7 +55,7 @@ $lang['deactivate_validation_confirm_label'] = 'Confirmation';
 $lang['deactivate_validation_user_id_label'] = 'Identifiant';
 
 // Create User
-$lang['create_user_heading']                           = 'Créer un utilisateur';
+$lang['create_user_heading']                           = 'Créer un compte';
 $lang['create_user_subheading']                        = 'Veuillez entrer les informations ci-dessous.';
 $lang['create_user_fname_label']                       = 'Prénom :';
 $lang['create_user_lname_label']                       = 'Nom :';
