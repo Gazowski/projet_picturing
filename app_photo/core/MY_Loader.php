@@ -16,6 +16,7 @@ class MY_Loader extends CI_Loader {
      * @param array $vars : le contenu de la page
      * @param bool $is_admin : si utilisateur admin , le header et le menu est différent
      */
+    
     public function template($page, $vars = array(), $is_admin = FALSE)
     {
 

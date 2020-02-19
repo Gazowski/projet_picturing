@@ -20,7 +20,7 @@
       <div class="content_form">
             <div id="infoMessage"><?php echo $message;?></div>
 
-      <?php echo form_open("index.php/create_ad");?>
+      <?php echo form_open("create_ad");?>
 
             <p>
                   <?php echo form_label($title['name']);?> <br />
