@@ -11,25 +11,25 @@
 
     <?php echo form_open("auth/login");?>
 
-      <p>
-        <?php echo lang('login_identity_label', 'identity');?>
+      <div>
+        <?php echo lang('login_identity_label', 'identity');?><br>
         <?php echo form_input($identity);?>
-      </p>
+      </div>
 
-      <p>
-        <?php echo lang('login_password_label', 'password');?>
+      <div>
+        <?php echo lang('login_password_label', 'password');?><br>
         <?php echo form_input($password);?>
-      </p>
+      </div>
 
-      <p>
+      <div>
         <?php echo lang('login_remember_label', 'remember');?>
         <?php echo form_checkbox('remember', '1', FALSE, 'id="remember"');?>
-      </p>
+      </div>
 
 
-      <p><?php 
+      <?php 
 
-        echo form_submit('submit', lang('login_submit_btn'));?></p>
+        echo form_submit('submit', lang('login_submit_btn'));?>
 
     <?php echo form_close();?>
 
