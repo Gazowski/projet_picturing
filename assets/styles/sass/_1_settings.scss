@@ -88,10 +88,8 @@ input[type ="text"],input[type = "password"]{
         width: calc(70% - 4em);
     }
     .button{
-    
-        margin: .5em;
-        
-        
+        margin-left: 7.3em;
+        margin-top: 1em; 
     }
 	
 	
@@ -101,6 +99,9 @@ input[type ="text"],input[type = "password"]{
 @media (min-width: 900px) {
     .form {
         width: calc(35% - 4em);
+    }
+    .button{
+        margin-left: 9.5em;
     }
 
 	
