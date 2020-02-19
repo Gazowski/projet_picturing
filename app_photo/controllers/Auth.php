@@ -485,6 +485,10 @@ class Auth extends CI_Controller
 		}
 		$this->form_validation->set_rules('phone', $this->lang->line('create_user_validation_phone_label'), 'trim');
 		$this->form_validation->set_rules('company', $this->lang->line('create_user_validation_company_label'), 'trim');
+		$this->form_validation->set_rules('company_number', $this->lang->line('create_user_validation_company_number_label'), 'trim');
+		$this->form_validation->set_rules('address', $this->lang->line('create_user_validation_adress_label'), 'trim');
+		$this->form_validation->set_rules('website', $this->lang->line('create_user_validation_website_label'), 'trim');
+		$this->form_validation->set_rules('social_network', $this->lang->line('create_user_validation_social_network_label'), 'trim');
 		$this->form_validation->set_rules('password', $this->lang->line('create_user_validation_password_label'), 'required|min_length[' . $this->config->item('min_password_length', 'ion_auth') . ']|matches[password_confirm]');
 		$this->form_validation->set_rules('password_confirm', $this->lang->line('create_user_validation_password_confirm_label'), 'required');
 
@@ -499,6 +503,10 @@ class Auth extends CI_Controller
 				'last_name' => $this->input->post('last_name'),
 				'company' => $this->input->post('company'),
 				'phone' => $this->input->post('phone'),
+				'company_number' => $this->input->post('company_number'),
+				'address' => $this->input->post('address'),
+				'website' => $this->input->post('website'),
+				'social_network' => $this->input->post('social_network'),
 			];
 		}
 		if ($this->form_validation->run() === TRUE && $this->ion_auth->register($identity, $password, $email, $additional_data))
@@ -544,11 +552,35 @@ class Auth extends CI_Controller
 				'type' => 'text',
 				'value' => $this->form_validation->set_value('company'),
 			];
+			$this->data['company_number'] = [
+				'name' => 'company_number',
+				'id' => 'company_number',
+				'type' => 'text',
+				'value' => $this->form_validation->set_value('company_number'),
+			];
+			$this->data['address'] = [
+				'name' => 'address',
+				'id' => 'address',
+				'type' => 'text',
+				'value' => $this->form_validation->set_value('address'),
+			];
 			$this->data['phone'] = [
 				'name' => 'phone',
 				'id' => 'phone',
 				'type' => 'text',
 				'value' => $this->form_validation->set_value('phone'),
+			];
+			$this->data['website'] = [
+				'name' => 'website',
+				'id' => 'website',
+				'type' => 'text',
+				'value' => $this->form_validation->set_value('website'),
+			];
+			$this->data['social_network'] = [
+				'name' => 'social_network',
+				'id' => 'social_network',
+				'type' => 'text',
+				'value' => $this->form_validation->set_value('social_network'),
 			];
 			$this->data['password'] = [
 				'name' => 'password',
