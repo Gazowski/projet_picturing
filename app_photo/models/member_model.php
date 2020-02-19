@@ -1,4 +1,9 @@
 <?php
+
+/**
+ * 
+ * je suis sur la branche kervens
+ */
 class Member_model extends CI_Model {
 
         public function __construct()
