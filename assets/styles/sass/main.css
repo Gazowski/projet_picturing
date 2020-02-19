@@ -6023,6 +6023,49 @@ input[type="text"], input[type="password"] {
   width: calc(100% - 4em);
 }
 
+.form .button_container {
+  height: 2em;
+  padding: 1em;
+  position: relative;
+}
+
+.form .button_container .button {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  -webkit-transform: translate(-50%, -50%);
+          transform: translate(-50%, -50%);
+}
+
+.form h1 {
+  font-size: 1.3em;
+}
+
+form select {
+  width: 100%;
+  margin: 0 auto;
+  -webkit-appearance: none;
+     -moz-appearance: none;
+          appearance: none;
+  background: #383737;
+  background-image: none;
+  border: 0 !important;
+  -webkit-box-shadow: none;
+          box-shadow: none;
+  color: #fff;
+  cursor: pointer;
+  -webkit-box-flex: 1;
+      -ms-flex: 1;
+          flex: 1;
+  font-family: "Montserrat", sans-serif;
+  outline: 0;
+  padding: 0 .5em;
+}
+
+form select::-ms-expand {
+  display: none;
+}
+
 .titre_form {
   color: white;
   display: -webkit-box;
@@ -6042,7 +6085,6 @@ input[type="text"], input[type="password"] {
     width: calc(70% - 4em);
   }
   .button {
-    margin-left: 7.3em;
     margin-top: 1em;
   }
 }
@@ -6050,9 +6092,6 @@ input[type="text"], input[type="password"] {
 @media (min-width: 900px) {
   .form {
     width: calc(35% - 4em);
-  }
-  .button {
-    margin-left: 9.5em;
   }
 }
 
@@ -6576,12 +6615,12 @@ footer {
     -webkit-box-direction: normal;
         -ms-flex-direction: column;
             flex-direction: column;
-    margin-left: .5em;
+    margin-left: .7em;
     padding: 0;
-    width: 30%;
+    width: 50%;
   }
   .address p {
-    font-size: .5em;
+    font-size: .8vw;
     margin: .1em 0 .1em .2em;
     padding: 0;
   }
@@ -6596,15 +6635,16 @@ footer {
         -ms-flex-pack: start;
             justify-content: flex-start;
     margin: auto;
-    width: 69%;
+    width: 75%;
   }
   .content_f a {
     color: #bcbcbc;
     margin: 0 2%;
   }
   .logo_f {
+    margin-right: .5em;
     padding: 0;
-    width: 30%;
+    width: 40%;
   }
   .medias {
     font-size: 2vw;

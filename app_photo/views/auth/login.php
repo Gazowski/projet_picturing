@@ -26,10 +26,9 @@
         <?php echo form_checkbox('remember', '1', FALSE, 'id="remember"');?>
       </div>
 
-
-      <?php 
-
-        echo form_submit('submit', lang('login_submit_btn'));?>
+      <div class="button_container">
+      <?php echo form_submit('submit', lang('login_submit_btn'));?>
+      </div>
 
     <?php echo form_close();?>
 
