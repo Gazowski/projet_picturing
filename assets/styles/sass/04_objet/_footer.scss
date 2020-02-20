@@ -1,39 +1,43 @@
-.address {
-    display: none;
-}
+
 
 footer {
     background-color: $c-dark-grey;
     width: 100%;
-}
 
-.content_f {
-    display: flex;
-    flex-direction: row;
-    justify-content: space-between;
-    margin-bottom: 0em;
-    //height: 10%;
-    a {
-        color: $c-light-grey;
-        margin: 0 2%;
+    .content_f {
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+        margin-bottom: 0em;
+        //height: 10%;
+        a {
+            color: $c-light-grey;
+            margin: 0 2%;
+        }
+        p {
+            color: $c-light-grey;
+        }
     }
-    p {
-        color: $c-light-grey;
+    
+    .logo_f {
+        margin: 5% 5%;
+        width: 30%;
+    }
+    
+    .medias {
+        font-size: 8vw;
+        display: flex;
+        justify-content: flex-end;
+        margin: 5% 5%;
+        width: 30%;
+    }
+    .address {
+        display: none;
     }
 }
 
-.logo_f {
-    margin: 5% 5%;
-    width: 30%;
-}
 
-.medias {
-    font-size: 8vw;
-    display: flex;
-    justify-content: flex-end;
-    margin: 5% 5%;
-    width: 30%;
-}
+
 
 //--------footer_navigation_tablette-----------//
 

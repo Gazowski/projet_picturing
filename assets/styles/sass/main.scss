@@ -1,14 +1,22 @@
+// fontawesome
 @import "fontawesome/fontawesome.scss";
 @import "fontawesome/solid.scss";
 @import "fontawesome/regular.scss";
 @import "fontawesome/brands.scss";
-@import "_variables.scss";
-@import "_mixin.scss";
-@import "_1_settings.scss";
-@import "_header.scss";
-@import "_filter.scss";
-@import "_tile.scss";
-@import "_footer.scss";
+// setting
+@import "01_settings/_settings.scss";
+// generic
+@import "02_generic/_generic.scss";
+// element
+@import "03_element/_element.scss";
+// objet
+@import "04_objet/_header.scss";
+@import "04_objet/_filter.scss";
+@import "04_objet/_tile.scss";
+@import "04_objet/_footer.scss";
+// class
+@import "05_class/_class.scss";
+
 
 
 
