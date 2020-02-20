@@ -513,10 +513,9 @@ class Auth extends CI_Controller
 		}
 		if ($this->form_validation->run() === TRUE && $this->ion_auth->register($identity, $password, $email, $additional_data))
 		{
-			// check to see if we are creating the user
-			// redirect them back to the admin page
-			$this->session->set_flashdata('message', $this->ion_auth->messages());
-			redirect("auth", 'refresh');
+			// redirection vers la page annonces avec un message de confirmation
+			$this->session->set_flashdata('message', 'Votre compte est en attente de validation !');
+			redirect('ad/display_all','refresh');
 		}
 		else
 		{
