@@ -57,7 +57,7 @@ select {
 	margin-left: .5em;
 	overflow: hidden;
     position: relative;
-	width: 16em;
+	width: 100%;
 
 	&::after {
 		background: $c-medium-theme;
@@ -86,5 +86,21 @@ img{
     margin-left: .4em;
     margin-top: .4em;
   }
+
+//--------menu_navigation_Tablette-----------//
+@media (min-width: 600px) {
+	.select_cont {
+		width: 45%;
+	}
+	
+}
+
+  //--------menu_navigation_Grand écran-----------//
+@media (min-width: 900px) {
+	.select_cont {
+		width: 20%;
+	}
+	 
+}
 
 

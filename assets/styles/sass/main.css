@@ -5936,43 +5936,6 @@ readers do not read off random characters that represent icons */
   font-weight: 400;
 }
 
-a {
-  color: #6b6a6a;
-  font-size: 0.9em;
-  text-decoration: none;
-  list-style-type: none;
-}
-
-a:hover {
-  color: #bd006b;
-}
-
-body {
-  background-color: #ffff;
-  color: #383737;
-  font-family: "Montserrat", sans-serif;
-  margin: 0 auto;
-  min-height: 100%;
-  -webkit-box-sizing: border-box;
-          box-sizing: border-box;
-}
-
-h1, h3 {
-  font-family: "Montserrat", sans-serif;
-  font-weight: normal;
-}
-
-h2 {
-  font-family: "Montserrat", sans-serif;
-  font-weight: normal;
-  text-align: center;
-  color: #6b6a6a;
-}
-
-input[type="text"], input[type="password"] {
-  width: 99%;
-}
-
 /*! normalize.css v7.0.0 | MIT License | github.com/necolas/normalize.css */
 /* Document
    ========================================================================== */
@@ -6487,7 +6450,7 @@ select::-ms-expand {
   margin-left: .5em;
   overflow: hidden;
   position: relative;
-  width: 16em;
+  width: 100%;
 }
 
 .select_cont::after {
@@ -6514,6 +6477,18 @@ img {
      object-fit: cover;
   margin-left: .4em;
   margin-top: .4em;
+}
+
+@media (min-width: 600px) {
+  .select_cont {
+    width: 45%;
+  }
+}
+
+@media (min-width: 900px) {
+  .select_cont {
+    width: 20%;
+  }
 }
 
 #logo_h {
@@ -6673,7 +6648,7 @@ img {
 @media (min-width: 600px) {
   #logo_h {
     width: 170px;
-    margin-right: 17em;
+    margin-right: 18em;
   }
   section.menu_logo_compte_el {
     display: none;
@@ -6816,6 +6791,96 @@ img {
             justify-content: space-between;
     margin: .3em auto;
     width: 69%;
+  }
+}
+
+.form {
+  border: 1px solid #bcbcbc;
+  -webkit-box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+          box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  margin: 1em auto;
+  width: calc(100% - 4em);
+}
+
+.form .button_container {
+  height: 2em;
+  padding: 1em;
+  position: relative;
+}
+
+.form .button_container .button {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  -webkit-transform: translate(-50%, -50%);
+          transform: translate(-50%, -50%);
+}
+
+.form h1 {
+  font-size: 1.3em;
+}
+
+form select {
+  width: 100%;
+  margin: 0 auto;
+  -webkit-appearance: none;
+     -moz-appearance: none;
+          appearance: none;
+  background: #383737;
+  background-image: none;
+  border: 0 !important;
+  -webkit-box-shadow: none;
+          box-shadow: none;
+  color: #fff;
+  cursor: pointer;
+  -webkit-box-flex: 1;
+      -ms-flex: 1;
+          flex: 1;
+  font-family: "Montserrat", sans-serif;
+  outline: 0;
+  padding: 0 .5em;
+}
+
+form select::-ms-expand {
+  display: none;
+}
+
+.titre_form {
+  color: white;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-pack: distribute;
+      justify-content: space-around;
+  background-color: #bd006b;
+}
+
+.titre_form h1 {
+  font-weight: normal;
+}
+
+@media (min-width: 600px) {
+  .form {
+    width: calc(70% - 4em);
+  }
+  .button {
+    margin-top: 1em;
+  }
+}
+
+@media (min-width: 900px) {
+  .form {
+    width: calc(35% - 4em);
   }
 }
 
@@ -7021,7 +7086,7 @@ footer .address {
   border: none;
   font-family: "Montserrat", sans-serif;
   margin: .5em;
-  padding: 0.3em 2.1em;
+  padding: 0.3em 1.1em;
 }
 
 .button a {
@@ -7074,10 +7139,6 @@ footer .address {
   font-size: 1.3em;
 }
 
-.form select, .form .select {
-  width: 100%;
-}
-
 .titre_form {
   color: white;
   display: -webkit-box;
@@ -7104,9 +7165,6 @@ footer .address {
 @media (min-width: 900px) {
   .form {
     width: calc(35% - 4em);
-  }
-  .form select, .form .select {
-    width: 30%;
   }
 }
 /*# sourceMappingURL=main.css.map */
