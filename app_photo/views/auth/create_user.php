@@ -25,10 +25,9 @@
                         $opt = ['default' => '-- choisir un type --'];
                         foreach($group['option'] as $key=>$option)
                         {
-                              var_dump($group);
-                              //$opt[$option->name] = $option->name;
+                              $opt[$option->id] = $option->name;
                         } 
-                        echo form_dropdown($type['name'], $opt,'', 'data-js-input="type"'); ?>
+                        echo form_dropdown($group['name'], $opt,'', 'data-js-input="group"'); ?>
                   </p>
                   
                   <?php
