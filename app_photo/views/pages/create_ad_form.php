@@ -27,8 +27,10 @@
                   <?php echo form_label($title['name']);?> <br />
                   <?php echo form_input($title);?>
             </p>
-<!--  -->
-            <div>
+
+<!--  ---------------------------------------------les selects------------------------------------------------------- -->
+            <div class="select_cont">
+                  
                   <?php echo form_label($type['name']); ?>
                   <div class="select">
                   <?php 
@@ -41,9 +43,8 @@
                   </div>
             </div>
 
-            <div>
-                  <?php echo form_label($category['name']);?> <br />
-                  <div class="select">
+            <div class="select_cont">
+                  <?php echo form_label($category['name']);?> 
                   <?php echo form_dropdown($category['name'],$category['option'],'','data-js-input="category"');?>
                   </div>
             </div>
