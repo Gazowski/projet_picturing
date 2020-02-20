@@ -78,10 +78,17 @@ class Auth extends CI_Controller
 
 			if ($this->ion_auth->login($this->input->post('identity'), $this->input->post('password'), $remember))
 			{
-				//if the login is successful
-				//redirect them back to the home page
-				$this->session->set_flashdata('message', $this->ion_auth->messages());
-				redirect('/', 'refresh');
+				if($this->ion_auth->is_admin())
+				{
+					// charger la liste membres
+					redirect('member/display_all');
+					// verifier si membres non validé -> afficher message
+				}
+				else
+				{
+					$this->session->set_flashdata('message', $this->ion_auth->messages());
+					redirect('ad/display_all','refresh');
+				}
 			}
 			else
 			{
@@ -514,7 +521,10 @@ class Auth extends CI_Controller
 		if ($this->form_validation->run() === TRUE && $this->ion_auth->register($identity, $password, $email, $additional_data))
 		{
 			// redirection vers la page annonces avec un message de confirmation
-			$this->session->set_flashdata('message', 'Votre compte est en attente de validation !');
+			$this->session->set_flashdata('message', [
+				'text' => 'Votre compte est en attente de validation !',
+				'class' => 'succes'
+			]);
 			redirect('ad/display_all','refresh');
 		}
 		else
