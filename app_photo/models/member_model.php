@@ -16,7 +16,7 @@ class Member_model extends CI_Model {
             if ($member === FALSE)
             {
                     $this->db->select('id, email, created_on, last_login, active, first_name, last_name, company, company_number,address,
-                    phone, email, website, social_network');
+                    phone, website, social_network');
                     $this->db->from('users');
                     $this->db->join('users_groups','users_groups.user_id = id.users');
                   

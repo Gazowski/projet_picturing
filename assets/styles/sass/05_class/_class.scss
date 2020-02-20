@@ -1,39 +1,3 @@
-a{
-    color: $c-medium-grey;
-    font-size: 0.9em;
-    text-decoration: none;
-    &:hover{
-        color: $c-medium-theme; 
-    }
-}
-
-body{
-    @include color($c_white,$c_dark_grey);
-    font-family: $f_text;
-    margin: 0 auto;
-    min-height: 100%;
-    box-sizing: border-box;
-}
-
-h1,h3{
-    font-family: $f_title;    
-    font-weight: normal;
-}
-
-h2 {
-    font-family: $f_title; 
-    font-weight: normal;   
-    text-align: center;
-    color : $c-medium-grey;
-}
-
-a {
-    color: $c-medium-grey;
-    //font-size: 0.9em;
-    text-decoration: none;
-    list-style-type: none;
-}
-
 .button{
     align-items: center;
     color: white;
@@ -58,10 +22,6 @@ a {
     padding: 2em;
 }
 
-input[type ="text"],input[type = "password"]{
-    width: 99%;
-}
-
 .form {
     border: 1px solid $c-light-grey;
     box-shadow: 0 5px 15px rgba(0,0,0,0.3);
@@ -81,26 +41,6 @@ input[type ="text"],input[type = "password"]{
     h1{
       font-size: 1.3em;
     }
-}
-form select{
-    //@include centrer;
-    width: 100%;
-    margin: 0 auto;
-    appearance: none;
-	background: $c-dark-grey;
-	background-image: none;
-	border: 0 !important;
-	box-shadow: none;
-	color: #fff;
-	cursor: pointer;
-	flex: 1;
-	font-family: $f-button;
-	outline: 0;
-	padding: 0 .5em;
-
-	&::-ms-expand {
-		display: none;
-	}
 }
 
 .titre_form{
@@ -125,7 +65,6 @@ form select{
     }
 	
 }
-
 //--------menu_navigation_Grand écran-----------//
 @media (min-width: 900px) {
     .form {
