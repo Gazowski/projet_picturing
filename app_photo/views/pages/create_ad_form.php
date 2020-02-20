@@ -26,8 +26,6 @@
 
       <?php echo form_open("create_ad");?>
 
-            <?php echo form_open("index.php/create_ad");?>
-
             <p>
                   <?php echo form_label($title['name']);?> <br />
                   <?php echo form_input($title);?>
