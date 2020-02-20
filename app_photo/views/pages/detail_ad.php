@@ -11,13 +11,13 @@
     
     <div class="child">
         <aside>
-          <img src="<?= base_url($row['photo'])?>" alt="<?= $row['title'] ?>"/>
+          <img src="<?= base_url(['photo'])?>" alt="<?= ['title'] ?>"/>
         </aside>
         <div>
-          <h3><?= $row['title'] ?></h3>
-          <p><?= $row['description'] ?></p>
+          <h3><?= ['title'] ?></h3>
+          <p><?= ['description'] ?></p>
           <div class="prix">
-            <h3><?= $row['price'] ?> CAD$</h3>
+            <h3><?= ['price'] ?> CAD$</h3>
           </div>
         </div>  
     </div>

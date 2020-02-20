@@ -16,7 +16,7 @@ class Member extends CI_Controller {
         parent::__construct();
         $this->load->model('member_model');
         $this->load->library(['ion_auth']);
-        $this->load_member_category();
+        //$this->load_member_category();
     }
 
     /**
@@ -53,9 +53,7 @@ class Member extends CI_Controller {
         
         
         $data['title'] = 'Liste des Membres'; // Capitalize the first letter
-        $data['table'] = $this->member_model->get_supplier();
-        
-        
+        $data['table'] = $this->member_model->get_supplier();       
         
         $is_admin = $this->ion_auth->is_admin();
         $this->load->template('pages/list',$data,$is_admin);
@@ -64,7 +62,7 @@ class Member extends CI_Controller {
     /**
      * affichage des tous les membres
      */
-    public function display_all_members()
+    public function display_all()
     {
         
         if ( ! file_exists(APPPATH.'views/pages/list.php'))
@@ -75,6 +73,15 @@ class Member extends CI_Controller {
         
         $data['title'] = 'Liste des Membres'; // Capitalize the first letter
         $data['table'] = $this->member_model->get_member();
+        foreach($data['table'] as $row)
+        {
+            if(!$row['active'])
+            {
+                $this->session->set_flashdata('message', [
+                    'text' => 'Un ou des utilisateurs sont en attente de validation !',
+                ]);
+            }
+        }
         
         
         $is_admin = $this->ion_auth->is_admin();
