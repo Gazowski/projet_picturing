@@ -3,6 +3,9 @@
 footer {
     background-color: $c-dark-grey;
     width: 100%;
+    position: absolute;
+    bottom:0;
+
 
     .content_f {
         display: flex;
@@ -87,7 +90,7 @@ footer {
     }
 
     .medias {
-        font-size: 2vw;
+        font-size: 2em;
         margin-left: 15em;
     }
 }
