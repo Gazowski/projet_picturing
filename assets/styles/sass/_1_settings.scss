@@ -1,7 +1,9 @@
+// les liens
 a{
     color: $c-medium-grey;
     font-size: 0.9em;
     text-decoration: none;
+    list-style-type: none;
     &:hover{
         color: $c-medium-theme; 
     }
@@ -25,13 +27,6 @@ h2 {
     font-weight: normal;   
     text-align: center;
     color : $c-medium-grey;
-}
-
-a {
-    color: $c-medium-grey;
-    //font-size: 0.9em;
-    text-decoration: none;
-    list-style-type: none;
 }
 
 .button{
@@ -102,6 +97,7 @@ input[type ="text"],input[type = "password"]{
 @media (min-width: 600px) {
     .form {
         width: calc(70% - 4em);
+        
     }
     .button{
    
@@ -114,6 +110,10 @@ input[type ="text"],input[type = "password"]{
 @media (min-width: 900px) {
     .form {
         width: calc(35% - 4em);
+        select, .select{
+            width:30%;
+        }
+       
     }
 	
 }
