@@ -1,0 +1,78 @@
+//--------------------------------------
+// definition de variables globales
+//--------------------------------------
+// definition des variables font
+$f-title : 'Montserrat', sans-serif;
+$f-text : 'Montserrat', sans-serif;
+$f-button : 'Montserrat', sans-serif;
+$f-link : 'Montserrat', sans-serif;
+
+// definition des variables couleur
+$c-white : #ffff;
+$c-light-grey : #bcbcbc;
+$c-medium-grey : #6b6a6a;
+$c-dark-grey : #383737;
+$c-error-color : red;
+$c-light-theme : hsl(332, 68%, 74%); 
+$c-medium-theme :  hsl(326, 100%, 37%); 
+$c-dark-theme :  hsl(335, 69%, 38%); 
+//-----------------------------------------
+
+//-----------------------------------------
+//definition de mixins
+//-----------------------------------------
+@mixin flexbox($display, $direction, $justify, $align) {
+    display: $display;
+    flex-direction: $direction;
+    justify-content: $justify;
+    align-items: $align;
+}
+
+@mixin color($backgroundColor, $textColor) {
+    background-color: $backgroundColor;
+    color: $textColor;
+}
+
+@mixin centrer{
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+}
+//------------------------------------------
+
+a{
+    color: $c-medium-grey;
+    font-size: 0.9em;
+    text-decoration: none;
+    list-style-type: none;
+    &:hover{
+        color: $c-medium-theme; 
+    }
+}
+
+body{
+    @include color($c_white,$c_dark_grey);
+    font-family: $f_text;
+    margin: 0 auto;
+    min-height: 100%;
+    box-sizing: border-box;
+}
+
+h1,h3{
+    font-family: $f_title;    
+    font-weight: normal;
+}
+
+h2 {
+    font-family: $f_title; 
+    font-weight: normal;   
+    text-align: center;
+    color : $c-medium-grey;
+}
+
+
+input[type ="text"],input[type = "password"]{
+    width: 99%;
+}
+

@@ -1,16 +1,16 @@
 #logo_h{
-    width: 140px;
-    padding-right: 2.7rem;
+    width: 127px;
+    margin-right: 3.5em;
 }
 
-section.menu_logo_compte{
+.menu_logo_compte{
     display: flex;
     flex-direction: row;
     justify-content: flex-end;
     align-items: center;
     width: 100%;
 }
-section.menu_logo_compte_el{
+.menu_logo_compte_el{
 	display: none;
 }
 
@@ -132,8 +132,8 @@ section.menu_logo_compte_el{
 @media (min-width: 600px) {
 	
 	#logo_h{
-		width: 140px;
-		padding-right: 17.7rem;
+		width: 170px;
+		margin-right: 17em;
 	}
 	section.menu_logo_compte_el{
 		display: none;
@@ -146,6 +146,7 @@ section.menu_logo_compte_el{
 	#logo_h_el{
 		width: 200px;
 		padding-right: 2.7rem;
+	
 	}    
 	
 	#menuToggle {
@@ -193,8 +194,8 @@ section.menu_logo_compte_el{
 	#icone_search{
 		position: relative;
 		float: right;
-		top: 6px;
-    	right: 20px;
+		top: -19px;
+    	right: 7px;
 	  }
 
 	

@@ -34,7 +34,7 @@
             </p>
 
 <!--  ---------------------------------------------les selects------------------------------------------------------- -->
-            <div class="select">
+            <div class="select_cont">
                   
                   <?php echo form_label($type['name']); ?>
                   
@@ -50,7 +50,7 @@
             
             </div>
 
-            <div class="select">
+            <div class="select_cont">
                   <?php echo form_label($category['name']);?> 
                   <?php echo form_dropdown($category['name'],$category['option'],'','data-js-input="category"');?>
             </div>

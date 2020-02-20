@@ -10,7 +10,7 @@
 </section> -->
 <div class="filter">
 
-    <div class="select">
+    <div class="select_cont">
         <select name="filter" id="filter">
             <option value="">Filtrer les annonces</option>  
             <?php foreach($filter as $key=>$f) { ?>

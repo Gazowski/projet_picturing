@@ -1,0 +1,90 @@
+body{
+    @include color($c_white,$c_dark_grey);
+    font-family: $f_text;
+    margin: 0 auto;
+    min-height: 100%;
+    box-sizing: border-box;
+}
+
+h1,h3,h2{
+    font-family: $f_title;    
+    font-weight: normal;
+}
+
+h2 {  
+    text-align: center;
+    color : $c-medium-grey;
+}
+
+a{
+    color: $c-medium-grey;
+    font-size: 0.9em;
+    text-decoration: none;
+    list-style-type: none;
+    &:hover{
+        color: $c-medium-theme; 
+    }
+}
+
+input[type ="text"],input[type = "password"]{
+    width: 99%;
+}
+//---------scss select dans toutes les vue qui on un select-----//
+select {
+	appearance: none;
+	background: $c-dark-grey;
+	background-image: none;
+	border: 0 !important;
+	box-shadow: none;
+	color: #fff;
+	cursor: pointer;
+	flex: 1;
+	font-family: $f-button;
+	outline: 0;
+	padding: 0 .5em;
+
+	&::-ms-expand {
+		display: none;
+	}
+}
+
+.select_cont {
+	
+	background: $c-dark-grey ;
+	display: flex;
+	height: 2em;
+	line-height: 3;
+	margin-left: .5em;
+	overflow: hidden;
+    position: relative;
+	width: 16em;
+
+	&::after {
+		background: $c-medium-theme;
+		content: '\25BC';
+		cursor: pointer;
+		padding: 0 1em;
+		pointer-events: none;
+		position: absolute;
+		right: 0;
+		top: -6;
+		transition: .25s all ease;
+		-webkit-transition: .25s all ease;
+		-o-transition: .25s all ease;
+	}
+//---------fin du scss select dans toutes les vue qui on un select-----//
+	&:hover {
+		&::after {
+            color: $c-dark-grey;
+		}
+	}
+}
+
+img{
+    width: 95%;
+    object-fit: cover;
+    margin-left: .4em;
+    margin-top: .4em;
+  }
+
+
