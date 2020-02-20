@@ -18,6 +18,7 @@ class Member_model extends CI_Model {
                     $this->db->select('id, email, created_on, last_login, active, first_name, last_name, company, company_number,address,
                     phone, website, social_network');
                     $this->db->from('users');
+                    $this->db->join('users_groups','users_groups.user_id = id.users');
                   
                     $query = $this->db->get();
                     return $query->result_array();
@@ -33,7 +34,7 @@ class Member_model extends CI_Model {
             if ($supplier === FALSE)
             {
                     $this->db->select('first_name, last_name, company, company_number,address,
-                                     phone, courriel, website, social_network');
+                                     phone, email, website, social_network');
                     $this->db->from('users');
 
                     $query = $this->db->get();

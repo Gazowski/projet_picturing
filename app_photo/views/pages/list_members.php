@@ -1,12 +1,14 @@
-<div data-component='ListePanier'>
-    <div data-js-table-panier>
+<div'>
+    <div >
         <table>
-            <tr class='produit-panier'>
+            <tr class=''>
 
-                <th>Produit</th>
-                <th>Prix</th>
-                <th>Quantitè</th>
-                <th>Total Prix</th>
+                <th>Prénom</th>
+                <th>Nom</th>
+                <th>Courriel</th>
+                <th>Entprise</th>
+                <th>Téléphone</th>
+                <th>Groupe</th>
             </tr>
             <?php
 
@@ -16,31 +18,33 @@
     
          echo "<tr class =''>
         
-                  <td>".$row->name."</td>
-                  <td>".$row->prix." $</td>
-                  <td>".$row->quantite."</td>
-                  <td>".$totalPrixProduit."</td>
+                  <td>".$row->first_name."</td>
+                  <td>".$row->last_ame." $</td>
+                  <td>".$row->email."</td>
+                  <td>".$row->phone."</td>
+                  <td>".$row->social_network."</td>
+                  <td>".$row->group_id."</td>
+                 
                  </tr>";
               
       }
       
 ?>
-            <tr class='produit-panier'>
+            <tr class=''>
+                <td></td>
+                <td></td>
+                <td></td>
                 <td></td>
                 <td></td>
                 <td></td>
                 <td></td>
 
-            <tr class='produit-panier'>
-                <td>
-                    <p class="total" data-js-total>Grand Total = <?= $grandTotal ?></p>
-                </td>
-            </tr>
+           
 
-            <tr class='produit-panier'>
+            <tr class=''>
                 <td>
-                    <a href="index.php?Produits&action=afficheFormulaire">
-                        <button type="button" data-js-btnform>Confirmer</button>
+                    <a href="">
+                        <button class="button" type="button">Activer</button>
                     </a>
                 </td>
             </tr>
@@ -52,6 +56,3 @@
     </div>
 </div>
 
-<a href="index.php?">
-    <p data-js-btnform>Retour à l'accueil</p>
-</a>
