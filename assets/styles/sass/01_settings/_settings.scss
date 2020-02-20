@@ -41,38 +41,5 @@ $c-dark-theme :  hsl(335, 69%, 38%);
 }
 //------------------------------------------
 
-a{
-    color: $c-medium-grey;
-    font-size: 0.9em;
-    text-decoration: none;
-    list-style-type: none;
-    &:hover{
-        color: $c-medium-theme; 
-    }
-}
 
-body{
-    @include color($c_white,$c_dark_grey);
-    font-family: $f_text;
-    margin: 0 auto;
-    min-height: 100%;
-    box-sizing: border-box;
-}
-
-h1,h3{
-    font-family: $f_title;    
-    font-weight: normal;
-}
-
-h2 {
-    font-family: $f_title; 
-    font-weight: normal;   
-    text-align: center;
-    color : $c-medium-grey;
-}
-
-
-input[type ="text"],input[type = "password"]{
-    width: 99%;
-}
 

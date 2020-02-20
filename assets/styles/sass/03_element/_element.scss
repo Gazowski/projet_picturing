@@ -72,14 +72,14 @@ select {
 		-webkit-transition: .25s all ease;
 		-o-transition: .25s all ease;
 	}
-//---------fin du scss select dans toutes les vue qui on un select-----//
+
 	&:hover {
 		&::after {
             color: $c-dark-grey;
 		}
 	}
 }
-
+//---------fin du scss select dans toutes les vue qui on un select-----//
 img{
     width: 95%;
     object-fit: cover;

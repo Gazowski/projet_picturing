@@ -6,17 +6,17 @@
 // setting
 @import "01_settings/_settings.scss";
 // generic
-@import "02_generic/_generic.scss";
+@import "02_generic/_normalize.scss";
 // element
 @import "03_element/_element.scss";
 // objet
 @import "04_objet/_header.scss";
 @import "04_objet/_filter.scss";
+@import "04_objet/_form.scss";
 @import "04_objet/_tile.scss";
 @import "04_objet/_footer.scss";
 // class
 @import "05_class/_class.scss";
-
 
 
 

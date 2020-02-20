@@ -1,0 +1,71 @@
+.form {
+    border: 1px solid $c-light-grey;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    margin: 1em auto;
+    width: calc(100% - 4em);
+    .button_container{
+        height: 2em;
+        padding:1em;
+        position: relative;
+        .button{
+            @include centrer;
+        }  
+    }
+    h1{
+      font-size: 1.3em;
+    }
+}
+form select{
+    //@include centrer;
+    width: 100%;
+    margin: 0 auto;
+    appearance: none;
+	background: $c-dark-grey;
+	background-image: none;
+	border: 0 !important;
+	box-shadow: none;
+	color: #fff;
+	cursor: pointer;
+	flex: 1;
+	font-family: $f-button;
+	outline: 0;
+	padding: 0 .5em;
+
+	&::-ms-expand {
+		display: none;
+	}
+}
+
+.titre_form{
+    color: white;
+    display: flex;
+    justify-content: space-around;
+    
+    background-color: $c-medium-theme;
+    h1{
+        font-weight: normal;
+    }
+}
+
+//--------menu_navigation_Tablette-----------//
+@media (min-width: 600px) {
+    .form {
+        width: calc(70% - 4em);
+    }
+    .button{
+   
+        margin-top: 1em; 
+    }
+	
+}
+
+//--------menu_navigation_Grand écran-----------//
+@media (min-width: 900px) {
+    .form {
+        width: calc(35% - 4em);
+    }
+	
+}
