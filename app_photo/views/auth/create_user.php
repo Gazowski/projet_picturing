@@ -19,15 +19,25 @@
                         <?php echo lang('create_user_lname_label', 'last_name');?> <br />
                         <?php echo form_input($last_name);?>
                   </p>
+                  <p>
+                  <?php echo lang('create_user_group_label', 'group');?> <br />
+                  <?php
+                        $opt = ['default' => '-- choisir un type --'];
+                        foreach($group['option'] as $key=>$option)
+                        {
+                              $opt[$option->id] = $option->name;
+                        } 
+                        echo form_dropdown($group['name'], $opt,'', 'data-js-input="group"'); ?>
+                  </p>
                   
                   <?php
                   if($identity_column!=='email') {
-                  echo '<p>';
-                  echo lang('create_user_identity_label', 'identity');
-                  echo '<br />';
-                  echo form_error('identity');
-                  echo form_input($identity);
-                  echo '</p>';
+                        echo '<p>';
+                        echo lang('create_user_identity_label', 'identity');
+                        echo '<br />';
+                        echo form_error('identity');
+                        echo form_input($identity);
+                        echo '</p>';
                   }
                   ?>
 
@@ -35,6 +45,14 @@
                         <?php echo lang('create_user_company_label', 'company');?> <br />
                         <?php echo form_input($company);?>
                   </p>
+<<<<<<< HEAD
+=======
+                  
+                  <p>
+                        <?php echo lang('create_user_company_number_label', 'company_number');?> <br />
+                        <?php echo form_input($company_number);?>
+                  </p>
+>>>>>>> 96c94950079317ee9a51b8d76b56b7b8428d50dd
 
                   <p>
                         <?php echo lang('create_user_email_label', 'email');?> <br />
@@ -44,8 +62,27 @@
                   <p>
                         <?php echo lang('create_user_phone_label', 'phone');?> <br />
                         <?php echo form_input($phone);?>
+<<<<<<< HEAD
                   </p>
 
+=======
+                  </p>   
+                  
+                  <p>
+                        <?php echo lang('create_user_address_label', 'address');?> <br />
+                        <?php echo form_input($address);?>
+                  </p>   
+                  <p>
+                        <?php echo lang('create_user_website_label', 'website');?> <br />
+                        <?php echo form_input($website);?>
+                  </p>   
+                  <p>
+                        <?php echo lang('create_user_social_network_label', 'social_network');?> <br />
+                        <?php echo form_input($social_network);?>
+                        <?php echo form_input($social_network);?>
+                        <?php echo form_input($social_network);?>
+                  </p>   
+>>>>>>> 96c94950079317ee9a51b8d76b56b7b8428d50dd
                   <p>
                         <?php echo lang('create_user_password_label', 'password');?> <br />
                         <?php echo form_input($password);?>
