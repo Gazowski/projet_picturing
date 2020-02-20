@@ -41,9 +41,6 @@
     h1{
       font-size: 1.3em;
     }
-    select, .select{
-        width:100%;
-    }
 }
 
 .titre_form{
@@ -61,7 +58,6 @@
 @media (min-width: 600px) {
     .form {
         width: calc(70% - 4em);
-        
     }
     .button{
    
@@ -73,10 +69,6 @@
 @media (min-width: 900px) {
     .form {
         width: calc(35% - 4em);
-        select, .select{
-            width:30%;
-        }
-       
     }
 	
 }
