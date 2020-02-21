@@ -1,3 +1,4 @@
+</main>
 <footer>
     <div class="content_f">
         <div class="logo_f">

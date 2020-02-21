@@ -30,26 +30,27 @@
 
       <!--  ---------------------------------------------les selects------------------------------------------------------- -->
                   <?php echo form_label($type['name']); ?>
-                  <div class="select_cont">                        
-                      
-                   
-                              <?php 
-                                    $opt = ['default' => '-- choisir un type --'];
-                                    foreach($type['option'] as $key=>$option)
-                                          {
-                                                $opt[$option->category] = $option->category;
-                                          } 
-                                    echo form_dropdown($type['name'], $opt,'', 'data-js-input="type"'); 
-                              ?>
-                    
-                  </div>
-                  <?php echo form_label($category['name']);?> 
-                  <div class="select_cont">
-                   
-                              <?php echo form_dropdown($category['name'],$category['option'],'','data-js-input="category"');?>
-                  
-                  </div>
-
+                 
+                        <div class="select_cont">                        
+                        
+                        
+                                    <?php 
+                                          $opt = ['default' => '-- choisir un type --'];
+                                          foreach($type['option'] as $key=>$option)
+                                                {
+                                                      $opt[$option->category] = $option->category;
+                                                } 
+                                          echo form_dropdown($type['name'], $opt,'', 'data-js-input="type"'); 
+                                    ?>
+                        
+                        </div>
+                        <?php echo form_label($category['name']);?> 
+                        <div class="select_cont">
+                        
+                                    <?php echo form_dropdown($category['name'],$category['option'],'','data-js-input="category"');?>
+                        
+                        </div>
+               
                   <p>
                         <?php echo form_label($description['name']);?> <br />
                         <?php echo form_input($description);?>

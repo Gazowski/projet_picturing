@@ -2,9 +2,15 @@ body{
     @include color($c_white,$c_dark_grey);
     font-family: $f_text;
     margin: 0 auto;
-    min-height: 100%;
-    box-sizing: border-box;
+    min-height: 100vh;
+	box-sizing: border-box;
+    display: flex;
+    flex-direction: column;
 }
+main{
+	flex-grow: 1;
+}
+
 
 h1,h3,h2{
     font-family: $f_title;    
@@ -49,7 +55,6 @@ select {
 }
 
 .select_cont {
-	
 	background: $c-dark-grey ;
 	display: flex;
 	height: 2em;
@@ -66,10 +71,11 @@ select {
 		pointer-events: none;
 		position: absolute;
 		right: 0;
-		top: -5;
+		top: 0;
 		transition: .25s all ease;
 		-webkit-transition: .25s all ease;
 		-o-transition: .25s all ease;
+		line-height: 2;
 	}
 
 	&:hover {
@@ -99,7 +105,9 @@ img{
 	.select_cont {
 		width: 20%;
 	}
-	 
+	.form .select_cont{
+		width: 100%;
+	}	 
 }
 
 

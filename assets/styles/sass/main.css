@@ -6387,9 +6387,22 @@ body {
   color: #393838;
   font-family: "Montserrat", sans-serif;
   margin: 0 auto;
-  min-height: 100%;
+  min-height: 100vh;
   -webkit-box-sizing: border-box;
           box-sizing: border-box;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+}
+
+main {
+  -webkit-box-flex: 1;
+      -ms-flex-positive: 1;
+          flex-grow: 1;
 }
 
 h1, h3, h2 {
@@ -6460,10 +6473,11 @@ select::-ms-expand {
   pointer-events: none;
   position: absolute;
   right: 0;
-  top: -5;
+  top: 0;
   transition: .25s all ease;
   -webkit-transition: .25s all ease;
   -o-transition: .25s all ease;
+  line-height: 2;
 }
 
 .select_cont:hover::after {
@@ -6488,6 +6502,14 @@ img {
   .select_cont {
     width: 20%;
   }
+  .form .select_cont {
+    width: 100%;
+  }
+}
+
+header {
+  -ms-flex-negative: 0;
+      flex-shrink: 0;
 }
 
 #logo_h {
@@ -6951,8 +6973,8 @@ form select::-ms-expand {
 footer {
   background-color: #393838;
   width: 100%;
-  position: absolute;
-  bottom: 5;
+  -ms-flex-negative: 0;
+      flex-shrink: 0;
 }
 
 footer .content_f {
@@ -7001,16 +7023,18 @@ footer .address {
 }
 
 @media (min-width: 600px) {
-  /*
-    .address {
-        color: $c-light-grey;
-        display: flex;
-        width: 69%;
-    }*/
+  footer .logo_f {
+    margin: 5% 5%;
+    width: 10.5em;
+  }
+  footer .medias {
+    font-size: 1.2em;
+    margin-left: 15em;
+  }
 }
 
 @media (min-width: 900px) {
-  .address {
+  footer .address {
     color: #bdbdbd;
     display: -webkit-box;
     display: -ms-flexbox;
@@ -7023,12 +7047,12 @@ footer .address {
     padding: 0;
     width: 50%;
   }
-  .address p {
+  footer .address p {
     font-size: .8vw;
     margin: .1em 0 .1em .2em;
     padding: 0;
   }
-  .content_f {
+  footer .content_f {
     -webkit-box-align: center;
         -ms-flex-align: center;
             align-items: center;
@@ -7041,17 +7065,15 @@ footer .address {
     margin: auto;
     width: 75%;
   }
-  .content_f a {
+  footer .content_f a {
     color: #bdbdbd;
     margin: 0 2%;
   }
-  .logo_f {
-    margin-right: .5em;
-    padding: 0;
-    width: 40%;
+  footer .logo_f {
+    width: 13.5em;
   }
-  .medias {
-    font-size: 2em;
+  footer .medias {
+    font-size: 1.5em;
     margin-left: 15em;
   }
 }
@@ -7075,6 +7097,12 @@ footer .address {
 .alert .fail {
   background-color: #8ed080;
   border: 1px solid #2c771d;
+}
+
+@media (min-width: 900px) {
+  .alert {
+    width: 69%;
+  }
 }
 
 .button {

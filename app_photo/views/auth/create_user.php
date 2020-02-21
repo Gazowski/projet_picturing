@@ -19,8 +19,10 @@
                         <?php echo lang('create_user_lname_label', 'last_name');?> <br />
                         <?php echo form_input($last_name);?>
                   </p>
-                  <p>
+                  
                   <?php echo lang('create_user_group_label', 'group');?> <br />
+                  
+                  <div class="select_cont">
                   <?php
                         $opt = ['default' => '-- choisir un type --'];
                         foreach($group['option'] as $key=>$option)
@@ -28,7 +30,8 @@
                               $opt[$option->id] = $option->name;
                         } 
                         echo form_dropdown($group['name'], $opt,'', 'data-js-input="group"'); ?>
-                  </p>
+                  </div>
+                  
                   
                   <?php
                   if($identity_column!=='email') {
