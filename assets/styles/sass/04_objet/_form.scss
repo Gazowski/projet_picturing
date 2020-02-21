@@ -17,7 +17,13 @@
     h1{
       font-size: 1.3em;
     }
+    .content_form {
+        p{font-size: .9em;}
+        a{margin-left: 2em;}
+    
+    } 
 }
+
 form select{
     //@include centrer;
     width: 100%;
@@ -56,7 +62,6 @@ form select{
         width: calc(70% - 4em);
     }
     .button{
-   
         margin-top: 1em; 
     }
 	

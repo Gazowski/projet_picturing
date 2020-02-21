@@ -16,29 +16,19 @@
 	width: 69%;
 }
 
-
 //--------menu_navigation_Tablette-----------//
 @media (min-width: 600px) {
 	.filter {
-		align-items: center;
 		flex-direction: row;
-		display: flex;
-		justify-content: space-between;
-		margin: .3em auto; //media query 900px
-		width: 69%;
+		margin: .3em auto; 
 	}
 	
 }
 
 //--------menu_navigation_Grand écran-----------//
 @media (min-width: 900px) {
-	.filter {
-		align-items: center;
-		flex-direction: row;
-		display: flex;
-		justify-content: space-between;
-		margin: .3em auto; //media query 900px
-		width: 69%;
-	}
+	
+	
+	
 		
 }

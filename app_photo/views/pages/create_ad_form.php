@@ -29,9 +29,10 @@
                   </p>
 
       <!--  ---------------------------------------------les selects------------------------------------------------------- -->
+                  <?php echo form_label($type['name']); ?>
                   <div class="select_cont">                        
-                        <?php echo form_label($type['name']); ?>
-                        <div class="select">
+                      
+                   
                               <?php 
                                     $opt = ['default' => '-- choisir un type --'];
                                     foreach($type['option'] as $key=>$option)
@@ -40,12 +41,13 @@
                                           } 
                                     echo form_dropdown($type['name'], $opt,'', 'data-js-input="type"'); 
                               ?>
-                        </div>
+                    
                   </div>
-
+                  <?php echo form_label($category['name']);?> 
                   <div class="select_cont">
-                        <?php echo form_label($category['name']);?> 
-                        <?php echo form_dropdown($category['name'],$category['option'],'','data-js-input="category"');?>
+                   
+                              <?php echo form_dropdown($category['name'],$category['option'],'','data-js-input="category"');?>
+                  
                   </div>
 
                   <p>

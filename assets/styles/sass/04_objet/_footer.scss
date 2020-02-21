@@ -4,7 +4,7 @@ footer {
     background-color: $c-dark-grey;
     width: 100%;
     position: absolute;
-    bottom:0;
+    bottom:5;
 
 
     .content_f {
@@ -12,7 +12,7 @@ footer {
         flex-direction: row;
         justify-content: space-between;
         margin-bottom: 0em;
-        //height: 10%;
+        height: 10%;
         a {
             color: $c-light-grey;
             margin: 0 2%;

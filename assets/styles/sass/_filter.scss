@@ -1,35 +1,21 @@
-body{
-    @include color($c_white,$c_dark_grey);
-    font-family: $f_text;
-    margin: 0 auto;
-    min-height: 100%;
-    box-sizing: border-box;
+// .filter{
+//     margin-top: 2em;
+// }
+/* Remove IE arrow */
+/* Custom Select */
+/* Arrow */
+/* Transition */
+
+.filter {
+	
+	align-items: center;
+	display: flex;
+	flex-direction: column;
+	justify-content: space-between;
+	margin: 1em auto; //media query 900px
+	width: 69%;
 }
 
-h1,h3,h2{
-    font-family: $f_title;    
-    font-weight: normal;
-}
-
-h2 {  
-    text-align: center;
-    color : $c-medium-grey;
-}
-
-a{
-    color: $c-medium-grey;
-    font-size: 0.9em;
-    text-decoration: none;
-    list-style-type: none;
-    &:hover{
-        color: $c-medium-theme; 
-    }
-}
-
-input[type ="text"],input[type = "password"]{
-    width: 99%;
-}
-//---------scss select dans toutes les vue qui on un select-----//
 select {
 	appearance: none;
 	background: $c-dark-grey;
@@ -48,15 +34,16 @@ select {
 	}
 }
 
-.select_cont {
+.select {
 	
 	background: $c-dark-grey ;
 	display: flex;
 	height: 2em;
 	line-height: 3;
+	margin-left: .5em;
 	overflow: hidden;
     position: relative;
-	width: 100%;
+	width: 16em;
 
 	&::after {
 		background: $c-medium-theme;
@@ -78,28 +65,29 @@ select {
 		}
 	}
 }
-//---------fin du scss select dans toutes les vue qui on un select-----//
-img{
-    width: 95%;
-    object-fit: cover;
-    margin-left: .4em;
-    margin-top: .4em;
-  }
 
 //--------menu_navigation_Tablette-----------//
 @media (min-width: 600px) {
-	.select_cont {
-		width: 100%;
+	.filter {
+	
+		flex-direction: row;
+		display: flex;
+		justify-content: space-between;
+		margin: .3em auto; //media query 900px
+		width: 69%;
 	}
 	
 }
 
 //--------menu_navigation_Grand écran-----------//
 @media (min-width: 900px) {
-	.select_cont {
-		width: 100%;
+	.filter {
+	
+		flex-direction: row;
+		display: flex;
+		justify-content: space-between;
+		margin: .3em auto; //media query 900px
+		width: 69%;
 	}
-	 
+		
 }
-
-
