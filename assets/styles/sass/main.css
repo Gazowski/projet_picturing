@@ -6456,11 +6456,11 @@ select::-ms-expand {
   background: #bd006b;
   content: '\25BC';
   cursor: pointer;
-  padding: 0 1em;
+  padding: 0 .5em;
   pointer-events: none;
   position: absolute;
   right: 0;
-  top: -6;
+  top: -5;
   transition: .25s all ease;
   -webkit-transition: .25s all ease;
   -o-transition: .25s all ease;
@@ -6480,13 +6480,13 @@ img {
 
 @media (min-width: 600px) {
   .select_cont {
-    width: 100%;
+    width: 45%;
   }
 }
 
 @media (min-width: 900px) {
   .select_cont {
-    width: 100%;
+    width: 20%;
   }
 }
 
