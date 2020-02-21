@@ -12,7 +12,7 @@
  */
 ?>
 
-<div class="form">
+<div class="form" data-component='form'>
       <div class="titre_form">  
             <h1><?= $page_title ?></h1>
       </div>
