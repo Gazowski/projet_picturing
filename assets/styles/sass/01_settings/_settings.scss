@@ -23,7 +23,7 @@ $c-dark-theme :  hsl(335, 69%, 38%);
 //-----------------------------------------
 
 //-----------------------------------------
-//definition de mixins
+//definition des mixins
 //-----------------------------------------
 @mixin flexbox($display, $direction, $justify, $align) {
     display: $display;
