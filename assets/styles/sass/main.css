@@ -6383,8 +6383,8 @@ template {
 }
 
 body {
-  background-color: #ffff;
-  color: #383737;
+  background-color: white;
+  color: #393838;
   font-family: "Montserrat", sans-serif;
   margin: 0 auto;
   min-height: 100%;
@@ -6399,11 +6399,11 @@ h1, h3, h2 {
 
 h2 {
   text-align: center;
-  color: #6b6a6a;
+  color: #6b6b6b;
 }
 
 a {
-  color: #6b6a6a;
+  color: #6b6b6b;
   font-size: 0.9em;
   text-decoration: none;
   list-style-type: none;
@@ -6421,7 +6421,7 @@ select {
   -webkit-appearance: none;
      -moz-appearance: none;
           appearance: none;
-  background: #383737;
+  background: #393838;
   background-image: none;
   border: 0 !important;
   -webkit-box-shadow: none;
@@ -6441,7 +6441,7 @@ select::-ms-expand {
 }
 
 .select_cont {
-  background: #383737;
+  background: #393838;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -6467,7 +6467,7 @@ select::-ms-expand {
 }
 
 .select_cont:hover::after {
-  color: #383737;
+  color: #393838;
 }
 
 img {
@@ -6519,13 +6519,13 @@ img {
 .line {
   margin-top: 2rem;
   margin-bottom: 20px;
-  border-bottom: 1px solid #bcbcbc;
+  border-bottom: 1px solid #bdbdbd;
   width: 69%;
   margin: 0 auto;
 }
 
 .line_t {
-  border-bottom: 1px solid #bcbcbc;
+  border-bottom: 1px solid #bdbdbd;
   width: 29%;
   margin: 0 auto 2em;
 }
@@ -6549,7 +6549,7 @@ img {
 }
 
 #menuToggle a {
-  color: #bcbcbc;
+  color: #bdbdbd;
   text-decoration: none;
   -webkit-transition: color 0.3s ease;
   transition: color 0.3s ease;
@@ -6626,7 +6626,7 @@ img {
   margin: -111px 0px 0 -23px;
   padding: 50px;
   padding-top: 125px;
-  background: #383737;
+  background: #393838;
   list-style-type: none;
   -webkit-font-smoothing: antialiased;
   -webkit-transform-origin: 0% 0%;
@@ -6686,7 +6686,7 @@ img {
   .ligne {
     margin-top: 2rem;
     margin-bottom: 20px;
-    border-bottom: 1px solid #bcbcbc;
+    border-bottom: 1px solid #bdbdbd;
     width: 69%;
     margin: 0 auto;
   }
@@ -6764,7 +6764,7 @@ img {
 }
 
 .form {
-  border: 1px solid #bcbcbc;
+  border: 1px solid #bdbdbd;
   -webkit-box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
           box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
   display: -webkit-box;
@@ -6813,7 +6813,7 @@ form select {
   -webkit-appearance: none;
      -moz-appearance: none;
           appearance: none;
-  background: #383737;
+  background: #393838;
   background-image: none;
   border: 0 !important;
   -webkit-box-shadow: none;
@@ -6901,7 +6901,7 @@ form select::-ms-expand {
   -webkit-box-pack: justify;
       -ms-flex-pack: justify;
           justify-content: space-between;
-  border: 1px solid #bcbcbc;
+  border: 1px solid #bdbdbd;
   width: 15em;
   margin: 1em auto;
   -webkit-box-shadow: 0 1px 2px rgba(0, 0, 0, 0.15);
@@ -6920,7 +6920,7 @@ form select::-ms-expand {
 
 .child p {
   padding: 0.5rem 1rem 0.5rem 1rem;
-  color: #6b6a6a;
+  color: #6b6b6b;
   margin: 0px;
   font-size: .8em;
 }
@@ -6949,7 +6949,7 @@ form select::-ms-expand {
 }
 
 footer {
-  background-color: #383737;
+  background-color: #393838;
   width: 100%;
   position: absolute;
   bottom: 5;
@@ -6971,12 +6971,12 @@ footer .content_f {
 }
 
 footer .content_f a {
-  color: #bcbcbc;
+  color: #bdbdbd;
   margin: 0 2%;
 }
 
 footer .content_f p {
-  color: #bcbcbc;
+  color: #bdbdbd;
 }
 
 footer .logo_f {
@@ -7011,7 +7011,7 @@ footer .address {
 
 @media (min-width: 900px) {
   .address {
-    color: #bcbcbc;
+    color: #bdbdbd;
     display: -webkit-box;
     display: -ms-flexbox;
     display: flex;
@@ -7042,7 +7042,7 @@ footer .address {
     width: 75%;
   }
   .content_f a {
-    color: #bcbcbc;
+    color: #bdbdbd;
     margin: 0 2%;
   }
   .logo_f {
@@ -7056,13 +7056,34 @@ footer .address {
   }
 }
 
+.alert {
+  width: 91%;
+  font-family: "Montserrat", sans-serif;
+  background-color: #bcbcbc;
+  border: 1px solid #6b6a6a;
+  margin: 15px auto;
+  padding: .7em;
+  font-size: 1em;
+  text-align: center;
+}
+
+.alert .succes {
+  background-color: #8ed080;
+  border: 1px solid #2c771d;
+}
+
+.alert .fail {
+  background-color: #8ed080;
+  border: 1px solid #2c771d;
+}
+
 .button {
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
   color: white;
   cursor: pointer;
-  background-color: #383737;
+  background-color: #393838;
   border: none;
   font-family: "Montserrat", sans-serif;
   margin: .5em;
@@ -7084,7 +7105,7 @@ footer .address {
 }
 
 .form {
-  border: 1px solid #bcbcbc;
+  border: 1px solid #bdbdbd;
   -webkit-box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
           box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
   display: -webkit-box;
