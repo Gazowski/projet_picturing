@@ -1,31 +1,26 @@
 import { requeteAjax } from './ajax.js'
+import { class_mapping } from './class_mapping'
+import { Form } from './Form'
 
 document.addEventListener("DOMContentLoaded", function() {
-    let inputs = document.querySelectorAll('[data-js-input]'),
-    select_category
 
-    if(inputs){
-        for(let input of inputs){
-            if(input.dataset.jsInput == 'category') select_category = input
-            if(input.dataset.jsInput == 'type'){
-                input.addEventListener('change',()=>{
-                    console.log(input.options[input.selectedIndex].value)
-                    let paramAjax = {
-                        methode : "POST",
-                        json : true,
-                        action : "get_category_name",
-                        donnees_a_envoyer : input.options[input.selectedIndex].value
-                    }
-                    requeteAjax(paramAjax, (reponse_ajax) => {
-                    
-                        console.log(reponse_ajax)
-                        select_category.innerHTML = reponse_ajax
-                    })
+	// pour chaque data-component dans le DOM, instancie la classe JS nommée comme valeur de l'attribut
+    let components = document.querySelectorAll('[data-component]');
 
-                })
+	for (let i = 0, l = components.length; i < l; i++) {
+		
+		let componentDataSet = components[i].dataset.component;
+		let componentElement = components[i];
 
-            }
-        }
-    }
 
+		for (let key of Object.keys(class_mapping)) {
+			
+			//console.log(`${key}`);
+			let classInMap = `${key}`;
+			//console.log(classInMap);
+
+			if (componentDataSet == classInMap) new class_mapping[componentDataSet](componentElement);
+		}
+	}
 });
+
