@@ -1,6 +1,4 @@
-import { requeteAjax } from './ajax.js'
 import { class_mapping } from './class_mapping'
-import { Form } from './Form'
 
 document.addEventListener("DOMContentLoaded", function() {
 
