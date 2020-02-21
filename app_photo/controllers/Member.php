@@ -72,8 +72,8 @@ class Member extends CI_Controller {
         }       
         
         $data['title'] = 'Liste des Membres'; // Capitalize the first letter
-        $data['table'] = $this->member_model->get_member();
-        foreach($data['table'] as $row)
+        $data['membres'] = $this->member_model->get_member();
+        foreach($data['membres'] as $row)
         {
             if(!$row['active'])
             {
@@ -85,6 +85,6 @@ class Member extends CI_Controller {
         
         
         $is_admin = $this->ion_auth->is_admin();
-        $this->load->template('pages/list',$data,$is_admin);
+        $this->load->template('pages/list_members',$data,$is_admin);
     } 
 }

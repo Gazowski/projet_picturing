@@ -15,10 +15,10 @@ class Member_model extends CI_Model {
         {
             if ($member === FALSE)
             {
-                    $this->db->select('id, email, created_on, last_login, active, first_name, last_name, company, company_number,address,
-                    phone, website, social_network');
+                    $this->db->select('users.id, email, created_on, last_login, active, first_name, last_name, company, name,active,created_on,last_login');
                     $this->db->from('users');
-                    $this->db->join('users_groups','users_groups.user_id = id.users');
+                    $this->db->join('users_groups','users_groups.user_id = users.id');
+                    $this->db->join('groups','groups.id = users_groups.user_id');
                   
                     $query = $this->db->get();
                     return $query->result_array();
