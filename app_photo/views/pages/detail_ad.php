@@ -2,6 +2,8 @@
 <?php /**
      * affichage d'une annonce 
      * */ 
+
+   
 ?>  
   <h2>SELECTION</h2>
   
@@ -11,18 +13,21 @@
     
     <div class="child">
         <aside>
-          <img src="<?= base_url(['photo'])?>" alt="<?= ['title'] ?>"/>
+          <img src="<?= base_url($ad['photo'])?>" alt="<?= $ad['title'] ?>"/>
         </aside>
         <div>
-          <h3><?= ['title'] ?></h3>
-          <p><?= ['description'] ?></p>
+          
+          <h3><?= $ad['title'] ?></h3>
+          <p><?= $ad['description'] ?></p>
           <div class="prix">
-            <h3><?= ['price'] ?> CAD$</h3>
+            <h3><?= $ad['price'] ?> CAD$</h3>
           </div>
+
         </div>  
     </div>
+    <div>
     <a class="button" href="">Soumissioner</a>
- 
+    </div> 
 
 </div>
 

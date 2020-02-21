@@ -55,9 +55,10 @@ class Ad extends CI_Controller {
             show_404();
         }
         
-		$data['title'] = $this->ad_model->get_ad('title'); // Capitalize the first letter
-        $data['ad'] = $this->ad_model->get_ad();
-
+		$data['title'] = 'Information Annonce';
+        
+        $data['ad'] = $this->ad_model->get_ad($id_ad);
+        //$data = array('ad' => $this->ad_model->get_ad($id_ad));
         $this->load->template('pages/detail_ad',$data);
     }
 
