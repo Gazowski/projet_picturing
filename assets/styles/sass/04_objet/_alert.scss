@@ -1,0 +1,18 @@
+.alert{
+   width: 91%;
+   font-family: "Montserrat", sans-serif;
+   background-color: #bcbcbc;
+   border: 1px solid #6b6a6a;
+   margin: 15px auto;
+   padding: .7em;
+   font-size: 1em;
+   text-align: center;
+   & .succes{
+      background-color: $c-succes;
+      border: 1px solid $c-succes-border;
+   }
+   & .fail{
+      background-color: $c-succes;
+      border: 1px solid $c-succes-border;
+   }  
+}
