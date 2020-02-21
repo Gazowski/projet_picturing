@@ -10,13 +10,13 @@
         </tr>
         <?php foreach($membres as $membre)   
             {    
-                echo "<tr id=".$membre['id']."class ='' data-active=".$membre['active'].">        
+                echo "<tr id=".$membre['id']." data-row>        
                         <td>".$membre['first_name']."</td>
                         <td>".$membre['last_name']." </td>
                         <td>".$membre['email']."</td>
                         <td>".$membre['company']."</td>
                         <td>".$membre['name']."</td>
-                        <td><a href='' class='button'></a></td>                
+                        <td><button class='button' data-active=".$membre['active']."></button></td>                
                     </tr>";
             }      
         ?>
