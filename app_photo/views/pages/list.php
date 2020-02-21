@@ -5,19 +5,15 @@
     <table>
     <tr>
     <?php
-        foreach($table[0] as $key => $value)
-            
+        foreach($table[0] as $key => $value)        
              { 
     ?>
-             <th><?=$key?></th>
-               
+             <th><?=$key?></th>            
     <?php 
              }
     ?>
-     </tr>
-
-     
-        
+    </tr>
+   
     <?php
 
         foreach($table as $row) { ?>

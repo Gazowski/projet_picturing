@@ -8,18 +8,22 @@ $f-button : 'Montserrat', sans-serif;
 $f-link : 'Montserrat', sans-serif;
 
 // definition des variables couleur
-$c-white : #ffff;
-$c-light-grey : #bcbcbc;
-$c-medium-grey : #6b6a6a;
-$c-dark-grey : #383737;
-$c-error-color : red;
+$c-white : hsl(0, 0%, 100%);
+$c-light-grey : hsl(0, 0%, 74%);
+$c-medium-grey : hsl(0, 0%, 42%);
+$c-dark-grey : hsl(0, 1%, 22%);
+$c-error-color : hsl(0, 100%, 50%);
+$c-succes : hsl(110, 46%, 66%);
+$c-succes-border : hsl(110, 61%, 29%); 
+$c-fail-border : hsl(355, 67%, 48%);
+$c-fail : hsl(355, 59%, 63%);
 $c-light-theme : hsl(332, 68%, 74%); 
 $c-medium-theme :  hsl(326, 100%, 37%); 
 $c-dark-theme :  hsl(335, 69%, 38%); 
 //-----------------------------------------
 
 //-----------------------------------------
-//definition de mixins
+//definition des mixins
 //-----------------------------------------
 @mixin flexbox($display, $direction, $justify, $align) {
     display: $display;
