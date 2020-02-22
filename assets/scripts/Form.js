@@ -20,14 +20,12 @@ export class Form {
             if(input.dataset.jsInput == 'type'){
                 input.addEventListener('change',()=>{
                     let paramAjax = {
-                        methode : "POST",
+                        method : "POST",
                         json : true,
-                        action : "get_category_name",
-                        donnees_a_envoyer : input.options[input.selectedIndex].value
+                        action : "index.php/ajax_controller/get_category_name",
+                        data_to_send : input.options[input.selectedIndex].value
                     }
                     requeteAjax(paramAjax, (reponse_ajax) => {
-                    
-                        console.log(reponse_ajax)
                         select_category.innerHTML = reponse_ajax
                     })
 
