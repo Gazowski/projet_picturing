@@ -12,9 +12,8 @@ export let requeteAjax = (data,callback) => {
     // initialisation de la requête
 
     if(xhr) {	
-
-        xhr.open(data.methode, data.action);
-        if(data.methode == "POST"){
+        xhr.open(data.method, data.action);
+        if(data.method == "POST"){
             if(data.json){
                 xhr.setRequestHeader("Content-Type", "application/json")
             }
@@ -37,12 +36,12 @@ export let requeteAjax = (data,callback) => {
             }
         });
         //3ème étape - envoi de la requête
-        let donnees = ""
-        if(data.donnees_a_envoyer){
-            donnees = JSON.stringify(data.donnees_a_envoyer)
-            donnees = encodeURIComponent(donnees)
-            console.log(donnees)
+        let ajax_data = ""
+        if(data.data_to_send){
+            ajax_data = JSON.stringify(data.data_to_send)
+            ajax_data = encodeURIComponent(ajax_data)
+            console.log(ajax_data)
         }
-        xhr.send(donnees)
+        xhr.send(ajax_data)
     }
 }

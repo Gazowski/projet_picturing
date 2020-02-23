@@ -1,3 +1,4 @@
+import { requeteAjax } from './ajax.js'
 
 export class List {
     constructor(el) {
@@ -37,7 +38,7 @@ class Row{
     
     add_action_to_button(){
         this._button.addEventListener('click',()=>{
-            let action = elt.dataset.active == 1 ? this.banish_user() : this.activate_user()
+            let action = this._button.dataset.active == 1 ? this.banish_user() : this.activate_user()
         })
     }
 
@@ -47,7 +48,17 @@ class Row{
     }
 
     activate_user(){
-
+        let paramAjax = {
+            method : "POST",
+            json : true,
+            action : "index.php/ajax_controller/activate_member",
+            data_to_send : this.user
+        }
+        requeteAjax(paramAjax, (reponse_ajax) => {
+            console.log(reponse_ajax)
+            if(reponse_ajax == 1)
+                this._button.innerHTML = 'Bannir'
+        })
     }
 }
     
