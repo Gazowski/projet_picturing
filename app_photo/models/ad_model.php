@@ -4,20 +4,26 @@ class Ad_model extends CI_Model {
     public function __construct()
     {
         $this->load->database();
+        $this->load->library(['ion_auth']);
     }
 
     public function get_ad($ad = false)
     {
+        $is_admin = $this->ion_auth->is_admin();
+        $this->db->select('*');
+        $this->db->from('ad');
+        $this->db->join('category','category.id_category = ad.category');
+        // si l'utilisateur n'est pas admin, seules les annonces activées sont sélectionnées
+        !$is_admin ? $this->db->where('active',1) : '';
+
         if ($ad === FALSE)
-        {
-                $this->db->select('*');
-                $this->db->from('ad');
-                $this->db->join('category','category.id_category = ad.category');
+        {                
                 $query = $this->db->get();
                 return $query->result_array();
         }
 
-        $query = $this->db->get_where('ad', array('id_ad' => $ad));
+        $this->db->where('id_ad',$ad);
+        $query = $this->db->get();
         return $query->row_array();
     }
 
@@ -39,6 +45,17 @@ class Ad_model extends CI_Model {
         $this->db->select('id_category,name');
         $this->db->where('category',$category);
         return $this->db->get('category')->result_array();
+    }
+
+    public function get_unactive_ad()
+    {
+        $this->db->select('id,title,name,last_name,first_name,price,ad.active as ad_active');
+        $this->db->from('ad');
+        $this->db->join('users','users.id = ad.owner');
+        $this->db->join('category','category.id_category = ad.category');
+        $this->db->where('ad.active',0);          
+        $query = $this->db->get();
+        return $query->result_array();
     }
 
 }
