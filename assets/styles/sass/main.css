@@ -7105,6 +7105,7 @@ footer .address {
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
+  z-index: 2;
 }
 
 .alert {
@@ -7177,7 +7178,7 @@ td, th {
   }
 }
 
-.entete {
+.entete_admin {
   width: 100%;
   background-image: url("../../logo/header_image_admin.png");
   background-repeat: no-repeat;
