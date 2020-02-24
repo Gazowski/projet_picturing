@@ -7171,6 +7171,7 @@ td, th {
 
 @media (min-width: 900px) {
   .table {
+    overflow-x: hidden;
     width: 69%;
     margin: 0 auto;
   }
