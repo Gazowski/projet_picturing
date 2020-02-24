@@ -37,7 +37,7 @@
      * */ 
 ?>
 
-
+<?php if(isset($message)) { ?>
 <section class="">
     <ul class="">
         <?php foreach($message as $row) {?>
@@ -52,8 +52,8 @@
             </li>
         <?php } ?>
     </ul>
-
 </section>
+<?php } ?>
 
 
     
