@@ -2,7 +2,7 @@
 <!-- --- -->
 
 <header>
-    <section class="entete">
+    <section class="entete_admin">
         <div class="menu">
             <nav role="navigation">
                 <div id="menuToggle">
