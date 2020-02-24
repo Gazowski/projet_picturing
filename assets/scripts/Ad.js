@@ -5,6 +5,7 @@ export class Ad {
         // declaration des variables 
         this._el = el,
         this._elTiles = this._el.querySelectorAll('[data-js-tile]');
+        this._
         console.log(this._elTiles);
 
         // initialise les comportements
@@ -15,17 +16,16 @@ export class Ad {
         for(let tile of this._elTiles){
             tile.addEventListener('click',()=>{
                 console.log('click');
-                /*
+                console.log(tile.dataset.jsTile);
+
                 let paramAjax = {
-                    method : "POST",
-                    json : true,
-                    action : "index.php/ad/display_ad",
-                    data_to_send : .value
+                    method : "GET",
+                    action : "index.php/ajax_controller/display_ad/"+tile.dataset.jsTile,
                 }
                 
                 requeteAjax(paramAjax, (reponse_ajax) => {
-                    .innerHTML = reponse_ajax
-                })*/
+                   this._el.innerHTML = reponse_ajax
+                })
             })
         }
     }

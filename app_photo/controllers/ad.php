@@ -47,21 +47,6 @@ class Ad extends CI_Controller {
 
         $this->load->template('pages/tile',$data);
     }
-	
-	public function display_ad($id_ad)
-    {
-        if ( ! file_exists(APPPATH.'views/pages/detail_ad.php'))
-        {
-            // Whoops, we don't have a page for that!
-            show_404();
-        }
-        
-		$data['title'] = 'Information Annonce';
-        
-        $data['ad'] = $this->ad_model->get_ad($id_ad);
-
-        $this->load->template('pages/detail_ad',$data);
-    }
 
     public function create_ad()
     {
@@ -164,5 +149,4 @@ class Ad extends CI_Controller {
 			$this->load->template('pages/create_ad_form',$this->data);
 		}
 	}
-
 }
