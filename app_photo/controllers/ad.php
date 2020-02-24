@@ -58,7 +58,7 @@ class Ad extends CI_Controller {
         
 		$data['title'] = 'Information Annonce';
         
-        $data['ad'] = $this->ad_model->get_ad(2);
+        $data['ad'] = $this->ad_model->get_ad($id_ad);
 
         $this->load->template('pages/detail_ad',$data);
     }
