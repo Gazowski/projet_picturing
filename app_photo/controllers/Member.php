@@ -86,10 +86,8 @@ class Member extends CI_Controller {
 
         if (!$this->ion_auth->is_admin())
         {
-            $this->session->set_flashdata('message', [
-                'class' => 'fail',
-                'text' => 'Vous n\'êtes pas un administrateur',
-            ]);
+            $this->session->set_flashdata('message', 'Vous n\'êtes pas un administrateur');
+            $this->session->set_flashdata('class', 'fail');
             redirect('ad/display_all');
         }
         

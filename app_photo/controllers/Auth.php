@@ -518,15 +518,12 @@ class Auth extends CI_Controller
 		}
 		if ($this->form_validation->run() === TRUE && $this->ion_auth->register($identity, $password, $email, $additional_data))
 		{
-			// redirection vers la page annonces avec un message de confirmation
-			$this->session->set_flashdata('message', [
-				'text' => 'Votre compte est en attente de validation !',
-				'class' => 'succes'
-				]);
-				redirect('ad/display_all','refresh');
-			}
-			else
-			{
+			$this->session->set_flashdata('message', 'Votre compte est en attente de validation !');
+            $this->session->set_flashdata('class', 'succes');
+			redirect('ad/display_all','refresh');
+		}
+		else
+		{
 				// display the create user form
 				// set the flash data error message if there is one
 				$this->data['message'] = (validation_errors() ? validation_errors() : ($this->ion_auth->errors() ? $this->ion_auth->errors() : $this->session->flashdata('message')));
