@@ -16,9 +16,14 @@ class MY_Loader extends CI_Loader {
      * @param array $vars : le contenu de la page
      * @param bool $is_admin : si utilisateur admin , le header et le menu est différent
      */
+
     
     public function template($page, $vars = array(), $is_admin = FALSE)
     {
+
+        $vars['icon'] = !isset($_SESSION['user_id']) ? 'fas fa-user' : 'fas fa-sign-out-alt';
+        $vars['text_icon'] = !isset($_SESSION['user_id']) ? ' Connexion' : ' Déconnexion';
+        $vars['action'] = !isset($_SESSION['user_id']) ? 'login' : 'logout';
 
         if($is_admin)
         {
@@ -43,5 +48,6 @@ class MY_Loader extends CI_Loader {
         $this->view('pages/footer', $vars);
 
     }
+
 }
 

@@ -1,12 +1,5 @@
 export let display_alert = (message) => {
     let alert = document.querySelector('[data-alert]')
-    //     button_ok = document.createElement('button'),
-    //     button_cancel = document.createElement('button')
-
-    // console.log(alert)
-    // button_ok.innerHTML = '<i class="fas fa-check-circle"></i>'
-    // button_cancel.innerHTML = '<i class="fas fa-times-circle"></i>'
-    // console.log(bu)
     alert.innerHTML = `
     <div class='wrapper_alert'>
     <div class="alert">
