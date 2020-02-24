@@ -1,4 +1,4 @@
-<div >
+<div class="table">
     <table data-component="list">
         <tr class=''>
             <th>Prénom</th>
