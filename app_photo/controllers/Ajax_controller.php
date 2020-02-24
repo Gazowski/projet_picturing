@@ -48,10 +48,21 @@ class Ajax_controller extends CI_Controller {
         {
             $id_member = $this->ajax_data;
             $data = [
-                //'id' => $id_member,  // l'ajout de id est inutile mais nécessaire pour la méthode update. il faut un minimum de 2 éléments dans le tableau
                 'active' => 1,
             ];
             echo $this->ion_auth->update($id_member, $data);
         }
     }
+
+    	
+    public function activate_ad()
+    {
+        if($this->ion_auth->is_admin())
+        {
+            $id_ad = $this->ajax_data;
+            $this->db->set('active',1);
+            $this->db->where('id_ad',$id_ad);
+            echo $this->db->update('ad');
+        }
+	}
 }

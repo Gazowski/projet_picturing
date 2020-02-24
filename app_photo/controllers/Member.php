@@ -15,8 +15,8 @@ class Member extends CI_Controller {
     {
         parent::__construct();
         $this->load->model('member_model');
+        $this->load->model('ad_model');
         $this->load->library(['ion_auth']);
-        //$this->load_member_category();
     }
 
     /**
@@ -55,8 +55,7 @@ class Member extends CI_Controller {
         $data['title'] = 'Liste des Membres'; // Capitalize the first letter
         $data['table'] = $this->member_model->get_supplier();       
         
-        $is_admin = $this->ion_auth->is_admin();
-        $this->load->template('pages/list',$data,$is_admin);
+        $this->load->template('pages/list',$data,$this->is_admin);
     }
 
     /**
@@ -73,18 +72,32 @@ class Member extends CI_Controller {
         
         $data['title'] = 'Liste des Membres'; // Capitalize the first letter
         $data['membres'] = $this->member_model->get_member();
-        foreach($data['membres'] as $row)
+        
+        $this->load->template('pages/list_members',$data,$this->is_admin);
+    }
+
+    public function admin_home()
+    {
+        if ( ! file_exists(APPPATH.'views/pages/admin_home.php'))
         {
-            if(!$row['active'])
-            {
-                $this->session->set_flashdata('message', [
-                    'text' => 'Un ou des utilisateurs sont en attente de validation !',
-                ]);
-            }
+            // Whoops, we don't have a page for that!
+            show_404();
+        }
+
+        if (!$this->ion_auth->is_admin())
+        {
+            $this->session->set_flashdata('message', [
+                'class' => 'fail',
+                'text' => 'Vous n\'êtes pas un administrateur',
+            ]);
+            redirect('ad/display_all');
         }
         
-        
-        $is_admin = $this->ion_auth->is_admin();
-        $this->load->template('pages/list_members',$data,$is_admin);
-    } 
-}
+        $data['title'] = 'Page Administrateur';
+        $data['unactive_member'] = $this->member_model->get_unactive_member();
+        $data['unactive_ad'] = $this->ad_model->get_unactive_ad();
+
+        $this->load->template('pages/admin_home',$data,$this->ion_auth->is_admin());
+
+    }
+}#

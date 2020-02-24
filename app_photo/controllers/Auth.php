@@ -80,9 +80,7 @@ class Auth extends CI_Controller
 			{
 				if($this->ion_auth->is_admin())
 				{
-					// charger la liste membres
-					redirect('member/display_all');
-					// verifier si membres non validé -> afficher message
+					redirect('member/admin_home');
 				}
 				else
 				{
