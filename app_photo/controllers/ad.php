@@ -15,6 +15,7 @@ class Ad extends CI_Controller {
         $this->load->library(['users','ion_auth']);
         $this->load->model('ion_auth_model');
         $this->load->model('ad_model');
+        $this->is_admin = $this->ion_auth->is_admin();
         
     }
     
@@ -162,5 +163,6 @@ class Ad extends CI_Controller {
 
 			$this->load->template('pages/create_ad_form',$this->data);
 		}
-    }
+	}
+
 }

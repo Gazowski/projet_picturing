@@ -6785,6 +6785,17 @@ header {
   }
 }
 
+@media (min-width: 900px) {
+  .filter {
+    -webkit-box-orient: horizontal;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: row;
+            flex-direction: row;
+    -ms-flex-line-pack: start;
+        align-content: flex-start;
+  }
+}
+
 .form {
   border: 1px solid #bdbdbd;
   -webkit-box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
@@ -6890,8 +6901,8 @@ form select::-ms-expand {
   -ms-grid-columns: (minmax(280px, 1fr))[auto-fill];
       grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
   grid-gap: 1em;
-  grid-column-gap: 16px;
-  grid-row-gap: 25px;
+  grid-column-gap: 8px;
+  grid-row-gap: 10px;
   margin-top: 2rem;
   margin-bottom: 6rem;
 }

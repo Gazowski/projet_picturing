@@ -37,7 +37,7 @@ class MY_Loader extends CI_Loader {
         $this->view('pages/head', $vars);
         $this->view($header, $vars);
         //$this->view($menu, $vars);
-        isset($this->session->message) ? $this->view('pages/alert') : '';
+        $this->view('pages/alert');
         (strpos($page, 'list') || strpos($page,'tile')) ? $this->load->view('pages/filter',$vars) : '';
         $this->view($page, $vars);
         $this->view('pages/footer', $vars);
