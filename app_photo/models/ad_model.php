@@ -18,8 +18,8 @@ class Ad_model extends CI_Model {
 
         if ($ad === FALSE)
         {                
-                $query = $this->db->get();
-                return $query->result_array();
+            $query = $this->db->get();
+            return $query->result_array();
         }
 
         $this->db->where('id_ad',$ad);
@@ -57,5 +57,4 @@ class Ad_model extends CI_Model {
         $query = $this->db->get();
         return $query->result_array();
     }
-
 }

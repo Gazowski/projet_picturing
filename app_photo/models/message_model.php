@@ -12,6 +12,11 @@ class Message_model extends CI_Model {
     }
     
 //////////methode d'affichage des membres pour les admin////////
+    public function add_message($data) 
+    {
+        return $this->db->insert('message', $data);
+    }
+
     public function get_message($message = false)
     {
         if ($message === FALSE)
@@ -25,7 +30,7 @@ class Message_model extends CI_Model {
             return $query->result_array();
         }
 
-        $query = $this->db->get_where('users', array('id_users' => $message));
+        $query = $this->db->get_where('message', array('ad' => $id_ad));
         return $query->row_array();
     }
 }

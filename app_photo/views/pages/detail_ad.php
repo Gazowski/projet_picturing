@@ -26,7 +26,7 @@
         </div>  
     </div>
     <div>
-      <a class="button" href="">Soumissioner</a>
+      <a class="button" href="<?= base_url(); ?>index.php/create_message">Soumissioner</a>
     </div> 
 
 </div>
@@ -37,7 +37,7 @@
      * */ 
 ?>
 
-
+<?php if(isset($message)) { ?>
 <section class="">
     <ul class="">
         <?php foreach($message as $row) {?>
@@ -52,8 +52,8 @@
             </li>
         <?php } ?>
     </ul>
-
 </section>
+<?php } ?>
 
 
     
