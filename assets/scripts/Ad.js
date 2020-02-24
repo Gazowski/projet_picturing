@@ -19,7 +19,7 @@ export class Ad {
                 let paramAjax = {
                     method : "POST",
                     json : true,
-                    action : "",
+                    action : "index.php/ad/display_ad",
                     data_to_send : .value
                 }
                 
