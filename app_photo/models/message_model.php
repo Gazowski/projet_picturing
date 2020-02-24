@@ -10,6 +10,7 @@ class Message_model extends CI_Model {
     {
         $this->load->database();
     }
+    
 //////////methode d'affichage des membres pour les admin////////
     public function get_message($message = false)
     {
