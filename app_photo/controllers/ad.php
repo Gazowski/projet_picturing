@@ -47,7 +47,7 @@ class Ad extends CI_Controller {
         $this->load->template('pages/tile',$data);
     }
 	
-	public function display_ad($id_ad, $name)
+	public function display_ad($id_ad)
     {
         if ( ! file_exists(APPPATH.'views/pages/detail_ad.php'))
         {
@@ -57,8 +57,8 @@ class Ad extends CI_Controller {
         
 		$data['title'] = 'Information Annonce';
         
-        $data['ad'] = $this->ad_model->get_ad($id_ad);
-        //$data = array('ad' => $this->ad_model->get_ad($id_ad));
+        $data['ad'] = $this->ad_model->get_ad(2);
+
         $this->load->template('pages/detail_ad',$data);
     }
 

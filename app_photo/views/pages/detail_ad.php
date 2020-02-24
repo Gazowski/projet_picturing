@@ -5,7 +5,7 @@
 
    
 ?>  
-  <h2>SELECTION</h2>
+  <h2><?= $ad['title'] ?></h2>
   
   <div class="line_t"></div>
 <div class="parent">
@@ -17,7 +17,7 @@
         </aside>
         <div>
           
-          <h3><?= $ad['title'] ?></h3>
+          <!-- <h3><?= $ad['title'] ?></h3> -->
           <p><?= $ad['description'] ?></p>
           <div class="prix">
             <h3><?= $ad['price'] ?> CAD$</h3>

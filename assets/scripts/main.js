@@ -1,4 +1,4 @@
-import { class_mapping } from './class_mapping'
+import { class_mapping } from './class_mapping.js'
 
 document.addEventListener("DOMContentLoaded", function() {
 

@@ -3,10 +3,10 @@
   <h2>SELECTION</h2>
   
   <div class="line_t"></div>
-<div class="parent">
+<div class="parent" data-component="Ad">
   <?php foreach($ad as $row) {?>
     
-    <div class="child">
+    <div class="child" data-js-tile>
           <img src="<?= base_url($row['photo'])?>" alt="<?= $row['title'] ?>"/>
           <h3><?= $row['title'] ?></h3>
           <p><?= $row['description'] ?></p>
