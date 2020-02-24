@@ -40,6 +40,7 @@ CREATE TABLE IF NOT EXISTS `ad` (
   `open_date` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP,
   `close_date` datetime DEFAULT NULL,
   `owner` int(11) UNSIGNED NOT NULL,
+  `active` int NOT NULL,
   PRIMARY KEY (`id_ad`),
   UNIQUE KEY `title` (`title`),
   KEY `category` (`category`),

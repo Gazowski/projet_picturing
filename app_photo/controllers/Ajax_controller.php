@@ -42,6 +42,21 @@ class Ajax_controller extends CI_Controller {
         echo $select;
     }
 
+	public function display_ad($id_ad)
+    {
+        if ( ! file_exists(APPPATH.'views/pages/detail_ad.php'))
+        {
+            // Whoops, we don't have a page for that!
+            show_404();
+        }
+        
+		$data['title'] = 'Information Annonce';
+        
+        $data['ad'] = $this->ad_model->get_ad($id_ad);
+
+        $this->load->view('pages/detail_ad',$data);
+    }
+
     public function activate_member()
     {
         if($this->ion_auth->is_admin())
