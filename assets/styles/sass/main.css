@@ -7177,6 +7177,35 @@ td, th {
   }
 }
 
+.entete {
+  width: 100%;
+  background-image: url("../../logo/header_image_admin.png");
+  background-repeat: no-repeat;
+  background-position: center;
+  height: 174px;
+}
+
+.logo_compte_admin {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+  -webkit-box-pack: end;
+      -ms-flex-pack: end;
+          justify-content: flex-end;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+.logo_compte_admin .logo {
+  width: 7em;
+  margin-right: 3.6em;
+}
+
 .button {
   -webkit-box-align: center;
       -ms-flex-align: center;
