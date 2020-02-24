@@ -1704,6 +1704,7 @@ class Ion_auth_model extends CI_Model
 	 */
 	public function groups()
 	{
+		$is_admin = $this->ion_auth->is_admin();
 		$this->trigger_events('groups');
 
 		// run each where that was passed
@@ -1735,7 +1736,8 @@ class Ion_auth_model extends CI_Model
 		{
 			$this->db->order_by($this->_ion_order_by, $this->_ion_order);
 		}
-
+		// ajout : si l'utilisateur n'est pas admin, les roles d'admin sont exclus du résultat
+		!$is_admin ? $this->db->where_not_in('name',['admin','superviseur']) : '';
 		$this->response = $this->db->get($this->tables['groups']);
 
 		return $this;
