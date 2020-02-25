@@ -16,3 +16,4 @@ https://coolors.co/
 * ajouter un pluggin seo
 * ajouter un pluggin pour connection par facebook
 * priviligier un pluggin pour le rating
+* faire le header en sticky (ou avoir le menu toujours accessible)
