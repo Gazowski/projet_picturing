@@ -17,3 +17,6 @@ https://coolors.co/
 * ajouter un pluggin pour connection par facebook
 * priviligier un pluggin pour le rating
 * faire le header en sticky (ou avoir le menu toujours accessible)
+
+## Note
+* Password pour les utilisateurs = 1234 (sauf admin@admin.com = password)
