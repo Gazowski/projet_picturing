@@ -11,3 +11,4 @@ https://coolors.co/
 * tableau (css): rajouter le overscroll sur d'autre media query
 * alert (css) : le fond transparent est perdu lorsque l'on scroll vers le bas
 * creation d'une annonce possible sans photo ni description
+* le bouton ajouter annonce apparait sur les listes membres
