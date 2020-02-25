@@ -12,7 +12,7 @@
                         <span></span>
                         <span></span>
         
-                        <a href="<?= base_url(); ?>index.php/auth/<?= $action ?>"><i class="<?= $icon ?>"></i></a>
+                       
                         <ul id="menu">
                             <a href="<?= base_url(); ?>index.php/ad/display_all"><li>Annonces</li></a>
                             <a href="<?= base_url(); ?>index.php/ad/display_all_product"><li>Produits</li></a>
