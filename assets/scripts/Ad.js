@@ -5,8 +5,7 @@ export class Ad {
         // declaration des variables 
         this._el = el,
         this._elTiles = this._el.querySelectorAll('[data-js-tile]');
-        this._
-        console.log(this._elTiles);
+        console.log(this._el);
 
         // initialise les comportements
         this.init();
@@ -24,7 +23,8 @@ export class Ad {
                 }
                 
                 requeteAjax(paramAjax, (reponse_ajax) => {
-                   this._el.innerHTML = reponse_ajax
+                   this._el.classList.remove('parent')
+                    this._el.innerHTML = reponse_ajax
                 })
             })
         }

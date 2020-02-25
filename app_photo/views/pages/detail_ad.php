@@ -3,36 +3,35 @@
      * affichage d'une annonce 
      * */ 
 
+
    
 ?>  
-  <h2><?= $ad['title'] ?></h2>
-  
-  <div class="line_t"></div>
-<div class="parent">
- 
-    
-    <div class="child">
+
+<!-- ---------------------------------------------- -->  
+
+    <div class="detail_ad">
+      
+      <div class="titre_image"> 
         <aside>
           <img src="<?= base_url($ad['photo'])?>" alt="<?= $ad['title'] ?>"/>
         </aside>
+        <?= $ad['title'] ?></h3>
+      </div>
+      
+      <div class="desc_prix_">
+        <p><?= $ad['description'] ?></p>
+        <div class="prix">
+        <h3><?= $ad['price'] ?> CAD$</h3>
         <div>
-          
-          <!-- <h3><?= $ad['title'] ?></h3> -->
-          <p><?= $ad['description'] ?></p>
-          <div class="prix">
-            <h3><?= $ad['price'] ?> CAD$</h3>
-          </div>
+          <a class="button" href="<?= base_url(); ?>index.php/message/create_message">Soumissionner</a>
+        </div> 
+      </div>
 
-        </div>  
     </div>
-    <div>
-      <a class="button" href="<?= base_url(); ?>index.php/message/create_message">Soumissionner</a>
-    </div> 
 
-</div>
+<!-- ---------------------------------------------- -->    
 
-
-<?php /**
+<!-- <?php /**
      * liste des message rattachés à cette annonce
      * */ 
 ?>
@@ -53,7 +52,7 @@
         <?php } ?>
     </ul>
 </section>
-<?php } ?>
+<?php } ?> -->
 
 
     
