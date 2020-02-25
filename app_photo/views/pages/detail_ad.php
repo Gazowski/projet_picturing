@@ -37,7 +37,7 @@
 
 <!-- ---------------------------------------------- -->    
 
-<!-- <?php /**
+<?php /**
      * liste des message rattachés à cette annonce
      * */ 
 ?>
@@ -58,7 +58,7 @@
         <?php } ?>
     </ul>
 </section>
-<?php } ?> -->
+<?php } ?>
 
 
     

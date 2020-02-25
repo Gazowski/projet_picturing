@@ -17,6 +17,8 @@ export class Ad {
                 console.log('click');
                 console.log(tile.dataset.jsTile);
 
+                sessionStorage.setItem('id_ad', tile.dataset.jsTile);
+
                 let paramAjax = {
                     method : "GET",
                     action : "index.php/ajax_controller/display_ad/"+tile.dataset.jsTile,

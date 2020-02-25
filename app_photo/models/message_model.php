@@ -24,11 +24,12 @@ class Message_model extends CI_Model {
             $this->db->select('*');
             $this->db->from('message');
             $this->db->group_by('date', 'DESC');
-            //$this->db->DESC;
 
             $query = $this->db->get();
             return $query->result_array();
         }
+        
+        var_dump($id_ad);
 
         $query = $this->db->get_where('message', array('ad' => $id_ad));
         return $query->row_array();

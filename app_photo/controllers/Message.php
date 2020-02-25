@@ -82,11 +82,13 @@ class Message extends CI_Controller {
             show_404();
         }
         
+        var_dump($id_ad);
+
         $data['title'] = 'Liste des Messages de votre Annonce'; // Capitalize the first letter
-        $data['table'] = $this->message_model->get_message_ad();
+        $data['table'] = $this->message_model->get_message();
+        $data['id_ad'] = localStorage.getItem('id_ad');
         
         //$is_admin = $this->ion_auth->is_admin();
         $this->load->template('pages/detail_ad',$data);
-
     } 
 }

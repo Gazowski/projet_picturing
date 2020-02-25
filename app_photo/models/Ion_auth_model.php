@@ -1940,11 +1940,23 @@ class Ion_auth_model extends CI_Model
 	{
 		$this->trigger_events('pre_set_session');
 
+		// calcul de la valeur de l'utilisateur (en fonction de son role)
+		$role = $this->get_users_groups($user->id)->result();
+		$role = $role[0]->name;
+		$user_value = [
+			'Client' => 10,
+			'Fournisseur' => 20,
+			'Fournisseur Or' => 30,
+			'Superviseur' => 40,
+			'admin' => 50,
+		];
+
 		$session_data = [
 		    'identity'             => $user->{$this->identity_column},
 		    $this->identity_column => $user->{$this->identity_column},
 		    'email'                => $user->email,
-		    'user_id'              => $user->id, //everyone likes to overwrite id so we'll use user_id
+			'user_id'              => $user->id, //everyone likes to overwrite id so we'll use user_id
+			'user_role'			   => $user_value[$role],// ajout valeur utilisateur
 		    'old_last_login'       => $user->last_login,
 		    'last_check'           => time(),
 		];

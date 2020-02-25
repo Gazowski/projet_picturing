@@ -16,7 +16,6 @@ class Ad extends CI_Controller {
         $this->load->model('ion_auth_model');
         $this->load->model('ad_model');
         $this->is_admin = $this->ion_auth->is_admin();
-        //var_dump($this->session->userdata('user_id'));
     }
     
     public function display_all()
@@ -111,9 +110,10 @@ class Ad extends CI_Controller {
     public function create_ad()
     {
 
-        if (!$this->ion_auth->logged_in() /*|| !$this->ion_auth->is_admin()*/)
-		{
-			redirect('auth/login', 'refresh');
+        if (!$this->session->userdata['user_role'] < 20)
+		{   
+            $this->session->set_flashdata('message', 'Vous devez être connecté entant que Fournisseur pour créer une annonce');
+			redirect($_SERVER['HTTP_REFERER']); // redirection vers la meme page
         }
         
         $this->data['page_title'] = 'Ajouter une annonce';
