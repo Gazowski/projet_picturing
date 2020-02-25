@@ -20,16 +20,7 @@ class Ad extends CI_Controller {
     
     public function display_all()
     {
-        /**
-         * lignes suivantes a EFFACER
-         * essai sur la methode get_users_groups() de ion_auth_model
-         */
-        // var_dump($this->ion_auth->logged_in());
-        // var_dump($this->ion_auth->get_users_groups()->result());
 
-        /**
-         * ligne a conserver
-         */
         if ( ! file_exists(APPPATH.'views/pages/tile.php'))
         {
             // Whoops, we don't have a page for that!
@@ -50,12 +41,6 @@ class Ad extends CI_Controller {
 
 	public function display_all_product()
     {
-        /**
-         * lignes suivantes a EFFACER
-         * essai sur la methode get_users_groups() de ion_auth_model
-         */
-        // var_dump($this->ion_auth->logged_in());
-        // var_dump($this->ion_auth->get_users_groups()->result());
 
         /**
          * ligne a conserver
@@ -81,13 +66,6 @@ class Ad extends CI_Controller {
 	public function display_all_service()
     {
         /**
-         * lignes suivantes a EFFACER
-         * essai sur la methode get_users_groups() de ion_auth_model
-         */
-        // var_dump($this->ion_auth->logged_in());
-        // var_dump($this->ion_auth->get_users_groups()->result());
-
-        /**
          * ligne a conserver
          */
         if ( ! file_exists(APPPATH.'views/pages/tile.php'))
@@ -109,7 +87,7 @@ class Ad extends CI_Controller {
 
     public function create_ad()
     {
-
+		// page accessible pour les membres fournisseur ou plus
         if (!isset($this->session->userdata['user_role']) || !$this->session->userdata['user_role'] < 20)
 		{   
             $this->session->set_flashdata('message', 'Vous devez être connecté entant que Fournisseur pour créer une annonce');
@@ -145,12 +123,8 @@ class Ad extends CI_Controller {
         // ajout de l'annonce dans la DB
 		if ($this->form_validation->run() === TRUE && $this->ad_model->add_ad($data))
 		{
-
-
-            // REDIRECTION : faire la redirection en js.
-
-			// check to see if we are creating the ad
-			// redirect them back to the admin page
+    		// check to see if we are creating the ad
+			// redirect them back to the home page
 			$this->session->set_flashdata('message', $this->ion_auth->messages());
 			redirect("display_all", 'refresh');
 		}
@@ -158,7 +132,6 @@ class Ad extends CI_Controller {
 		{
 			// display the create ad form
             // set the flash data error message if there is one
-            // MESSAGE ERREUR _____ A ADAPTER !!!!!!!!!!!!!!
 			$this->data['message'] = (validation_errors() ? validation_errors() : ($this->ion_auth->errors() ? $this->ion_auth->errors() : $this->session->flashdata('message')));
 
 			$this->data['title'] = [
