@@ -9,7 +9,7 @@ export class Alert {
 
     init(e){
         this._el.addEventListener('click', () => {
-            this._el.remove()
+            this._el.innerHTML = ''
         })
     }
 }

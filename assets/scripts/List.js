@@ -22,7 +22,7 @@ class Row{
     constructor(row){
         this._row = row
         this._button = this._row.querySelector('button')
-        this.user = this._row.id
+        this.id = this._row.id
         this.table = this._row.dataset.row
         this.message = ''
 
@@ -49,9 +49,13 @@ class Row{
     
     add_action_to_button(){
         this._button.addEventListener('click',()=>{
-            if(display_alert(this.message)) 
-                this.activate_elt()
-            //let action = this._button.dataset.active == 1 ? this.banish_user() : this.activate_elt()
+            console.log('je clique')
+            let param_alert = {
+                'message' : this.message,
+                'action' : this.activate_elt,
+                'elt' : this._row
+            }
+            display_alert(param_alert)
         })
     }
 
@@ -60,18 +64,18 @@ class Row{
         // https://developer.mozilla.org/fr/docs/Web/HTML/Element/base
     }
 
-    activate_elt(){
-        console.log(this.table)
+    activate_elt(elt){
+        console.log(elt)
         let paramAjax = {
             method : "POST",
             json : true,
-            action : `index.php/ajax_controller/activate_${this.table}`,
-            data_to_send : this.user
+            action : `index.php/ajax_controller/activate_${elt.dataset.row}`,
+            data_to_send : elt.id
         }
         requeteAjax(paramAjax, (reponse_ajax) => {
             console.log(reponse_ajax)
             if(reponse_ajax == 1)
-                this._row.remove()
+                elt.remove()
         })
     }
 }
