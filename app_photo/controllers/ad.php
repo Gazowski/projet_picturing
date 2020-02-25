@@ -110,7 +110,7 @@ class Ad extends CI_Controller {
     public function create_ad()
     {
 
-        if (!$this->session->userdata['user_role'] < 20)
+        if (!isset($this->session->userdata['user_role']) || !$this->session->userdata['user_role'] < 20)
 		{   
             $this->session->set_flashdata('message', 'Vous devez être connecté entant que Fournisseur pour créer une annonce');
 			redirect($_SERVER['HTTP_REFERER']); // redirection vers la meme page
