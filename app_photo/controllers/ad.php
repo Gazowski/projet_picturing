@@ -16,7 +16,7 @@ class Ad extends CI_Controller {
         $this->load->model('ion_auth_model');
         $this->load->model('ad_model');
         $this->is_admin = $this->ion_auth->is_admin();
-        var_dump($this->session->userdata('user_id'));
+        //var_dump($this->session->userdata('user_id'));
     }
     
     public function display_all()
