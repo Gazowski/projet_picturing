@@ -15,6 +15,7 @@ class Message extends CI_Controller {
         $this->load->library(['users','ion_auth', 'session']);
         $this->load->model('ion_auth_model');
         $this->load->model('ad_model');
+        $this->load->model('message_model');
         $this->is_admin = $this->ion_auth->is_admin();
     }
 
@@ -35,11 +36,11 @@ class Message extends CI_Controller {
         {
             $data = [
                 'title' => $this->input->post('title'),
-                'message' => $this->input->post('message'),
+                'text_message' => $this->input->post('message'),
                 'writer' => $this->session->userdata('user_id'),
+                'ad' => $this->session->userdata('id_ad'),
+                //'ad' => $this->ad->user()->row()->id_ad,
             ];
-            //var_dump($data);
-            //die;
         }
 
         if ($this->form_validation->run() === TRUE && $this->message_model->add_message($data))
@@ -48,11 +49,11 @@ class Message extends CI_Controller {
 
 			// check to see if we are creating the ad
 			// redirect them back to the admin page
-			$this->session->set_flashdata('message', $this->ion_auth->messages());
-			redirect("display_all", 'refresh');
+			$this->session->set_flashdata('message_error', $this->ion_auth->messages());
+			redirect("display_ad", 'refresh');
         }
         else{
-            $this->data['message'] = (validation_errors() ? validation_errors() : ($this->ion_auth->errors() ? $this->ion_auth->errors() : $this->session->flashdata('message')));
+            $this->data['message_error'] = (validation_errors() ? validation_errors() : ($this->ion_auth->errors() ? $this->ion_auth->errors() : $this->session->flashdata('message_error')));
 
             $this->data['title'] = [
                 'name' => 'title',

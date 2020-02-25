@@ -3,36 +3,40 @@
      * affichage d'une annonce 
      * */ 
 
+
    
 ?>  
-  <h2><?= $ad['title'] ?></h2>
-  
-  <div class="line_t"></div>
-<div class="parent">
- 
-    
-    <div class="child">
-        <aside>
-          <img src="<?= base_url($ad['photo'])?>" alt="<?= $ad['title'] ?>"/>
-        </aside>
-        <div>
-          
-          <!-- <h3><?= $ad['title'] ?></h3> -->
-          <p><?= $ad['description'] ?></p>
-          <div class="prix">
-            <h3><?= $ad['price'] ?> CAD$</h3>
-          </div>
 
-        </div>  
+<!-- ---------------------------------------------- -->  
+<div class="detail_ad">
+  <div class="titre_img_desc_prix">
+    <div class="img_titre">
+      <div>
+        <img src="<?= base_url($ad['photo'])?>" alt="<?= $ad['title'] ?>"/>
+      </div>
+      <div>
+        <h3><?= $ad['title'] ?></h3>
+      </div>
     </div>
-    <div>
-      <a class="button" href="<?= base_url(); ?>index.php/message/create_message">Soumissionner</a>
-    </div> 
-
+    
+    <div class="desc_prix">
+      <div>
+        <p><?= $ad['description'] ?></p> 
+      </div>
+      <div class="prix">
+        <h3><?= $ad['price'] ?> CAD$</h3> 
+      </div>
+    </div>
+    
+  </div>
+</div>
+<div class="soumission">
+    <a class="button" href="<?= base_url(); ?>index.php/message/create_message">Soumissionner</a>
 </div>
 
+<!-- ---------------------------------------------- -->    
 
-<?php /**
+<!-- <?php /**
      * liste des message rattachés à cette annonce
      * */ 
 ?>
@@ -53,7 +57,7 @@
         <?php } ?>
     </ul>
 </section>
-<?php } ?>
+<?php } ?> -->
 
 
     

@@ -55,7 +55,7 @@ class Member extends CI_Controller {
         $data['title'] = 'Liste des Membres'; // Capitalize the first letter
         $data['table'] = $this->member_model->get_supplier();       
         
-        $this->load->template('pages/list',$data,$this->is_admin);
+        $this->load->template('pages/list',$data,$this->ion_auth->is_admin());
     }
 
     /**
@@ -73,7 +73,7 @@ class Member extends CI_Controller {
         $data['title'] = 'Liste des Membres'; // Capitalize the first letter
         $data['membres'] = $this->member_model->get_member();
         
-        $this->load->template('pages/list_members',$data,$this->is_admin);
+        $this->load->template('pages/list_members',$data);
     }
 
     public function admin_home()
