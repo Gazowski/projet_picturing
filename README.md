@@ -12,3 +12,4 @@ https://coolors.co/
 * alert (css) : le fond transparent est perdu lorsque l'on scroll vers le bas
 * creation d'une annonce possible sans photo ni description
 * le bouton ajouter annonce apparait sur les listes membres
+* l'effet hover sur les icones des medias sociaux ne fonctionne 
