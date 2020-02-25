@@ -80,7 +80,7 @@ class Auth extends CI_Controller
 			{
 				if($this->ion_auth->is_admin())
 				{
-					redirect('member/admin_home');
+					redirect('member/admin_home','refresh');
 				}
 				else
 				{
