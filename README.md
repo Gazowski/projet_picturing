@@ -15,3 +15,4 @@ https://coolors.co/
 * l'effet hover sur les icones des medias sociaux ne fonctionne
 * ajouter un pluggin seo
 * ajouter un pluggin pour connection par facebook
+* priviligier un pluggin pour le rating
