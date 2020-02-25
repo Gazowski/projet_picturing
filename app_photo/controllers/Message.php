@@ -11,9 +11,11 @@ class Message extends CI_Controller {
     public function __construct()
     {
         parent::__construct();
-        $this->load->model('message_model');
-        $this->load->library(['ion_auth']);
-        //$this->load_member_category();
+        $this->load->database();
+        $this->load->library(['users','ion_auth', 'session']);
+        $this->load->model('ion_auth_model');
+        $this->load->model('ad_model');
+        $this->is_admin = $this->ion_auth->is_admin();
     }
 
     public function create_message()
@@ -26,8 +28,8 @@ class Message extends CI_Controller {
         $this->data['page_title'] = 'Écrivez votre message';
 
         //Validation du formulaire
-        $this->form_validation->set-rules('title', 'Titre du message', 'trim|required');
-        $this->form_validation->set-rules('message', 'Votre message', 'trim|required');
+        $this->form_validation->set_rules('title', 'Titre du message', 'trim|required');
+        $this->form_validation->set_rules('message', 'Votre message', 'trim|required');
 
         if ($this->form_validation->run() === TRUE)
         {
@@ -36,8 +38,8 @@ class Message extends CI_Controller {
                 'message' => $this->input->post('message'),
                 'writer' => $this->session->userdata('user_id'),
             ];
-            var_dump($data);
-            die;
+            //var_dump($data);
+            //die;
         }
 
         if ($this->form_validation->run() === TRUE && $this->message_model->add_message($data))
@@ -64,6 +66,8 @@ class Message extends CI_Controller {
                 'type' => 'text',
                 'value' => $this->form_validation->set_value('message'),
             ];
+
+            $this->load->template('pages/create_message_form', $this->data);
         }
     }  
 //////logique pour afficher la liste des messages dans les annonces////

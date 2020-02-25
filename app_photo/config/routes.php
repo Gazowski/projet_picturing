@@ -51,6 +51,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 */
 $route['ajax_controller/(:any)'] = 'ajax_controller/$1';
 $route['member/(:any)'] = 'member/$1';
+$route['message/(:any)'] = 'message/$1';
 $route['auth/(:any)'] = 'auth/$1';
 $route['(:any)'] = 'ad/$1';
 $route['default_controller'] = 'ad/display_all';
