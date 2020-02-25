@@ -5,6 +5,7 @@
  *  - titre
  *  - message
  */
+var_dump($_SESSION);
 ?>
 
 <div class="form" data-component='form'>
@@ -13,21 +14,19 @@
       </div>
 
       <div class="content_form">
-            <div id="infoMessage"><?php echo $message;?></div>
+            <div id="infoMessage"><?php echo $message_error;?></div>
 
 
-            <?php echo form_open("create_message");?>
+            <?php echo form_open("message/create_message");?>
 
-                  <p>
-                        <?php echo form_label($title['name']);?> <br />
+                  <div>
+                        <?php echo form_label($title['name']);?> <br>
                         <?php echo form_input($title);?>
-                  </p>
-               
-                  <p>
-                        <?php echo form_label($description['name']);?> <br />
-                        <?php echo form_input($description);?>
-                  </p>
-
+                  
+                        <?php echo form_label($message['name']);?> <br>
+                        <?php echo form_textarea($message);?>
+                  </div>
+                  
                   <div class="button_container">
                         <?php echo form_submit('submit', 'envoyer');?>
                   </div>
