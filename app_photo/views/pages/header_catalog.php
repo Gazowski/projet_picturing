@@ -1,6 +1,6 @@
 
 <header>
- 
+      <!-- ----------------- header petit ecran ---------------------- --> 
     <section class="entete">
         <div class="menu">
             <nav role="navigation">
@@ -12,17 +12,16 @@
                         <span></span>
                         <span></span>
         
-    
+                        <a href="<?= base_url(); ?>index.php/auth/<?= $action ?>"><i class="<?= $icon ?>"></i></a>
                         <ul id="menu">
-                            <a href="#"><li>Annonces</li></a>
-                            <a href="#"><li>Produits</li></a>
-                            <a href="#"><li>Services</li></a>
+                            <a href="<?= base_url(); ?>index.php/ad/display_all"><li>Annonces</li></a>
+                            <a href="<?= base_url(); ?>index.php/ad/display_all_product"><li>Produits</li></a>
+                            <a href="<?= base_url(); ?>index.php/ad/display_all_service"><li>Services</li></a>
                         </ul>
                 </div>
             </nav>
         </div> 
-    
-        <!-- ----------------- header petit ecran ---------------------- -->        
+         
         <section class="menu_logo_compte">
             
                 <div class="logo">
@@ -63,9 +62,9 @@
                 <div class="menu_el">
                         <nav class="navigation_el">
                             <ul id="menu_el">
-                                <a href="#"><li>Annonces</li></a>
-                                <a href="#"><li>Produits</li></a>
-                                <a href="#"><li>Services</li></a>
+                            <a href="<?= base_url(); ?>index.php/ad/display_all"><li>Annonces</li></a>
+                            <a href="<?= base_url(); ?>index.php/ad/display_all_product"><li>Produits</li></a>
+                            <a href="<?= base_url(); ?>index.php/ad/display_all_service"><li>Services</li></a>
                             </ul>
                         </nav>
                 </div>
