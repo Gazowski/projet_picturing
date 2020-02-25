@@ -31,8 +31,9 @@
   </div>
 </div>
 <div class="soumission">
-    <a class="button" href="<?= base_url(); ?>index.php/message/create_message">Soumissionner</a>
+  <a class="button" href="<?= base_url(); ?>index.php/message/create_message">Soumissionner</a>
 </div>
+
 
 <!-- ---------------------------------------------- -->    
 

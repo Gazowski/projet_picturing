@@ -2,17 +2,18 @@
     display: flex;
     flex-direction: column;
     width: 95%;
-    margin: 0 auto 2em;
+    margin: 0 auto 0;
     border: 1px solid $c-light-grey;
     justify-content: center;
     padding: .5em;
 }
-.soumission .button{
-    color: white;
-    
-    
-}
 
+
+.soumission{
+    width:100%;
+    text-align: center;
+    font-weight: medium;
+}
 
 
 @media (min-width: 600px) {
