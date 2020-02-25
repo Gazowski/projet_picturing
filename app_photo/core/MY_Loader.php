@@ -30,7 +30,7 @@ class MY_Loader extends CI_Loader {
             /**
              * !!! ATTENTION : MODIFIER LES PAGES !!!
              */
-            $header = 'pages/header_catalog';
+            $header = 'pages/header_admin';
             $menu = 'pages/menu';
         }
         else

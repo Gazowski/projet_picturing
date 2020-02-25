@@ -26,7 +26,7 @@
         </div>  
     </div>
     <div>
-      <a class="button" href="">Soumissioner</a>
+      <a class="button" href="<?= base_url(); ?>index.php/create_message">Soumissioner</a>
     </div> 
 
 </div>

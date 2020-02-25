@@ -1,0 +1,22 @@
+
+ .entete_admin {
+   width: 100%; 
+   background-image: url("../../logo/header_image_admin.png");
+   background-repeat: no-repeat;
+   background-position: center;
+   height: 174px;
+ }
+ 
+ .logo_compte_admin{
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-end;
+    
+    align-items: center;
+
+    .logo{
+      width: 7em;
+      margin-right: 3.6em;
+   }  
+ }
+ 

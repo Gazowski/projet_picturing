@@ -12,11 +12,11 @@ class Ad extends CI_Controller {
     {
         parent::__construct();
         $this->load->database();
-        $this->load->library(['users','ion_auth']);
+        $this->load->library(['users','ion_auth', 'session']);
         $this->load->model('ion_auth_model');
         $this->load->model('ad_model');
         $this->is_admin = $this->ion_auth->is_admin();
-        
+        var_dump($this->session->userdata('user_id'));
     }
     
     public function display_all()
