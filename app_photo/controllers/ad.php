@@ -16,7 +16,7 @@ class Ad extends CI_Controller {
         $this->load->model('ion_auth_model');
         $this->load->model('ad_model');
         $this->is_admin = $this->ion_auth->is_admin();
-        var_dump($this->session->userdata('user_id'));
+        //var_dump($this->session->userdata('user_id'));
     }
     
     public function display_all()
@@ -40,6 +40,66 @@ class Ad extends CI_Controller {
         
         $data['title'] = 'Liste des Annonces'; // Capitalize the first letter
         $data['ad'] = $this->ad_model->get_ad();
+        $data['filter'] = [
+            'newest_first' => 'plus récent',
+            'oldest_first' => 'plus ancien'
+        ];
+
+        $this->load->template('pages/tile',$data);
+    }
+
+
+	public function display_all_product()
+    {
+        /**
+         * lignes suivantes a EFFACER
+         * essai sur la methode get_users_groups() de ion_auth_model
+         */
+        // var_dump($this->ion_auth->logged_in());
+        // var_dump($this->ion_auth->get_users_groups()->result());
+
+        /**
+         * ligne a conserver
+         */
+        if ( ! file_exists(APPPATH.'views/pages/tile.php'))
+        {
+            // Whoops, we don't have a page for that!
+            show_404();
+        }
+        
+        
+        $data['title'] = 'Liste des Produits'; // Capitalize the first letter
+        $data['ad'] = $this->ad_model->get_ad_product();
+        $data['filter'] = [
+            'newest_first' => 'plus récent',
+            'oldest_first' => 'plus ancien'
+        ];
+
+        $this->load->template('pages/tile',$data);
+	}
+	
+
+	public function display_all_service()
+    {
+        /**
+         * lignes suivantes a EFFACER
+         * essai sur la methode get_users_groups() de ion_auth_model
+         */
+        // var_dump($this->ion_auth->logged_in());
+        // var_dump($this->ion_auth->get_users_groups()->result());
+
+        /**
+         * ligne a conserver
+         */
+        if ( ! file_exists(APPPATH.'views/pages/tile.php'))
+        {
+            // Whoops, we don't have a page for that!
+            show_404();
+        }
+        
+        
+        $data['title'] = 'Liste des Produits'; // Capitalize the first letter
+        $data['ad'] = $this->ad_model->get_ad_servive();
         $data['filter'] = [
             'newest_first' => 'plus récent',
             'oldest_first' => 'plus ancien'
