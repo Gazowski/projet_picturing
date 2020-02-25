@@ -21,18 +21,21 @@
     
     <div class="desc_prix">
       <div>
+        <h3>Déscription</h3>
         <p><?= $ad['description'] ?></p> 
       </div>
-      <div class="prix">
-        <h3><?= $ad['price'] ?> CAD$</h3> 
-      </div>
+      
     </div>
     
   </div>
+  <div class="prix">
+        <h3><?= $ad['price'] ?> CAD$</h3> 
+      </div>
+        <div class="soumission">
+            <a class="button" href="<?= base_url(); ?>index.php/message/create_message">Soumissionner</a>
+        </div>
 </div>
-<div class="soumission">
-  <a class="button" href="<?= base_url(); ?>index.php/message/create_message">Soumissionner</a>
-</div>
+
 
 
 <!-- ---------------------------------------------- -->    
