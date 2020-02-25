@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 4.8.4
+-- version 4.9.2
 -- https://www.phpmyadmin.net/
 --
--- Host: 127.0.0.1:3306
--- Generation Time: Feb 17, 2020 at 02:41 AM
--- Server version: 5.7.24
--- PHP Version: 7.2.14
+-- Hôte : 127.0.0.1:3306
+-- Généré le :  mar. 25 fév. 2020 à 13:44
+-- Version du serveur :  5.7.28
+-- Version de PHP :  7.3.12
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET AUTOCOMMIT = 0;
@@ -19,13 +19,13 @@ SET time_zone = "+00:00";
 /*!40101 SET NAMES utf8mb4 */;
 
 --
--- Database: `db_picturing`
+-- Base de données :  `db_picturing`
 --
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `ad`
+-- Structure de la table `ad`
 --
 
 DROP TABLE IF EXISTS `ad`;
@@ -33,34 +33,54 @@ CREATE TABLE IF NOT EXISTS `ad` (
   `id_ad` int(11) NOT NULL AUTO_INCREMENT,
   `category` int(11) NOT NULL,
   `location` varchar(250) DEFAULT NULL,
-  `title` varchar(250) DEFAULT NULL,
+  `title` varchar(250) NOT NULL,
   `description` text,
   `price` varchar(50) DEFAULT NULL,
   `photo` varchar(250) NOT NULL,
   `open_date` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP,
   `close_date` datetime DEFAULT NULL,
   `owner` int(11) UNSIGNED NOT NULL,
-  `active` int NOT NULL,
+  `active` int(11) NOT NULL,
   PRIMARY KEY (`id_ad`),
-  UNIQUE KEY `title` (`title`),
   KEY `category` (`category`),
   KEY `owner` (`owner`) USING BTREE
-) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=49 DEFAULT CHARSET=latin1;
 
 --
--- Dumping data for table `ad`
+-- Déchargement des données de la table `ad`
 --
 
-INSERT INTO `ad` (`id_ad`, `category`, `location`, `title`, `description`, `price`, `photo`, `open_date`, `close_date`, `owner`) VALUES
-(1, 1, NULL, 'appareil photo neuf', 'joli appareil photo neuf pas cher', '1000', 'assets/img/fujifilm_s1500.png', '2020-02-13 11:39:38', NULL, 2),
-(2, 2, NULL, 'appareil photo usagé', 'appareil reflex peu', '333', 'assets/img/nikon_d5600.png', '2020-02-13 11:39:38', NULL, 2),
-(3, 3, NULL, 'reparation zoom', 'réparation de tout vos zoom', '100', 'assets/img/reparation.png', '2020-02-13 11:39:38', NULL, 2),
-(4, 4, NULL, 'photo corporative', 'une seance de photo au sein de votre entreprise', '500', 'assets/img/tirage_photos.png', '2020-02-13 11:39:38', NULL, 2);
+INSERT INTO `ad` (`id_ad`, `category`, `location`, `title`, `description`, `price`, `photo`, `open_date`, `close_date`, `owner`, `active`) VALUES
+(1, 1, NULL, 'appareil photo neuf', 'joli appareil photo neuf pas cher', '1000', 'assets/img/fujifilm_s1500.png', '2020-02-13 11:39:38', NULL, 2, 1),
+(2, 2, NULL, 'appareil photo usagé', 'appareil reflex peu', '333', 'assets/img/nikon_d5600.png', '2020-02-13 11:39:38', NULL, 2, 1),
+(3, 3, NULL, 'reparation zoom', 'réparation de tout vos zoom', '100', 'assets/img/reparation.png', '2020-02-13 11:39:38', NULL, 2, 1),
+(4, 4, NULL, 'photo corporative', 'une seance de photo au sein de votre entreprise', '500', 'assets/img/tirage_photos.png', '2020-02-13 11:39:38', NULL, 2, 1),
+(8, 1, '', 'essai ajout', 'un nouvel appareil neuf', '3000', '', '2020-02-18 08:34:55', NULL, 1, 0),
+(10, 3, '', 'essai ajout #2', 'un nouveau service de réparation', '3000', '', '2020-02-18 08:37:36', NULL, 1, 0),
+(30, 4, NULL, 'photo corporative', 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer nec odio. Praesent libero. Sed cursus ante dapibus diam. Sed nisi. Nulla quis sem at nibh elementum imperdiet. Duis sagittis ipsum. Praesent mauris. Fusce nec tellus sed augue semper porta. Mauris massa. Vestibulum lacinia arcu eget nulla. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Curabitur sodales ligula in libero. Sed dignissim lacinia nunc.', '500', 'assets/img/tirage_photos.png', '2020-02-25 08:18:43', NULL, 2, 1),
+(31, 1, NULL, 'inceptos himenaeos', 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer nec odio. Praesent libero. Sed cursus ante dapibus diam. Sed nisi. Nulla quis sem at nibh elementum imperdiet. Duis sagittis ipsum. Praesent mauris. Fusce nec tellus sed augue semper porta. Mauris massa. Vestibulum lacinia arcu eget nulla. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Curabitur sodales ligula in libero. Sed dignissim lacinia nunc.', '1000', 'assets/img/fujifilm_s1500.png', '2020-02-25 08:18:43', NULL, 3, 1),
+(32, 3, NULL, '. Curabitur sodales ligula', 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer nec odio. Praesent libero. Sed cursus ante dapibus diam. Sed nisi. Nulla quis sem at nibh elementum imperdiet. Duis sagittis ipsum. Praesent mauris. Fusce nec tellus sed augue semper porta. Mauris massa. Vestibulum lacinia arcu eget nulla. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Curabitur sodales ligula in libero. Sed dignissim lacinia nunc.', '333', 'assets/img/nikon_d5600.png', '2020-02-25 08:18:43', NULL, 5, 1),
+(33, 4, NULL, 'Vestibulum lacinia', 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer nec odio. Praesent libero. Sed cursus ante dapibus diam. Sed nisi. Nulla quis sem at nibh elementum imperdiet. Duis sagittis ipsum. Praesent mauris. Fusce nec tellus sed augue semper porta. Mauris massa. Vestibulum lacinia arcu eget nulla. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Curabitur sodales ligula in libero. Sed dignissim lacinia nunc.', '100', 'assets/img/reparation.png', '2020-02-25 08:18:43', NULL, 4, 1),
+(34, 1, NULL, 'Mauris mass', 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer nec odio. Praesent libero. Sed cursus ante dapibus diam. Sed nisi. Nulla quis sem at nibh elementum imperdiet. Duis sagittis ipsum. Praesent mauris. Fusce nec tellus sed augue semper porta. Mauris massa. Vestibulum lacinia arcu eget nulla. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Curabitur sodales ligula in libero. Sed dignissim lacinia nunc.', '500', 'assets/img/tirage_photos.png', '2020-02-25 08:18:43', NULL, 6, 1),
+(35, 3, NULL, '. Curabitur sodales ligula', 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer nec odio. Praesent libero. Sed cursus ante dapibus diam. Sed nisi. Nulla quis sem at nibh elementum imperdiet. Duis sagittis ipsum. Praesent mauris. Fusce nec tellus sed augue semper porta. Mauris massa. Vestibulum lacinia arcu eget nulla. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Curabitur sodales ligula in libero. Sed dignissim lacinia nunc.', '333', 'assets/img/nikon_d5600.png', '2020-02-25 08:18:43', NULL, 5, 1),
+(36, 2, NULL, 'Vestibulum lacinia', 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer nec odio. Praesent libero. Sed cursus ante dapibus diam. Sed nisi. Nulla quis sem at nibh elementum imperdiet. Duis sagittis ipsum. Praesent mauris. Fusce nec tellus sed augue semper porta. Mauris massa. Vestibulum lacinia arcu eget nulla. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Curabitur sodales ligula in libero. Sed dignissim lacinia nunc.', '100', 'assets/img/reparation.png', '2020-02-25 08:18:43', NULL, 4, 1),
+(37, 3, NULL, '. Curabitur sodales ligula', 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer nec odio. Praesent libero. Sed cursus ante dapibus diam. Sed nisi. Nulla quis sem at nibh elementum imperdiet. Duis sagittis ipsum. Praesent mauris. Fusce nec tellus sed augue semper porta. Mauris massa. Vestibulum lacinia arcu eget nulla. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Curabitur sodales ligula in libero. Sed dignissim lacinia nunc.', '333', 'assets/img/nikon_d5600.png', '2020-02-25 08:18:43', NULL, 5, 1),
+(38, 3, NULL, 'Vestibulum lacinia', 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer nec odio. Praesent libero. Sed cursus ante dapibus diam. Sed nisi. Nulla quis sem at nibh elementum imperdiet. Duis sagittis ipsum. Praesent mauris. Fusce nec tellus sed augue semper porta. Mauris massa. Vestibulum lacinia arcu eget nulla. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Curabitur sodales ligula in libero. Sed dignissim lacinia nunc.', '100', 'assets/img/reparation.png', '2020-02-25 08:18:43', NULL, 4, 1),
+(39, 1, NULL, 'inceptos himenaeos', 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer nec odio. Praesent libero. Sed cursus ante dapibus diam. Sed nisi. Nulla quis sem at nibh elementum imperdiet. Duis sagittis ipsum. Praesent mauris. Fusce nec tellus sed augue semper porta. Mauris massa. Vestibulum lacinia arcu eget nulla. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Curabitur sodales ligula in libero. Sed dignissim lacinia nunc.', '1000', 'assets/img/fujifilm_s1500.png', '2020-02-25 08:18:43', NULL, 3, 1),
+(40, 3, NULL, '. Curabitur sodales ligula', 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer nec odio. Praesent libero. Sed cursus ante dapibus diam. Sed nisi. Nulla quis sem at nibh elementum imperdiet. Duis sagittis ipsum. Praesent mauris. Fusce nec tellus sed augue semper porta. Mauris massa. Vestibulum lacinia arcu eget nulla. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Curabitur sodales ligula in libero. Sed dignissim lacinia nunc.', '333', 'assets/img/nikon_d5600.png', '2020-02-25 08:18:43', NULL, 5, 1),
+(41, 3, NULL, 'Mauris mass', 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer nec odio. Praesent libero. Sed cursus ante dapibus diam. Sed nisi. Nulla quis sem at nibh elementum imperdiet. Duis sagittis ipsum. Praesent mauris. Fusce nec tellus sed augue semper porta. Mauris massa. Vestibulum lacinia arcu eget nulla. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Curabitur sodales ligula in libero. Sed dignissim lacinia nunc.', '500', 'assets/img/tirage_photos.png', '2020-02-25 08:18:43', NULL, 6, 1),
+(42, 3, NULL, '. Curabitur sodales ligula', 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer nec odio. Praesent libero. Sed cursus ante dapibus diam. Sed nisi. Nulla quis sem at nibh elementum imperdiet. Duis sagittis ipsum. Praesent mauris. Fusce nec tellus sed augue semper porta. Mauris massa. Vestibulum lacinia arcu eget nulla. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Curabitur sodales ligula in libero. Sed dignissim lacinia nunc.', '333', 'assets/img/nikon_d5600.png', '2020-02-25 08:18:43', NULL, 5, 1),
+(43, 2, NULL, 'Vestibulum lacinia', 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer nec odio. Praesent libero. Sed cursus ante dapibus diam. Sed nisi. Nulla quis sem at nibh elementum imperdiet. Duis sagittis ipsum. Praesent mauris. Fusce nec tellus sed augue semper porta. Mauris massa. Vestibulum lacinia arcu eget nulla. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Curabitur sodales ligula in libero. Sed dignissim lacinia nunc.', '100', 'assets/img/reparation.png', '2020-02-25 08:18:43', NULL, 4, 1),
+(44, 3, NULL, '. Curabitur sodales ligula', 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer nec odio. Praesent libero. Sed cursus ante dapibus diam. Sed nisi. Nulla quis sem at nibh elementum imperdiet. Duis sagittis ipsum. Praesent mauris. Fusce nec tellus sed augue semper porta. Mauris massa. Vestibulum lacinia arcu eget nulla. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Curabitur sodales ligula in libero. Sed dignissim lacinia nunc.', '333', 'assets/img/nikon_d5600.png', '2020-02-25 08:18:43', NULL, 5, 1),
+(45, 3, NULL, 'Vestibulum lacinia', 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer nec odio. Praesent libero. Sed cursus ante dapibus diam. Sed nisi. Nulla quis sem at nibh elementum imperdiet. Duis sagittis ipsum. Praesent mauris. Fusce nec tellus sed augue semper porta. Mauris massa. Vestibulum lacinia arcu eget nulla. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Curabitur sodales ligula in libero. Sed dignissim lacinia nunc.', '100', 'assets/img/reparation.png', '2020-02-25 08:18:43', NULL, 4, 1),
+(46, 1, NULL, 'Mauris mass', 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer nec odio. Praesent libero. Sed cursus ante dapibus diam. Sed nisi. Nulla quis sem at nibh elementum imperdiet. Duis sagittis ipsum. Praesent mauris. Fusce nec tellus sed augue semper porta. Mauris massa. Vestibulum lacinia arcu eget nulla. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Curabitur sodales ligula in libero. Sed dignissim lacinia nunc.', '500', 'assets/img/tirage_photos.png', '2020-02-25 08:18:43', NULL, 6, 0),
+(47, 3, NULL, '. Curabitur sodales ligula', 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer nec odio. Praesent libero. Sed cursus ante dapibus diam. Sed nisi. Nulla quis sem at nibh elementum imperdiet. Duis sagittis ipsum. Praesent mauris. Fusce nec tellus sed augue semper porta. Mauris massa. Vestibulum lacinia arcu eget nulla. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Curabitur sodales ligula in libero. Sed dignissim lacinia nunc.', '333', 'assets/img/nikon_d5600.png', '2020-02-25 08:18:43', NULL, 5, 0),
+(48, 2, NULL, 'Vestibulum lacinia', 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer nec odio. Praesent libero. Sed cursus ante dapibus diam. Sed nisi. Nulla quis sem at nibh elementum imperdiet. Duis sagittis ipsum. Praesent mauris. Fusce nec tellus sed augue semper porta. Mauris massa. Vestibulum lacinia arcu eget nulla. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Curabitur sodales ligula in libero. Sed dignissim lacinia nunc.', '100', 'assets/img/reparation.png', '2020-02-25 08:18:43', NULL, 4, 0);
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `banishement`
+-- Structure de la table `banishement`
 --
 
 DROP TABLE IF EXISTS `banishement`;
@@ -77,7 +97,7 @@ CREATE TABLE IF NOT EXISTS `banishement` (
 -- --------------------------------------------------------
 
 --
--- Table structure for table `category`
+-- Structure de la table `category`
 --
 
 DROP TABLE IF EXISTS `category`;
@@ -85,26 +105,24 @@ CREATE TABLE IF NOT EXISTS `category` (
   `id_category` int(11) NOT NULL AUTO_INCREMENT,
   `category` varchar(50) NOT NULL,
   `name` varchar(50) NOT NULL,
-  `created_by` int(11) NOT NULL,
   PRIMARY KEY (`id_category`),
-  UNIQUE KEY `name` (`name`),
-  KEY `created_by` (`created_by`)
-) ENGINE=InnoDB AUTO_INCREMENT=23 DEFAULT CHARSET=latin1;
+  UNIQUE KEY `name` (`name`)
+) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=latin1;
 
 --
--- Dumping data for table `category`
+-- Déchargement des données de la table `category`
 --
 
-INSERT INTO `category` (`id_category`, `category`, `name`, `created_by`) VALUES
-(1, 'produit', 'appareil photo neuf', 1),
-(2, 'produit', 'appareil photo usagé', 1),
-(3, 'service', 'réparation', 1),
-(4, 'service', 'seance photo', 1);
+INSERT INTO `category` (`id_category`, `category`, `name`) VALUES
+(1, 'produit', 'appareil photo neuf'),
+(2, 'produit', 'appareil photo usagé'),
+(3, 'service', 'réparation'),
+(4, 'service', 'seance photo');
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `groups`
+-- Structure de la table `groups`
 --
 
 DROP TABLE IF EXISTS `groups`;
@@ -113,22 +131,23 @@ CREATE TABLE IF NOT EXISTS `groups` (
   `name` varchar(20) NOT NULL,
   `description` varchar(100) NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=7 DEFAULT CHARSET=utf8;
 
 --
--- Dumping data for table `groups`
+-- Déchargement des données de la table `groups`
 --
 
 INSERT INTO `groups` (`id`, `name`, `description`) VALUES
 (1, 'admin', 'Administrator'),
-(2, 'members', 'General User'),
-(3, 'client', 'membre qui désire acheter un service ou un produit'),
-(4, 'Fournisseur', 'membre qui désire vendre des services ou des produits');
+(3, 'Client', 'membre qui désire acheter un service ou un produit'),
+(4, 'Fournisseur', 'membre qui désire vendre des services ou des produits'),
+(5, 'Fournisseur Or', 'fournisseur avec droits supérieur'),
+(6, 'Superviseur', 'assistant administrateur');
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `login_attempts`
+-- Structure de la table `login_attempts`
 --
 
 DROP TABLE IF EXISTS `login_attempts`;
@@ -138,12 +157,23 @@ CREATE TABLE IF NOT EXISTS `login_attempts` (
   `login` varchar(100) NOT NULL,
   `time` int(11) UNSIGNED DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=15 DEFAULT CHARSET=utf8;
+
+--
+-- Déchargement des données de la table `login_attempts`
+--
+
+INSERT INTO `login_attempts` (`id`, `ip_address`, `login`, `time`) VALUES
+(1, '::1', 'Gael1', 1582566406),
+(7, '::1', '42', 1582567430),
+(9, '::1', '5465', 1582567538),
+(12, '::1', 'fas', 1582567893),
+(13, '::1', 'fa', 1582570113);
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `message`
+-- Structure de la table `message`
 --
 
 DROP TABLE IF EXISTS `message`;
@@ -162,7 +192,7 @@ CREATE TABLE IF NOT EXISTS `message` (
 -- --------------------------------------------------------
 
 --
--- Table structure for table `rating`
+-- Structure de la table `rating`
 --
 
 DROP TABLE IF EXISTS `rating`;
@@ -180,7 +210,7 @@ CREATE TABLE IF NOT EXISTS `rating` (
 -- --------------------------------------------------------
 
 --
--- Table structure for table `users`
+-- Structure de la table `users`
 --
 
 DROP TABLE IF EXISTS `users`;
@@ -213,21 +243,29 @@ CREATE TABLE IF NOT EXISTS `users` (
   UNIQUE KEY `uc_activation_selector` (`activation_selector`),
   UNIQUE KEY `uc_forgotten_password_selector` (`forgotten_password_selector`),
   UNIQUE KEY `uc_remember_selector` (`remember_selector`)
-) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=12 DEFAULT CHARSET=utf8;
 
 --
--- Dumping data for table `users`
+-- Déchargement des données de la table `users`
 --
 
 INSERT INTO `users` (`id`, `ip_address`, `username`, `password`, `email`, `activation_selector`, `activation_code`, `forgotten_password_selector`, `forgotten_password_code`, `forgotten_password_time`, `remember_selector`, `remember_code`, `created_on`, `last_login`, `active`, `first_name`, `last_name`, `company`, `company_number`, `address`, `phone`, `website`, `social_network`) VALUES
-(1, '127.0.0.1', 'administrator', '$2y$12$yHML2PEkkL35NkGWKV.nVevBdB8aiebuOAD6.4.2ru7HoNiqW.6.y', 'admin@admin.com', NULL, '', NULL, NULL, NULL, NULL, NULL, 1268889823, 1581895883, 1, 'Admin', 'istrator', 'ADMIN', NULL, NULL, '0', NULL, NULL),
+(1, '127.0.0.1', 'administrator', '$2y$12$yHML2PEkkL35NkGWKV.nVevBdB8aiebuOAD6.4.2ru7HoNiqW.6.y', 'admin@admin.com', NULL, '', NULL, NULL, NULL, NULL, NULL, 1268889823, 1582637531, 1, 'Admin', 'istrator', 'ADMIN', NULL, NULL, '0', NULL, NULL),
 (2, '1.0.0.127', 'billy', '1234', 'bill.baroud@bill.com', NULL, NULL, NULL, NULL, NULL, NULL, NULL, 1234, NULL, 1, 'bill', 'baroud', 'maisonneuve', NULL, NULL, NULL, NULL, NULL),
-(3, '::1', 'robert@bidochon.com', '$2y$10$0zhTu/7nKvxZY0J1NUuFFelzWXJXn0P1Q2cMimQwgIj2AqM.mC.Pa', 'robert@bidochon.com', NULL, NULL, NULL, NULL, NULL, NULL, NULL, 1581901478, 1581906620, 1, 'robert', 'bidochon', 'les bidochon', NULL, NULL, '1234', NULL, NULL);
+(3, '::1', 'robert@bidochon.com', '$2y$10$0zhTu/7nKvxZY0J1NUuFFelzWXJXn0P1Q2cMimQwgIj2AqM.mC.Pa', 'robert@bidochon.com', NULL, NULL, NULL, NULL, NULL, NULL, NULL, 1581901478, 1582561330, 1, 'robert', 'bidochon', 'les bidochon', NULL, NULL, '1234', NULL, NULL),
+(4, '::1', 'gael@gael.com', '$2y$10$v/sakCF4JqKmfIb4JKZ9g.ErxtnkMhDRZmkfXPpyv/pUTePsoEHcC', 'gael@gael.com', NULL, NULL, NULL, NULL, NULL, NULL, NULL, 1582204232, NULL, 0, 'gael', 'comeau', 'college', 1234, 'chez nous', '1234', '', ''),
+(5, '::1', 'salah@salah.com', '$2y$10$kN3B0Jac.1Yfb7ZjvpRsCe1drphYa5aS5MHzDIOK5JO/uNQNgrUvm', 'salah@salah.com', NULL, NULL, NULL, NULL, NULL, NULL, NULL, 1582205922, NULL, 0, 'salah', 'salhi', 'laval inc.', 1234, 'laval', '1234', '', ''),
+(6, '::1', 'olivier@olivier.com', '$2y$10$6i3JjNfLAYjNTsmcmFbvAehc0PsMBkHIRYiOgTi.RrBHLAFJ7/lw6', 'olivier@olivier.com', NULL, NULL, NULL, NULL, NULL, NULL, NULL, 1582206222, NULL, 0, 'olivier', 'raude', 'deLorimier inc', 1234, 'montreal', '1234', '', ''),
+(7, '::1', 'kervens@kervens.com', '$2y$10$.5bn217iCyqO3XmivOmejegCVBbVZWSXk7XLEC/EUOrCQ7JD7AY2q', 'kervens@kervens.com', NULL, NULL, NULL, NULL, NULL, NULL, NULL, 1582206572, NULL, 0, 'kervens', 'antoine', 'haiti inc', 1234, 'brossard', '1234', '', ''),
+(8, '::1', 'gael_04@gael.com', '$2y$10$cwA0Lb9V4ezEm2n28etXZ.tVd8L11YwpZHkBAXBq9pIXggQhllOkG', 'gael_04@gael.com', NULL, NULL, NULL, NULL, NULL, NULL, NULL, 1582211065, NULL, 0, 'gael', 'gael', 'college', 1234, '', '1234', '', ''),
+(9, '::1', 'gael_05@gael.com', '$2y$10$gb.iZqUPOVOVLr7KJF0ISeIrleRnEwwfeUCC1ErvLxC6XrE6HdKLi', 'gael_05@gael.com', NULL, NULL, NULL, NULL, NULL, NULL, NULL, 1582211201, NULL, 0, 'gael', 'gael', 'college', 1234, 'chez nous', '1234', '', ''),
+(10, '::1', 'gael_6@gael.com', '$2y$10$1PBnrh/rxQENo35/MqxAduKGdxoVq6NBy4ABPvIXXN5Vhg0ocA/We', 'gael_6@gael.com', NULL, NULL, NULL, NULL, NULL, NULL, NULL, 1582211322, NULL, 0, 'gael', 'gael', 'college', 1234, 'ici', '1234', '', ''),
+(11, '::1', 'polo@polo.com', '$2y$10$3joqYxky3fP3ZlQkRXs05u0cdCeKi0K0lxJmXHhNQyZBMAvDqh5A.', 'polo@polo.com', NULL, NULL, NULL, NULL, NULL, NULL, NULL, 1582567761, NULL, 0, 'hello', 'yO', 'POLOP', 1234, 'chez polo', '1234', '', '');
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `users_groups`
+-- Structure de la table `users_groups`
 --
 
 DROP TABLE IF EXISTS `users_groups`;
@@ -239,51 +277,53 @@ CREATE TABLE IF NOT EXISTS `users_groups` (
   UNIQUE KEY `uc_users_groups` (`user_id`,`group_id`),
   KEY `fk_users_groups_users1_idx` (`user_id`),
   KEY `fk_users_groups_groups1_idx` (`group_id`)
-) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=15 DEFAULT CHARSET=utf8;
 
 --
--- Dumping data for table `users_groups`
+-- Déchargement des données de la table `users_groups`
 --
 
 INSERT INTO `users_groups` (`id`, `user_id`, `group_id`) VALUES
 (1, 1, 1),
-(2, 1, 2),
-(3, 3, 4);
+(3, 3, 4),
+(12, 4, 5),
+(13, 5, 6),
+(14, 7, 3);
 
 --
--- Constraints for dumped tables
+-- Contraintes pour les tables déchargées
 --
 
 --
--- Constraints for table `ad`
+-- Contraintes pour la table `ad`
 --
 ALTER TABLE `ad`
   ADD CONSTRAINT `ad_ibfk_1` FOREIGN KEY (`category`) REFERENCES `category` (`id_category`),
   ADD CONSTRAINT `ad_ibfk_2` FOREIGN KEY (`owner`) REFERENCES `users` (`id`);
 
 --
--- Constraints for table `banishement`
+-- Contraintes pour la table `banishement`
 --
 ALTER TABLE `banishement`
   ADD CONSTRAINT `banishement_ibfk_1` FOREIGN KEY (`admin_member`) REFERENCES `users` (`id`),
   ADD CONSTRAINT `banishement_ibfk_2` FOREIGN KEY (`banished_member`) REFERENCES `users` (`id`);
 
 --
--- Constraints for table `message`
+-- Contraintes pour la table `message`
 --
 ALTER TABLE `message`
   ADD CONSTRAINT `message_ibfk_1` FOREIGN KEY (`ad`) REFERENCES `ad` (`id_ad`),
   ADD CONSTRAINT `message_ibfk_2` FOREIGN KEY (`writer`) REFERENCES `users` (`id`);
 
 --
--- Constraints for table `rating`
+-- Contraintes pour la table `rating`
 --
 ALTER TABLE `rating`
   ADD CONSTRAINT `rating_ibfk_1` FOREIGN KEY (`rated_user`) REFERENCES `users` (`id`),
   ADD CONSTRAINT `rating_ibfk_2` FOREIGN KEY (`rater_user`) REFERENCES `users` (`id`);
 
 --
--- Constraints for table `users_groups`
+-- Contraintes pour la table `users_groups`
 --
 ALTER TABLE `users_groups`
   ADD CONSTRAINT `fk_users_groups_groups1` FOREIGN KEY (`group_id`) REFERENCES `groups` (`id`) ON DELETE CASCADE ON UPDATE NO ACTION,
