@@ -58,7 +58,7 @@ class Member_model extends CI_Model {
 			$this->db->select('users.id, email, created_on, last_login, active, first_name, last_name, company, name,active,created_on,last_login');
 			$this->db->from('users');
 			$this->db->join('users_groups','users_groups.user_id = users.id');
-			$this->db->join('groups','groups.id = users_groups.user_id');
+			$this->db->join('groups','groups.id = users_groups.group_id');
 			$this->db->where('active',0);
 		  
 			$query = $this->db->get();
