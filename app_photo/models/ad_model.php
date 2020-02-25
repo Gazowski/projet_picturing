@@ -27,6 +27,30 @@ class Ad_model extends CI_Model {
         return $query->row_array();
     }
 
+    public function get_ad_product()
+    {
+        
+        $this->db->select('*');
+        $this->db->from('ad');
+        $this->db->join('category','category.id_category = ad.category');
+        $this->db->where('category.category','produit');
+                
+        $query = $this->db->get();
+        return $query->result_array();
+    }
+
+    public function get_ad_servive()
+    {
+        
+        $this->db->select('*');
+        $this->db->from('ad');
+        $this->db->join('category','category.id_category = ad.category');
+        $this->db->where('category.category','service');
+                
+        $query = $this->db->get();
+        return $query->result_array();
+    }
+
     public function add_ad($data)
     {
         return $this->db->insert('ad',$data);
