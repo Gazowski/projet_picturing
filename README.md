@@ -20,3 +20,10 @@ https://coolors.co/
 
 ## Note
 * Password pour les utilisateurs = 1234 (sauf admin@admin.com = password)
+* 		$user_value = [
+			'Client' => 10,
+			'Fournisseur' => 20,
+			'Fournisseur Or' => 30,
+			'Superviseur' => 40,
+			'admin' => 50,
+		];
