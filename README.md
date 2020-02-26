@@ -31,7 +31,7 @@ https://coolors.co/
 ## Plan du site
 ### utilisateur non connecté / client
 #### page accueil 
-page accueil = liste des annonces
+page accueil = tuiles des annonces (supprimer le bouton 'ajouter annonce')
 #### menu 
 * annonces : 
 	- produits
@@ -42,9 +42,17 @@ page accueil = liste des annonces
 	- mes annonces (si client)
 	- mes messages (si client)
 
-### page mon profil
-page de profil du client avec bouton modifier et supprime
+#### page mon profil
+page de profil du client avec bouton modifier et supprimer
 
+### Fournisseur
+#### page accueil 
+page accueil = tuiles des annonces du fournisseur avec une tuile 'ajout annonces' 
+#### menu 
+idem client
+#### note
+possibilité de modifier et supprimer une annonce
+possibilité de voir le client qui soumissionne à une annonce
 
 
 ## Note
