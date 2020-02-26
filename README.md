@@ -18,6 +18,7 @@ https://coolors.co/
 * rediriger les superviseurs vers admin_home.
 
 ## amélioration à faire
+* ajouter une page 'mon compte' qui affiche profil / annonces et possibilité de modifier / supprimer
 * activer la recherche
 * différencier les services des produits (label/tag? code couleur? icone?...) 
 * ajouter un plugin seo
