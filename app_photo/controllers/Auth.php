@@ -78,7 +78,7 @@ class Auth extends CI_Controller
 
 			if ($this->ion_auth->login($this->input->post('identity'), $this->input->post('password'), $remember))
 			{
-				if($this->ion_auth->is_admin())
+				if($this->session->userdata['user_role'] >= 40)
 				{
 					redirect('member/admin_home','refresh');
 				}
