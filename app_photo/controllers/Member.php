@@ -19,27 +19,6 @@ class Member extends CI_Controller {
         $this->load->library(['ion_auth']);
     }
 
-    /**
-     * load_member_category()
-     * REDEFINIR SON UTILITÉ
-     */
-
-    private function load_member_category()
-    {
-
-        // !!!! ATTENTION -> les catégories doivent être modifié
-        $category = [
-            'Client' => 'Customer',       
-            'Fournisseur' => 'Golden_supplier', // !!!! FAUX
-            'admin' => 'Admin'   //  a modifier pour Super_admin
-        ];
-
-        $this->user_category = $this->ion_auth->logged_in() ? $category[$this->ion_auth->get_users_groups()->result()] : 'Users';
-        //$this->load->library([$this->user_category]);
-    }
-
-
-
 //////logique pour afficher la liste des membres pour les fournisseurs////
     
     public function display_all_supplier()
@@ -50,7 +29,11 @@ class Member extends CI_Controller {
             // Whoops, we don't have a page for that!
             show_404();
         }
-        
+        if (!isset($this->session->userdata['user_role']) || $this->session->userdata['user_role'] < 40)
+        {
+            $this->session->set_flashdata('message', 'Vous devez avoir les droits de superviseur');
+            redirect($_SERVER['HTTP_REFERER']); 
+        }        
         
         $data['title'] = 'Liste des Membres'; // Capitalize the first letter
         $data['table'] = $this->member_model->get_supplier();       
@@ -60,14 +43,19 @@ class Member extends CI_Controller {
 
     /**
      * affichage des tous les membres
+     * accessible par superviseur et +
      */
     public function display_all()
     {
-        
         if ( ! file_exists(APPPATH.'views/pages/list.php'))
         {
             // Whoops, we don't have a page for that!
             show_404();
+        }
+        if (!isset($this->session->userdata['user_role']) || $this->session->userdata['user_role'] < 40)
+        {
+            $this->session->set_flashdata('message', 'Vous devez avoir les droits de superviseur');
+            redirect($_SERVER['HTTP_REFERER']); 
         }       
         
         $data['title'] = 'Liste des Membres'; // Capitalize the first letter
@@ -76,6 +64,9 @@ class Member extends CI_Controller {
         $this->load->template('pages/list_members',$data);
     }
 
+    /**
+     * admin_home() : page d'accueil pour les superviseurs et admins
+     */
     public function admin_home()
     {
         if ( ! file_exists(APPPATH.'views/pages/admin_home.php'))
@@ -83,12 +74,10 @@ class Member extends CI_Controller {
             // Whoops, we don't have a page for that!
             show_404();
         }
-
-        if (!$this->ion_auth->is_admin())
+        if (!isset($this->session->userdata['user_role']) || $this->session->userdata['user_role'] < 40)
         {
-            $this->session->set_flashdata('message', 'Vous n\'êtes pas un administrateur');
-            $this->session->set_flashdata('class', 'fail');
-            redirect('ad/display_all');
+            $this->session->set_flashdata('message', 'Vous devez avoir les droits de superviseur');
+            redirect($_SERVER['HTTP_REFERER']); 
         }
         
         $data['title'] = 'Page Administrateur';
@@ -98,4 +87,4 @@ class Member extends CI_Controller {
         $this->load->template('pages/admin_home',$data,$this->ion_auth->is_admin());
 
     }
-}#
+}
