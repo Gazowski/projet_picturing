@@ -17,6 +17,8 @@ https://coolors.co/
 * page display_all_member : l'action activer donne une erreur 404.
 
 ## amélioration à faire
+* activer la recherche
+* différencier les services des produits (label/tag? code couleur? icone?...) 
 * ajouter un plugin seo
 * ajouter un plugin pour connection par facebook
 * priviligier un pluggin pour le rating
