@@ -14,9 +14,15 @@
         
                        
                         <ul id="menu">
-                            <a href="<?= base_url(); ?>index.php/ad/display_all"><li>Annonces</li></a>
-                            <a href="<?= base_url(); ?>index.php/ad/display_all_product"><li>Produits</li></a>
-                            <a href="<?= base_url(); ?>index.php/ad/display_all_service"><li>Services</li></a>
+                            <li>Annonces
+                                <ul>
+                                    <li><a href="<?= base_url(); ?>index.php/ad/display_all_product">Produits</a></li>
+                                    <li><a href="<?= base_url(); ?>index.php/ad/display_all_service">Services</a></li>
+                                    <li><a href="<?= base_url(); ?>index.php/ad/display_all">Annonces</a></li>
+                                </ul>
+                            </li>
+                            <li><a href="<?= base_url(); ?>index.php/auth/create_user">S'inscrire</a></li>
+                            <li><a href="<?= base_url(); ?>index.php/???????????">A propos</a></li>
                         </ul>
                 </div>
             </nav>
