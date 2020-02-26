@@ -54,6 +54,9 @@ idem client
 possibilité de modifier et supprimer une annonce
 possibilité de voir le client qui soumissionne à une annonce
 
+### Fournisseur Or
+idem fournisseur avec possibilité de voir tous les clients
+
 
 ## Note
 * Password pour les utilisateurs = 1234 (sauf admin@admin.com = password)
