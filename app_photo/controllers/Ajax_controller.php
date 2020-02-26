@@ -27,11 +27,17 @@ class Ajax_controller extends CI_Controller {
         $this->ajax_data = json_decode($data);        
     }
 
+    /**
+     * get_category_name : affiche un 'select' avec les différentes catégorie selon le choix entre produits et service
+     * accessible par les fournisseurs et +
+     */
+
     public function get_category_name()
     {
-        if (!$this->ion_auth->logged_in() /*|| !$this->ion_auth->is_admin()*/)
+        if (!isset($this->session->userdata['user_role']) || $this->session->userdata['user_role'] < 20)
 		{
-			redirect('auth', 'refresh');
+            $this->session->set_flashdata('message', 'Vous devez être connecté entant que Fournisseur pour créer une annonce');
+            redirect('auth', 'refresh');
         }
         $result = $this->ad_model->get_category_name($this->ajax_data);
         $select = '';
@@ -42,6 +48,11 @@ class Ajax_controller extends CI_Controller {
         echo $select;
     }
 
+    /**
+     * display_ad() : affiche l'annonce passée en paramètre
+     * @param { int } $id_ad : identifiant de l'annonce
+     * Accessible pour tous
+     */
 	public function display_ad($id_ad)
     {
         if ( ! file_exists(APPPATH.'views/pages/detail_ad.php'))
@@ -57,27 +68,42 @@ class Ajax_controller extends CI_Controller {
         $this->load->view('pages/detail_ad',$data);
     }
 
+    /**
+     * activate_member
+     * active un membre en attente d'activation. envoi un booléen a l'appel ajax
+     * Accessible pour les Superviseurs et +
+     */
     public function activate_member()
     {
-        if($this->ion_auth->is_admin())
-        {
-            $id_member = $this->ajax_data;
-            $data = [
-                'active' => 1,
-            ];
-            echo $this->ion_auth->update($id_member, $data);
+        if (!isset($this->session->userdata['user_role']) || $this->session->userdata['user_role'] < 40)
+		{
+            $this->session->set_flashdata('message', 'Vous devez être connecté entant que Superviseur pour activer un membre');
+            redirect('auth', 'refresh');
         }
+        
+        $id_member = $this->ajax_data;
+        $data = [
+            'active' => 1,
+        ];
+        echo $this->ion_auth->update($id_member, $data);
     }
-
-    	
+    
+    /**
+     * activate_ad
+     * active une annonce en attente d'activation. envoi un booléen a l'appel ajax
+     * Accessible pour les Superviseurs et +
+     */
     public function activate_ad()
     {
-        if($this->ion_auth->is_admin())
+        if (!isset($this->session->userdata['user_role']) || $this->session->userdata['user_role'] < 40)
         {
-            $id_ad = $this->ajax_data;
-            $this->db->set('active',1);
-            $this->db->where('id_ad',$id_ad);
-            echo $this->db->update('ad');
+            $this->session->set_flashdata('message', 'Vous devez être connecté entant que Superviseur pour activer une annonce');
+            redirect('auth', 'refresh');
         }
+
+        $id_ad = $this->ajax_data;
+        $this->db->set('active',1);
+        $this->db->where('id_ad',$id_ad);
+        echo $this->db->update('ad');
 	}
 }
