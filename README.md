@@ -15,7 +15,6 @@ https://coolors.co/
 * l'effet hover sur les icones des medias sociaux ne fonctionne
 * page home admin : lorsque tous les users sont activés seul l'entete du tableau reste affiché (au lieu d'une phrase)
 * page display_all_member : l'action activer donne une erreur 404.
-* rediriger les superviseurs vers admin_home.
 * ajouter un radio button pour le type de fournisseur 'gratuit' ou 'or'
 
 ## amélioration à faire
