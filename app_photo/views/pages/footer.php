@@ -3,7 +3,7 @@
     <div class="content_f">
         <div class="logo_f">
 
-			<svg version="1.1" class="color_logo_f" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+			<a href="<?= base_url(); ?>"><svg version="1.1" class="color_logo_f" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
 				viewBox="0 0 176 48.5" style="enable-background:new 0 0 176 48.5;" xml:space="preserve">
 			<style type="text/css">
 				.st0{fill:#BCBCBC;}
@@ -51,7 +51,7 @@
 				c0.6-0.5,1.1-1.2,1.3-1.9C160.4,25.1,160.5,24.1,160.5,23.1z"/>
 			<path class="st1" d="M59.9,24.5c0,13-10.5,23.5-23.5,23.5S12.9,37.5,12.9,24.5S23.5,1,36.4,1c0,0,0,0,0,0
 				C49.4,1,59.9,11.5,59.9,24.5z"/>
-			</svg>
+			</svg></a>
 
 		</div>
 
