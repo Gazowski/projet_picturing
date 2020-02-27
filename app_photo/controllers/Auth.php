@@ -488,7 +488,7 @@ class Auth extends CI_Controller
 		{
 			$this->form_validation->set_rules('email', $this->lang->line('create_user_validation_email_label'), 'trim|required|valid_email|is_unique[' . $tables['users'] . '.email]');
 		}
-		$this->form_validation->set_rules('group', $this->lang->line('create_user_validation_group_label'), 'trim');
+		$this->form_validation->set_rules('group', $this->lang->line('create_user_validation_group_label'), 'trim|required');
 		$this->form_validation->set_rules('phone', $this->lang->line('create_user_validation_phone_label'), 'trim');
 		$this->form_validation->set_rules('company', $this->lang->line('create_user_validation_company_label'), 'trim');
 		$this->form_validation->set_rules('company_number', $this->lang->line('create_user_validation_company_number_label'), 'trim');
@@ -507,8 +507,8 @@ class Auth extends CI_Controller
 			$additional_data = [
 				'first_name' => $this->input->post('first_name'),
 				'last_name' => $this->input->post('last_name'),
-				'group' => isset($_POST['golden_supplier']) ? $this->input->post('golden_supplier') : $this->input->post('group'),
-				'golden_supplier' => $this->input->post('golden_supplier'),
+				'group' => array((isset($_POST['golden_supplier']) ? $this->input->post('golden_supplier') : $this->input->post('group'))),
+				//'golden_supplier' => $this->input->post('golden_supplier'),
 				'company' => $this->input->post('company'),
 				'phone' => $this->input->post('phone'),
 				'company_number' => $this->input->post('company_number'),
@@ -553,7 +553,7 @@ class Auth extends CI_Controller
 				'name' => 'golden_supplier',
 				'id' => 'golden_supplier',
 				'type' => 'checkbox',
-				'value' => '5', // 5 = id fournisseur dans la db
+				'value' => 5,
 			];
 			$this->data['identity'] = [
 				'name' => 'identity',

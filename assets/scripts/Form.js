@@ -19,7 +19,7 @@ export class Form {
             
             if(input.dataset.jsInput == 'group'){
                 input.addEventListener('change',()=>{
-                    if(input.value == 'supplier'){ 
+                    if(input.value == '4'){ // 4 = fournisseur
                         this._boxGoldenSupplier.classList.remove('display_none')
                     }
                     else if(!this._boxGoldenSupplier.classList.contains('display_none')){
