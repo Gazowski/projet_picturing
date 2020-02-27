@@ -103,8 +103,7 @@ class Member extends CI_Controller {
         }
         // si $id_member n'est pas renseigné, $id_member prends la valeur de l'user connecté
         $id_member = $id_member == null ? $this->session->userdata['user_id']: $id_member;
-        var_dump($this->session->userdata,$id_member);
-        if($id_member != null && $this->session->userdata['user_role'] < 20)
+        if($this->session->userdata['user_role'] < 20)
         {
             $this->session->set_flashdata('message', 'Vous n\'avez pas les droits');
             redirect($_SERVER['HTTP_REFERER']); 
@@ -114,6 +113,6 @@ class Member extends CI_Controller {
         
         $data['profil'] = $this->member_model->get_member($id_member);
 
-        $this->load->template('pages/detail_member',$data);
+        $this->load->template('pages/detail_member.php',$data);
     }
 }
