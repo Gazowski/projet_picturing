@@ -14,19 +14,33 @@
         
                        
                         <ul id="menu">
+                        <?php
+                             foreach($data as $row){
+                        ?> 
                             <li>Annonces
-                                <ul>
-                                    <li><a href="<?= base_url(); ?>index.php/ad/display_all_product">Produits</a></li>
-                                    <li><a href="<?= base_url(); ?>index.php/ad/display_all_service">Services</a></li>
-                                    <li><a href="<?= base_url(); ?>index.php/ad/display_all">Annonces</a></li>
-                                </ul>
-                            </li>
+                                    <?php
+                                        foreach($data as $row){
+                                    ?>
+                                            <ul>
+                                                <li><a href="<?= base_url(); ?>index.php/ad/display_all_product">Produits</a></li>
+                                                <li><a href="<?= base_url(); ?>index.php/ad/display_all_service">Services</a></li>
+                                                <li><a href="<?= base_url(); ?>index.php/ad/display_all">Annonces</a></li>
+                                            </ul>
+                                        <?php  
+                                        }?>
+                                    
+                                        </li>
+                        
                             <li><a href="<?= base_url(); ?>index.php/auth/create_user">S'inscrire</a></li>
                             <li><a href="<?= base_url(); ?>index.php/???????????">A propos</a></li>
+                            <?php  
+                            }?> 
                         </ul>
                 </div>
             </nav>
         </div> 
+
+
          
         <section class="menu_logo_compte">
             
@@ -43,6 +57,9 @@
       
       
     </section>
+
+
+    
   
 
     <!-- ----------------- header grand ecran ---------------------- -->
@@ -81,3 +98,8 @@
     <div class="line"></div>  
 </header>
 <main>
+
+
+
+
+

@@ -31,6 +31,8 @@ class MY_Loader extends CI_Loader {
         $vars['icon'] = !isset($_SESSION['user_id']) ? 'fas fa-user' : 'fas fa-sign-out-alt';
         $vars['text_icon'] = !isset($_SESSION['user_id']) ? ' Connexion' : ' Déconnexion';
         $vars['action'] = !isset($_SESSION['user_id']) ? 'login' : 'logout';
+        $vars['menu'] = !isset($_SESSION['user_id']) ? 'login' : 'logout';
+
 
         // header différent si le role est supérieur a admin
         $header = $is_superviseur ? 'pages/header_admin' : 'pages/header_catalog';
