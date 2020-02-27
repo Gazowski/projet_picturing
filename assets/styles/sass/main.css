@@ -6430,6 +6430,10 @@ input[type="text"], input[type="password"], textarea {
   width: 99%;
 }
 
+input[type='checkbox'] {
+  margin-top: .5em;
+}
+
 select {
   -webkit-appearance: none;
      -moz-appearance: none;
@@ -6664,6 +6668,15 @@ header {
 #menu li {
   padding: 10px 0;
   font-size: 22px;
+  color: #bdbdbd;
+}
+
+#menu li ul {
+  display: none;
+}
+
+#menu li:hover ul {
+  display: block;
 }
 
 @media (min-width: 600px) {
@@ -7378,6 +7391,10 @@ td, th {
 
 .titre_form h1 {
   font-weight: normal;
+}
+
+.display_none {
+  display: none;
 }
 
 @media (min-width: 600px) {

@@ -507,7 +507,8 @@ class Auth extends CI_Controller
 			$additional_data = [
 				'first_name' => $this->input->post('first_name'),
 				'last_name' => $this->input->post('last_name'),
-				'group' => $this->input->post('group'),
+				'group' => isset($_POST['golden_supplier']) ? $this->input->post('golden_supplier') : $this->input->post('group'),
+				'golden_supplier' => $this->input->post('golden_supplier'),
 				'company' => $this->input->post('company'),
 				'phone' => $this->input->post('phone'),
 				'company_number' => $this->input->post('company_number'),
@@ -515,6 +516,7 @@ class Auth extends CI_Controller
 				'website' => $this->input->post('website'),
 				'social_network' => $this->input->post('social_network'),
 			];
+			var_dump($additional_data);
 		}
 		if ($this->form_validation->run() === TRUE && $this->ion_auth->register($identity, $password, $email, $additional_data))
 		{
@@ -543,9 +545,15 @@ class Auth extends CI_Controller
 			$this->data['group'] = [
 				'name' => 'group',
 				'id' => 'group',
-				'option' => $this->ion_auth->groups()->result(),
+				'option' => [3=>'Client',4=>'Fournisseur'],
 				'type' => 'text',
 				'value' => $this->form_validation->set_value('group'),
+			];
+			$this->data['golden_supplier'] = [
+				'name' => 'golden_supplier',
+				'id' => 'golden_supplier',
+				'type' => 'checkbox',
+				'value' => '5', // 5 = id fournisseur dans la db
 			];
 			$this->data['identity'] = [
 				'name' => 'identity',

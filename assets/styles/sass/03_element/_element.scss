@@ -35,6 +35,10 @@ a{
 input[type ="text"],input[type = "password"],textarea{
     width: 99%;
 }
+
+input[type = 'checkbox']{
+	margin-top:.5em;
+}
 //---------scss select dans toutes les vue qui on un select-----//
 select {
 	appearance: none;

@@ -1,4 +1,4 @@
-<div class="form">
+<div class="form" data-component='form'>
       <div class="titre_form">
             <h1><?php echo lang('create_user_heading');?></h1>
       </div>
@@ -27,9 +27,14 @@
                         $opt = ['default' => '-- choisir un type --'];
                         foreach($group['option'] as $key=>$option)
                         {
-                              $opt[$option->id] = $option->name;
+                              $opt[$key] = $option;
                         } 
                         echo form_dropdown($group['name'], $opt,'', 'data-js-input="group"'); ?>
+                  </div>
+
+                  <div class='display_none' data-js-input="golden">
+                        <?= form_checkbox($golden_supplier) ?> 
+                        <?= form_label('Fournisseur Or (payant)','golden_supplier') ?>
                   </div>
                   
                   
