@@ -33,7 +33,7 @@ class MY_Loader extends CI_Loader {
             $vars['menu'] = [
                 'annonces' => [
                     'produits' => 'ad/display_all_product',
-                    'services' => 'ad/display_all_service'
+                    'services' => 'ad/display_all_service',
                     
                 ],
                 'S\'inscrire' => 'auth/create_user',
@@ -43,8 +43,8 @@ class MY_Loader extends CI_Loader {
             {
                 $vars['menu'] = [
                     'annonces' => [
-                        'produits' => 'ad/display_all_product',
-                        'services' => 'ad/display_all_service'
+                        'produits' => 'index.php/ad/display_all_product',
+                        'services' => 'index.php/ad/display_all_service',
                         
                     ],
                     'Mon compte' =>[
