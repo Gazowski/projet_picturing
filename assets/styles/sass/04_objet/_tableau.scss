@@ -37,14 +37,16 @@ td, th {
 
 @media (min-width: 900px) {
     .table{
-        overflow-x:hidden;
-        width: 69%;
-        margin: 0 auto;
+		width: 69%;
+
     }
-   
-    
+
 }
-  
-//   @media (min-width: 600px) {
-  
-// 	}
+@media (min-width: 1200px) {
+    .table{
+		width: 69%;
+		overflow-x:hidden;
+    }
+
+}
+

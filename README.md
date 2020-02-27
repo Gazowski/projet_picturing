@@ -13,7 +13,6 @@ https://coolors.co/
 * creation d'une annonce possible sans photo ni description
 * l'effet hover sur les icones des medias sociaux ne fonctionne
 * page home admin : lorsque tous les users sont activés seul l'entete du tableau reste affiché (au lieu d'une phrase)
-* ajouter un radio button pour le type de fournisseur 'gratuit' ou 'or'
 
 ## amélioration à faire
 * ajouter une page 'mon compte' qui affiche profil / annonces et possibilité de modifier / supprimer
