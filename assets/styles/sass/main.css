@@ -7397,6 +7397,10 @@ td, th {
   display: none;
 }
 
+.grey {
+  color: #bdbdbd;
+}
+
 @media (min-width: 600px) {
   .form {
     width: calc(70% - 4em);
