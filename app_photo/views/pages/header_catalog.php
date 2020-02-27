@@ -14,6 +14,8 @@
         
                        
                         <ul id="menu">
+
+                        <!-- KERVENS, les lignes 18 à 28 doivent être remplacé par une boucle sur la variable $menu -->
                             <li>Annonces
                                 <ul>
                                     <li><a href="<?= base_url(); ?>index.php/ad/display_all_product">Produits</a></li>

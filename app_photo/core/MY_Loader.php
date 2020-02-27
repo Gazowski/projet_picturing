@@ -26,6 +26,33 @@ class MY_Loader extends CI_Loader {
 
         // menu selon le role
         // KERVENS, compléte ici la variable $vars['menu']
+        // ta variable doit commencer comme ci-dessous:
+
+        /*
+
+            $vars['menu'] = [
+                'annonces' => [
+                    'produits' => controlleur/method pour la liste de produit,
+                    ....
+                ],
+                'S\'inscrire' => [
+                    ... mettre les différents sous menu ...
+                ],
+                'a propos' => controlleur/methode a propos,
+            ]
+            if($is_client)
+            {
+                $vars['menu'] = [
+                    ... mettre les données pour le menu client ...
+                ]
+            }
+            else if($is_fournisseur)
+            {
+                ... menu pour client ...
+            }
+            ... continuer jusqu'a admin
+
+        */
 
         // icone connexion / déconnexion
         $vars['icon'] = !isset($_SESSION['user_id']) ? 'fas fa-user' : 'fas fa-sign-out-alt';
