@@ -2,26 +2,43 @@
 <!-- header petit ecran -->
 <header>
     <section class="entete_admin">
-        <div class="menu">
-            <nav role="navigation">
-                <div id="menuToggle">
-                    <input type="checkbox" />
-        
-    
-                        <span></span>
-                        <span></span>
-                        <span></span>
-        
-                        <ul id="menu">
-                            <a href="#"><li>Fournisseurs</li></a>
-                            <a href="#"><li>Clients</li></a>
-                            <a href="#"><li>Messagerie</li></a>
-                            <a href="#"><li>Categories</li></a>
-                            <a href="#"><li>Annonces</li></a>
-                        </ul>
-                </div>
-            </nav>
-        </div> 
+    	<div class="menu">
+			<nav role="navigation">
+					<div id="menuToggle">
+						<input type="checkbox" />
+			
+		
+							<span></span>
+							<span></span> 
+							<span></span>
+			
+						
+							<ul id="menu">
+
+							<!-- KERVENS, les lignes 18 à 28 doivent être remplacé par une boucle sur la variable $menu -->
+							
+								<?php foreach($menu as $key =>$value){ ?> 
+									<?php if(is_string($value)){?>
+										<li><a href="<?= base_url($value); ?>"><?=$key?></a></li>
+									<?php } else { ?>
+										<li><?=$key?>
+											<ul> 
+												<?php foreach($value as $key=>$val){ ?>
+												
+														<li><a href="<?= base_url($val); ?>"><?=$key?></a></li> 
+	
+												<?php } ?>
+											</ul>
+										</li>
+									<?php } ?>                               
+								
+								<?php } ?>
+
+							</ul>
+											
+					</div>
+			</nav>
+     	</div> 
         
         <div class="logo_compte_admin">
             
@@ -150,16 +167,29 @@
 	
 	
 	<div class="menu_el_admin">
-                        <nav class="navigation_el_admin">
-                            <ul id="menu_el">
-								<li><a href="<?= base_url(); ?>??????">Annonces</a></li>	
-								<li><a href="<?= base_url(); ?>??????">Fournisseurs</a></li>
-							    <li><a href="<?= base_url(); ?>??????">Clients</a></li>
-							    <li><a href="<?= base_url(); ?>??????">Messagerie</a></li>                                       
-							    <li><a href="<?= base_url(); ?>??????">Categories</a></li>    
-                            </ul>
-                        </nav>
-                </div>
+		<nav class="navigation_el">
+							
+				<ul id="menu_el">
+
+					<?php foreach($menu as $key =>$value){ ?> 
+							<?php if(is_string($value)){?>
+								<li><a href="<?= base_url($value); ?>"><?=$key?></a></li>
+							<?php } else { ?>
+								<li><?=$key?>
+									<ul> 
+										<?php foreach($value as $key=>$val){ ?>
+											
+												<li><a href="<?= base_url($val); ?>"><?=$key?></a></li> 
+
+										<?php } ?>
+									</ul>
+								</li>
+							<?php } ?>                               
+							
+					<?php } ?>
+				</ul>
+			</nav>
+	</div>
 </header>
 <main>
                     
