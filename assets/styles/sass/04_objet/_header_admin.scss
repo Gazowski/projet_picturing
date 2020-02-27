@@ -4,13 +4,16 @@
    background-image: url("../../logo/header_image_admin.png");
    background-repeat: no-repeat;
    background-position: center;
-   height: 174px;
+   height: 6em;
  }
  
  .logo_compte_admin{
+   
     display: flex;
     flex-direction: row;
     justify-content: flex-end;
+    
+    
     
     align-items: center;
 
@@ -19,4 +22,52 @@
       margin-right: 3.6em;
    }  
  }
+ .menu_el_admin{
+   display: none;
+ }
+
+ @media (min-width: 900px) {
+
+  .menu_el_admin{
+    display: block;
+    width: 100%;
+    background-color:$c-light-grey;
+    padding: 0;
+    
+    #menu_el{
+      width: 69%;
+      margin: 0 auto;
+      padding-top: .9em;
+      padding-left: 1em;
+      padding-right: 1em;
+      font-size: 1.1em;
+    }
+    
+
+
+    ul{
+      margin-top: 0;
+    } 
+
+  }
+  
+  .logo_compte_admin{
+    width: 69%;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-end;
+    padding-top: 2em;
+  
+    align-items: center;
+
+    .logo{
+      width: 7em;
+      margin-right: 3.6em;
+   }  
+ }
+
+
+}
+
  
