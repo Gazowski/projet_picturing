@@ -6673,7 +6673,6 @@ header {
 
 #menu li ul {
   display: none;
-  list-style: none;
 }
 
 #menu li:hover ul {
@@ -6758,30 +6757,6 @@ header {
     -webkit-box-pack: justify;
         -ms-flex-pack: justify;
             justify-content: space-between;
-    list-style: none;
-  }
-  #menu_el li {
-    position: relative;
-    display: inline-block;
-  }
-  #menu_el li ul {
-    display: none;
-    list-style: none;
-    position: absolute;
-    background-color: #f9f9f9;
-    min-width: 2em;
-    -webkit-box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
-            box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
-    padding: .5em;
-    z-index: 1;
-  }
-  #menu_el li:hover ul {
-    display: block;
-  }
-  #menu_el li a {
-    padding-bottom: .5em;
-    text-decoration: none;
-    display: block;
   }
   #icone_search {
     position: relative;
@@ -7221,14 +7196,9 @@ td, th {
 
 @media (min-width: 900px) {
   .table {
-    width: 69%;
-  }
-}
-
-@media (min-width: 1200px) {
-  .table {
-    width: 69%;
     overflow-x: hidden;
+    width: 69%;
+    margin: 0 auto;
   }
 }
 
@@ -7237,7 +7207,7 @@ td, th {
   background-image: url("../../logo/header_image_admin.png");
   background-repeat: no-repeat;
   background-position: center;
-  height: 6em;
+  height: 174px;
 }
 
 .logo_compte_admin {
@@ -7259,52 +7229,6 @@ td, th {
 .logo_compte_admin .logo {
   width: 7em;
   margin-right: 3.6em;
-}
-
-.menu_el_admin {
-  display: none;
-}
-
-@media (min-width: 900px) {
-  .menu_el_admin {
-    display: block;
-    width: 100%;
-    background-color: #bdbdbd;
-    padding: 0;
-  }
-  .menu_el_admin #menu_el {
-    width: 69%;
-    margin: 0 auto;
-    padding-top: .9em;
-    padding-left: 1em;
-    padding-right: 1em;
-    font-size: 1.1em;
-  }
-  .menu_el_admin ul {
-    margin-top: 0;
-  }
-  .logo_compte_admin {
-    width: 69%;
-    margin: 0 auto;
-    display: -webkit-box;
-    display: -ms-flexbox;
-    display: flex;
-    -webkit-box-orient: horizontal;
-    -webkit-box-direction: normal;
-        -ms-flex-direction: row;
-            flex-direction: row;
-    -webkit-box-pack: end;
-        -ms-flex-pack: end;
-            justify-content: flex-end;
-    padding-top: 2em;
-    -webkit-box-align: center;
-        -ms-flex-align: center;
-            align-items: center;
-  }
-  .logo_compte_admin .logo {
-    width: 7em;
-    margin-right: 3.6em;
-  }
 }
 
 .detail_ad {
@@ -7471,6 +7395,10 @@ td, th {
 
 .display_none {
   display: none;
+}
+
+.grey {
+  color: #bdbdbd;
 }
 
 @media (min-width: 600px) {
