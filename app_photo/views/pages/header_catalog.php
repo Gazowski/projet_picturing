@@ -17,19 +17,19 @@
 
                         <!-- KERVENS, les lignes 18 à 28 doivent être remplacé par une boucle sur la variable $menu -->
                             <li>Annonces
-                                <ul>
-                                    <li><a href="<?= base_url(); ?>index.php/ad/display_all_product">Produits</a></li>
-                                    <li><a href="<?= base_url(); ?>index.php/ad/display_all_service">Services</a></li>
-                                    <li><a href="<?= base_url(); ?>index.php/ad/display_all">Annonces</a></li>
-                                </ul>
-                            </li>
+                                            <ul>
+                                                <li><a href="<?= base_url(); ?>index.php/ad/display_all_product">Produits</a></li>
+                                                <li><a href="<?= base_url(); ?>index.php/ad/display_all_service">Services</a></li>
+                                                <li><a href="<?= base_url(); ?>index.php/ad/display_all">Annonces</a></li>
+                                            </ul>                                    
+                                        </li>                        
                             <li><a href="<?= base_url(); ?>index.php/auth/create_user">S'inscrire</a></li>
                             <li><a href="<?= base_url(); ?>index.php/???????????">A propos</a></li>
                         </ul>
                 </div>
             </nav>
         </div> 
-         
+
         <section class="menu_logo_compte">
             
                 <div class="logo">
@@ -45,6 +45,9 @@
       
       
     </section>
+
+
+    
   
 
     <!-- ----------------- header grand ecran ---------------------- -->
@@ -83,3 +86,8 @@
     <div class="line"></div>  
 </header>
 <main>
+
+
+
+
+
