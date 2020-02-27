@@ -52,7 +52,7 @@ class MY_Loader extends CI_Loader {
                         'Mes soumissions' =>  'controlleur/methode',
                         'Mes messages' =>  'controlleur/methode',
                         
-                    ] 
+                    ], 
                     'a propos' => 'controlleur/methode a propos'
                 ];
             }
@@ -69,11 +69,11 @@ class MY_Loader extends CI_Loader {
                         'Mes annonces' =>  'controlleur/methode',
                         'Mes messages' =>  'controlleur/methode',
                         
-                    ] 
+                    ],
                     'a propos' => 'controlleur/methode a propos'
                 ];
             }
-            ... continuer jusqua admin
+           /*  ... continuer jusqua admin */
  
         
 
