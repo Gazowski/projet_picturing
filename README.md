@@ -11,7 +11,7 @@ https://coolors.co/
 * tableau (css): rajouter le overscroll sur d'autre media query --corrigé--
 * alert (css) : le fond transparent est perdu lorsque l'on scroll vers le bas --corrigé--
 * creation d'une annonce possible sans photo ni description
-* l'effet hover sur les icones des medias sociaux ne fonctionne pas. 
+* footer (css) : l'effet hover sur les icones des medias sociaux ne fonctionne pas. --corrigé-- 
 * page home admin : lorsque tous les users sont activés seul l'entete du tableau reste affiché (au lieu d'une phrase)
 
 ## amélioration à faire
