@@ -56,7 +56,7 @@ class MY_Loader extends CI_Loader {
                     ],
                     'Mon compte' => [
                         'Mon profil' =>  'index.php/member/member',
-                        'Messages' =>  'index.php/controlleur/methode',
+                        'Mes messages' =>  'Message/display_messages_ad',
                         
                     ],
                     'A propos' => 'index.php/controlleur/methode a propos'
@@ -79,7 +79,7 @@ class MY_Loader extends CI_Loader {
                     ],
                     'Mon compte' => [
                         'Mon profil' =>  'index.php/member/member',
-                        'Messages' =>  'index.php/controlleur/methode',
+                        'Mes messages' =>  'Message/display_messages_ad',
                         
                     ],
                     'A propos' => 'index.php/controlleur/methode a propos'
@@ -97,7 +97,7 @@ class MY_Loader extends CI_Loader {
                         'Mon compte' => [
                             'Mon profil' =>  'index.php/member/member',
                             'Mes annonces' =>  'index.php/controlleur/methode',
-                            'Messages' =>  'index.php/controlleur/methode',
+                            'Mes messages' =>  'Message/display_messages_ad',
                             
                         ],
                         'A propos' => 'index.php/controlleur/methode a propos'
@@ -115,7 +115,7 @@ class MY_Loader extends CI_Loader {
                         'Mon compte' =>[
                             'Mon profil' =>  'index.php/member/member',
                             'Mes annonces' =>  'controlleur/methode',
-                            'Mes messages' =>  'controlleur/methode',
+                            'Mes messages' =>  'Message/display_messages_ad',
                             
                         ], 
                         'A propos' => 'index.php/controlleur/methode a propos'
