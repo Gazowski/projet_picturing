@@ -13,9 +13,10 @@ class Message extends CI_Controller {
         parent::__construct();
         $this->load->database();
         $this->load->library(['users','ion_auth', 'session']);
+        $this->load->library('mahana_messaging');
         $this->load->model('ion_auth_model');
         $this->load->model('ad_model');
-        $this->load->model('message_model');
+        $this->load->model('mahana_model');
         $this->is_admin = $this->ion_auth->is_admin();
     }
 
@@ -43,7 +44,7 @@ class Message extends CI_Controller {
             ];
         }
 
-        if ($this->form_validation->run() === TRUE && $this->message_model->add_message($data))
+        if ($this->form_validation->run() === TRUE && $this->mahana_model->send_new_message($data))
         {
             // REDIRECTION : faire la redirection en js.
 
@@ -67,7 +68,7 @@ class Message extends CI_Controller {
                 'type' => 'text',
                 'value' => $this->form_validation->set_value('message'),
             ];
-
+            
             $this->load->template('pages/create_message_form', $this->data);
         }
     }  
@@ -82,11 +83,11 @@ class Message extends CI_Controller {
             show_404();
         }
         
-        var_dump($id_ad);
+        //var_dump($id_ad);
 
         $data['title'] = 'Liste des Messages de votre Annonce'; // Capitalize the first letter
         $data['table'] = $this->message_model->get_message();
-        $data['id_ad'] = localStorage.getItem('id_ad');
+        //$data['id_ad'] = localStorage.getItem('id_ad');
         
         //$is_admin = $this->ion_auth->is_admin();
         $this->load->template('pages/detail_ad',$data);

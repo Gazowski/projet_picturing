@@ -68,6 +68,9 @@
 .grey{
     color:$c-light-grey;
 }
+.editable{
+    box-shadow: 1.5px 1.5px 1.5px $c-medium-grey inset;
+}
 
 .unactive{
     pointer-events: none;

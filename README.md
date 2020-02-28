@@ -8,10 +8,10 @@
 https://coolors.co/
 
 ## correction à faire
-* tableau (css): rajouter le overscroll sur d'autre media query
-* alert (css) : le fond transparent est perdu lorsque l'on scroll vers le bas
+* tableau (css): rajouter le overscroll sur d'autre media query --corrigé--
+* alert (css) : le fond transparent est perdu lorsque l'on scroll vers le bas --corrigé--
 * creation d'une annonce possible sans photo ni description
-* l'effet hover sur les icones des medias sociaux ne fonctionne
+* footer (css) : l'effet hover sur les icones des medias sociaux ne fonctionne pas. --corrigé-- 
 * page home admin : lorsque tous les users sont activés seul l'entete du tableau reste affiché (au lieu d'une phrase)
 
 ## amélioration à faire
@@ -23,6 +23,7 @@ https://coolors.co/
 * priviligier un pluggin pour le rating
 * plugin messagerie https://github.com/jrmadsen67/Mahana-Messaging-library-for-CodeIgniter
 * faire le header en sticky (ou avoir le menu toujours accessible)
+* afficher le titre au dessus de filtre
 
 ## Plan du site
 ### utilisateur non connecté / client

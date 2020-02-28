@@ -17,6 +17,9 @@ footer {
         a {
             color: $c-light-grey;
             margin: 0 2%;
+            & :hover{
+                color: $c-medium-theme;
+               }
         }
         p {
             color: $c-light-grey;
@@ -26,6 +29,14 @@ footer {
     .logo_f {
         margin: 5% 5%;
         width: 30%;
+        .color_logo_f:hover .st0{
+                fill:$c-medium-theme;
+            }
+        .color_logo_f:hover .st1{
+            stroke:$c-medium-theme;
+        }
+    
+        
     }
     
     .medias {
@@ -34,6 +45,7 @@ footer {
         justify-content: flex-end;
         margin: 5% 5%;
         width: 30%;
+           
     }
     .address {
         display: none;
