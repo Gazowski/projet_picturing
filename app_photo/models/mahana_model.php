@@ -9,15 +9,15 @@ class Mahana_model extends CI_Model
      * @param   mixed    $recipients  A single integer or an array of integers
      * @param   string   $subject
      * @param   string   $body
-     * @param   integer  $priority
      * @return  integer  $new_thread_id
      */
-    function send_new_message($sender_id, $recipients, $subject, $body, $priority)
+    //function send_new_message($sender_id, $recipients, $subject, $body)
+    function send_new_message($data)
     {
         $this->db->trans_start();
 
         $thread_id = $this->_insert_thread($subject);
-        $msg_id    = $this->_insert_message($thread_id, $sender_id, $body, $priority);
+        $msg_id    = $this->_insert_message($thread_id, $sender_id, $body);
 
         // Create batch inserts
         $participants[] = array('thread_id' => $thread_id,'user_id' => $sender_id);
@@ -59,10 +59,9 @@ class Mahana_model extends CI_Model
      * @param   integer  $reply_msg_id
      * @param   integer  $sender_id
      * @param   string   $body
-     * @param   integer  $priority
      * @return  integer  $new_msg_id
      */
-    function reply_to_message($reply_msg_id, $sender_id, $body, $priority)
+    function reply_to_message($reply_msg_id, $sender_id, $body)
     {
         $this->db->trans_start();
 
@@ -73,7 +72,7 @@ class Mahana_model extends CI_Model
         }
 
         // Add this message
-        $msg_id = $this->_insert_message($thread_id, $sender_id, $body, $priority);
+        $msg_id = $this->_insert_message($thread_id, $sender_id, $body);
 
         if ($recipients = $this->_get_thread_participants($thread_id, $sender_id))
         {
@@ -378,15 +377,13 @@ class Mahana_model extends CI_Model
      * @param   integer  $thread_id
      * @param   integer  $sender_id
      * @param   string   $body
-     * @param   integer  $priority
      * @return  integer
      */
-    private function _insert_message($thread_id, $sender_id, $body, $priority)
+    private function _insert_message($thread_id, $sender_id, $body)
     {
         $insert['thread_id'] = $thread_id;
         $insert['sender_id'] = $sender_id;
         $insert['body']      = $body;
-        $insert['priority']  = $priority;
 
         $insert_id = $this->db->insert('msg_messages', $insert);
 

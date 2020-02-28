@@ -16,8 +16,9 @@ class Message extends CI_Controller {
         $this->load->library('mahana_messaging');
         $this->load->model('ion_auth_model');
         $this->load->model('ad_model');
-        $this->load->model('mahana_model');
         $this->is_admin = $this->ion_auth->is_admin();
+        $this->load->model('mahana_model');
+        $msg = $this->mahana_messaging->get_message($msg_id, $sender_id);
     }
 
     public function create_message()
@@ -28,19 +29,18 @@ class Message extends CI_Controller {
         }
 
         $this->data['page_title'] = 'Écrivez votre message';
+        $this->data['subject'] = 'le titre';
+        //die;
 
         //Validation du formulaire
-        $this->form_validation->set_rules('title', 'Titre du message', 'trim|required');
         $this->form_validation->set_rules('message', 'Votre message', 'trim|required');
 
         if ($this->form_validation->run() === TRUE)
         {
             $data = [
-                'title' => $this->input->post('title'),
-                'text_message' => $this->input->post('message'),
-                'writer' => $this->session->userdata('user_id'),
-                'ad' => $this->session->userdata('id_ad'),
-                //'ad' => $this->ad->user()->row()->id_ad,
+                'body' => $this->input->post('body'),
+                'sender_id' => $this->session->userdata('user_id'),
+                'owner' => 'le owner',
             ];
         }
 
@@ -56,17 +56,11 @@ class Message extends CI_Controller {
         else{
             $this->data['message_error'] = (validation_errors() ? validation_errors() : ($this->ion_auth->errors() ? $this->ion_auth->errors() : $this->session->flashdata('message_error')));
 
-            $this->data['title'] = [
-                'name' => 'title',
-                'id' => 'title',
-                'type' => 'text',
-                'value' => $this->form_validation->set_value('title'),
-            ];
-            $this->data['message'] = [
+            $this->data['body'] = [
                 'name' => 'message',
                 'id' => 'message',
                 'type' => 'text',
-                'value' => $this->form_validation->set_value('message'),
+                'value' => $this->form_validation->set_value('body'),
             ];
             
             $this->load->template('pages/create_message_form', $this->data);
