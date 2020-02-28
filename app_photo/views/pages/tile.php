@@ -6,7 +6,7 @@
 <div class="parent" data-component="Ad">
   <?php foreach($ad as $row) {?>
     
-    <div class="child" data-js-tile=<?= $row['id_ad'] ?>>
+    <div class="child" data-js-idad=<?= $row['id_ad'] ?> data-js-owner=<?= $row['owner'] ?>>
           <img src="<?= base_url($row['photo'])?>" alt="<?= $row['title'] ?>"/>
           <h3><?= $row['title'] ?></h3>
           <p><?= $row['description'] ?></p>

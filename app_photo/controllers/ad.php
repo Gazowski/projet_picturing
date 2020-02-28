@@ -109,7 +109,6 @@ class Ad extends CI_Controller {
 		{
 			$data = [
 				'title' => $this->input->post('title'),
-				//'types' => $this->input->post('types'),
 				'category' => $this->input->post('category'),
 				'description' => $this->input->post('description'),
 				'price' => intval($this->input->post('price')),

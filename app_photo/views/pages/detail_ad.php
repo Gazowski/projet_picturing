@@ -1,10 +1,7 @@
-<?php //var_dump($); ?>
+<?php //var_dump($sender_id); ?>
 <?php /**
      * affichage d'une annonce 
      * */ 
-
-
-   
 ?>  
 
 <!-- ---------------------------------------------- -->  
@@ -15,13 +12,13 @@
         <img src="<?= base_url($ad['photo'])?>" alt="<?= $ad['title'] ?>"/>
       </div>
       <div>
-        <h3><?= $ad['title'] ?></h3>
+        <h3 data-title><?= $ad['title'] ?></h3>
       </div>
     </div>
     
     <div class="desc_prix">
       <div>
-        <h3>Déscription</h3>
+        <h3>Description</h3>
         <p><?= $ad['description'] ?></p> 
       </div>
       
