@@ -48,8 +48,14 @@ export class Detail {
             }
         }
         for(let data of this._editable_data){
-            if(data.contentEditable == 'false') { data.contentEditable = true }
-            else { data.contentEditable = false }
+            if(data.contentEditable == 'false') { 
+                data.contentEditable = true
+                data.classList.add('editable')
+            }
+            else { 
+                data.contentEditable = false
+                data.classList.remove('editable')
+            }
         }       
     }
 
