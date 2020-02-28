@@ -33,7 +33,7 @@ class Users {
         
         
     //     $data['title'] = 'Liste des Annonces'; // Capitalize the first letter
-    //     $data['ad'] = $this->CI->ad_model->get_ad();
+
     //     $data['filter'] = [
     //         'newest_first' => 'plus récent',
     //         'oldest_first' => 'plus ancien'

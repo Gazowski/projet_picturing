@@ -141,5 +141,14 @@ class Ajax_controller extends CI_Controller {
         $this->db->set('active',1);
         $this->db->where('id_ad',$id_ad);
         echo $this->db->update('ad');
-	}
+    }
+    
+    public function get_ads()
+    {
+        $data['title'] = 'Listes des Annonces';
+        
+        $data['ad'] = $this->ad_model->get_ads($this->ajax_data);
+
+        $this->load->view('pages/tile',$data);
+    }
 }

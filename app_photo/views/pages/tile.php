@@ -19,6 +19,7 @@
   <?php } ?>
 
 </div>
+</section>
 
 
     
