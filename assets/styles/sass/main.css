@@ -7490,6 +7490,11 @@ td, th {
   color: #bdbdbd;
 }
 
+.unactive {
+  pointer-events: none;
+  opacity: .5;
+}
+
 @media (min-width: 600px) {
   .form {
     width: calc(70% - 4em);

@@ -1,12 +1,13 @@
 <?php //var_dump($ad); ?>
    
-  <h2>SELECTION</h2>
+<h2 data-title><?= $title ?></h2>
   
-  <div class="line_t"></div>
+<div class="line_t"></div>
 <div class="parent" data-component="Ad">
-  <?php foreach($ad as $row) {?>
+  <?php foreach($ad as $row) {
+    $unactive = $row['active'] == 0 ? ' unactive' : ''?>
     
-    <div class="child" data-js-tile=<?= $row['id_ad'] ?>>
+    <div class="child<?= $unactive ?>" data-js-tile=<?= $row['id_ad'] ?>>
           <img src="<?= base_url($row['photo'])?>" alt="<?= $row['title'] ?>"/>
           <h3><?= $row['title'] ?></h3>
           <p><?= $row['description'] ?></p>

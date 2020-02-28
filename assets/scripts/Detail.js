@@ -20,13 +20,11 @@ export class Detail {
     }
     
     modify_data = () =>{
-        console.log('modifier')
         this.toggle_editable_data()
         this.toggle_btn()
     }
 
     toggle_btn = () =>{
-        console.log(this._btn_modif)
         let new_action = '',
             old_action = ''
         if(this._btn_modif.innerHTML == 'valider'){
@@ -50,7 +48,6 @@ export class Detail {
             }
         }
         for(let data of this._editable_data){
-            console.log(data.contentEditable)
             if(data.contentEditable == 'false') { data.contentEditable = true }
             else { data.contentEditable = false }
         }       
@@ -82,7 +79,7 @@ export class Detail {
         let paramAjax = {
             method : "POST",
             json : true,
-            action : `index.php/ajax_controller/update_member`,
+            action : `index.php/ajax_controller/update_${this._el.dataset.table}`,
             data_to_send : this.new_data
         }
         requeteAjax(paramAjax, (reponse_ajax) => {
@@ -96,3 +93,5 @@ export class Detail {
         })
     }
 }
+
+

@@ -69,6 +69,10 @@
     color:$c-light-grey;
 }
 
+.unactive{
+    pointer-events: none;
+    opacity: .5;
+}
 
 
 //--------menu_navigation_Tablette-----------//
