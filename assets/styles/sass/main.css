@@ -7572,6 +7572,10 @@ td, th {
   color: #bdbdbd;
 }
 
+.unactive {
+  pointer-events: none;
+  opacity: .5;
+}
 .editable {
   -webkit-box-shadow: 1.5px 1.5px 1.5px #6b6b6b inset;
           box-shadow: 1.5px 1.5px 1.5px #6b6b6b inset;

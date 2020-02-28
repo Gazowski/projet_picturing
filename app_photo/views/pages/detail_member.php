@@ -1,5 +1,5 @@
 <!-- affichage d'un membre -->
-<section class="form_det_member" data-component='detail'>
+<section class="form_det_member" data-component='detail' data-table='member'>
     <div class="detail_ad detail_ad_member">
         <h3><?= $title ?></h3>
         <ul data-member = <?= $profil->id ?> >
