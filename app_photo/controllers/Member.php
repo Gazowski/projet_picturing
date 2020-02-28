@@ -17,6 +17,7 @@ class Member extends CI_Controller {
         $this->load->model('member_model');
         $this->load->model('ad_model');
         $this->load->library(['ion_auth']);
+        $this->load->helper('date');
     }
 
 //////logique pour afficher la liste des membres pour les fournisseurs////
@@ -112,6 +113,8 @@ class Member extends CI_Controller {
         $data['title'] = 'Profil';
         
         $data['profil'] = $this->member_model->get_member($id_member);
+        $data['profil']->last_login = unix_to_human($data['profil']->last_login,true,'eu');
+        $data['profil']->created_on = unix_to_human($data['profil']->created_on,true,'eu');
 
         $this->load->template('pages/detail_member.php',$data);
     }

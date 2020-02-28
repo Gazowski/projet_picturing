@@ -48,7 +48,7 @@ class MY_Loader extends CI_Loader {
                         
                     ],
                     'Mon compte' =>[
-                        'Mon profile' =>  'controlleur/methode',
+                        'Mon profil' =>  'index.php/member/member',
                         'Mes soumissions' =>  'controlleur/methode',
                         'Mes messages' =>  'controlleur/methode',
                         
