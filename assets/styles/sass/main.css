@@ -7409,16 +7409,24 @@ td, th {
   }
 }
 
-.detail_ad_member {
-  margin-top: 2em;
+.detail_member {
+  margin-top: 1em;
+  width: 94%;
 }
 
-.detail_ad_member .button {
+.detail_member .button {
   text-align: center;
 }
 
-.detail_ad_member ul li {
+.detail_member ul li {
   line-height: 1.8;
+}
+
+.titre_profil {
+  width: 100%;
+  text-align: center;
+  color: white;
+  background-color: #bd006b;
 }
 
 .mess_ann {
@@ -7475,6 +7483,9 @@ td, th {
 
 @media (min-width: 900px) {
   .mess_ann {
+    width: 35%;
+  }
+  .detail_member {
     width: 45%;
   }
 }
