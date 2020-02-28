@@ -45,18 +45,18 @@ class MY_Loader extends CI_Loader {
                  $vars['menu'] = [
                     'Annonces' => [
                         'Produits' => 'index.php/ad/display_all_product',
-                        'Services' => 'index.php/ad/display_all_service'
+                        'Services' => 'index.php/ad/display_all_service',
+                        'Annonces' =>  'index.php/ad/display_all',
                         
                     ],
                     'Membres' => [
-                        'Fournisseurs' => 'index.php/Member/ display_all_supplier',
+                        'Fournisseurs' => 'index.php/Member/display_all_supplier',
                         'Clients' => 'index.php/Member/display_all',
                         
                     ],
                     'Mon compte' => [
-                        'Profile' =>  'index.php/controlleur/methode',
-                        'Annonces' =>  'index.php/controlleur/methode',
-                        'MSessages' =>  'index.php/controlleur/methode',
+                        'Mon profil' =>  'index.php/member/member',
+                        'Messages' =>  'index.php/controlleur/methode',
                         
                     ],
                     'A propos' => 'index.php/controlleur/methode a propos'
@@ -65,25 +65,25 @@ class MY_Loader extends CI_Loader {
 
              else if ($is_superviseur) 
              {
-                 $vars['menu'] = [
-                     'Annonces' => [
-                         'Produits' => 'index.php/ad/display_all_product',
-                         'Services' => 'index.php/ad/display_all_service'
-                         
-                     ],
-                     'Membres' => [
-                         'Fournisseurs' => 'index.php/Member/ display_all_supplier',
-                         'Clients' => 'index.php/Member/display_all',
-                         
-                     ],
-                     'Mon compte' => [
-                         'Profil' =>  'index.php/controlleur/methode',
-                         'Annonces' =>  'index.php/controlleur/methode',
-                         'MSessages' =>  'index.php/controlleur/methode',
-                         
-                     ],
-                     'A propos' => 'index.php/controlleur/methode a propos'
-                 ];
+                $vars['menu'] = [
+                    'Annonces' => [
+                        'Produits' => 'index.php/ad/display_all_product',
+                        'Services' => 'index.php/ad/display_all_service',
+                        'Annonces' =>  'index.php/ad/display_all',
+                        
+                    ],
+                    'Membres' => [
+                        'Fournisseurs' => 'index.php/Member/display_all_supplier',
+                        'Clients' => 'index.php/Member/display_all',
+                        
+                    ],
+                    'Mon compte' => [
+                        'Mon profil' =>  'index.php/member/member',
+                        'Messages' =>  'index.php/controlleur/methode',
+                        
+                    ],
+                    'A propos' => 'index.php/controlleur/methode a propos'
+                ]; 
              }
                 else if ($is_fournisseur)
                 {
@@ -91,11 +91,12 @@ class MY_Loader extends CI_Loader {
                         'Annonces' => [
                             'Produits' => 'index.php/ad/display_all_product',
                             'Services' => 'index.php/ad/display_all_service',
+                            'Annonces' =>  'index.php/ad/display_all',
                             
                         ],
                         'Mon compte' => [
-                            'Profil' =>   'index.php/controlleur/methode',
-                            'Annonces' =>  'index.php/controlleur/methode',
+                            'Mon profil' =>  'index.php/member/member',
+                            'Mes annonces' =>  'index.php/controlleur/methode',
                             'Messages' =>  'index.php/controlleur/methode',
                             
                         ],
@@ -108,11 +109,12 @@ class MY_Loader extends CI_Loader {
                         'Annonces' => [
                             'Produits' => 'index.php/ad/display_all_product',
                             'Services' => 'index.php/ad/display_all_service',
+                            'Annonces' =>  'index.php/ad/display_all',
                             
                         ],
                         'Mon compte' =>[
                             'Mon profil' =>  'index.php/member/member',
-                            'Mes soumissions' =>  'controlleur/methode',
+                            'Mes annonces' =>  'controlleur/methode',
                             'Mes messages' =>  'controlleur/methode',
                             
                         ], 
