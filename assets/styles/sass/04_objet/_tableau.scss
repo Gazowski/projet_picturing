@@ -1,19 +1,20 @@
 
 
-.table{
-    overflow-x: scroll;
-    width: 95%;
-    margin: 0 auto;
-}
 .text_tab h3{
-    text-align: center;
-
+	text-align: center;
+	
 }
+
 table { 
 	border-collapse: collapse; 
     margin:2em auto;
-    width: 100%;
-	}
+}
+
+.table{
+	overflow-x: scroll;
+	width: 95%;
+	margin: 0 auto;
+}
 
 /* Zebra striping */
 tr:nth-of-type(odd) { 
@@ -38,13 +39,12 @@ td, th {
 @media (min-width: 900px) {
     .table{
 		width: 69%;
-
     }
 
 }
 @media (min-width: 1200px) {
     .table{
-		width: 69%;
+		width: 80%;
 		overflow-x:hidden;
     }
 

@@ -1,5 +1,5 @@
 <?php //var_dump($value); ?>
-<section>
+<section class="table">
 <!--  <h2>Liste des membres</h2> -->
 
     <table>
