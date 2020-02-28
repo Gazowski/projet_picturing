@@ -1,5 +1,5 @@
 <?php //var_dump($ad); ?>
-   
+<section> 
   <h2>SELECTION</h2>
   
   <div class="line_t"></div>
@@ -18,6 +18,7 @@
   <?php } ?>
 
 </div>
+</section>
 
 
     

@@ -29,10 +29,10 @@ class Ad extends CI_Controller {
         
         
         $data['title'] = 'Liste des Annonces'; // Capitalize the first letter
-        $data['ad'] = $this->ad_model->get_ad();
+        $data['ad'] = $this->ad_model->get_ads();
         $data['filter'] = [
-            'newest_first' => 'plus récent',
-            'oldest_first' => 'plus ancien'
+            'DESC' => 'plus récent',
+            'ASC' => 'plus ancien'
         ];
 
         $this->load->template('pages/tile',$data);

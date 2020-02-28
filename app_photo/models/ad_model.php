@@ -7,7 +7,7 @@ class Ad_model extends CI_Model {
         $this->load->library(['ion_auth']);
     }
 
-    public function get_ad($ad = false)
+    public function get_ad($ad)
     {
         $is_admin = $this->ion_auth->is_admin();
         $this->db->select('*');
@@ -15,16 +15,22 @@ class Ad_model extends CI_Model {
         $this->db->join('category','category.id_category = ad.category');
         // si l'utilisateur n'est pas admin, seules les annonces activées sont sélectionnées
         !$is_admin ? $this->db->where('active',1) : '';
-
-        if ($ad === FALSE)
-        {                
-            $query = $this->db->get();
-            return $query->result_array();
-        }
-
         $this->db->where('id_ad',$ad);
         $query = $this->db->get();
         return $query->row_array();
+    }
+
+    public function get_ads($filter='DESC')
+    {
+        $is_admin = $this->ion_auth->is_admin();
+        $this->db->select('*');
+        $this->db->from('ad');
+        $this->db->join('category','category.id_category = ad.category');
+        $this->db->order_by('open_date', $filter);
+        // si l'utilisateur n'est pas admin, seules les annonces activées sont sélectionnées
+        !$is_admin ? $this->db->where('active',1) : '';           
+        $query = $this->db->get();
+        return $query->result_array();
     }
 
     public function get_ad_product()
