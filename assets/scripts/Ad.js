@@ -1,4 +1,5 @@
 import { requeteAjax } from './ajax.js'
+import { Detail } from './Detail.js';
 
 export class Ad {
     constructor(el) {
@@ -30,8 +31,11 @@ export class Ad {
                 requeteAjax(paramAjax, (reponse_ajax) => {
                    this._el.classList.remove('parent')
                     this._el.innerHTML = reponse_ajax
+                    let new_el = document.querySelector('[data-component="detail"]')
+                    new Detail(new_el)
                 })
             })
         }
     }
+
 }

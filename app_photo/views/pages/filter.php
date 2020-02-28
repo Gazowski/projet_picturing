@@ -8,7 +8,7 @@
         <?php } ?>
     </select>
 </section> -->
-<div class="filter">
+<div class="filter" data-component='filter'>
     <div class="select_cont">
         <select name="filter" id="filter">
             <option value="">Filtre</option>  

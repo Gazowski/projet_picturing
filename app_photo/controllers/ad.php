@@ -15,7 +15,13 @@ class Ad extends CI_Controller {
         $this->load->library(['users','ion_auth', 'session']);
         $this->load->model('ion_auth_model');
         $this->load->model('ad_model');
-        $this->is_admin = $this->ion_auth->is_admin();
+		$this->is_admin = $this->ion_auth->is_admin();
+		
+		$this->CLIENT = 10;
+		$this->SUPPLIER = 20;
+		$this->GOLDEN_SUPPLIER = 30;
+		$this->SUPERVISOR = 40;
+		$this->ADMIN = 40;
     }
     
     public function display_all()
@@ -30,10 +36,6 @@ class Ad extends CI_Controller {
         
         $data['title'] = 'Liste des Annonces'; // Capitalize the first letter
         $data['ad'] = $this->ad_model->get_ad();
-        $data['filter'] = [
-            'newest_first' => 'plus récent',
-            'oldest_first' => 'plus ancien'
-        ];
 
         $this->load->template('pages/tile',$data);
     }
@@ -54,10 +56,6 @@ class Ad extends CI_Controller {
         
         $data['title'] = 'Liste des Produits'; // Capitalize the first letter
         $data['ad'] = $this->ad_model->get_ad_product();
-        $data['filter'] = [
-            'newest_first' => 'plus récent',
-            'oldest_first' => 'plus ancien'
-        ];
 
         $this->load->template('pages/tile',$data);
 	}
@@ -75,23 +73,49 @@ class Ad extends CI_Controller {
         }
         
         
-        $data['title'] = 'Liste des Produits'; // Capitalize the first letter
+        $data['title'] = 'Liste des Produits';
         $data['ad'] = $this->ad_model->get_ad_servive();
-        $data['filter'] = [
-            'newest_first' => 'plus récent',
-            'oldest_first' => 'plus ancien'
-        ];
 
         $this->load->template('pages/tile',$data);
-    }
+	}
+	
+	public function member_ads()
+	{
+		// page accessible pour les membres connectés
+		if (!isset($this->session->userdata['user_role']))
+		{   
+            $this->session->set_flashdata('message', 'Vous devez être connecté');
+			redirect($_SERVER['HTTP_REFERER']); // redirection vers la précédente page
+        }
+
+		// si client connectés sélectionnés les annonces soumissionnées par le client
+		if ($this->session->userdata['user_role'] == $this->CLIENT)
+		{   
+			// selectionner les annonces soumissionnées par le client
+			// utiliser la methode GET_MEMBER_ADS() !!!
+			
+			//!!!!! MESSSAGE TEMPORAIRE
+			$this->session->set_flashdata('message', 'en cours de construction');
+			redirect($_SERVER['HTTP_REFERER']); // redirection vers la précédente page
+        }
+
+		// si fournisseur connectés sélectionnés les annonces créés par le fournisseur
+		if ($this->session->userdata['user_role'] >= $this->SUPPLIER)
+		{   
+			$data['title'] = 'Mes Annonces'; 
+			$data['ad'] = $this->ad_model->get_member_ads();
+			
+			$this->load->template('pages/tile',$data);
+        }
+	}
 
     public function create_ad()
     {
 		// page accessible pour les membres fournisseur ou plus
-        if (!isset($this->session->userdata['user_role']) || $this->session->userdata['user_role'] < 20)
+        if (!isset($this->session->userdata['user_role']) || $this->session->userdata['user_role'] < $this->SUPPLIER)
 		{   
             $this->session->set_flashdata('message', 'Vous devez être connecté entant que Fournisseur pour créer une annonce');
-			redirect($_SERVER['HTTP_REFERER']); // redirection vers la meme page
+			redirect($_SERVER['HTTP_REFERER']); // redirection vers la précédente page
         }
         
         $this->data['page_title'] = 'Ajouter une annonce';
