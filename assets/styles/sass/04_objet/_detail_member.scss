@@ -1,0 +1,43 @@
+
+.detail_ad_member{
+    margin-top: 2em;
+    .button{
+        text-align: center; 
+    }
+}
+.mess_ann{
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    width: 95%;
+    margin: 0 auto;
+    text-align: center;
+    margin-bottom: 2em; 
+}
+.mod_sup{
+    display: flex;
+    flex-direction: column;
+}
+
+
+@media (min-width: 600px) {
+   
+    .mess_ann{
+       flex-direction: row;
+       justify-content: space-between;
+       width: 85%;  
+    }
+    .mod_sup{
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+    }
+}
+@media (min-width: 900px) { 
+    .mess_ann{
+       width: 45%;  
+    }
+}
+  
+
+
