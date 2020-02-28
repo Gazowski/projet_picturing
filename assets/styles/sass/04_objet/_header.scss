@@ -39,6 +39,8 @@ header{
     padding-right: 1.7rem;
 }
 
+
+
 //--------menu_navigation_mobile-----------//
 
 #menuToggle {
@@ -125,9 +127,21 @@ header{
 	transform-origin: 0% 0%;
 	transform: translate(-100%, 0);
 	transition: transform 0.5s cubic-bezier(0.77,0.2,0.05,1.0);
-	li {
+		li {
 		padding: 10px 0;
 		font-size: 22px;
+		color: $c-light-grey;
+
+		ul{
+			display:none;
+			list-style:none;
+		}
+
+		&:hover ul{
+			display: block;
+
+		}
+
 	}
 }
 
@@ -192,7 +206,37 @@ header{
 		display: flex;
 		flex-direction: row;
 		justify-content: space-between;
+		list-style:none;
+		
+		
+		li{
+			position: relative;
+			display: inline-block;
+
+			ul{
+				display:none;
+				list-style:none;
+				position: absolute;
+				background-color: #f9f9f9;
+				min-width: 2em;
+				box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+				padding: .5em;
+				z-index: 1;
+				
+			}
+			&:hover ul{
+				display: block;
+			}
+	
+			a{
+				padding-bottom: .5em;
+  				text-decoration: none;
+				display: block;
+			}  
+		}
+
 	}
+	
 
 	//---------css barre de recherche----------------------------//
 	#icone_search{

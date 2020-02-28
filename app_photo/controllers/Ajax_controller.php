@@ -60,11 +60,13 @@ class Ajax_controller extends CI_Controller {
             // Whoops, we don't have a page for that!
             show_404();
         }
-        
-		$data['title'] = 'Information Annonce';
-        
-        $data['ad'] = $this->ad_model->get_ad($id_ad);
 
+        // enregistrement du owner ed l'id annonce en session (permet de restreindre la modif au owner seul)
+        
+		$data['title'] = 'Information Annonce';        
+        $data['ad'] = $this->ad_model->get_ad($id_ad);
+        $this->session->set_userdata('ad_owner',$data['ad']['owner']);
+        $this->session->set_userdata('id_ad',$data['ad']['id_ad']);
         $this->load->view('pages/detail_ad',$data);
     }
 
@@ -87,6 +89,40 @@ class Ajax_controller extends CI_Controller {
         ];
         echo $this->ion_auth->update($id_member, $data);
     }
+
+    /**
+     * update_member
+     * met a jour les infos du membre
+     */
+    public function update_member()
+    {
+        if (!isset($this->session->userdata['user_role']))
+		{
+            $this->session->set_flashdata('message', 'Vous devez être connecté');
+            redirect('auth', 'refresh');
+        }
+        // ajax_data est un objet et a besoin d'être transformé en tableau associatif https://stackoverflow.com/questions/4345554/convert-a-php-object-to-an-associative-array
+        $this->ajax_data = (array) $this->ajax_data;
+        $id_member = $this->ion_auth->user()->row()->id;
+        echo $this->ion_auth->update($id_member, $this->ajax_data);
+    }
+
+    /**
+     * update_ad
+     * met a jour les infos d'une annonce'
+     */
+    public function update_ad()
+    {
+        if ($this->session->userdata['user_id'] != $this->session->userdata['ad_owner'])
+		{
+            $this->session->set_flashdata('message', 'Vous n\'êtes pas le propriétaire de l\'annonce');
+            redirect('auth', 'refresh');
+        }
+        // ajax_data est un objet et a besoin d'être transformé en tableau associatif https://stackoverflow.com/questions/4345554/convert-a-php-object-to-an-associative-array
+        $this->ajax_data = (array) $this->ajax_data;
+        $id_ad = $this->session->userdata['id_ad'];
+        echo $this->ad_model->update_ad($id_ad, $this->ajax_data);
+    }
     
     /**
      * activate_ad
@@ -105,5 +141,14 @@ class Ajax_controller extends CI_Controller {
         $this->db->set('active',1);
         $this->db->where('id_ad',$id_ad);
         echo $this->db->update('ad');
-	}
+    }
+    
+    public function get_ads()
+    {
+        $data['title'] = 'Listes des Annonces';
+        
+        $data['ad'] = $this->ad_model->get_ads($this->ajax_data);
+
+        $this->load->view('pages/tile',$data);
+    }
 }

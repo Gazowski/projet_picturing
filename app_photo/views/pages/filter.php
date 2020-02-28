@@ -8,19 +8,14 @@
         <?php } ?>
     </select>
 </section> -->
-<div class="filter">
-
+<div class="filter" data-component='filter'>
     <div class="select_cont">
         <select name="filter" id="filter">
-            <option value="">Filtrer les annonces</option>  
+            <option value="">Filtre</option>  
             <?php foreach($filter as $key=>$f) { ?>
                 <option value = <?= $key ?>><?= $f ?></option>
             <?php } ?>
         </select>
-    </div>
-    
-    <div class="button">
-        <a href="<?= base_url(); ?>index.php/create_ad"> Ajouter une annonce</a>
     </div>
     
 </div>

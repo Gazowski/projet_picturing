@@ -9,19 +9,37 @@
         
     
                         <span></span>
-                        <span></span>
+                        <span></span> 
                         <span></span>
         
                        
                         <ul id="menu">
-                            <a href="<?= base_url(); ?>index.php/ad/display_all"><li>Annonces</li></a>
-                            <a href="<?= base_url(); ?>index.php/ad/display_all_product"><li>Produits</li></a>
-                            <a href="<?= base_url(); ?>index.php/ad/display_all_service"><li>Services</li></a>
+
+                        <!-- KERVENS, les lignes 18 à 28 doivent être remplacé par une boucle sur la variable $menu -->
+                        
+                            <?php foreach($menu as $key =>$value){ ?> 
+                                <?php if(is_string($value)){?>
+                                    <li><a href="<?= base_url($value); ?>"><?=$key?></a></li>
+                                <?php } else { ?>
+                                    <li><?=$key?>
+                                        <ul> 
+                                            <?php foreach($value as $key=>$val){ ?>
+                                              
+                                                    <li><a href="<?= base_url($val); ?>"><?=$key?></a></li> 
+ 
+                                            <?php } ?>
+                                        </ul>
+                                    </li>
+                                <?php } ?>                               
+                            
+                            <?php } ?>
+
                         </ul>
+                                           
                 </div>
             </nav>
         </div> 
-         
+
         <section class="menu_logo_compte">
             
                 <div class="logo">
@@ -37,6 +55,9 @@
       
       
     </section>
+
+
+    
   
 
     <!-- ----------------- header grand ecran ---------------------- -->
@@ -61,10 +82,25 @@
                 </div>
                 <div class="menu_el">
                         <nav class="navigation_el">
+                        
                             <ul id="menu_el">
-                            <a href="<?= base_url(); ?>index.php/ad/display_all"><li>Annonces</li></a>
-                            <a href="<?= base_url(); ?>index.php/ad/display_all_product"><li>Produits</li></a>
-                            <a href="<?= base_url(); ?>index.php/ad/display_all_service"><li>Services</li></a>
+
+                            <?php foreach($menu as $key =>$value){ ?> 
+                                <?php if(is_string($value)){?>
+                                    <li><a href="<?= base_url($value); ?>"><?=$key?></a></li>
+                                <?php } else { ?>
+                                    <li><?=$key?>
+                                        <ul> 
+                                            <?php foreach($value as $key=>$val){ ?>
+                                              
+                                                    <li><a href="<?= base_url($val); ?>"><?=$key?></a></li> 
+ 
+                                            <?php } ?>
+                                        </ul>
+                                    </li>
+                                <?php } ?>                               
+                            
+                            <?php } ?>
                             </ul>
                         </nav>
                 </div>

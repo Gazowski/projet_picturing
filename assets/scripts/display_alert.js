@@ -3,11 +3,11 @@
  * le paramètre @param {objet} param contient ces 3 propriétés: 
  * @param { string } message : message a afficher
  * @param { function } action : fonction qui va être déclencher si appui sur ok
- * @param { objet } elt : élément sur lequel on va agir 
  */
 
 export let display_alert = (param) => {
     let alert = document.querySelector('[data-alert]')
+    if(param.action){
     alert.innerHTML = `
     <div class='wrapper_alert'>
     <div class="alert">
@@ -16,14 +16,22 @@ export let display_alert = (param) => {
     <button data-cancel><i class="fas fa-times-circle"></i></button>
     </div>
     </div>
-    `
-    console.log(alert)
+    `} else {
+        alert.innerHTML = `
+        <div class='wrapper_alert'>
+        <div class="alert">
+        <p>${param.message}</p>
+        <button data-cancel><i class="fas fa-times-circle"></i></button>
+        </div>
+        </div>
+        `
+    }
     let button_ok = document.querySelector('[data-ok]')
     let button_cancel = document.querySelector('[data-cancel]')
 
     button_ok.addEventListener('click', () => {
         alert.innerHTML = ''
-        param.action(param.elt)
+        param.action()
     })
     button_cancel.addEventListener('click', () => { 
         alert.innerHTML = ''

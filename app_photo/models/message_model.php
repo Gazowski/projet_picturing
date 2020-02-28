@@ -28,8 +28,6 @@ class Message_model extends CI_Model {
             $query = $this->db->get();
             return $query->result_array();
         }
-        
-        var_dump($id_ad);
 
         $query = $this->db->get_where('message', array('ad' => $id_ad));
         return $query->row_array();

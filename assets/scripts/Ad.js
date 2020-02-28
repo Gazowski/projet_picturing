@@ -1,11 +1,12 @@
 import { requeteAjax } from './ajax.js'
+import { Detail } from './Detail.js';
 
 export class Ad {
     constructor(el) {
         // declaration des variables 
         this._el = el,
         this._elTiles = this._el.querySelectorAll('[data-js-tile]');
-        console.log(this._el);
+    
 
         // initialise les comportements
         this.init();
@@ -27,8 +28,11 @@ export class Ad {
                 requeteAjax(paramAjax, (reponse_ajax) => {
                    this._el.classList.remove('parent')
                     this._el.innerHTML = reponse_ajax
+                    let new_el = document.querySelector('[data-component="detail"]')
+                    new Detail(new_el)
                 })
             })
         }
     }
+
 }
