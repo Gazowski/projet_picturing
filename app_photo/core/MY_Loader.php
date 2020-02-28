@@ -33,50 +33,16 @@ class MY_Loader extends CI_Loader {
 
             $vars['menu'] = [
                 'Annonces' => [
-                    'Produits' => 'ad/display_all_product',
-                    'Services' => 'ad/display_all_service',
+                    'Produits' => 'index.php/ad/display_all_product',
+                    'Services' => 'index.php/ad/display_all_service',
                     
                 ],
-                'S\'inscrire' => 'auth/create_user',
-                'A propos' => 'controlleur/methode a propos'
+                'S\'inscrire' => 'index.php/auth/create_user',
+                'A propos' => 'index.php/controlleur/methode a propos'
             ];
-             if($is_client)
+            if ($is_admin) 
             {
-                $vars['menu'] = [
-                    'Annonces' => [
-                        'Produits' => 'index.php/ad/display_all_product',
-                        'Services' => 'index.php/ad/display_all_service',
-                        
-                    ],
-                    'Mon compte' =>[
-                        'Mon profil' =>  'index.php/member/member',
-                        'Mes soumissions' =>  'controlleur/methode',
-                        'Mes messages' =>  'controlleur/methode',
-                        
-                    ], 
-                    'A propos' => 'index.php/controlleur/methode a propos'
-                ];
-            }
-            else if ($is_fournisseur)
-            {
-                $vars['menu'] = [
-                    'Annonces' => [
-                        'Produits' => 'index.php/ad/display_all_product',
-                        'Services' => 'index.php/ad/display_all_service',
-                        
-                    ],
-                    'Mon compte' => [
-                        'Profile' =>   'index.php/controlleur/methode',
-                        'Annonces' =>  'index.php/controlleur/methode',
-                        'Messages' =>  'index.php/controlleur/methode',
-                        
-                    ],
-                    'A propos' => 'index.php/controlleur/methode a propos'
-                ];
-            }
-            else if ($is_admin )
-            {
-                $vars['menu'] = [
+                 $vars['menu'] = [
                     'Annonces' => [
                         'Produits' => 'index.php/ad/display_all_product',
                         'Services' => 'index.php/ad/display_all_service'
@@ -94,8 +60,65 @@ class MY_Loader extends CI_Loader {
                         
                     ],
                     'A propos' => 'index.php/controlleur/methode a propos'
-                ];
+                ]; 
             }
+
+             else if ($is_superviseur) 
+             {
+                 $vars['menu'] = [
+                     'Annonces' => [
+                         'Produits' => 'index.php/ad/display_all_product',
+                         'Services' => 'index.php/ad/display_all_service'
+                         
+                     ],
+                     'Membres' => [
+                         'Fournisseurs' => 'index.php/Member/ display_all_supplier',
+                         'Clients' => 'index.php/Member/display_all',
+                         
+                     ],
+                     'Mon compte' => [
+                         'Profil' =>  'index.php/controlleur/methode',
+                         'Annonces' =>  'index.php/controlleur/methode',
+                         'MSessages' =>  'index.php/controlleur/methode',
+                         
+                     ],
+                     'A propos' => 'index.php/controlleur/methode a propos'
+                 ];
+             }
+                else if ($is_fournisseur)
+                {
+                    $vars['menu'] = [
+                        'Annonces' => [
+                            'Produits' => 'index.php/ad/display_all_product',
+                            'Services' => 'index.php/ad/display_all_service',
+                            
+                        ],
+                        'Mon compte' => [
+                            'Profil' =>   'index.php/controlleur/methode',
+                            'Annonces' =>  'index.php/controlleur/methode',
+                            'Messages' =>  'index.php/controlleur/methode',
+                            
+                        ],
+                        'A propos' => 'index.php/controlleur/methode a propos'
+                    ];
+                }
+                else if($is_client)
+                {
+                    $vars['menu'] = [
+                        'Annonces' => [
+                            'Produits' => 'index.php/ad/display_all_product',
+                            'Services' => 'index.php/ad/display_all_service',
+                            
+                        ],
+                        'Mon compte' =>[
+                            'Mon profil' =>  'index.php/member/member',
+                            'Mes soumissions' =>  'controlleur/methode',
+                            'Mes messages' =>  'controlleur/methode',
+                            
+                        ], 
+                        'A propos' => 'index.php/controlleur/methode a propos'
+                    ];
+                }
            /*  ... continuer jusqua admin */
  
         
