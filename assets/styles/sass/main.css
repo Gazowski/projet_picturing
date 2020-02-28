@@ -7417,6 +7417,10 @@ td, th {
   text-align: center;
 }
 
+.detail_ad_member ul li {
+  line-height: 1.8;
+}
+
 .mess_ann {
   display: -webkit-box;
   display: -ms-flexbox;
@@ -7566,6 +7570,11 @@ td, th {
 
 .grey {
   color: #bdbdbd;
+}
+
+.editable {
+  -webkit-box-shadow: 1.5px 1.5px 1.5px #6b6b6b inset;
+          box-shadow: 1.5px 1.5px 1.5px #6b6b6b inset;
 }
 
 @media (min-width: 600px) {
