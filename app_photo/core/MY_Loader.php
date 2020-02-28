@@ -77,7 +77,7 @@ class MY_Loader extends CI_Loader {
                          
                      ],
                      'Mon compte' => [
-                         'Profile' =>  'index.php/controlleur/methode',
+                         'Profil' =>  'index.php/controlleur/methode',
                          'Annonces' =>  'index.php/controlleur/methode',
                          'MSessages' =>  'index.php/controlleur/methode',
                          
@@ -94,7 +94,7 @@ class MY_Loader extends CI_Loader {
                             
                         ],
                         'Mon compte' => [
-                            'Profile' =>   'index.php/controlleur/methode',
+                            'Profil' =>   'index.php/controlleur/methode',
                             'Annonces' =>  'index.php/controlleur/methode',
                             'Messages' =>  'index.php/controlleur/methode',
                             
