@@ -72,6 +72,10 @@
     box-shadow: 1.5px 1.5px 1.5px $c-medium-grey inset;
 }
 
+.unactive{
+    pointer-events: none;
+    opacity: .5;
+}
 
 
 //--------menu_navigation_Tablette-----------//

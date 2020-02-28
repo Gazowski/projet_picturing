@@ -82,7 +82,12 @@ class Auth extends CI_Controller
 				{
 					redirect('member/admin_home','refresh');
 				}
-				else
+				else if($this->session->userdata['user_role'] >= 20)
+				{
+					$this->session->set_flashdata('message', $this->ion_auth->messages());
+					redirect('ad/member_ads','refresh');
+				}
+				else if($this->session->userdata['user_role'] == 10)
 				{
 					$this->session->set_flashdata('message', $this->ion_auth->messages());
 					redirect('ad/display_all','refresh');

@@ -1,8 +1,9 @@
 <!-- affichage d'un membre -->
-<section class="form_det_member" data-component='detail'>
-        <div class="detail_ad detail_member">
+<section class="form_det_member" data-component='detail' data-table='member'>
+    <div class="detail_ad detail_member">
+        
         <div class="titre_profil">
-            <h1><?= $title ?></h1>
+            <h3><?= $title ?></h3>
         </div>
         <ul data-member = <?= $profil->id ?> >
             <li>prénom : <span id='first_name' contenteditable='false' data-editable><?= $profil->first_name ?></span></li>
