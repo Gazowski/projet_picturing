@@ -29,53 +29,51 @@ class Row{
         this.init()
     }
 
-    init(){
+    init = () =>{
         this.init_message()
         this.add_name_to_button()
         this.add_action_to_button()
     }
 
-    init_message(){
+    init_message = () =>{
         if(this.table == 'member')
             this.message = 'Voulez-vous activez ce membre ?'
         else
             this.message = 'voulez-vous activez cette annonce ?'
     }
 
-    add_name_to_button(){
+    add_name_to_button = () =>{
         let name = this._button.dataset.active == 1 ? 'Bannir' : 'Activer'
         this._button.innerHTML = name
     }
     
-    add_action_to_button(){
+    add_action_to_button = () =>{
         this._button.addEventListener('click',()=>{
             console.log('je clique')
             let param_alert = {
                 'message' : this.message,
                 'action' : this.activate_elt,
-                'elt' : this._row
             }
             display_alert(param_alert)
         })
     }
 
-    banish_user(){
+    banish_user = () =>{
         // utiliser le tag <base> pour mémoriser l'url de base 
         // https://developer.mozilla.org/fr/docs/Web/HTML/Element/base
     }
 
-    activate_elt(elt){
-        console.log(elt)
+    activate_elt = () =>{
         let paramAjax = {
             method : "POST",
             json : true,
-            action : `index.php/ajax_controller/activate_${elt.dataset.row}`,
-            data_to_send : elt.id
+            action : `index.php/ajax_controller/activate_${this.table}`,
+            data_to_send : this.id
         }
         requeteAjax(paramAjax, (reponse_ajax) => {
             console.log(reponse_ajax)
             if(reponse_ajax == 1)
-                elt.remove()
+                this._row.remove()
         })
     }
 }

@@ -1,4 +1,5 @@
-<?php
+ 
+    <?php
 defined('BASEPATH') OR exit('No direct script access allowed');
 /**
  * MY_Loader
@@ -28,31 +29,76 @@ class MY_Loader extends CI_Loader {
         // KERVENS, compléte ici la variable $vars['menu']
         // ta variable doit commencer comme ci-dessous:
 
-        /*
+        
 
             $vars['menu'] = [
-                'annonces' => [
-                    'produits' => controlleur/method pour la liste de produit,
-                    ....
+                'Annonces' => [
+                    'Produits' => 'ad/display_all_product',
+                    'Services' => 'ad/display_all_service',
+                    
                 ],
-                'S\'inscrire' => [
-                    ... mettre les différents sous menu ...
-                ],
-                'a propos' => controlleur/methode a propos,
-            ]
-            if($is_client)
+                'S\'inscrire' => 'auth/create_user',
+                'A propos' => 'controlleur/methode a propos'
+            ];
+             if($is_client)
             {
                 $vars['menu'] = [
-                    ... mettre les données pour le menu client ...
-                ]
+                    'Annonces' => [
+                        'Produits' => 'index.php/ad/display_all_product',
+                        'Services' => 'index.php/ad/display_all_service',
+                        
+                    ],
+                    'Mon compte' =>[
+                        'Mon profil' =>  'index.php/member/member',
+                        'Mes soumissions' =>  'controlleur/methode',
+                        'Mes messages' =>  'controlleur/methode',
+                        
+                    ], 
+                    'A propos' => 'index.php/controlleur/methode a propos'
+                ];
             }
-            else if($is_fournisseur)
+            else if ($is_fournisseur)
             {
-                ... menu pour client ...
+                $vars['menu'] = [
+                    'Annonces' => [
+                        'Produits' => 'index.php/ad/display_all_product',
+                        'Services' => 'index.php/ad/display_all_service',
+                        
+                    ],
+                    'Mon compte' => [
+                        'Profile' =>   'index.php/controlleur/methode',
+                        'Annonces' =>  'index.php/controlleur/methode',
+                        'Messages' =>  'index.php/controlleur/methode',
+                        
+                    ],
+                    'A propos' => 'index.php/controlleur/methode a propos'
+                ];
             }
-            ... continuer jusqu'a admin
-
-        */
+            else if ($is_admin )
+            {
+                $vars['menu'] = [
+                    'Annonces' => [
+                        'Produits' => 'index.php/ad/display_all_product',
+                        'Services' => 'index.php/ad/display_all_service'
+                        
+                    ],
+                    'Membres' => [
+                        'Fournisseurs' => 'index.php/Member/ display_all_supplier',
+                        'Clients' => 'index.php/Member/display_all',
+                        
+                    ],
+                    'Mon compte' => [
+                        'Profile' =>  'index.php/controlleur/methode',
+                        'Annonces' =>  'index.php/controlleur/methode',
+                        'MSessages' =>  'index.php/controlleur/methode',
+                        
+                    ],
+                    'A propos' => 'index.php/controlleur/methode a propos'
+                ];
+            }
+           /*  ... continuer jusqua admin */
+ 
+        
 
         // icone connexion / déconnexion
         $vars['icon'] = !isset($_SESSION['user_id']) ? 'fas fa-user' : 'fas fa-sign-out-alt';

@@ -12,19 +12,21 @@ class Member_model extends CI_Model {
          */ 
         public function get_member($member = false)
         {
+            $this->db->select('users.id, email, created_on, last_login, active, first_name, last_name, company, address, name');
+            $this->db->from('users');
+            $this->db->join('users_groups','users_groups.user_id = users.id');
+            $this->db->join('groups','groups.id = users_groups.group_id');
+
             if ($member === FALSE)
             {
-                    $this->db->select('users.id, email, created_on, last_login, active, first_name, last_name, company, name,active,created_on,last_login');
-                    $this->db->from('users');
-                    $this->db->join('users_groups','users_groups.user_id = users.id');
-                    $this->db->join('groups','groups.id = users_groups.group_id');
                   
                     $query = $this->db->get();
                     return $query->result_array();
             }
     
-            $query = $this->db->get_where('users', array('id_users' => $member));
-            return $query->row_array();
+            $this->db->where('users.id' , $member);
+            $query = $this->db->get();
+            return $query->row();
         }
 
         /**

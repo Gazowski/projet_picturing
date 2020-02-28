@@ -9,23 +9,33 @@
         
     
                         <span></span>
-                        <span></span>
+                        <span></span> 
                         <span></span>
         
                        
                         <ul id="menu">
 
                         <!-- KERVENS, les lignes 18 à 28 doivent être remplacé par une boucle sur la variable $menu -->
-                            <li>Annonces
-                                            <ul>
-                                                <li><a href="<?= base_url(); ?>index.php/ad/display_all_product">Produits</a></li>
-                                                <li><a href="<?= base_url(); ?>index.php/ad/display_all_service">Services</a></li>
-                                                <li><a href="<?= base_url(); ?>index.php/ad/display_all">Annonces</a></li>
-                                            </ul>                                    
-                                        </li>                        
-                            <li><a href="<?= base_url(); ?>index.php/auth/create_user">S'inscrire</a></li>
-                            <li><a href="<?= base_url(); ?>index.php/???????????">A propos</a></li>
+                        
+                            <?php foreach($menu as $key =>$value){ ?> 
+                                <?php if(is_string($value)){?>
+                                    <li><a href="<?= base_url($value); ?>"><?=$key?></a></li>
+                                <?php } else { ?>
+                                    <li><?=$key?>
+                                        <ul> 
+                                            <?php foreach($value as $key=>$val){ ?>
+                                              
+                                                    <li><a href="<?= base_url($val); ?>"><?=$key?></a></li> 
+ 
+                                            <?php } ?>
+                                        </ul>
+                                    </li>
+                                <?php } ?>                               
+                            
+                            <?php } ?>
+
                         </ul>
+                                           
                 </div>
             </nav>
         </div> 
@@ -72,18 +82,25 @@
                 </div>
                 <div class="menu_el">
                         <nav class="navigation_el">
+                        
                             <ul id="menu_el">
 
-                                <li>Annonces
-                                    <ul class="dropdown">
-                                        <li><a href="<?= base_url(); ?>index.php/ad/display_all_product">Produits</a></li>
-                                        <li><a href="<?= base_url(); ?>index.php/ad/display_all_service">Services</a></li>
-                                        <li><a href="<?= base_url(); ?>index.php/ad/display_all">Annonces</a></li>
-                                    </ul>                                    
-                                </li>   
-
-                                <li><a href="<?= base_url(); ?>index.php/auth/create_user">S'inscrire</a></li>
-                                <li><a href="<?= base_url(); ?>index.php/???????????">A propos</a></li>
+                            <?php foreach($menu as $key =>$value){ ?> 
+                                <?php if(is_string($value)){?>
+                                    <li><a href="<?= base_url($value); ?>"><?=$key?></a></li>
+                                <?php } else { ?>
+                                    <li><?=$key?>
+                                        <ul> 
+                                            <?php foreach($value as $key=>$val){ ?>
+                                              
+                                                    <li><a href="<?= base_url($val); ?>"><?=$key?></a></li> 
+ 
+                                            <?php } ?>
+                                        </ul>
+                                    </li>
+                                <?php } ?>                               
+                            
+                            <?php } ?>
                             </ul>
                         </nav>
                 </div>
@@ -94,8 +111,3 @@
     <div class="line"></div>  
 </header>
 <main>
-
-
-
-
-

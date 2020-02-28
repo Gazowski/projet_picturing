@@ -1,40 +1,67 @@
+.entete_admin {
+  width: 100%;
+  background-image: url("../../logo/header_image_admin.png");
+  background-repeat: repeat;
+  background-position: center;
+  height: 6em;
+  
+}
 
- .entete_admin {
-   width: 100%; 
-   background-image: url("../../logo/header_image_admin.png");
-   background-repeat: no-repeat;
-   background-position: center;
-   height: 6em;
- }
- 
- .logo_compte_admin{
-   
-    display: flex;
-    flex-direction: row;
-    justify-content: flex-end;
+.logo_compte_admin_el {
+  display: none;
+}
+
+.logo_compte_admin {
+
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-end;
+
+
+
+  align-items: center;
+
+  .logo {
+    width: 7em;
+    margin-right: 3.6em;
+  }
+}
+
+.menu_el_admin {
+  display: none;
+}
+
+// --------------------------------SCSS pour grand ecran----------------------------------//
+
+@media (min-width: 900px) {
+
+  .logo_compte_admin {
+
+    display: none;
+  }
+
+  .logo_compte_admin_el {
+     
+    .mon_compte a {
+      color: $c-light-grey;
+      
+      &:hover {
+        color: $c-medium-theme;
+      }
+    }
+    }
+
     
-    
-    
-    align-items: center;
 
-    .logo{
-      width: 7em;
-      margin-right: 3.6em;
-   }  
- }
- .menu_el_admin{
-   display: none;
- }
-
- @media (min-width: 900px) {
-
-  .menu_el_admin{
+  // menu de navigation de l'administrateur //
+  
+  .menu_el_admin {
     display: block;
     width: 100%;
-    background-color:$c-light-grey;
+    background-color: $c-light-grey;
     padding: 0;
-    
-    #menu_el{
+
+    #menu_el {
       width: 69%;
       margin: 0 auto;
       padding-top: .9em;
@@ -42,32 +69,29 @@
       padding-right: 1em;
       font-size: 1.1em;
     }
-    
 
-
-    ul{
+    ul {
       margin-top: 0;
-    } 
-
+    }
   }
-  
-  .logo_compte_admin{
+
+  //------------fin du menu de navigation-------//
+
+  .logo_compte_admin_el {
     width: 69%;
     margin: 0 auto;
     display: flex;
     flex-direction: row;
     justify-content: flex-end;
     padding-top: 2em;
-  
+
     align-items: center;
 
-    .logo{
+    .logo {
       width: 7em;
       margin-right: 3.6em;
-   }  
- }
+    }
+  }
 
 
 }
-
- 

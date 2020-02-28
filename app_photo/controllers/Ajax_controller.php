@@ -87,6 +87,23 @@ class Ajax_controller extends CI_Controller {
         ];
         echo $this->ion_auth->update($id_member, $data);
     }
+
+    /**
+     * update_member
+     * met a jour les infos du membre
+     */
+    public function update_member()
+    {
+        if (!isset($this->session->userdata['user_role']))
+		{
+            $this->session->set_flashdata('message', 'Vous devez être connecté');
+            redirect('auth', 'refresh');
+        }
+        // ajax_data est un objet et a besoin d'être transformé en tableau associatif https://stackoverflow.com/questions/4345554/convert-a-php-object-to-an-associative-array
+        $this->ajax_data = (array) $this->ajax_data;
+        $id_member = $this->ion_auth->user()->row()->id;
+        echo $this->ion_auth->update($id_member, $this->ajax_data);
+    }
     
     /**
      * activate_ad
