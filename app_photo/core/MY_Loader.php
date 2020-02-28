@@ -42,7 +42,7 @@ class MY_Loader extends CI_Loader {
             ];
             if ($is_admin) 
             {
-                /* $vars['menu'] = [
+                 $vars['menu'] = [
                     'Annonces' => [
                         'Produits' => 'index.php/ad/display_all_product',
                         'Services' => 'index.php/ad/display_all_service'
@@ -60,7 +60,7 @@ class MY_Loader extends CI_Loader {
                         
                     ],
                     'A propos' => 'index.php/controlleur/methode a propos'
-                ]; */
+                ]; 
             }
 
              else if ($is_superviseur) 
