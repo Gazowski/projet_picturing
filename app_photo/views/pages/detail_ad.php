@@ -27,9 +27,9 @@
     
   </div>
   <div class="prix">
-    <h3 id='price' 
-        contentEditable='false' 
-        data-editable><?= $ad['price'] ?> CAD$</h3> 
+    <h3 ><span id='price' 
+                data-editable 
+                contentEditable='false'><?= $ad['price'] ?></span> CAD$</h3> 
   </div>
   <div class="soumission display_none" data-btn-bid>
       <a class="button" href="<?= base_url(); ?>index.php/message/create_message">Soumissionner</a>
