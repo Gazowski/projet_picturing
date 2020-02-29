@@ -87,6 +87,12 @@ class Ad_model extends CI_Model {
         return $this->db->update('ad',$data);
     }
 
+    public function delete_ad($id)
+    {
+        $this->db->where('id_ad', $id);
+        return $this->db->delete('ad');
+    }
+
     public function get_category()
     {
         $this->db->select('category');
@@ -104,7 +110,7 @@ class Ad_model extends CI_Model {
 
     public function get_unactive_ad()
     {
-        $this->db->select('id,title,name,last_name,first_name,price,ad.active as ad_active');
+        $this->db->select('id_ad,title,name,last_name,first_name,price,ad.active as ad_active');
         $this->db->from('ad');
         $this->db->join('users','users.id = ad.owner');
         $this->db->join('category','category.id_category = ad.category');

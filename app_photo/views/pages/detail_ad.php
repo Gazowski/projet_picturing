@@ -36,7 +36,7 @@
   </div>
   <div class="display_none" data-btn-owner>
     <button class="button" data-btn-modif>modifier</button>
-    <a href="index.php/ad/delete" class="button">supprimer</a>
+    <button class="button" data-btn-delete>supprimer</button>
   </div>  
 
 

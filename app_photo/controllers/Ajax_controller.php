@@ -93,6 +93,7 @@ class Ajax_controller extends CI_Controller {
     /**
      * update_member
      * met a jour les infos du membre
+     * seul l'utilisateur peut modifier ses propres infos
      */
     public function update_member()
     {
@@ -108,8 +109,24 @@ class Ajax_controller extends CI_Controller {
     }
 
     /**
+     * delete_member
+     * l'id du membre est récuperer de la variable session
+     */
+    public function delete_member()
+    {
+        if (!isset($this->session->userdata['user_role']))
+		{
+            $this->session->set_flashdata('message', 'Vous devez être connecté');
+            redirect('auth', 'refresh');
+        }
+        $id_member = $this->ion_auth->user()->row()->id;
+        echo $this->ion_auth->delete_user($id_member);
+    }
+
+    /**
      * update_ad
      * met a jour les infos d'une annonce si l'utilisateur est le propriétaire de l'annonce
+     * l'id de l'annonce est récupérer dans la variable session (l'id ne peut pas être modifiée)
      */
     public function update_ad()
     {
@@ -122,6 +139,22 @@ class Ajax_controller extends CI_Controller {
         $this->ajax_data = (array) $this->ajax_data;
         $id_ad = $this->session->userdata['id_ad'];
         echo $this->ad_model->update_ad($id_ad, $this->ajax_data);
+    }
+
+    /**
+     * delete_ad
+     * l'id de l'annonce est récupérer dans la variable session
+     */
+    public function delete_ad()
+    {
+        if ($this->session->userdata['user_id'] != $this->session->userdata['ad_owner'])
+		{
+            $this->session->set_flashdata('message', 'Vous n\'êtes pas le propriétaire de l\'annonce');
+            redirect('auth', 'refresh');
+        }
+        $this->ajax_data = (array) $this->ajax_data;
+        $id_ad = $this->session->userdata['id_ad'];
+        echo $this->ad_model->delete_ad($id_ad);
     }
     
     /**

@@ -16,12 +16,8 @@
             <li>inscris depuis le : <span><?= $profil->created_on ?></span></li>
         </ul>
         <div class="mod_sup">
-            
-                <button class="button" data-btn-modif>Modifier</button>
-           
-            <div class="button">
-                <a href="index.php/member/delete" class="button">Supprimer mon compte</a>
-            </div>
+            <button class="button" data-btn-modif>Modifier</button>
+            <button class="button" data-btn-delete>Supprimer mon compte</button>
         </div>
     </div>
     
