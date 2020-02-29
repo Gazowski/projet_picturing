@@ -109,7 +109,7 @@ class Ajax_controller extends CI_Controller {
 
     /**
      * update_ad
-     * met a jour les infos d'une annonce'
+     * met a jour les infos d'une annonce si l'utilisateur est le propriétaire de l'annonce
      */
     public function update_ad()
     {
