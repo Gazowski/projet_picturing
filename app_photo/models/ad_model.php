@@ -3,6 +3,7 @@ class Ad_model extends CI_Model {
 
     public function __construct()
     {
+        parent::__construct();
         $this->load->database();
         $this->load->library(['ion_auth']);
 
@@ -10,7 +11,7 @@ class Ad_model extends CI_Model {
 		$this->SUPPLIER = 20;
 		$this->GOLDEN_SUPPLIER = 30;
 		$this->SUPERVISOR = 40;
-		$this->ADMIN = 40;
+		$this->ADMIN = 50;
     }
 
     private function is_admin()
