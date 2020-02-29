@@ -1,7 +1,5 @@
-<?php //var_dump($ad); ?>
-   
-<h2 data-title><?= $title ?></h2>
-  
+<section>   
+<h2 data-title><?= $title ?></h2>  
 <div class="line_t"></div>
 <div class="parent" data-component="Ad">
   <?php foreach($ad as $row) {

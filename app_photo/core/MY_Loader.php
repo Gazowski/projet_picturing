@@ -137,8 +137,8 @@ class MY_Loader extends CI_Loader {
 
         // select filtre
         $vars['filter'] = [
-            'newest_first' => 'plus récent',
-            'oldest_first' => 'plus ancien'
+            'DESC' => 'plus récent',
+            'ASC' => 'plus ancien'
         ];
 
         $this->view('pages/head', $vars);
