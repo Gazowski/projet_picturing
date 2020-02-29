@@ -8,6 +8,8 @@ export class Detail {
         this._btn_modif = this._el.querySelector('[data-btn-modif]')
         this._data = this._el.querySelectorAll('li span')
         this._editable_data = this._el.querySelectorAll('[data-editable]')
+        this._btn_bid = this._el.querySelector('[data-btn-bid]')
+        this._btn_owner = this._el.querySelector('[data-btn-owner]')
 
         this.new_data = {}
 
@@ -16,7 +18,15 @@ export class Detail {
     }
 
     init = (e) =>{
+        this.display_btn_bid()
+        this.display_btn_owner()
         this._btn_modif.addEventListener('click',this.modify_data)
+    }
+
+    display_btn_bid = () =>{
+        if(this._el.dataset.user != 0 && this._el.dataset.user != this._el.dataset.owner){
+            this._btn_bid.classList.remove('display_none')
+        }
     }
     
     modify_data = () =>{

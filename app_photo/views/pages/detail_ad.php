@@ -1,40 +1,40 @@
-
-<?php 
-  /**
-   * affichage d'une annonce 
-   */ 
-  //var_dump($ad,$_SESSION);
-  $display_none = isset($_SESSION['user_id']) && $_SESSION['user_id'] == $ad['owner'] ? ' display_none' : '' ;
-?>  
-
-<!-- ---------------------------------------------- -->  
-<div class="detail_ad" data-component='detail' data-table='ad'>
+<div class="detail_ad" 
+      data-component='detail' 
+      data-table='ad'
+      data-user='<?= isset($_SESSION['user_id']) ? $_SESSION['user_id'] : 0 ;?>'
+      data-owner='<?= $ad['owner']?>'>
   <div class="titre_img_desc_prix">
     <div class="img_titre">
       <div>
         <img src="<?= base_url($ad['photo'])?>" alt="<?= $ad['title'] ?>"/>
       </div>
       <div>
-        <h3 id='title' contentEditable='false' data-editable><?= $ad['title'] ?></h3>
+        <h3 id='title' 
+            contentEditable='false' 
+            data-editable><?= $ad['title'] ?></h3>
       </div>
     </div>
     
     <div class="desc_prix">
       <div>
         <h3>Description</h3>
-        <p id='description' contentEditable='false' data-editable><?= $ad['description'] ?></p> 
+        <p id='description' 
+            contentEditable='false' 
+            data-editable><?= $ad['description'] ?></p> 
       </div>
       
     </div>
     
   </div>
   <div class="prix">
-    <h3 id='price' contentEditable='false' data-editable><?= $ad['price'] ?> CAD$</h3> 
+    <h3 id='price' 
+        contentEditable='false' 
+        data-editable><?= $ad['price'] ?> CAD$</h3> 
   </div>
-  <div class="soumission <?= $display_none ?>">
+  <div class="soumission display_none" data-btn-bid>
       <a class="button" href="<?= base_url(); ?>index.php/message/create_message">Soumissionner</a>
   </div>
-  <div class='<?= !$display_none ?>'>
+  <div class="display_none" data-btn-owner>
     <button class="button" data-btn-modif>modifier</button>
     <a href="index.php/ad/delete" class="button">supprimer</a>
   </div>  
