@@ -1,4 +1,5 @@
 import { requeteAjax } from './ajax.js'
+import { Ad } from './Ad.js';
 
 export class Filter {
     constructor(el) {
@@ -24,6 +25,8 @@ export class Filter {
             requeteAjax(paramAjax, (reponse_ajax) => {
                 console.log(this._el.nextSibling)
                 this._el.nextElementSibling.innerHTML = reponse_ajax
+                let liste = document.querySelector('[data-component="Ad"]')
+                new Ad(liste)
             })
         })
 
