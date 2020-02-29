@@ -7197,12 +7197,6 @@ footer .address {
   }
 }
 
-.table {
-  overflow-x: scroll;
-  width: 95%;
-  margin: 0 auto;
-}
-
 .text_tab h3 {
   text-align: center;
 }
@@ -7210,7 +7204,12 @@ footer .address {
 table {
   border-collapse: collapse;
   margin: 2em auto;
-  width: 100%;
+}
+
+.table {
+  overflow-x: scroll;
+  width: 95%;
+  margin: 0 auto;
 }
 
 /* Zebra striping */
@@ -7239,7 +7238,7 @@ td, th {
 
 @media (min-width: 1200px) {
   .table {
-    width: 69%;
+    width: 80%;
     overflow-x: hidden;
   }
 }
@@ -7410,7 +7409,7 @@ td, th {
 }
 
 .detail_member {
-  margin-top: 1em;
+  margin-top: 3em;
   width: 94%;
 }
 
@@ -7583,13 +7582,14 @@ td, th {
   color: #bdbdbd;
 }
 
-.unactive {
-  pointer-events: none;
-  opacity: .5;
-}
 .editable {
   -webkit-box-shadow: 1.5px 1.5px 1.5px #6b6b6b inset;
           box-shadow: 1.5px 1.5px 1.5px #6b6b6b inset;
+}
+
+.unactive {
+  pointer-events: none;
+  opacity: .5;
 }
 
 @media (min-width: 600px) {
