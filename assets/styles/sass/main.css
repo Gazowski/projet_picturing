@@ -7001,6 +7001,53 @@ form select::-ms-expand {
           box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
 }
 
+.create_ad {
+  border: 2px dashed #bdbdbd;
+  color: #bdbdbd;
+  min-height: 15em;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+.create_ad:hover {
+  border-color: #bd006b;
+}
+
+.create_ad div {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+.create_ad div h3 {
+  margin: .5rem;
+}
+
+.create_ad div h3 + h3 {
+  font-size: 4em;
+}
+
 @media (min-width: 600px) {
   .parent {
     width: calc(2 * 16em);

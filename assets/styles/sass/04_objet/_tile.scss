@@ -49,9 +49,28 @@
   &:hover {
     box-shadow: 0 5px 15px rgba(0,0,0,0.3);
   }
-
 }
-  
+
+.create_ad{
+  border: 2px dashed $c-light-grey;
+  color:$c-light-grey;
+  min-height: 15em;
+  @include flexbox(flex,column,center,center);
+
+  &:hover{
+    border-color: $c-medium-theme;
+  }
+
+  div{
+    @include flexbox(flex,column,center,center);
+    h3{
+      margin:.5rem;
+      &+h3{
+        font-size:4em;
+      }
+    }
+  }
+}
 @media (min-width: 600px) {
   .parent {
     width: calc(2 * 16em);

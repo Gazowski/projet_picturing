@@ -104,6 +104,7 @@ class Ad extends CI_Controller {
 		{   
 			$data['title'] = 'Mes Annonces'; 
 			$data['ad'] = $this->ad_model->get_member_ads();
+			$data['create_ad'] = true;
 			
 			$this->load->template('pages/tile',$data);
         }
