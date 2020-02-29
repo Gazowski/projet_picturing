@@ -16,10 +16,6 @@ export class Ad {
     init = (e) => {
         for(let tile of this._elTiles){
             tile.addEventListener('click',()=>{
-                console.log('click');
-                console.log(tile.dataset.jsTile);
-                console.log(tile.dataset.jsOwner);
-
                 sessionStorage.setItem('id_ad', tile.dataset.jsTile);
                 sessionStorage.setItem('owner', tile.dataset.jsOwner);
 
@@ -29,9 +25,11 @@ export class Ad {
                 }
                 
                 requeteAjax(paramAjax, (reponse_ajax) => {
-                   this._el.classList.remove('parent')
+                    this._el.classList.remove('parent')
                     this._el.innerHTML = reponse_ajax
-                    let new_el = document.querySelector('[data-component="detail"]')
+                    let filter = document.querySelector('[data-component="filter"]'),
+                        new_el = document.querySelector('[data-component="detail"]')
+                    filter.remove()
                     new Detail(new_el)
                 })
             })
