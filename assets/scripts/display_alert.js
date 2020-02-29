@@ -5,13 +5,13 @@
  * @param { function } action : fonction qui va être déclencher si appui sur ok
  */
 
-export let display_alert = (param) => {
+export let display_alert = (message,action = 0) => {
     let alert = document.querySelector('[data-alert]')
-    if(param.action){
+    if(action){
     alert.innerHTML = `
     <div class='wrapper_alert'>
     <div class="alert">
-    <p>${param.message}</p>
+    <p>${message}</p>
     <button data-ok><i class="fas fa-check-circle"></i></button>
     <button data-cancel><i class="fas fa-times-circle"></i></button>
     </div>
@@ -20,7 +20,7 @@ export let display_alert = (param) => {
         alert.innerHTML = `
         <div class='wrapper_alert'>
         <div class="alert">
-        <p>${param.message}</p>
+        <p>${message}</p>
         <button data-cancel><i class="fas fa-times-circle"></i></button>
         </div>
         </div>
@@ -29,10 +29,12 @@ export let display_alert = (param) => {
     let button_ok = document.querySelector('[data-ok]')
     let button_cancel = document.querySelector('[data-cancel]')
 
-    button_ok.addEventListener('click', () => {
-        alert.innerHTML = ''
-        param.action()
-    })
+    if(button_ok){
+        button_ok.addEventListener('click', () => {
+            alert.innerHTML = ''
+            action()
+        })
+    }
     button_cancel.addEventListener('click', () => { 
         alert.innerHTML = ''
     })

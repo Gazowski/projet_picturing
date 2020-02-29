@@ -49,12 +49,7 @@ class Row{
     
     add_action_to_button = () =>{
         this._button.addEventListener('click',()=>{
-            console.log('je clique')
-            let param_alert = {
-                'message' : this.message,
-                'action' : this.activate_elt,
-            }
-            display_alert(param_alert)
+            display_alert(this.message,this.activate_elt)
         })
     }
 
