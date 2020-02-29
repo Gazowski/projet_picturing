@@ -24,8 +24,14 @@ export class Detail {
     }
 
     display_btn_bid = () =>{
-        if(this._el.dataset.user != 0 && this._el.dataset.user != this._el.dataset.owner){
+        if(this._el.dataset.user != this._el.dataset.owner){
             this._btn_bid.classList.remove('display_none')
+        }
+    }
+
+    display_btn_owner = () => {
+        if(this._el.dataset.user != 0 && this._el.dataset.user == this._el.dataset.owner){
+            this._btn_owner.classList.remove('display_none')
         }
     }
     
@@ -58,8 +64,13 @@ export class Detail {
             }
         }
         for(let data of this._editable_data){
-            if(data.contentEditable == 'false') { data.contentEditable = true }
-            else { data.contentEditable = false }
+            if(data.contentEditable == 'false') { 
+                data.contentEditable = true
+                data.classList.add('editable') 
+            } else { 
+                data.contentEditable = false
+                data.classList.remove('editable') 
+            }
         }       
     }
 
@@ -98,6 +109,7 @@ export class Detail {
                 let param_alert = {
                     'message' : 'les modifications ont été enregistrées',
                 }
+                window.location.href = `${document.baseURI}/ad/member_ads`
                 display_alert(param_alert)
             }
         })
