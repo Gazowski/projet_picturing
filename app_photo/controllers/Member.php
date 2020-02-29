@@ -90,13 +90,14 @@ class Member extends CI_Controller {
     }
 
 
-    public function member($id_member=null){
+    public function member($id_member=null)
+    {
         if ( ! file_exists(APPPATH.'views/pages/detail_member.php'))
         {
             // Whoops, we don't have a page for that!
             show_404();
         }
-
+        // redirection si utilisateur non connecté
         if (!isset($this->session->userdata['user_role']))
         {
             $this->session->set_flashdata('message', 'Vous devez être connecté');
@@ -104,7 +105,7 @@ class Member extends CI_Controller {
         }
         // si $id_member n'est pas renseigné, $id_member prends la valeur de l'user connecté
         $id_member = $id_member == null ? $this->session->userdata['user_id']: $id_member;
-        if($this->session->userdata['user_role'] < 20)
+        if($this->session->userdata['user_role'] < 10)
         {
             $this->session->set_flashdata('message', 'Vous n\'avez pas les droits');
             redirect($_SERVER['HTTP_REFERER']); 
