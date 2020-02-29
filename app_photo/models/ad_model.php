@@ -13,14 +13,23 @@ class Ad_model extends CI_Model {
 		$this->ADMIN = 40;
     }
 
+    private function is_admin()
+    {
+        return isset($this->session->userdata['user_role']) && $this->session->userdata['user_role'] >= $this->SUPERVISOR;
+    }
+
+    private function is_role($role)
+    {
+       return $this->session->userdata['user_role'] == $role;
+    }
+
     public function get_ad($ad)
     {
-        $is_admin =  $this->session->userdata['user_role'] >= $this->SUPERVISOR;
         $this->db->select('*');
         $this->db->from('ad');
         $this->db->join('category','category.id_category = ad.category');
         // si l'utilisateur n'a pas les droits 'supervisor', seules les annonces activées sont sélectionnées
-        !$is_admin ? $this->db->where('active',1) : '';
+        !$this->is_admin() ? $this->db->where('active',1) : '';
         $this->db->where('id_ad',$ad);
         $query = $this->db->get();
         return $query->row_array();
@@ -28,13 +37,12 @@ class Ad_model extends CI_Model {
 
     public function get_ads($filter='DESC')
     {
-        $is_admin = $this->ion_auth->is_admin();
         $this->db->select('*');
         $this->db->from('ad');
         $this->db->join('category','category.id_category = ad.category');
         $this->db->order_by('open_date', $filter);
         // si l'utilisateur n'est pas admin, seules les annonces activées sont sélectionnées
-        !$is_admin ? $this->db->where('active',1) : '';           
+        !$this->is_admin() ? $this->db->where('active',1) : '';           
         $query = $this->db->get();
         return $query->result_array();
     }
@@ -47,7 +55,7 @@ class Ad_model extends CI_Model {
         $this->db->join('category','category.id_category = ad.category');
         $this->db->where('category.category','produit');
         // si l'utilisateur n'a pas les droits 'supervisor', seules les annonces activées sont sélectionnées
-        !$is_admin ? $this->db->where('active',1) : '';
+        !$this->is_admin() ? $this->db->where('active',1) : '';
                 
         $query = $this->db->get();
         return $query->result_array();
@@ -61,7 +69,7 @@ class Ad_model extends CI_Model {
         $this->db->join('category','category.id_category = ad.category');
         $this->db->where('category.category','service');
         // si l'utilisateur n'a pas les droits 'supervisor', seules les annonces activées sont sélectionnées
-        !$is_admin ? $this->db->where('active',1) : '';
+        !$this->is_admin() ? $this->db->where('active',1) : '';
                 
         $query = $this->db->get();
         return $query->result_array();
@@ -111,17 +119,16 @@ class Ad_model extends CI_Model {
      */
     public function get_member_ads()
     {
-        $is_admin =  $this->session->userdata['user_role'] < $this->SUPERVISOR;
         $this->db->select('*');
         $this->db->from('ad');
         $this->db->join('category','category.id_category = ad.category');
         // si client
-        if($this->session->userdata['user_role'] == $this->CLIENT)
+        if($this->is_role($this->CLIENT))
         {
             // faire la sélection
         }
         // si fournisseur
-        else if($this->session->userdata['user_role'] >= $this->SUPPLIER)
+        else if($this->is_role($this->SUPPLIER))
         {
             $this->db->where('owner', $this->session->userdata['user_id']);
         }
