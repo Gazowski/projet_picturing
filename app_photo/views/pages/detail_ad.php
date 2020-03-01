@@ -1,3 +1,6 @@
+<?php
+  $photos = explode(',',$ad['photo']);
+?>
 <div class="detail_ad" 
       data-component='detail' 
       data-table='ad'
@@ -6,7 +9,7 @@
   <div class="titre_img_desc_prix">
     <div class="img_titre">
       <div>
-        <img src="<?= base_url($ad['photo'])?>" alt="<?= $ad['title'] ?>"/>
+        <img src="<?= base_url($photos[0])?>" alt="<?= $ad['title'] ?>"/>
       </div>
       <div>
         <h3 id='title' 

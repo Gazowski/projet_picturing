@@ -11,9 +11,10 @@
       </a>  
     <?php } ?>
     <?php foreach($ad as $row) {
-      $unactive = $row['active'] == 0 ? ' unactive' : ''?>      
+      $photos = explode(',',$row['photo']);
+      $unactive = $row['active'] == 0 ? ' unactive' : '' ;?>      
       <div class="child<?= $unactive ?>" data-js-tile=<?= $row['id_ad'] ?>>
-            <img src="<?= base_url($row['photo'])?>" alt="<?= $row['title'] ?>"/>
+            <img src="<?= base_url($photos[0])?>" alt="<?= $row['title'] ?>"/>
             <h3><?= $row['title'] ?></h3>
             <p><?= $row['description'] ?></p>
             <div class="prix">

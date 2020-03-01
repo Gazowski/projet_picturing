@@ -81,7 +81,7 @@ class Ad_model extends CI_Model {
     public function add_ad($data)
     {
         $query = $this->db->insert('ad',$data);
-        $this->session->userdata['last_ad'] = $this->db->insert_id();
+        $this->session->set_flashdata('last_ad', $this->db->insert_id());
         return $query;
     }
 

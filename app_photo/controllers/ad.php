@@ -145,13 +145,16 @@ class Ad extends CI_Controller {
 				'price' => intval($this->input->post('price')),
                 'location' => $this->input->post('location'),
                 'owner' => $this->ion_auth->user()->row()->id,
-            ];
+			];
+			// mémorisation de la catégory (pour le nombre de photo)
+			$this->type = $this->input->post('type');
         }
         // ajout de l'annonce dans la DB
 		if ($this->form_validation->run() === TRUE && $this->ad_model->add_ad($data))
 		{
+			
 			// ouverture du formulaire d'ajout photo
-			redirect("photo_form", 'refresh');
+			$this->photo_form();
 		}
 		else
 		{
@@ -216,6 +219,8 @@ class Ad extends CI_Controller {
 	{
 		$data['message'] = '';
 		$data['title'] = 'Ajout photo';
+		$this->session->set_userdata('nb_photo', $this->type == 'produit' ? 3 : 1);
+		$data['nb_photo'] = $this->session->userdata['nb_photo'];
 		$this->load->template('pages/photo_form',$data);
 	}
 	
@@ -229,22 +234,27 @@ class Ad extends CI_Controller {
 
 		$this->load->library('upload', $config);
 
-		if ( ! $this->upload->do_upload('photo'))
+		$url_photo = [];
+		$nb_photo = $this->session->userdata['nb_photo'];
+		// on vérifie l'ajout de chaque photo
+		for($i=1;$i<=$nb_photo;$i++)
 		{
-			// check to see if we are creating the ad
-			$this->session->set_flashdata('message', $this->upload->display_errors());
-			// ouverture du formulaire d'ajout photo
-			redirect("photo_form", 'refresh');
+			if ( ! $this->upload->do_upload('photo'.$i))
+			{
+				$this->session->set_flashdata('message', $this->upload->display_errors());
+				// retour vers le formulaire d'ajout photo
+				redirect("photo_form", 'refresh');
+			}
+			else
+			{
+				$data = array('upload_data' => $this->upload->data());
+				// on récupère le nom du fichier téléverser et on le mémorise
+				$photo_url[] = 'assets/img/' . $data['upload_data']['file_name'];
+			} 
 		}
-		else
-		{
-			$data = array('upload_data' => $this->upload->data());
-			// on récupère le nom du fichier téléverser et on l'enregistre dans la db
-			$photo_url = 'assets/img/' . $data['upload_data']['file_name'];
-			$last_id = $this->session->userdata['last_ad'];
-			// on enregistre le lien de la photo dans la db (le 1e paramètre est laissé vide , le model prendra la dernière id insérer)
-			$store = $this->ad_model->update_ad($last_id,['photo' => $photo_url]);
-		}
+		$last_ad = $this->session->flashdata('last_ad');
+		// on enregistre le lien de la photo dans la db (le 1e paramètre est laissé vide , le model prendra la dernière id insérer)
+		$store = $this->ad_model->update_ad($last_ad,['photo' => implode(',',$photo_url)]);
 
 		// verification si la l'url a été ajouté
 		if(!$store)
