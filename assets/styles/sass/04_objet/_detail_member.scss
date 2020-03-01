@@ -1,7 +1,8 @@
 
 .detail_member{
-    margin-top: 3em;
+
     width: 94%;
+    
     .button{
         text-align: center; 
     }
@@ -11,10 +12,12 @@
     } 
 }
 .titre_profil{
-    width: 100%;
+    width: 94%;
     text-align: center;
     color: white;
     background-color: $c-medium-theme;
+    padding: .1em;
+    margin: 3em auto 0;
 }
 
 .mess_ann{
@@ -49,10 +52,14 @@
 }
 @media (min-width: 900px) { 
     .mess_ann{
-       width: 35%;  
+       width: 25%;  
     }
     .detail_member{
-        width: 45%;
+        width: 35%;
+    }
+    .titre_profil{
+        width: 35%;
+      
     }
 }
   

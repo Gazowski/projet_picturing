@@ -20,6 +20,7 @@ https://coolors.co/
 * plugin messagerie https://github.com/jrmadsen67/Mahana-Messaging-library-for-CodeIgniter
 * faire le header en sticky (ou avoir le menu toujours accessible)
 * afficher le titre au dessus de filtre
+* ajouter un breadcrumb (plugin)
 
 ## Plan du site
 ### utilisateur non connecté / client
