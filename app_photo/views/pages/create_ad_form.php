@@ -63,11 +63,6 @@
                   </p>
 
                   <p>
-                        <?php echo form_label($photo['name']);?> <br />
-                        <?php echo form_input($photo);?>
-                  </p>
-
-                  <p>
                         <?php echo form_label($location['name']);?> <br />
                         <?php echo form_input($location);?>
                   </p>  

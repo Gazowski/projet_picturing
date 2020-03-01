@@ -11,8 +11,10 @@ class Ad_model extends CI_Model {
 		$this->SUPPLIER = 20;
 		$this->GOLDEN_SUPPLIER = 30;
 		$this->SUPERVISOR = 40;
-		$this->ADMIN = 50;
+        $this->ADMIN = 50;
     }
+
+
 
     private function is_admin()
     {
@@ -78,13 +80,16 @@ class Ad_model extends CI_Model {
 
     public function add_ad($data)
     {
-        return $this->db->insert('ad',$data);
+        $query = $this->db->insert('ad',$data);
+        $this->session->userdata['last_ad'] = $this->db->insert_id();
+        return $query;
     }
 
     public function update_ad($id,$data)
     {
         $this->db->where('id_ad',$id);
-        return $this->db->update('ad',$data);
+        $query = $this->db->update('ad',$data);
+        return $query;
     }
 
     public function delete_ad($id)

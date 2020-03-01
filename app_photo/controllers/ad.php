@@ -110,6 +110,13 @@ class Ad extends CI_Controller {
         }
 	}
 
+	/**
+	 * create_ad
+	 * formulaire création annonce
+	 * l'ajout d'une annonce se fait en 2 étapes:
+	 * 	- 1. ajout de l'annonce
+	 *  - 2. ajout des photos (méthode form_photo)
+	 */
     public function create_ad()
     {
 		// page accessible pour les membres fournisseur ou plus
@@ -127,7 +134,6 @@ class Ad extends CI_Controller {
 		$this->form_validation->set_rules('type', 'Type', 'required');
 		$this->form_validation->set_rules('description','Description', 'trim');
 		$this->form_validation->set_rules('price', 'Prix', 'trim|required');
-		$this->form_validation->set_rules('photo','Photo','trim');
 		$this->form_validation->set_rules('location','Adresse','trim');
 
 		if ($this->form_validation->run() === TRUE)
@@ -137,20 +143,15 @@ class Ad extends CI_Controller {
 				'category' => $this->input->post('category'),
 				'description' => $this->input->post('description'),
 				'price' => intval($this->input->post('price')),
-				'photo' => $this->input->post('photo'),
                 'location' => $this->input->post('location'),
                 'owner' => $this->ion_auth->user()->row()->id,
             ];
-            
-            var_dump($data);
         }
         // ajout de l'annonce dans la DB
 		if ($this->form_validation->run() === TRUE && $this->ad_model->add_ad($data))
 		{
-    		// check to see if we are creating the ad
-			// redirect them back to the home page
-			$this->session->set_flashdata('message', $this->ion_auth->messages());
-			redirect("display_all", 'refresh');
+			// ouverture du formulaire d'ajout photo
+			redirect("photo_form", 'refresh');
 		}
 		else
 		{
@@ -190,12 +191,6 @@ class Ad extends CI_Controller {
 				'type' => 'text',
 				'value' => $this->form_validation->set_value('price'),
 			];
-			$this->data['photo'] = [
-				'name' => 'photo',
-				'id' => 'photo',
-				'type' => 'text',
-				'value' => $this->form_validation->set_value('photo'),
-			];
 			$this->data['location'] = [
 				'name' => 'location',
 				'id' => 'location',
@@ -206,4 +201,62 @@ class Ad extends CI_Controller {
 			$this->load->template('pages/create_ad_form',$this->data);
 		}
 	}
+
+    /**
+	 * photo_form()
+	 * affichage du formulaire d'ajout de photo.
+	 * 	- utilisation de la library 'uploading' de codeigniter
+	 *  - la méthode est appelé apres la validation du formulaire 'create_ad'
+	 *  - création de la vue views/pages/photo_form.php
+	 *  - la vue est appelé par photo_form
+	 *  - la photo est téléverser par la méthode upload_photo
+	 *  - l'url est de la photo est ajouté dans la db 
+	 */
+	public function photo_form()
+	{
+		$data['message'] = '';
+		$data['title'] = 'Ajout photo';
+		$this->load->template('pages/photo_form',$data);
+	}
+	
+	public function upload_photo()
+	{
+		$config['upload_path']          = './assets/img';
+		$config['allowed_types']        = 'gif|jpg|png';
+		$config['max_size']             = 2000;
+		$config['max_width']            = 2000;
+		$config['max_height']           = 2000;
+
+		$this->load->library('upload', $config);
+
+		if ( ! $this->upload->do_upload('photo'))
+		{
+			// check to see if we are creating the ad
+			$this->session->set_flashdata('message', $this->upload->display_errors());
+			// ouverture du formulaire d'ajout photo
+			redirect("photo_form", 'refresh');
+		}
+		else
+		{
+			$data = array('upload_data' => $this->upload->data());
+			// on récupère le nom du fichier téléverser et on l'enregistre dans la db
+			$photo_url = 'assets/img/' . $data['upload_data']['file_name'];
+			$last_id = $this->session->userdata['last_ad'];
+			// on enregistre le lien de la photo dans la db (le 1e paramètre est laissé vide , le model prendra la dernière id insérer)
+			$store = $this->ad_model->update_ad($last_id,['photo' => $photo_url]);
+		}
+
+		// verification si la l'url a été ajouté
+		if(!$store)
+		{
+			$this->session->set_flashdata('message', "la photo n'a pas été ajoutée, recommencez");
+			redirect("photo_form", 'refresh');
+		}
+		else
+		{
+			$this->session->set_flashdata('message', 'votre annonce est en attente de validation');
+			redirect('member_ads','refresh');
+		}
+	}
+
 }
