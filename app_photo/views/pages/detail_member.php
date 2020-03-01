@@ -2,7 +2,7 @@
 
 <section class="form_det_member" data-component='detail' data-table='member'>
     <div class="titre_profil">
-        <h3><?= $title ?></h3>
+        <h1><?= $title ?></h1>
     </div>
     <div class="detail_ad detail_member">
         <ul data-member = <?= $profil->id ?> >

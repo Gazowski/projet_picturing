@@ -7473,7 +7473,7 @@ td, th {
   color: white;
   background-color: #bd006b;
   padding: .1em;
-  margin: 2em auto 0;
+  margin: 3em auto 0;
 }
 
 .mess_ann {
@@ -7530,13 +7530,13 @@ td, th {
 
 @media (min-width: 900px) {
   .mess_ann {
-    width: 35%;
+    width: 25%;
   }
   .detail_member {
-    width: 45%;
+    width: 35%;
   }
   .titre_profil {
-    width: 45%;
+    width: 35%;
   }
 }
 
