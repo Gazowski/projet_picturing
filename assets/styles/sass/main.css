@@ -7456,7 +7456,6 @@ td, th {
 }
 
 .detail_member {
-  margin-top: 3em;
   width: 94%;
 }
 
@@ -7469,10 +7468,12 @@ td, th {
 }
 
 .titre_profil {
-  width: 100%;
+  width: 94%;
   text-align: center;
   color: white;
   background-color: #bd006b;
+  padding: .1em;
+  margin: 2em auto 0;
 }
 
 .mess_ann {
@@ -7532,6 +7533,9 @@ td, th {
     width: 35%;
   }
   .detail_member {
+    width: 45%;
+  }
+  .titre_profil {
     width: 45%;
   }
 }
