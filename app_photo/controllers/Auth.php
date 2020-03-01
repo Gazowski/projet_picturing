@@ -521,7 +521,6 @@ class Auth extends CI_Controller
 				'website' => $this->input->post('website'),
 				'social_network' => $this->input->post('social_network'),
 			];
-			var_dump($additional_data);
 		}
 		if ($this->form_validation->run() === TRUE && $this->ion_auth->register($identity, $password, $email, $additional_data))
 		{

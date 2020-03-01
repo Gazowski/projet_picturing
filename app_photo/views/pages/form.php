@@ -6,7 +6,6 @@
  */
     echo form_open($formaction);
     foreach($form as $input => $attribute){
-        var_dump($input,$attribute);
         
         switch($input) {
             case 'text':
