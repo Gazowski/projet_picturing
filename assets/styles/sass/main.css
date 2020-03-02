@@ -7581,6 +7581,17 @@ td, th {
   }
 }
 
+.apropos {
+  width: 45%;
+  margin: 10em auto;
+  border: 1px solid #bdbdbd;
+  padding: 1em;
+}
+
+.apropos h3 {
+  color: #bd006b;
+}
+
 .button {
   -webkit-box-align: center;
       -ms-flex-align: center;
