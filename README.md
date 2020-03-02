@@ -11,7 +11,7 @@ https://coolors.co/
 * creation d'une annonce possible sans photo ni description
 * page home admin : lorsque tous les users sont activés seul l'entete du tableau reste affiché (au lieu d'une phrase)
 * dans l'admin onglet Membres revoir l'affichage des listes fournisseurs et clients.
-* dans admin onle mes annonce verfier si les annonce affichées sont bien celle de l'usager connecté. 
+
 
 ## amélioration à faire
 * activer la recherche
