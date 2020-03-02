@@ -1,5 +1,6 @@
 <?php
   $photos = explode(',',$ad['photo']);
+  $secondary_photos = array_slice($photos,1);
 ?>
 <div class="detail_ad" 
       data-component='detail' 
@@ -24,8 +25,13 @@
         <p id='description' 
             contentEditable='false' 
             data-editable><?= $ad['description'] ?></p> 
-      </div>
-      
+      </div>      
+    </div>
+
+    <div>
+      <?php foreach($secondary_photos as $p) { ?>
+        <img src="<?= base_url($p)?>" alt="<?= $ad['title'] ?>"/>
+      <?php } ?>
     </div>
     
   </div>
