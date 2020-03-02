@@ -73,7 +73,7 @@ class Ad extends CI_Controller {
         }
         
         
-        $data['title'] = 'Liste des Produits';
+        $data['title'] = 'Liste des services';
         $data['ad'] = $this->ad_model->get_ad_servive();
 
         $this->load->template('pages/tile',$data);
