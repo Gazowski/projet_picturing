@@ -7583,13 +7583,21 @@ td, th {
 
 .apropos {
   width: 45%;
-  margin: 10em auto;
+  margin: 7em auto;
   border: 1px solid #bdbdbd;
   padding: 1em;
 }
 
-.apropos h3 {
+.apropos h2 {
   color: #bd006b;
+}
+
+.apropos .map iframe {
+  width: 100%;
+}
+
+.creat_usager {
+  margin: 0 auto;
 }
 
 .button {
