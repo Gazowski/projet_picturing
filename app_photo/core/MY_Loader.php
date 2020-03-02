@@ -75,8 +75,9 @@ class MY_Loader extends CI_Loader {
                     
                 ],
                 'Membres' => [
+                    'Membres' => 'index.php/Member/display_all',
                     'Fournisseurs' => 'index.php/Member/display_all_supplier',
-                    'Clients' => 'index.php/Member/display_all',
+                    'Clients' => 'index.php/Member/display_all_client',
                     
                 ],
                 'Mon compte' => [
@@ -100,8 +101,9 @@ class MY_Loader extends CI_Loader {
                     
                 ],
                 'Membres' => [
+                    'Membres' => 'index.php/Member/display_all',
                     'Fournisseurs' => 'index.php/Member/display_all_supplier',
-                    'Clients' => 'index.php/Member/display_all',
+                    'Clients' => 'index.php/Member/display_all_client',
                     
                 ],
                 'Mon compte' => [

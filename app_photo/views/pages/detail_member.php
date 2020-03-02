@@ -22,8 +22,8 @@
     </div>
     
     <div class="mess_ann">
-        <a href="index.php/message/...">Voir mes messages</a><br>
-        <a href="index.php/ad/...">Voir mes annonces</a>
+        <a href="">Voir mes messages (inactif)</a><br>
+        <a href="index.php/ad/member_ads">Voir mes annonces</a>
     </div>
 </section>
 
