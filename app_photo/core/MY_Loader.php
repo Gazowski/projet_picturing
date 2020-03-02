@@ -159,6 +159,7 @@ class MY_Loader extends CI_Loader {
                 'Annonces' => [
                     'Produits' => 'index.php/ad/display_all_product',
                     'Services' => 'index.php/ad/display_all_service',
+                    'Annonces' =>  'index.php/ad/display_all',
                     
                 ],
                 'S\'inscrire' => 'index.php/auth/create_user',
