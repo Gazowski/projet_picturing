@@ -41,9 +41,32 @@ class Member extends CI_Controller {
         }        
         
         $data['title'] = 'Liste des Fournisseurs'; // Capitalize the first letter
-        $data['membres'] = $this->member_model->get_by_type('name = "Fournisseur" OR name = "Fournisseur Or"');
-        var_dump($this->db->last_query());
-        //die;       
+        $data['membres'] = $this->member_model->get_by_type('name = "Fournisseur" OR name = "Fournisseur Or"');     
+        
+        $this->load->template('pages/list_members',$data);
+    }
+
+    /**
+     * affichage des tous les clients
+     * accessible par fournisseur or et +
+     */
+    
+    public function display_all_client()
+    {
+        
+        if ( ! file_exists(APPPATH.'views/pages/list.php'))
+        {
+            // Whoops, we don't have a page for that!
+            show_404();
+        }
+        if (!isset($this->session->userdata['user_role']) || $this->session->userdata['user_role'] < 40)
+        {
+            $this->session->set_flashdata('message', 'Vous devez avoir les droits de superviseur');
+            redirect($_SERVER['HTTP_REFERER']); 
+        }        
+        
+        $data['title'] = 'Liste des Fournisseurs'; // Capitalize the first letter
+        $data['membres'] = $this->member_model->get_by_type('name = "Client"');     
         
         $this->load->template('pages/list_members',$data);
     }
