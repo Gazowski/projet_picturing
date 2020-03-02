@@ -10,6 +10,7 @@ https://coolors.co/
 ## correction à faire
 * creation d'une annonce possible sans photo ni description
 * page home admin : lorsque tous les users sont activés seul l'entete du tableau reste affiché (au lieu d'une phrase)
+* dans l'admin onglet Membres revoir l'affichage des listes fournisseurs et clients. 
 
 ## amélioration à faire
 * activer la recherche
