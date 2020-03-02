@@ -269,4 +269,23 @@ class Ad extends CI_Controller {
 		}
 	}
 
+
+	public function a_propos()
+    {
+
+        if ( ! file_exists(APPPATH.'views/pages/a_propos.php'))
+        {
+            // Whoops, we don't have a page for that!
+            show_404();
+        }
+        
+        
+        $data['title'] = 'A propos'; // Capitalize the first letter
+       // $data['ad'] = $this->ad_model->get_ads();
+
+        $this->load->template('pages/a_propos',$data);
+    }
+
+
+
 }
