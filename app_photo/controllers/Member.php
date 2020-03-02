@@ -20,7 +20,11 @@ class Member extends CI_Controller {
         $this->load->helper('date');
     }
 
-//////logique pour afficher la liste des membres pour les fournisseurs////
+
+    /**
+     * affichage des tous les fournisseurs
+     * accessible par superviseur et +
+     */
     
     public function display_all_supplier()
     {
@@ -36,10 +40,12 @@ class Member extends CI_Controller {
             redirect($_SERVER['HTTP_REFERER']); 
         }        
         
-        $data['title'] = 'Liste des Membres'; // Capitalize the first letter
-        $data['table'] = $this->member_model->get_supplier();       
+        $data['title'] = 'Liste des Fournisseurs'; // Capitalize the first letter
+        $data['membres'] = $this->member_model->get_by_type('name = "Fournisseur" OR name = "Fournisseur Or"');
+        var_dump($this->db->last_query());
+        //die;       
         
-        $this->load->template('pages/list',$data);
+        $this->load->template('pages/list_members',$data);
     }
 
     /**
