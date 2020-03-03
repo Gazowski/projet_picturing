@@ -1,4 +1,5 @@
 <h2><?= $title ?></h2>
+<div class="line_t"></div>
 <?php $filter() ?>
 <div class="table">
     <table data-component="list">
