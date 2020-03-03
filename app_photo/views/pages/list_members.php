@@ -1,3 +1,5 @@
+<h2><?= $title ?></h2>
+<?php $filter() ?>
 <div class="table">
     <table data-component="list">
         <tr class=''>

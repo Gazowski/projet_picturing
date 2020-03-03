@@ -34,16 +34,19 @@ class MY_Loader extends CI_Loader {
         // header différent si le role est supérieur a admin
         $header = $this->is_supervisor ? 'pages/header_admin' : 'pages/header_catalog';
 
-        // select filtre
-        $vars['filter'] = [
-            'DESC' => 'plus récent',
-            'ASC' => 'plus ancien'
-        ];
+        // filtre
+        $filter_view = function(){
+            $filter['filter'] = [
+                'DESC' => 'plus récent',
+                'ASC' => 'plus ancien'
+            ];
+            $this->view('pages/filter',$filter);
+        };
+        $vars['filter'] =  (strpos($page, 'list') || strpos($page,'tile')) ? $filter_view : '';
 
         $this->view('pages/head', $vars);
         $this->view($header, $vars);
-        $this->view('pages/alert');
-        (strpos($page, 'list') || strpos($page,'tile')) ? $this->load->view('pages/filter',$vars) : '';
+        $this->view('pages/alert');        
         $this->view($page, $vars);
         $this->view('pages/footer', $vars);
        
