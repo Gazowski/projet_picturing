@@ -23,7 +23,7 @@ class Ad_model extends CI_Model {
 
     private function is_role($role)
     {
-       return $this->session->userdata['user_role'] >= $role;
+       return $this->session->userdata['user_role'] == $role;
     }
 
     public function get_ad($ad)
@@ -134,15 +134,15 @@ class Ad_model extends CI_Model {
         $this->db->select('*');
         $this->db->from('ad');
         $this->db->join('category','category.id_category = ad.category');
-        // si fournisseur
-        if($this->is_role($this->SUPPLIER))
-        {
-            $this->db->where('owner', $this->session->userdata['user_id']);
-        }
         // si client
-        else if($this->is_role($this->CLIENT))
+        if($this->is_role($this->CLIENT))
         {
             // faire la sélection
+        }
+        // si fournisseur
+        else if($this->is_role($this->SUPPLIER))
+        {
+            $this->db->where('owner', $this->session->userdata['user_id']);
         }
             
         $query = $this->db->get();

@@ -46,7 +46,7 @@ class MY_Loader extends CI_Loader {
         (strpos($page, 'list') || strpos($page,'tile')) ? $this->load->view('pages/filter',$vars) : '';
         $this->view($page, $vars);
         $this->view('pages/footer', $vars);
-       
+
     }
 
     private function init_role()
@@ -75,19 +75,17 @@ class MY_Loader extends CI_Loader {
                     
                 ],
                 'Membres' => [
-                    'Membres' => 'index.php/Member/display_all',
                     'Fournisseurs' => 'index.php/Member/display_all_supplier',
-                    'Clients' => 'index.php/Member/display_all_client',
+                    'Clients' => 'index.php/Member/display_all',
                     
                 ],
                 'Mon compte' => [
                     'Mon profil' =>  'index.php/member/member',
                     'Mes messages' =>  'Message/display_messages_ad',
-                    'Mes annonces' =>  'index.php/ad/member_ads',
-                     'Activation' =>  'index.php/Member/admin_home',
+                    'Mes annonces' =>  'index.php/controlleur/methode',
                     
                 ],
-                'A propos' => 'index.php/ad/a_propos',
+                'A propos' => 'index.php/controlleur/methode a propos'
             ]; 
         }
 
@@ -101,19 +99,17 @@ class MY_Loader extends CI_Loader {
                     
                 ],
                 'Membres' => [
-                    'Membres' => 'index.php/Member/display_all',
                     'Fournisseurs' => 'index.php/Member/display_all_supplier',
-                    'Clients' => 'index.php/Member/display_all_client',
+                    'Clients' => 'index.php/Member/display_all',
                     
                 ],
                 'Mon compte' => [
                     'Mon profil' =>  'index.php/member/member',
                     'Mes messages' =>  'Message/display_messages_ad',
-                    'Mes annonces' =>  'index.php/ad/member_ads',
-                    'Activation' =>  'index.php/Member/admin_home',
+                    'Mes annonces' =>  'index.php/controlleur/methode',
                     
                 ],
-                'A propos' => 'index.php/ad/a_propos',
+                'A propos' => 'index.php/controlleur/methode a propos'
             ]; 
         }
 
@@ -132,7 +128,7 @@ class MY_Loader extends CI_Loader {
                     'Mes messages' =>  'Message/display_messages_ad',
                     
                 ],
-                'A propos' => 'index.php/ad/a_propos',
+                'A propos' => 'index.php/controlleur/methode a propos'
             ];
         }
 
@@ -147,11 +143,11 @@ class MY_Loader extends CI_Loader {
                 ],
                 'Mon compte' =>[
                     'Mon profil' =>  'index.php/member/member',
-                    'Mes annonces' =>  'index.php/ad/member_ads',
+                    'Mes annonces' =>  'controlleur/methode',
                     'Mes messages' =>  'Message/display_messages_ad',
                     
                 ], 
-                'A propos' => 'index.php/ad/a_propos',
+                'A propos' => 'index.php/controlleur/methode a propos'
             ];
         }
 
@@ -161,11 +157,10 @@ class MY_Loader extends CI_Loader {
                 'Annonces' => [
                     'Produits' => 'index.php/ad/display_all_product',
                     'Services' => 'index.php/ad/display_all_service',
-                    'Annonces' =>  'index.php/ad/display_all',
                     
                 ],
                 'S\'inscrire' => 'index.php/auth/create_user',
-                'A propos' => 'index.php/ad/a_propos',
+                'A propos' => 'index.php/controlleur/methode a propos'
             ];
         }
 

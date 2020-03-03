@@ -11,8 +11,8 @@ class Mahana_model extends CI_Model
      * @param   string   $body
      * @return  integer  $new_thread_id
      */
-    //function send_new_message($sender_id, $recipients, $subject, $body)
-    function send_new_message($data)
+    function send_new_message($sender_id, $recipients, $subject, $body)
+    //function send_new_message($data)
     {
         $this->db->trans_start();
 

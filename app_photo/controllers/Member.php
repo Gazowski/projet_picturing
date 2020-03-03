@@ -20,11 +20,7 @@ class Member extends CI_Controller {
         $this->load->helper('date');
     }
 
-
-    /**
-     * affichage des tous les fournisseurs
-     * accessible par superviseur et +
-     */
+//////logique pour afficher la liste des membres pour les fournisseurs////
     
     public function display_all_supplier()
     {
@@ -40,35 +36,10 @@ class Member extends CI_Controller {
             redirect($_SERVER['HTTP_REFERER']); 
         }        
         
-        $data['title'] = 'Liste des Fournisseurs'; // Capitalize the first letter
-        $data['membres'] = $this->member_model->get_by_type('name = "Fournisseur" OR name = "Fournisseur Or"');     
+        $data['title'] = 'Liste des Membres'; // Capitalize the first letter
+        $data['table'] = $this->member_model->get_supplier();       
         
-        $this->load->template('pages/list_members',$data);
-    }
-
-    /**
-     * affichage des tous les clients
-     * accessible par fournisseur or et +
-     */
-    
-    public function display_all_client()
-    {
-        
-        if ( ! file_exists(APPPATH.'views/pages/list.php'))
-        {
-            // Whoops, we don't have a page for that!
-            show_404();
-        }
-        if (!isset($this->session->userdata['user_role']) || $this->session->userdata['user_role'] < 40)
-        {
-            $this->session->set_flashdata('message', 'Vous devez avoir les droits de superviseur');
-            redirect($_SERVER['HTTP_REFERER']); 
-        }        
-        
-        $data['title'] = 'Liste des Fournisseurs'; // Capitalize the first letter
-        $data['membres'] = $this->member_model->get_by_type('name = "Client"');     
-        
-        $this->load->template('pages/list_members',$data);
+        $this->load->template('pages/list',$data);
     }
 
     /**

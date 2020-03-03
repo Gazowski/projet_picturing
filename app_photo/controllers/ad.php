@@ -73,7 +73,7 @@ class Ad extends CI_Controller {
         }
         
         
-        $data['title'] = 'Liste des services';
+        $data['title'] = 'Liste des Produits';
         $data['ad'] = $this->ad_model->get_ad_servive();
 
         $this->load->template('pages/tile',$data);
@@ -228,9 +228,9 @@ class Ad extends CI_Controller {
 	{
 		$config['upload_path']          = './assets/img';
 		$config['allowed_types']        = 'gif|jpg|png';
-		$config['max_size']             = 2000; // kB
-		$config['max_width']            = 2000; // px
-		$config['max_height']           = 2000; // px
+		$config['max_size']             = 2000;
+		$config['max_width']            = 2000;
+		$config['max_height']           = 2000;
 
 		$this->load->library('upload', $config);
 
@@ -252,7 +252,6 @@ class Ad extends CI_Controller {
 				$photo_url[] = 'assets/img/' . $data['upload_data']['file_name'];
 			} 
 		}
-		// récupération de l'id de la derniere annonce ajouté
 		$last_ad = $this->session->flashdata('last_ad');
 		// on enregistre le lien de la photo dans la db (le 1e paramètre est laissé vide , le model prendra la dernière id insérer)
 		$store = $this->ad_model->update_ad($last_ad,['photo' => implode(',',$photo_url)]);
@@ -269,24 +268,5 @@ class Ad extends CI_Controller {
 			redirect('member_ads','refresh');
 		}
 	}
-
-
-	public function a_propos()
-    {
-
-        if ( ! file_exists(APPPATH.'views/pages/a_propos.php'))
-        {
-            // Whoops, we don't have a page for that!
-            show_404();
-        }
-        
-        
-        $data['title'] = 'A propos'; // Capitalize the first letter
-       // $data['ad'] = $this->ad_model->get_ads();
-
-        $this->load->template('pages/a_propos',$data);
-    }
-
-
 
 }

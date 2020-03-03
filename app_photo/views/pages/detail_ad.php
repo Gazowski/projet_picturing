@@ -13,12 +13,12 @@
         <img src="<?= base_url($photos[0])?>" alt="<?= $ad['title'] ?>"/>
       </div>
       <div>
-        <h2 id='title' 
+        <h3 id='title' 
             contentEditable='false' 
-            data-editable><?= $ad['title'] ?></h2>
+            data-editable><?= $ad['title'] ?></h3>
       </div>
     </div>
-    <div class="line"></div>  
+    
     <div class="desc_prix">
       <div>
         <h3>Description</h3>
@@ -27,35 +27,27 @@
             data-editable><?= $ad['description'] ?></p> 
       </div>      
     </div>
-  
-  </div>
-  
-  <!-- Affichages des photos secondaire ----------------->
-  <div class="secondary_photos">
+
+    <div>
       <?php foreach($secondary_photos as $p) { ?>
         <img src="<?= base_url($p)?>" alt="<?= $ad['title'] ?>"/>
       <?php } ?>
+    </div>
+    
   </div>
-  <!-- Fin affichages des photos secondaire ------------->
-  
   <div class="prix">
     <h3 ><span id='price' 
                 data-editable 
                 contentEditable='false'><?= $ad['price'] ?></span> CAD$</h3> 
   </div>
-  
-  
-  
   <div class="soumission display_none" data-btn-bid>
       <a class="button" href="<?= base_url(); ?>index.php/message/create_message">Soumissionner</a>
   </div>
-  
-  <!-- Affichages des boutons modifier/supprimer ----------------->
-  <div class="display_none modif_supp" data-btn-owner>
+  <div class="display_none" data-btn-owner>
     <button class="button" data-btn-modif>modifier</button>
     <button class="button" data-btn-delete>supprimer</button>
   </div>  
-  <!-- Fin Affichages des boutons modifier/supprimer ----------------->
+
 
 </div>
 
@@ -63,28 +55,7 @@
 
 <!-- ---------------------------------------------- -->    
 
-<?php /**
-     * liste des message rattachés à cette annonce
-     * */ 
-?>
 
-<?php if(isset($message)) { ?>
-<section class="">
-    <ul class="">
-        <?php foreach($message as $row) {?>
-            <li class="">
-                <div class="">    
-                    <h3><?= $row['title'] ?></h3>
-                    <p><?= $row['date'] ?></p>
-                    <p><?= $row['text_message'] ?></p>
-                    <p><?= $row['writer'] ?></p>
-                    <p><?= $row['ad'] ?></p>
-                </div>
-            </li>
-        <?php } ?>
-    </ul>
-</section>
-<?php } ?>
 
 
     
