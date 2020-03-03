@@ -4,6 +4,7 @@ import { display_alert } from './display_alert.js'
 export class Detail {
     constructor(el) {
         // declaration des variables 
+        console.log(el);
         this._el = el
         this._btn_modif = this._el.querySelector('[data-btn-modif]')
         this._data = this._el.querySelectorAll('li span')
@@ -11,6 +12,9 @@ export class Detail {
         this._btn_bid = this._el.querySelector('[data-btn-bid]')
         this._btn_owner = this._el.querySelector('[data-btn-owner]')
         this._btn_delete = this._el.querySelector('[data-btn-delete]')
+        this._btn_rating = this._el.querySelector('[data-rating]')
+        this._btn_noter = this._el.querySelector('[data-btn-noter]')
+        this._input_rating = this._el.querySelector('[data-note]')
 
         this.ajax_data = {}
 
@@ -19,14 +23,18 @@ export class Detail {
     }
 
     init = (e) =>{
-        console.log('btn_bid = ' + this.btn_bid)
-        console.log('btn_owner = ' + this.btn_owner)
+        console.log('btn_bid = ' + this._btn_bid)
+        console.log('btn_owner = ' + this._btn_owner)
+        console.log('btn_rating = ' + this._btn_noter)
         if(this._btn_bid) this.display_btn_bid()
         if(this._btn_owner) this.display_btn_owner()
+        if(this._btn_noter) this. display_rating()
         this._btn_modif.addEventListener('click',this.modify_data) // pas de fonction fleché car l'évènement doit être supprimer
         this._btn_delete.addEventListener('click',()=>{
             display_alert('confirmez la suppression',this.delete_data)        
         })
+
+        this._btn_noter.addEventListener('click', this.rate_user)
     }
 
     display_btn_bid = () =>{
@@ -38,6 +46,12 @@ export class Detail {
     display_btn_owner = () => {
         if(this._el.dataset.user != 0 && this._el.dataset.user == this._el.dataset.owner){
             this._btn_owner.classList.remove('display_none')
+        }
+    }
+
+    display_rating = () => {
+        if(this._el.dataset.user != 0 && this._el.dataset.user != this._el.dataset.owner){
+            this._btn_rating.classList.remove('display_none')
         }
     }
     
@@ -109,6 +123,24 @@ export class Detail {
             console.log(reponse_ajax)
             if(reponse_ajax == 1){
                 display_alert('les modifications ont été enregistrées')
+            }
+        })
+    }
+
+
+     /**
+     * envoi des données ajax pour noter un user
+     */
+    rate_user = () =>{
+        let paramAjax = {
+            method : "GET",
+            action : `index.php/ajax_controller/rate_user/${this._el.dataset.owner}/${this._input_rating.value}`,
+           
+        }
+        requeteAjax(paramAjax, (reponse_ajax) => {
+            console.log(reponse_ajax)
+            if(reponse_ajax == 1){
+                display_alert('la note a été enregistrée')
             }
         })
     }
