@@ -5,8 +5,6 @@
  *  - titre
  *  - message
  */
-//var_dump($_SERVER);
-//var_dump($data);
 ?>
 
 <div class="form" data-component='form'>
@@ -18,8 +16,12 @@
             <div id="infoMessage"><?php echo $message_error;?></div>
 
             <div class="">  
-                  <h2><?= $subject ?></h2>
+                  <h2><?= $ad['title'] ?></h2>
             </div>
+
+            <!-- intégrer au formulaire -->
+            <p>Owner : <?= $ad['owner'] ?></p>
+            <p>From : <?= $profil->first_name ?> <?= $profil->last_name ?></p>
 
             <?php echo form_open("message/create_message");?>
 
