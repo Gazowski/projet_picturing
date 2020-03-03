@@ -37,7 +37,7 @@
 </div>
 
 <div class="form">
-  <div class="content_form">
+  <div class="content_form creat_usager">
     <p>Pas encore de compte ?</p>
     <a href="<?= base_url(); ?>index.php/auth/create_user" class="button">S'enregistrer</a>
   </div>

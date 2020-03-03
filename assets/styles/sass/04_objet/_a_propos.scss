@@ -1,0 +1,13 @@
+.apropos{
+    width: 45%;
+    margin: 7em auto;
+    border: 1px solid $c-light-grey;
+    padding: 1em;
+    h2{
+        color: $c-medium-theme;
+    }
+    .map iframe{
+        width: 100%;
+        
+    }
+}
