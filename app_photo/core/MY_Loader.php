@@ -82,7 +82,7 @@ class MY_Loader extends CI_Loader {
                 ],
                 'Mon compte' => [
                     'Mon profil' =>  'index.php/member/member',
-                    'Mes messages' =>  'Message/display_messages_ad',
+                    'Mes messages' =>  'index.php/message/display_messages_user',
                     'Mes annonces' =>  'index.php/ad/member_ads',
                      'Activation' =>  'index.php/Member/admin_home',
                     
@@ -108,7 +108,7 @@ class MY_Loader extends CI_Loader {
                 ],
                 'Mon compte' => [
                     'Mon profil' =>  'index.php/member/member',
-                    'Mes messages' =>  'Message/display_messages_ad',
+                    'Mes messages' =>  'index.php/message/display_messages_user',
                     'Mes annonces' =>  'index.php/ad/member_ads',
                     'Activation' =>  'index.php/Member/admin_home',
                     
@@ -129,7 +129,7 @@ class MY_Loader extends CI_Loader {
                 'Mon compte' => [
                     'Mon profil' =>  'index.php/member/member',
                     'Mes annonces' =>  'index.php/ad/member_ads',
-                    'Mes messages' =>  'Message/display_messages_ad',
+                    'Mes messages' =>  'index.php/message/display_messages_user',
                     
                 ],
                 'A propos' => 'index.php/ad/a_propos',
@@ -148,7 +148,7 @@ class MY_Loader extends CI_Loader {
                 'Mon compte' =>[
                     'Mon profil' =>  'index.php/member/member',
                     'Mes annonces' =>  'index.php/ad/member_ads',
-                    'Mes messages' =>  'Message/display_messages_ad',
+                    'Mes messages' =>  'index.php/message/display_messages_user',
                     
                 ], 
                 'A propos' => 'index.php/ad/a_propos',
