@@ -14,6 +14,7 @@
             <li>groupe : <span><?= $profil->name ?></span></li>
             <li>derniere connection : <span><?= $profil->last_login ?></span></li>
             <li>inscris depuis le : <span><?= $profil->created_on ?></span></li>
+            <li>Note : <span><?= $profil->rating ?></span></li>
         </ul>
         <div class="mod_sup">
             <button class="button" data-btn-modif>Modifier</button>
