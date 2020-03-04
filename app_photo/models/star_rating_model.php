@@ -55,46 +55,14 @@ class Star_rating_model extends CI_Model{
 
 
     public function user_rating( $rated_user, $rating) {
-        $this->db->select ('*');
-        $this->db-> from ('rating');
-        $this->db-> where ("rated_user", $rated_user);
-       // $this->db-> where ("rater_user", $rater_user);
-        $userRatingquery = $this->db->get();
+      $data = array(
+        'rated_user' => $rated_user,
+        'rating' => $rating,
+      );
+
+      return $this->db->insert('rating', $data);
     
-        $userRatingResult = $userRatingquery->result_array();
-        if (count ($userRatingResult)> 0) {
-    
-          $id_rating = $userRatingResult [0] ['id'];
-          // Mise à jour
-          $value = array('rating' => $rating);
-          $this->db->where('id', $id_rating);
-          $this->db->update('id_rating', $value);
-        }else{
-          $userRating = array (
-            "rater_user" => $rater_user,
-            //"rated_user" => $rated_user,
-            "rating" => $rating
-          );
-    
-          $this->db->insert('rating', $userRating);
-        }
-    
-        // Note moyenne
-        $this->db->select('ROUND (AVG (rating), 1) as averageRating');
-        $this->db->from('rating');
-        $this->db- where("rater_user", $rater_user);
-        $ratingquery = $this->db->get();
-    
-        $postResult = $ratingquery->result_array();
-    
-        $rating = $postResult[0]['averageRating'];
-    
-        if ($rating == '') {
-           $rating = 0;
-        }
-    
-        return $rating;
-      }
+    }
 
 
 }

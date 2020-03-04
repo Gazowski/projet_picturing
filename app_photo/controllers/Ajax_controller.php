@@ -189,11 +189,11 @@ class Ajax_controller extends CI_Controller {
 
     public function rate_user()
     {
-       $this->input->get('note', true);
-       $this->input->get('owner', true);
-       echo $this->star_rating_model->get_rating();
-      // echo $this->star_rating_model->user_rating($rated_user, $rating)
-      //$this->load->view('pages/star_rating_view',$data);
+        var_dump($this->ajax_data);
+        $rated_user = $this->ajax_data->rated_user;
+        $rating = $this->ajax_data->rating;
+        echo $this->star_rating_model->user_rating($rated_user, $rating);
+
 
     }
 }
