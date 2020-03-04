@@ -3,8 +3,11 @@
 // application's Users table - define your user table and columns here
 
 define('USER_TABLE_TABLENAME', 'users u');
+//$config['tables']['users']      = 'users u';
 define('USER_TABLE_ID', 'u.id');
+//$config['tables']['users']      = 'u.id';
 define('USER_TABLE_USERNAME', 'CONCAT(u.first_name, " ", u.last_name) as user_name');
+//$config['tables']['users']['concat']['u.first_name']['u.last_name']     = 'user_name';
 
 
 // message statuses

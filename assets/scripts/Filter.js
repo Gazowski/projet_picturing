@@ -7,18 +7,20 @@ export class Filter {
         this._el = el,
         this._elFilter = this._el.querySelector('select');
         console.log(this._el);
+        this._ad = document.querySelector('[data-component="Ad"]')
 
         // initialise les comportements
         this.init();
     }
 
     init = (e) => {
+        let method = this._ad ? 'get_ads' : ''
 
         this._elFilter.addEventListener('change',()=>{
             let paramAjax = {
                 method : "POST",
                 json : true,
-                action : "index.php/ajax_controller/get_ads",
+                action : `index.php/ajax_controller/${method}`,
                 data_to_send : this._elFilter.options[this._elFilter.selectedIndex].value
             }
             

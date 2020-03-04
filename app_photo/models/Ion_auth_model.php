@@ -1943,6 +1943,7 @@ class Ion_auth_model extends CI_Model
 		// calcul de la valeur de l'utilisateur (en fonction de son role)
 		$role = $this->get_users_groups($user->id)->result();
 		$role = $role[0]->name;
+
 		$user_value = [
 			'Client' => 10,
 			'Fournisseur' => 20,
@@ -1958,7 +1959,7 @@ class Ion_auth_model extends CI_Model
 			'user_id'              => $user->id, //everyone likes to overwrite id so we'll use user_id
 			'user_role'			   => $user_value[$role],// ajout valeur utilisateur
 		    'old_last_login'       => $user->last_login,
-		    'last_check'           => time(),
+			'last_check'           => time(),
 		];
 
 		$this->session->set_userdata($session_data);

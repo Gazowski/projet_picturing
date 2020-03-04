@@ -1,5 +1,6 @@
 <section>   
-  <h2 data-title><?= $title ?></h2>  
+  <h2 data-title><?= $title ?></h2>
+  <?php $filter() ?> 
   <div class="line_t"></div>
   <div class="parent" data-component="Ad">
   <?php if(isset($create_ad)) { ?>

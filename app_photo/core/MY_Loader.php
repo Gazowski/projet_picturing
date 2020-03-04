@@ -34,16 +34,19 @@ class MY_Loader extends CI_Loader {
         // header différent si le role est supérieur a admin
         $header = $this->is_supervisor ? 'pages/header_admin' : 'pages/header_catalog';
 
-        // select filtre
-        $vars['filter'] = [
-            'DESC' => 'plus récent',
-            'ASC' => 'plus ancien'
-        ];
+        // filtre
+        $filter_view = function(){
+            $filter['filter'] = [
+                'DESC' => 'plus récent',
+                'ASC' => 'plus ancien'
+            ];
+            $this->view('pages/filter',$filter);
+        };
+        $vars['filter'] =  (strpos($page, 'list') || strpos($page,'tile')) ? $filter_view : '';
 
         $this->view('pages/head', $vars);
         $this->view($header, $vars);
-        $this->view('pages/alert');
-        (strpos($page, 'list') || strpos($page,'tile')) ? $this->load->view('pages/filter',$vars) : '';
+        $this->view('pages/alert');        
         $this->view($page, $vars);
         $this->view('pages/footer', $vars);
        
@@ -82,7 +85,7 @@ class MY_Loader extends CI_Loader {
                 ],
                 'Mon compte' => [
                     'Mon profil' =>  'index.php/member/member',
-                    'Mes messages' =>  'Message/display_messages_ad',
+                    'Mes messages' =>  'index.php/message/display_messages_user',
                     'Mes annonces' =>  'index.php/ad/member_ads',
                      'Activation' =>  'index.php/Member/admin_home',
                     
@@ -108,7 +111,7 @@ class MY_Loader extends CI_Loader {
                 ],
                 'Mon compte' => [
                     'Mon profil' =>  'index.php/member/member',
-                    'Mes messages' =>  'Message/display_messages_ad',
+                    'Mes messages' =>  'index.php/message/display_messages_user',
                     'Mes annonces' =>  'index.php/ad/member_ads',
                     'Activation' =>  'index.php/Member/admin_home',
                     
@@ -129,7 +132,7 @@ class MY_Loader extends CI_Loader {
                 'Mon compte' => [
                     'Mon profil' =>  'index.php/member/member',
                     'Mes annonces' =>  'index.php/ad/member_ads',
-                    'Mes messages' =>  'Message/display_messages_ad',
+                    'Mes messages' =>  'index.php/message/display_messages_user',
                     
                 ],
                 'A propos' => 'index.php/ad/a_propos',
@@ -148,7 +151,7 @@ class MY_Loader extends CI_Loader {
                 'Mon compte' =>[
                     'Mon profil' =>  'index.php/member/member',
                     'Mes annonces' =>  'index.php/ad/member_ads',
-                    'Mes messages' =>  'Message/display_messages_ad',
+                    'Mes messages' =>  'index.php/message/display_messages_user',
                     
                 ], 
                 'A propos' => 'index.php/ad/a_propos',

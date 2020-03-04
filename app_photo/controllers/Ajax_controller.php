@@ -15,6 +15,7 @@ class Ajax_controller extends CI_Controller {
         $this->load->library(['users','ion_auth']);
         $this->load->model('ion_auth_model');
         $this->load->model('ad_model');
+        $this->load->model('star_rating_model');
 
         $this->ajax_data = '';
         $this->clean_json_data();        
@@ -183,5 +184,16 @@ class Ajax_controller extends CI_Controller {
         $data['ad'] = $this->ad_model->get_ads($this->ajax_data);
 
         $this->load->view('pages/tile',$data);
+    }
+
+
+    public function rate_user()
+    {
+       $this->input->get('note', true);
+       $this->input->get('owner', true);
+       echo $this->star_rating_model->get_rating();
+      // echo $this->star_rating_model->user_rating($rated_user, $rating)
+      //$this->load->view('pages/star_rating_view',$data);
+
     }
 }
