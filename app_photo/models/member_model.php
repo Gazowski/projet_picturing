@@ -30,6 +30,20 @@ class Member_model extends CI_Model {
         }
 
         /**
+         * methode d'affichage des membres par type
+         */
+        public function get_by_type($type)
+        {
+            $this->db->select('users.id, email, created_on, last_login, active, first_name, last_name, company, address, name');
+            $this->db->from('users');
+            $this->db->join('users_groups','users_groups.user_id = users.id');
+            $this->db->join('groups','groups.id = users_groups.group_id');
+            $this->db->where($type);
+            $query = $this->db->get();
+            return $query->result_array();
+        }
+
+        /**
          * methode d'affichage des membres pour les fournisseurs
          */
         public function get_supplier($supplier = false)
