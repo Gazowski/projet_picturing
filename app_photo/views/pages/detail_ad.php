@@ -1,6 +1,7 @@
 <?php
   $photos = explode(',',$ad['photo']);
   $secondary_photos = array_slice($photos,1);
+  $owner_name = $ad['first_name'];
 ?>
 <div class="detail_ad" 
       data-component='detail' 
@@ -47,7 +48,7 @@
   
   
   <div class="soumission display_none" data-btn-bid>
-      <a class="button" href="<?= base_url(); ?>index.php/message/create_message">Soumissionner</a>
+      <a class="button" href="<?= base_url(); ?>index.php/message/create_message">Soumissionner <b><?= $ad['first_name'] ?> <?= $ad['last_name'] ?></b></a>
   </div>
   
   <!-- Affichages des boutons modifier/supprimer ----------------->
@@ -60,7 +61,7 @@
   <!-- Affichages champs de notation et boutons noter ----------------->
   <div class="display_none rating" data-rating>
     <input type='text' name='note' class="notation" data-note>
-    <button class="button" data-btn-noter>Noter</button>
+    <button class="button" data-btn-noter>Noter <b><?= $ad['first_name'] ?> <?= $ad['last_name'] ?></b></button>
   </div> 
   <!--Fin Affichages champs de notation et boutons noter ----------------->
 
