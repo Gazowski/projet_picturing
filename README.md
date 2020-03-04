@@ -8,14 +8,12 @@
 https://coolors.co/
 
 ## correction à faire
-* tableau (css): rajouter le overscroll sur d'autre media query --corrigé--
-* alert (css) : le fond transparent est perdu lorsque l'on scroll vers le bas --corrigé--
 * creation d'une annonce possible sans photo ni description
-* footer (css) : l'effet hover sur les icones des medias sociaux ne fonctionne pas. --corrigé-- 
 * page home admin : lorsque tous les users sont activés seul l'entete du tableau reste affiché (au lieu d'une phrase)
+* dans l'admin onglet Membres revoir l'affichage des listes fournisseurs et clients.
+
 
 ## amélioration à faire
-* ajouter une page 'mon compte' qui affiche profil / annonces et possibilité de modifier / supprimer
 * activer la recherche
 * différencier les services des produits (label/tag? code couleur? icone?...) 
 * ajouter un plugin seo
@@ -24,6 +22,7 @@ https://coolors.co/
 * plugin messagerie https://github.com/jrmadsen67/Mahana-Messaging-library-for-CodeIgniter
 * faire le header en sticky (ou avoir le menu toujours accessible)
 * afficher le titre au dessus de filtre
+* ajouter un breadcrumb (plugin)
 
 ## Plan du site
 ### utilisateur non connecté / client

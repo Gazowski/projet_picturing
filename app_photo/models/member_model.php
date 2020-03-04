@@ -12,21 +12,44 @@ class Member_model extends CI_Model {
          */ 
         public function get_member($member = false)
         {
-            $this->db->select('users.id, email, created_on, last_login, active, first_name, last_name, company, address, name');
+            $this->db->select('users.id, email, created_on, last_login, active, first_name, last_name, company, address, name, rating');
             $this->db->from('users');
             $this->db->join('users_groups','users_groups.user_id = users.id');
             $this->db->join('groups','groups.id = users_groups.group_id');
+            // faire un left outer join
+            $this->db->join('rating','rating.id_rating = rating.rated_user','left outer');
+            $this->db->group_by('users.id');
+
+
 
             if ($member === FALSE)
             {
                   
                     $query = $this->db->get();
+                    // var_dump($this->db->last_query());
+                    // die;
                     return $query->result_array();
             }
     
             $this->db->where('users.id' , $member);
             $query = $this->db->get();
             return $query->row();
+        }
+
+        /**
+         * methode d'affichage des membres par type
+         */
+        public function get_by_type($type)
+        {
+            $this->db->select('users.id, email, created_on, last_login, active, first_name, last_name, company, address, name, AVG(rating) as average');
+            $this->db->from('users');
+            $this->db->join('users_groups','users_groups.user_id = users.id');
+            $this->db->join('groups','groups.id = users_groups.group_id');
+            $this->db->join('rating','id_rating = rating.rated_user');
+            $this->db->where($type);
+            $this->db->group_by('users.id');
+            $query = $this->db->get();
+            return $query->result_array();
         }
 
         /**

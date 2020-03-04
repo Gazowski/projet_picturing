@@ -15,6 +15,7 @@ class Ajax_controller extends CI_Controller {
         $this->load->library(['users','ion_auth']);
         $this->load->model('ion_auth_model');
         $this->load->model('ad_model');
+        $this->load->model('star_rating_model');
 
         $this->ajax_data = '';
         $this->clean_json_data();        
@@ -93,6 +94,7 @@ class Ajax_controller extends CI_Controller {
     /**
      * update_member
      * met a jour les infos du membre
+     * seul l'utilisateur peut modifier ses propres infos
      */
     public function update_member()
     {
@@ -108,8 +110,24 @@ class Ajax_controller extends CI_Controller {
     }
 
     /**
+     * delete_member
+     * l'id du membre est récuperer de la variable session
+     */
+    public function delete_member()
+    {
+        if (!isset($this->session->userdata['user_role']))
+		{
+            $this->session->set_flashdata('message', 'Vous devez être connecté');
+            redirect('auth', 'refresh');
+        }
+        $id_member = $this->ion_auth->user()->row()->id;
+        echo $this->ion_auth->delete_user($id_member);
+    }
+
+    /**
      * update_ad
-     * met a jour les infos d'une annonce'
+     * met a jour les infos d'une annonce si l'utilisateur est le propriétaire de l'annonce
+     * l'id de l'annonce est récupérer dans la variable session (l'id ne peut pas être modifiée)
      */
     public function update_ad()
     {
@@ -122,6 +140,22 @@ class Ajax_controller extends CI_Controller {
         $this->ajax_data = (array) $this->ajax_data;
         $id_ad = $this->session->userdata['id_ad'];
         echo $this->ad_model->update_ad($id_ad, $this->ajax_data);
+    }
+
+    /**
+     * delete_ad
+     * l'id de l'annonce est récupérer dans la variable session
+     */
+    public function delete_ad()
+    {
+        if ($this->session->userdata['user_id'] != $this->session->userdata['ad_owner'])
+		{
+            $this->session->set_flashdata('message', 'Vous n\'êtes pas le propriétaire de l\'annonce');
+            redirect('auth', 'refresh');
+        }
+        $this->ajax_data = (array) $this->ajax_data;
+        $id_ad = $this->session->userdata['id_ad'];
+        echo $this->ad_model->delete_ad($id_ad);
     }
     
     /**
@@ -141,5 +175,24 @@ class Ajax_controller extends CI_Controller {
         $this->db->set('active',1);
         $this->db->where('id_ad',$id_ad);
         echo $this->db->update('ad');
-	}
+    }
+    
+    public function get_ads()
+    {
+        $data['title'] = 'Listes des Annonces';
+        
+        $data['ad'] = $this->ad_model->get_ads($this->ajax_data);
+
+        $this->load->view('pages/tile',$data);
+    }
+
+
+    public function rate_user()
+    {
+        $rated_user = $this->ajax_data->rated_user;
+        $rating = $this->ajax_data->rating;
+        echo $this->star_rating_model->user_rating($rated_user, $rating);
+
+
+    }
 }

@@ -1,15 +1,26 @@
 
-.detail_ad_member{
-    margin-top: 2em;
+.detail_member{
+
+    width: 94%;
+    
     .button{
         text-align: center; 
     }
     
     ul li {
         line-height: 1.8;
-    }
+    } 
 }
-    .mess_ann{
+.titre_profil{
+    width: 94%;
+    text-align: center;
+    color: white;
+    background-color: $c-medium-theme;
+    padding: .1em;
+    margin: 3em auto 0;
+}
+
+.mess_ann{
     display: flex;
     flex-direction: column;
     justify-content: flex-start;
@@ -41,9 +52,15 @@
 }
 @media (min-width: 900px) { 
     .mess_ann{
-       width: 45%;  
+       width: 25%;  
+    }
+    .detail_member{
+        width: 35%;
+    }
+    .titre_profil{
+        width: 35%;
+      
     }
 }
   
-
 

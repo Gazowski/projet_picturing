@@ -41,7 +41,7 @@
                     <th>Action</th>
                 </tr>
                 <?php foreach($unactive_ad as $ad) { ?>    
-                    <tr id="<?= $ad['id'] ?>" data-row = 'ad'>        
+                    <tr id="<?= $ad['id_ad'] ?>" data-row = 'ad'>        
                         <td><?= $ad['title'] ?></td>
                         <td><?= $ad['name'] ?></td>
                         <td><?= $ad['first_name'] . ' ' . $ad['last_name'] ?></td>

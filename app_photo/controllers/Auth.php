@@ -521,9 +521,10 @@ class Auth extends CI_Controller
 				'website' => $this->input->post('website'),
 				'social_network' => $this->input->post('social_network'),
 			];
-			var_dump($additional_data);
+			// ATTENTION : le group est traité comme un parametre seul dans register()
+			$group = array(isset($_POST['golden_supplier']) ? $this->input->post('golden_supplier') : $this->input->post('group'));
 		}
-		if ($this->form_validation->run() === TRUE && $this->ion_auth->register($identity, $password, $email, $additional_data))
+		if ($this->form_validation->run() === TRUE && $this->ion_auth->register($identity, $password, $email, $additional_data,$group))
 		{
 			$this->session->set_flashdata('message', 'Votre compte est en attente de validation !');
             $this->session->set_flashdata('class', 'succes');

@@ -7001,6 +7001,53 @@ form select::-ms-expand {
           box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
 }
 
+.create_ad {
+  border: 2px dashed #bdbdbd;
+  color: #bdbdbd;
+  min-height: 15em;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+.create_ad:hover {
+  border-color: #bd006b;
+}
+
+.create_ad div {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+.create_ad div h3 {
+  margin: .5rem;
+}
+
+.create_ad div h3 + h3 {
+  font-size: 4em;
+}
+
 @media (min-width: 600px) {
   .parent {
     width: calc(2 * 16em);
@@ -7197,12 +7244,6 @@ footer .address {
   }
 }
 
-.table {
-  overflow-x: scroll;
-  width: 95%;
-  margin: 0 auto;
-}
-
 .text_tab h3 {
   text-align: center;
 }
@@ -7210,7 +7251,12 @@ footer .address {
 table {
   border-collapse: collapse;
   margin: 2em auto;
-  width: 100%;
+}
+
+.table {
+  overflow-x: scroll;
+  width: 95%;
+  margin: 0 auto;
 }
 
 /* Zebra striping */
@@ -7239,7 +7285,7 @@ td, th {
 
 @media (min-width: 1200px) {
   .table {
-    width: 69%;
+    width: 80%;
     overflow-x: hidden;
   }
 }
@@ -7409,16 +7455,25 @@ td, th {
   }
 }
 
-.detail_ad_member {
-  margin-top: 2em;
+.detail_member {
+  width: 94%;
 }
 
-.detail_ad_member .button {
+.detail_member .button {
   text-align: center;
 }
 
-.detail_ad_member ul li {
+.detail_member ul li {
   line-height: 1.8;
+}
+
+.titre_profil {
+  width: 94%;
+  text-align: center;
+  color: white;
+  background-color: #bd006b;
+  padding: .1em;
+  margin: 3em auto 0;
 }
 
 .mess_ann {
@@ -7475,7 +7530,13 @@ td, th {
 
 @media (min-width: 900px) {
   .mess_ann {
-    width: 45%;
+    width: 25%;
+  }
+  .detail_member {
+    width: 35%;
+  }
+  .titre_profil {
+    width: 35%;
   }
 }
 
@@ -7572,13 +7633,14 @@ td, th {
   color: #bdbdbd;
 }
 
-.unactive {
-  pointer-events: none;
-  opacity: .5;
-}
 .editable {
   -webkit-box-shadow: 1.5px 1.5px 1.5px #6b6b6b inset;
           box-shadow: 1.5px 1.5px 1.5px #6b6b6b inset;
+}
+
+.unactive {
+  pointer-events: none;
+  opacity: .5;
 }
 
 @media (min-width: 600px) {

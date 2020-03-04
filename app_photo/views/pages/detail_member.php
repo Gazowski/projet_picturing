@@ -1,7 +1,10 @@
 <!-- affichage d'un membre -->
+
 <section class="form_det_member" data-component='detail' data-table='member'>
-    <div class="detail_ad detail_ad_member">
-        <h3><?= $title ?></h3>
+    <div class="titre_profil">
+        <h1><?= $title ?></h1>
+    </div>
+    <div class="detail_ad detail_member">
         <ul data-member = <?= $profil->id ?> >
             <li>prénom : <span id='first_name' contenteditable='false' data-editable><?= $profil->first_name ?></span></li>
             <li>nom : <span id='last_name' contenteditable='false' data-editable><?= $profil->last_name ?></span></li>
@@ -11,20 +14,17 @@
             <li>groupe : <span><?= $profil->name ?></span></li>
             <li>derniere connection : <span><?= $profil->last_login ?></span></li>
             <li>inscris depuis le : <span><?= $profil->created_on ?></span></li>
+            <li>Note : <span><?= $profil->rating ?></span></li>
         </ul>
         <div class="mod_sup">
-            
-                <button class="button" data-btn-modif>Modifier</button>
-           
-            <div class="button">
-                <a href="index.php/member/delete" class="button">Supprimer mon compte</a>
-            </div>
+            <button class="button" data-btn-modif>Modifier</button>
+            <button class="button" data-btn-delete>Supprimer mon compte</button>
         </div>
     </div>
     
     <div class="mess_ann">
-        <a href="index.php/message/...">Voir mes messages</a><br>
-        <a href="index.php/ad/...">Voir mes annonces</a>
+        <a href="">Voir mes messages (inactif)</a><br>
+        <a href="index.php/ad/member_ads">Voir mes annonces</a>
     </div>
 </section>
 
