@@ -60,8 +60,15 @@
   
   <!-- Affichages champs de notation et boutons noter ----------------->
   <div class="display_none rating" data-rating>
-    <input type='text' name='note' class="notation" data-note>
-    <button class="button" data-btn-noter>Noter <b><?= $ad['first_name'] ?> <?= $ad['last_name'] ?></b></button>
+    <input type='range' 
+            name='note' 
+            class="notation"
+            min='0' max='10'
+            step='1'
+            value='5' 
+            data-note>
+    <button class="button"
+            data-btn-noter>Noter <b><?= $ad['first_name'] ?> <?= $ad['last_name'] ?></b></button>
   </div> 
   <!--Fin Affichages champs de notation et boutons noter ----------------->
 
