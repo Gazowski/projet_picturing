@@ -31,6 +31,7 @@ class Ad_model extends CI_Model {
         $this->db->select('*');
         $this->db->from('ad');
         $this->db->join('category','category.id_category = ad.category');
+        $this->db->join('users','users.id = ad.owner');
         // si l'utilisateur n'a pas les droits 'supervisor', seules les annonces activées sont sélectionnées
         !$this->is_admin() ? $this->db->where('active',1) : '';
         $this->db->where('id_ad',$ad);
