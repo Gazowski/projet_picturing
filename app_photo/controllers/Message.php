@@ -90,22 +90,24 @@ class Message extends CI_Controller {
             show_404();
         }
         // Si il y a un message concernant l'annonce et que l'utilisateur connecté est l'owner, le message est affiché dans son annonce
-		if ($this->session->userdata['user_id'] = $this->session->userdata['ad_owner'])
-		{      
+        //var_dump($this->session->userdata['user_id']);
+        //die;
+
+        //Ajouter une condition
+        //if ($this->session->userdata['user_id'] = $this->session->userdata['ad_owner'])
+		//{      
             $this->data['page_title'] = 'Liste de vos Messages'; // Capitalize the first letter
-            $sender = $this->mahana_model->get_message();
-            var_dump($sender);
-            die;
-            $this->msg = $this->mahana_messaging->get_message($msg_id, $sender_id); 
-			$data['create_message'] = true;
             
-            //$is_admin = $this->ion_auth->is_admin();
-            $this->load->template('pages/messages', $this->data, $this->msg);
-        }
+            $this->user_id = $this->session->userdata['user_id'];
+            $this->full_thread = TRUE; 
+            $this->threads = $this->mahana_model->get_all_threads($this->user_id); 
+            
+            $this->load->template('pages/messages', $this->data, $this->user_id, $this->threads, $this->full_thread);
+        //}
     }
 
 //////logique pour afficher la liste des messages dans les annonces////
-
+/*
     public function display_messages_ad()
     {
         if ( ! file_exists(APPPATH.'views/pages/detail_ad.php'))
@@ -118,7 +120,7 @@ class Message extends CI_Controller {
         if ($this->session->userdata['user_role'] >= $this->SUPPLIER)
 		{      
             $data['title'] = 'Liste des Messages de votre Annonce'; // Capitalize the first letter
-            $msg = $this->mahana_messaging->get_message($msg_id, $sender_id); 
+            $msg = $this->mahana_messaging->get_all_threads($this->user_id); 
 			$data['create_message'] = true;
             
             //$is_admin = $this->ion_auth->is_admin();
@@ -128,5 +130,5 @@ class Message extends CI_Controller {
             redirect($_SERVER['HTTP_REFERER']); 
         }
 
-    } 
+    } */
 }
