@@ -185,6 +185,38 @@ class Mahana_model extends CI_Model
 
         return $query->result_array();
     }
+ 
+    // ------------------------------------------------------------------------
+
+    /**
+     * Get All Threads
+     *
+     * @param   integer  $user_id
+     * @param   boolean  $full_thread
+     * @param   string   $order_by
+     * @return  array
+     */
+    function get_all_threads_by_ad($user_id, $full_thread = FALSE, $order_by = 'asc')
+    {
+        $sql = 'SELECT m.*, s.status, t.subject, '.USER_TABLE_USERNAME .
+        ' FROM ' . $this->db->dbprefix . 'msg_participants p ' .
+        ' JOIN ' . $this->db->dbprefix . 'msg_threads t ON (t.id = p.thread_id) ' .
+        ' JOIN ' . $this->db->dbprefix . 'msg_messages m ON (m.thread_id = t.id) ' .
+        ' JOIN ' . $this->db->dbprefix . USER_TABLE_TABLENAME . ' ON (' . USER_TABLE_ID . ' = m.sender_id) '.
+        ' JOIN ' . $this->db->dbprefix . 'msg_status s ON (s.message_id = m.id AND s.user_id = ? ) ' .
+        ' WHERE p.user_id = ? ' ;
+
+        if (!$full_thread)
+        {
+            $sql .= ' AND m.cdate >= p.cdate';
+        }
+
+        $sql .= ' ORDER BY t.id ' . $order_by. ', m.cdate '. $order_by;
+
+        $query = $this->db->query($sql, array($user_id, $user_id));
+
+        return $query->result_array();
+    }
 
     // ------------------------------------------------------------------------
 
