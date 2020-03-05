@@ -7401,6 +7401,25 @@ td, th {
   font-weight: medium;
 }
 
+.secondary_photos {
+  width: 94%;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+}
+
+.secondary_photos img {
+  width: 50%;
+  -o-object-fit: cover;
+  object-fit: cover;
+  margin-left: .4em;
+  margin-top: .4em;
+}
+
 @media (min-width: 600px) {
   .detail_ad {
     width: 85%;
@@ -7413,16 +7432,16 @@ td, th {
     display: -webkit-box;
     display: -ms-flexbox;
     display: flex;
-    -webkit-box-orient: horizontal;
+    -webkit-box-orient: vertical;
     -webkit-box-direction: normal;
-        -ms-flex-direction: row;
-            flex-direction: row;
+        -ms-flex-direction: column;
+            flex-direction: column;
     -webkit-box-pack: justify;
         -ms-flex-pack: justify;
             justify-content: space-between;
   }
   .img_titre {
-    width: 50%;
+    width: 94%;
     display: -webkit-box;
     display: -ms-flexbox;
     display: flex;
@@ -7430,6 +7449,7 @@ td, th {
     -webkit-box-direction: normal;
         -ms-flex-direction: column;
             flex-direction: column;
+    margin: 0 auto;
   }
   .desc_prix {
     width: 50%;
@@ -7444,14 +7464,35 @@ td, th {
         -ms-flex-pack: justify;
             justify-content: space-between;
   }
+  .desc_prix div {
+    padding-left: 1em;
+  }
 }
 
 @media (min-width: 900px) {
   .detail_ad {
-    width: 45%;
+    width: 32%;
   }
-  .img_titre {
+  .detail_ad .img_titre {
+    width: 80%;
+  }
+  .secondary_photos {
+    width: 45%;
+    margin: 0 auto;
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-orient: horizontal;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: row;
+            flex-direction: row;
+  }
+  .secondary_photos img {
     width: 50%;
+    -o-object-fit: cover;
+    object-fit: cover;
+    margin-left: .4em;
+    margin-top: .4em;
   }
 }
 
@@ -7538,6 +7579,27 @@ td, th {
   .titre_profil {
     width: 35%;
   }
+}
+
+.apropos {
+  width: 95%;
+  margin: 7em auto;
+  border: 1px solid #bdbdbd;
+  padding: 1em;
+  -webkit-box-shadow: 1px -1px 38px -12px #bd006b;
+          box-shadow: 1px -1px 38px -12px #bd006b;
+}
+
+.apropos h2 {
+  color: #bd006b;
+}
+
+.apropos .map iframe {
+  width: 100%;
+}
+
+.creat_usager {
+  margin: 0 auto;
 }
 
 .button {
