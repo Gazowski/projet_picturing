@@ -70,16 +70,23 @@ class Ajax_controller extends CI_Controller {
         // parametre pour mahana model
         $user_id = isset($this->session->userdata['user_id']) ? $this->session->userdata['user_id'] : false;
         
-        // je suis fournisseur de l'annonce
-        // je veux voir tous les threads de l'annonce
-        if($user_id && !empty($this->mahana_model->get_all_threads_by_ad($id_ad))) {
-            $data['threads'] = $this->mahana_model->get_all_threads_by_ad($id_ad);
-        }
+
+        /****       EFFACER LA ZONE SUIVANTE SI CONFLIT ***** */
+
+                        // je suis fournisseur de l'annonce
+                        // je veux voir tous les threads de l'annonce
+                        if($user_id && false)
+                        {
+                            $data['threads'] = $this->mahana_model->get_all_threads_by_ad($id_ad);
+                        }
+
+        /****        FIN DE LA ZONE A EFFACER      *********/
 
         // je suis soumissionnaire de l'annonce
         // je veux voir mon thread de soumission
         else if($user_id && !empty($this->mahana_model->get_full_thread_by_ad($id_ad,$user_id,true)))
         {
+            var_dump($user_id);
             $data['threads'] = $this->mahana_model->get_full_thread_by_ad($id_ad,$user_id,true);
         }
         // je ne suis simple visiteur

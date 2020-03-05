@@ -2,7 +2,7 @@
   $photos = explode(',',$ad['photo']);
   $secondary_photos = array_slice($photos,1);
   $owner_name = $ad['first_name'];
-  var_dump($threads);
+  //var_dump($threads);
 ?>
 <div class="detail_ad" 
       data-component='detail' 
@@ -87,14 +87,12 @@
 <?php if(isset($threads)) { ?>
 <section class="">
     <ul class="">
-        <?php foreach($message as $row) {?>
+        <?php foreach($threads as $row) {?>
             <li class="">
                 <div class="">    
-                    <h3><?= $row['title'] ?></h3>
-                    <p><?= $row['date'] ?></p>
-                    <p><?= $row['text_message'] ?></p>
-                    <p><?= $row['writer'] ?></p>
-                    <p><?= $row['ad'] ?></p>
+                    <p>le <?= $row['cdate'] ?></p>
+                    <p><?= $row['user_name'] ?> à écrit</p>
+                    <p><?= $row['body'] ?></p>
                 </div>
             </li>
         <?php } ?>
