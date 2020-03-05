@@ -2,6 +2,7 @@
   $photos = explode(',',$ad['photo']);
   $secondary_photos = array_slice($photos,1);
   $owner_name = $ad['first_name'];
+  var_dump($thread);
 ?>
 <div class="detail_ad" 
       data-component='detail' 

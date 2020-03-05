@@ -13,6 +13,7 @@ class Ajax_controller extends CI_Controller {
         parent::__construct();
         $this->load->database();
         $this->load->library(['users','ion_auth']);
+        $this->load->library(['mahana_messaging']);
         $this->load->model('ion_auth_model');
         $this->load->model('ad_model');
         $this->load->model('star_rating_model');
@@ -67,16 +68,18 @@ class Ajax_controller extends CI_Controller {
         
 		$data['title'] = 'Information Annonce';        
         $data['ad'] = $this->ad_model->get_ad($id_ad);
+        
         // je suis fournisseur de l'annonce
         // je veux voir tous les threads de l'annonce
-        if(!empty($this->mahana_model->get_all_threads_by_ad() ))
-            $data['threads'] = $this->mahana_model->get_all_threads_by_ad();
+        if(!empty($this->mahana_model->get_all_threads_by_ad($id_ad))) {
+            $data['threads'] = $this->mahana_model->get_all_threads_by_ad($id_ad);
+        }
 
         // je suis soumissionnaire de l'annonce
         // je veux voir mon thread de soumission
-        else if($this->mahana_model->get_full_threads()
+        /*else if($this->mahana_model->get_full_threads()
             $data['threads'] = get_full_threads
-
+        
         // je ne suis simple visiteur
         // je ne vois aucun thread
         else
