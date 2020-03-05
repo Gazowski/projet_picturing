@@ -12,21 +12,63 @@ class Member_model extends CI_Model {
          */ 
         public function get_member($member = false)
         {
-            $this->db->select('users.id, email, created_on, last_login, active, first_name, last_name, company, address, name');
-            $this->db->from('users');
-            $this->db->join('users_groups','users_groups.user_id = users.id');
-            $this->db->join('groups','groups.id = users_groups.group_id');
+            // $this->db->select('users.id, email, user.created_on, user.last_login, user.active, user.first_name, user.last_name, user.company, user.address, name, rating');
+            // $this->db->from('users');
+            // $this->db->join('users_groups','users_groups.user_id = users.id');
+            // $this->db->join('groups','groups.id = users_groups.group_id');
+            // // faire un left outer join
+            // $this->db->join('rating','rating.id_rating = rating.rated_user','left outer');
+            // //$this->db->group_by('users.id');
+
 
             if ($member === FALSE)
             {
                   
-                    $query = $this->db->get();
+                    $query = $this->db->query('
+                        SELECT DISTINCT user.id, user.email, user.created_on, user.last_login, user.active, user.first_name, user.last_name, user.company, user.address, gp.name, rate.avg_rate
+                        FROM users user
+                        LEFT OUTER JOIN (
+                            SELECT ROUND(AVG(rating),1) as avg_rate, rated_user
+                            FROM rating
+                            GROUP BY rated_user
+                                        ) rate
+                        ON rate.rated_user = user.id
+                        JOIN users_groups ugp ON ugp.user_id = user.id
+                        JOIN groups gp ON gp.id = ugp.group_id');
                     return $query->result_array();
             }
+            else{
+                $query = $this->db->query('
+                    SELECT DISTINCT user.id, user.email, user.created_on, user.last_login, user.active, user.first_name, user.last_name, user.company, user.address, gp.name, rate.avg_rate
+                    FROM users user
+                    LEFT OUTER JOIN (
+                        SELECT ROUND(AVG(rating),1) as avg_rate, rated_user
+                        FROM rating
+                        GROUP BY rated_user
+                                    ) rate
+                    ON rate.rated_user = user.id
+                    JOIN users_groups ugp ON ugp.user_id = user.id
+                    JOIN groups gp ON gp.id = ugp.group_id
+                    WHERE user.id='.$member);
+                    return $query->row();
+            }
     
-            $this->db->where('users.id' , $member);
+        }
+
+        /**
+         * methode d'affichage des membres par type
+         */
+        public function get_by_type($type)
+        {
+            $this->db->select('users.id, email, created_on, last_login, active, first_name, last_name, company, address, name, AVG(rating) as average');
+            $this->db->from('users');
+            $this->db->join('users_groups','users_groups.user_id = users.id');
+            $this->db->join('groups','groups.id = users_groups.group_id');
+            $this->db->join('rating','id_rating = rating.rated_user');
+            $this->db->where($type);
+            $this->db->group_by('users.id');
             $query = $this->db->get();
-            return $query->row();
+            return $query->result_array();
         }
 
         /**
