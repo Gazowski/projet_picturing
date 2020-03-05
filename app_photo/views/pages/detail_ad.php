@@ -83,7 +83,7 @@
      * */ 
 ?>
 
-<?php if(isset($message)) { ?>
+<?php if(isset($threads)) { ?>
 <section class="">
     <ul class="">
         <?php foreach($message as $row) {?>

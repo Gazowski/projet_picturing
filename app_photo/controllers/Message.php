@@ -89,21 +89,21 @@ class Message extends CI_Controller {
             // Whoops, we don't have a page for that!
             show_404();
         }
-        // Si il y a un message concernant l'annonce et que l'utilisateur connecté est l'owner, le message est affiché dans son annonce
-        //var_dump($this->session->userdata['user_id']);
-        //die;
+        // Si il y a un message concernant l'annonce et que l'utilisateur connecté est l'owner, le message est affiché dans la vue
 
         //Ajouter une condition
-        //if ($this->session->userdata['user_id'] = $this->session->userdata['ad_owner'])
-		//{      
+        if ($this->session->userdata['user_role'] >= $this->SUPPLIER)
+        // || ($this->session->userdata['user_id'] = $this->session->userdata['owner_id'])
+		{      
             $this->data['page_title'] = 'Liste de vos Messages'; // Capitalize the first letter
-            
             $this->user_id = $this->session->userdata['user_id'];
             $this->full_thread = TRUE; 
             $this->threads = $this->mahana_model->get_all_threads($this->user_id); 
+            //$this->thread_id = $this->mahana_model->get_all_threads($this->user_id);
+            //$this->owner_id = $this->mahana_model->get_participant_list($this->thread_id, $this->user_id);
             
             $this->load->template('pages/messages', $this->data, $this->user_id, $this->threads, $this->full_thread);
-        //}
+        }
     }
 
 //////logique pour afficher la liste des messages dans les annonces////
