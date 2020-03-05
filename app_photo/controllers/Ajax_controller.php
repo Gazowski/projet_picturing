@@ -86,7 +86,6 @@ class Ajax_controller extends CI_Controller {
         // je veux voir mon thread de soumission
         else if($user_id && !empty($this->mahana_model->get_full_thread_by_ad($id_ad,$user_id,true)))
         {
-            var_dump($user_id);
             $data['threads'] = $this->mahana_model->get_full_thread_by_ad($id_ad,$user_id,true);
         }
         // je ne suis simple visiteur
@@ -96,7 +95,7 @@ class Ajax_controller extends CI_Controller {
             $data['threads'] = null;
         }
 
-        var_dump($data['threads']);
+        //var_dump($data['threads']);
 
         $this->session->set_userdata('ad_owner',$data['ad']['owner']);
         $this->session->set_userdata('id_ad',$id_ad);

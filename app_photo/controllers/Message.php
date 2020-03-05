@@ -57,7 +57,7 @@ class Message extends CI_Controller {
             $subject = $this->session->userdata['id_ad'];
             $body = $this->input->post('message');
             $sender_id = $this->session->userdata['user_id'];
-            $recipients = $this->session->userdata['id_ad'];
+            $recipients = $this->session->userdata['ad_owner'];
         }
 
         if ($this->form_validation->run() === TRUE && $this->mahana_model->send_new_message($sender_id, $recipients, $subject, $body))
@@ -76,6 +76,7 @@ class Message extends CI_Controller {
                 'value' => $this->form_validation->set_value('body'),
             ];
             
+            // var_dump($this->session->userdata);
             $this->load->template('pages/create_message_form', $this->data);
         }
     } 
