@@ -86,10 +86,11 @@ export class Detail {
         for(let data of this._editable_data){
             if(data.contentEditable == 'false') { 
                 data.contentEditable = true
-                data.classList.add('editable') 
-            } else { 
+                data.classList.add('editable')
+            }
+            else { 
                 data.contentEditable = false
-                data.classList.remove('editable') 
+                data.classList.remove('editable')
             }
         }       
     }
@@ -132,14 +133,19 @@ export class Detail {
      * envoi des données ajax pour noter un user
      */
     rate_user = () =>{
+        let ajax_data = {
+            'rated_user' : this._el.dataset.owner,
+            'rating' : this._input_rating.value
+        }
         let paramAjax = {
-            method : "GET",
-            action : `index.php/ajax_controller/rate_user/${this._el.dataset.owner}/${this._input_rating.value}`,
-           
+            method : "POST",
+            json : true,
+            action : `index.php/ajax_controller/rate_user`,
+            data_to_send : ajax_data,                       
         }
         requeteAjax(paramAjax, (reponse_ajax) => {
             console.log(reponse_ajax)
-            if(reponse_ajax == 1){
+            if(reponse_ajax){
                 display_alert('la note a été enregistrée')
             }
         })
