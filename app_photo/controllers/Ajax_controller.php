@@ -12,8 +12,7 @@ class Ajax_controller extends CI_Controller {
     {
         parent::__construct();
         $this->load->database();
-        $this->load->library(['users','ion_auth']);
-        $this->load->library(['mahana_messaging']);
+        $this->load->library(['users','ion_auth','mahana_messaging']);
         $this->load->model('ion_auth_model');
         $this->load->model('ad_model');
         $this->load->model('star_rating_model');
@@ -68,6 +67,8 @@ class Ajax_controller extends CI_Controller {
         
 		$data['title'] = 'Information Annonce';        
         $data['ad'] = $this->ad_model->get_ad($id_ad);
+        // parametre pour mahana model
+        $user_id = $this->session->userdata['user_id'];
         
         // je suis fournisseur de l'annonce
         // je veux voir tous les threads de l'annonce
@@ -77,9 +78,10 @@ class Ajax_controller extends CI_Controller {
 
         // je suis soumissionnaire de l'annonce
         // je veux voir mon thread de soumission
-        /*else if($this->mahana_model->get_full_threads()
-            $data['threads'] = get_full_threads
-        
+        else if(!empty($this->mahana_model->get_full_thread_by_ad($id_ad,$user_id,true)))
+        {
+            $data['threads'] = $this->mahana_model->get_full_thread_by_ad($id_ad,$user_id,true);
+        }
         // je ne suis simple visiteur
         // je ne vois aucun thread
         else
@@ -87,8 +89,10 @@ class Ajax_controller extends CI_Controller {
             $data['threads'] = null;
         }
 
+        var_dump($data['threads']);
+
         $this->session->set_userdata('ad_owner',$data['ad']['owner']);
-        $this->session->set_userdata('id_ad',$data['ad']['id_ad']);
+        $this->session->set_userdata('id_ad',$id_ad);
         $this->load->view('pages/detail_ad',$data);
     }
 
