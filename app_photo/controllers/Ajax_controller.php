@@ -16,6 +16,7 @@ class Ajax_controller extends CI_Controller {
         $this->load->model('ion_auth_model');
         $this->load->model('ad_model');
         $this->load->model('star_rating_model');
+        $this->load->model('mahana_model');
 
         $this->ajax_data = '';
         $this->clean_json_data();        
@@ -68,16 +69,20 @@ class Ajax_controller extends CI_Controller {
         $data['ad'] = $this->ad_model->get_ad($id_ad);
         // je suis fournisseur de l'annonce
         // je veux voir tous les threads de l'annonce
-        if(get_a.. != array_empty)
-        $data['threads'] = get_all_threads_by_ad()
+        //if(get_a.. != array_empty)
+        //$data['threads'] = get_all_threads_by_ad()
 
         // je suis soumissionnaire de l'annonce
         // je veux voir mon thread de soumission
+        if($this->mahana_model->get_full_threads()
         $data['threads'] = get_full_threads
 
         // je ne suis simple visiteur
         // je ne vois aucun thread
-        $data['threads'] = null;
+        else
+        {
+            $data['threads'] = null;
+        }
 
         $this->session->set_userdata('ad_owner',$data['ad']['owner']);
         $this->session->set_userdata('id_ad',$data['ad']['id_ad']);
