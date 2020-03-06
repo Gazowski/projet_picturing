@@ -230,9 +230,9 @@ class Mahana_model extends CI_Model
      * @param   string   $order_by
      * @return  array
      */
-    function get_all_threads_by_ad($user_id, $full_thread = FALSE, $order_by = 'asc')
+    function get_all_threads_by_ad($ad, $full_thread = FALSE, $order_by = 'asc')
     {
-        $sql = 'SELECT m.*, s.status, t.subject, '.USER_TABLE_USERNAME .
+        $sql = 'SELECT m.*, t.subject, '.USER_TABLE_USERNAME .
         ' FROM ' . $this->db->dbprefix . 'msg_threads t ' .
         ' JOIN ' . $this->db->dbprefix . 'msg_participants p ON (t.id = p.thread_id) ' .
         ' JOIN ' . $this->db->dbprefix . 'msg_messages m ON (m.thread_id = t.id) ' .
@@ -247,7 +247,7 @@ class Mahana_model extends CI_Model
 
         $sql .= ' ORDER BY t.id ' . $order_by. ', m.cdate '. $order_by;
 
-        $query = $this->db->query($sql, array($id_ad));
+        $query = $this->db->query($sql, array($ad));
 
         return $query->result_array();
     }

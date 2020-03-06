@@ -54,6 +54,7 @@ class Message extends CI_Controller {
         // Pas sûre d'être à la bonne place?
         if ($this->form_validation->run() === TRUE)
         {
+            //A réécrire!!!
             $subject = $this->session->userdata['id_ad'];
             $body = $this->input->post('message');
             $sender_id = $this->session->userdata['user_id'];
@@ -76,13 +77,12 @@ class Message extends CI_Controller {
                 'value' => $this->form_validation->set_value('body'),
             ];
             
-            // var_dump($this->session->userdata);
             $this->load->template('pages/create_message_form', $this->data);
         }
     } 
 
 //////logique pour afficher la liste des messages par utilisateur////
-    
+
     public function display_messages_user()
     {
         if ( ! file_exists(APPPATH.'views/pages/messages.php'))
@@ -90,46 +90,36 @@ class Message extends CI_Controller {
             // Whoops, we don't have a page for that!
             show_404();
         }
+        
         // Si il y a un message concernant l'annonce et que l'utilisateur connecté est l'owner, le message est affiché dans la vue
-
-        //Ajouter une condition
-        if ($this->session->userdata['user_role'] >= $this->SUPPLIER)
-        // || ($this->session->userdata['user_id'] = $this->session->userdata['owner_id'])
-		{      
-            $this->data['page_title'] = 'Liste de vos Messages'; // Capitalize the first letter
-            $this->user_id = $this->session->userdata['user_id'];
-            $this->full_thread = TRUE; 
-            $this->threads = $this->mahana_model->get_all_threads($this->user_id); 
-            //$this->thread_id = $this->mahana_model->get_all_threads($this->user_id);
-            //$this->owner_id = $this->mahana_model->get_participant_list($this->thread_id, $this->user_id);
+        if (isset($this->session->userdata['user_id']))
+        {      
+            $data['page_title'] = 'Liste de vos Messages'; // Capitalize the first letter
+            $data['user_id'] = $this->session->userdata['user_id']; 
+            $data['threads'] = $this->mahana_model->get_all_threads($data['user_id'], true);
             
-            $this->load->template('pages/messages', $this->data, $this->user_id, $this->threads, $this->full_thread);
+            $this->load->template('pages/messages', $data);
         }
     }
 
-//////logique pour afficher la liste des messages dans les annonces////
-/*
-    public function display_messages_ad()
+//////logique pour répondre aux messages////
+    
+    public function reply()
     {
-        if ( ! file_exists(APPPATH.'views/pages/detail_ad.php'))
+        if ( ! file_exists(APPPATH.'views/pages/messages.php'))
         {
             // Whoops, we don't have a page for that!
             show_404();
         }
-        // Si il y a un message concernant l'annonce et que l'utilisateur connecté est l'owner, le message est affiché dans son annonce
-        
-        if ($this->session->userdata['user_role'] >= $this->SUPPLIER)
+    
+        // Si il y a un message concernant l'annonce et que l'utilisateur connecté est l'owner, le message est affiché dans la vue
+        if (isset($this->session->userdata['user_id']))
 		{      
-            $data['title'] = 'Liste des Messages de votre Annonce'; // Capitalize the first letter
-            $msg = $this->mahana_messaging->get_all_threads($this->user_id); 
-			$data['create_message'] = true;
+            $data['sender_id'] = $this->session->userdata['user_id'];
+            $data['body'] = $this->input->post('message');
+            //$data['threads'] = $this->mahana_model->reply_to_message($data['user_id'], true);
             
-            //$is_admin = $this->ion_auth->is_admin();
-            $this->load->template('pages/messages',$msg,$data);
-        } else {
-            $this->session->set_flashdata('message', 'Vous devez être connecté en tant que fournisseur');
-            redirect($_SERVER['HTTP_REFERER']); 
+            $this->load->template('pages/messages', $data);
         }
-
-    } */
+    }
 }
