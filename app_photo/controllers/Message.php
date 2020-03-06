@@ -81,7 +81,9 @@ class Message extends CI_Controller {
         }
     } 
 
-//////logique pour afficher la liste des messages par utilisateur////
+/**
+ * logique pour afficher la liste des messages par utilisateur
+ */
 
     public function display_messages_user()
     {
@@ -96,7 +98,9 @@ class Message extends CI_Controller {
         {      
             $data['page_title'] = 'Liste de vos Messages'; // Capitalize the first letter
             $data['user_id'] = $this->session->userdata['user_id']; 
-            $data['threads'] = $this->mahana_model->get_all_threads($data['user_id'], true);
+            $data['threads'] = $this->mahana_model->get_all_threads($data['user_id']);
+
+            var_dump($data['threads']);
             
             $this->load->template('pages/messages', $data);
         }

@@ -14,20 +14,34 @@ export class Thread {
 
     init = (e) => {
         console.log(this._threads)
-        for(this.thread of this._threads){
-            this.thread.addEventListener('click',this.open_thread)
+        for(let thread of this._threads){
+            new Conversation(thread)
+            //this.thread.addEventListener('click', (e)=>this.open_thread)
         }
     }
+}
 
-    open_thread = () =>{
-        this.thread.removeEventListener('click',this.open_thread)
-        console.log("zone messages = " + this.thread.querySelector('[data-conversation]'))
+class Conversation{
+    constructor(el){
+        this._el = el
+
+        this.init()
+    }
+
+    init = () =>{
+        this._el.addEventListener('click',this.open_conversation)
+    }
+
+    open_conversation = () => {
+        this._el.removeEventListener('click',this.open_conversation)
+
+        console.log("zone messages = " + this._el.querySelector('[data-conversation]'))
         
         let paramAjax = {
             method : "POST",
             json : true,
             action : "index.php/ajax_controller/messages_thread",
-            data_to_send : this.thread.dataset.thread
+            data_to_send : this._el.dataset.thread
         }
         requeteAjax(paramAjax,(reponse_ajax) => {
             this.display_conversation(reponse_ajax)
@@ -36,7 +50,7 @@ export class Thread {
     
     display_conversation = (conversation) =>{
         conversation = JSON.parse(conversation)
-        let conversation_field = this.thread.querySelector('[data-conversation]')
+        let conversation_field = this._el.querySelector('[data-conversation]')
         for(let message of conversation){
             console.log(message)
             conversation_field.innerHTML += `
