@@ -34,6 +34,7 @@ class Conversation{
 
     open_conversation = () => {
         this._el.removeEventListener('click',this.open_conversation)
+        console.log(this._el.dataset.thread)
 
         console.log("zone messages = " + this._el.querySelector('[data-conversation]'))
         
@@ -50,6 +51,7 @@ class Conversation{
     
     display_conversation = (conversation) =>{
         conversation = JSON.parse(conversation)
+        console.log(conversation)
         let conversation_field = this._el.querySelector('[data-conversation]')
         for(let message of conversation){
             console.log(message)
@@ -61,7 +63,7 @@ class Conversation{
         conversation_field.innerHTML += `
             <form method="POST" action="index.php/message/reply">
                 <textarea name="answer" rows="3" cols="33"></textarea>
-                <input type="hidden" name="id_msg" value="${conversation[0].id}">
+                <input type="hidden" name="id_msg" value="${conversation.id}">
                 <input class="button" type="submit" value="repondre">
             </form>
         `

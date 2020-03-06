@@ -12,7 +12,7 @@
     </div>
     <ul class="">
         <?php foreach($threads as $row) {?>
-            <li class="" data-thread="<?= $row['id'] ?>">
+            <li class="" data-thread="<?= $row['thread_id'] ?>">
                 <div class="titre_form">  
                     <h1><?= $row['subject'] ?></h1>
                 </div>
