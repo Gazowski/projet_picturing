@@ -46,7 +46,7 @@
                 contentEditable='false'><?= $ad['price'] ?></span> CAD$</h3> 
   </div>
   
-  <p>Auteur : <b><?= $ad['first_name'] ?> <?= $ad['last_name'] ?></b></p>
+  <div class="auteur">Auteur : <b><?= $ad['first_name'] ?> <?= $ad['last_name'] ?></b></div>
   
   <div class="soumission display_none" data-btn-bid>
       <a class="button" href="<?= base_url(); ?>index.php/message/create_message">Soumissionner</a>
