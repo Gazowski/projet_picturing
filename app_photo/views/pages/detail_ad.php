@@ -78,27 +78,28 @@
 
 
 <!-- ---------------------------------------------- -->    
-
+<!-- 
 <?php /**
      * liste des message rattachés à cette annonce
      * */ 
 ?>
 
 <?php if(isset($threads)) { ?>
-<section class="">
+<section class="" data-component='thread'>
     <ul class="">
         <?php foreach($threads as $row) {?>
-            <li class="">
+            <li class="" data-thread=<?= $row['thread_id']?>>
                 <div class="">    
                     <p>le <?= $row['cdate'] ?></p>
                     <p><?= $row['user_name'] ?> à écrit</p>
                     <p><?= $row['body'] ?></p>
                 </div>
+                <div data-conversation></li>
             </li>
         <?php } ?>
     </ul>
 </section>
-<?php } ?>
+<?php } ?> -->
 
 
     

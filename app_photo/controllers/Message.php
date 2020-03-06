@@ -96,14 +96,13 @@ class Message extends CI_Controller {
         if ($this->session->userdata['user_role'] >= $this->SUPPLIER)
         // || ($this->session->userdata['user_id'] = $this->session->userdata['owner_id'])
 		{      
-            $this->data['page_title'] = 'Liste de vos Messages'; // Capitalize the first letter
-            $this->user_id = $this->session->userdata['user_id'];
-            $this->full_thread = TRUE; 
-            $this->threads = $this->mahana_model->get_all_threads($this->user_id); 
+            $data['page_title'] = 'Liste de vos Messages'; // Capitalize the first letter
+            $data['user_id'] = $this->session->userdata['user_id']; 
+            $data['threads'] = $this->mahana_model->get_all_threads($data['user_id'],true); 
             //$this->thread_id = $this->mahana_model->get_all_threads($this->user_id);
             //$this->owner_id = $this->mahana_model->get_participant_list($this->thread_id, $this->user_id);
             
-            $this->load->template('pages/messages', $this->data, $this->user_id, $this->threads, $this->full_thread);
+            $this->load->template('pages/messages', $data);
         }
     }
 

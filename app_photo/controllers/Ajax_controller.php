@@ -84,10 +84,10 @@ class Ajax_controller extends CI_Controller {
 
         // je suis soumissionnaire de l'annonce
         // je veux voir mon thread de soumission
-        else if($user_id && !empty($this->mahana_model->get_full_thread_by_ad($id_ad,$user_id,true)))
-        {
-            $data['threads'] = $this->mahana_model->get_full_thread_by_ad($id_ad,$user_id,true);
-        }
+        // else if($user_id && !empty($this->mahana_model->get_full_thread_by_ad($id_ad,$user_id,true)))
+        // {
+        //     $data['threads'] = $this->mahana_model->get_full_thread_by_ad($id_ad,$user_id,true);
+        // }
         // je ne suis simple visiteur
         // je ne vois aucun thread
         else
@@ -225,5 +225,14 @@ class Ajax_controller extends CI_Controller {
         echo $this->star_rating_model->user_rating($rated_user, $rating);
 
 
+    }
+
+    public function messages_thread()
+    {
+        $id_thread = $this->ajax_data;
+        $user_id = $this->session->userdata['user_id'];
+        //var_dump($this->mahana_model->get_full_thread($id_thread,$user_id,true));
+        $conversation = $this->mahana_model->get_full_thread($id_thread,$user_id,true);
+        echo json_encode($conversation);
     }
 }

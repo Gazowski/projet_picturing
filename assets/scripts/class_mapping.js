@@ -4,6 +4,7 @@ import { List } from './List.js'
 import { Alert } from './Alert.js'
 import { Detail } from './Detail.js';
 import { Filter } from './Filter.js';
+import { Thread } from './Thread.js';
 
 export const class_mapping = {
     'Ad' : Ad,
@@ -11,5 +12,6 @@ export const class_mapping = {
     'list' : List,
     'alert' : Alert,
     'detail' : Detail,
-    'filter' : Filter
+    'filter' : Filter,
+    'thread' : Thread
 };
