@@ -58,7 +58,7 @@
     <button class="button" data-btn-delete>supprimer</button>
   </div>  
   <!-- Fin Affichages des boutons modifier/supprimer ----------------->
-  
+  <div class="line"></div>  
   <!-- Affichages champs de notation et boutons noter ----------------->
   
   <div class="display_none rating" data-rating>
