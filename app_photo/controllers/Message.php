@@ -102,7 +102,9 @@ class Message extends CI_Controller {
         }
     }
 
-//////logique pour répondre aux messages////
+    /**
+     * logique pour répondre aux messages
+     */
     
     public function reply()
     {
@@ -114,12 +116,14 @@ class Message extends CI_Controller {
     
         // Si il y a un message concernant l'annonce et que l'utilisateur connecté est l'owner, le message est affiché dans la vue
         if (isset($this->session->userdata['user_id']))
-		{      
-            $data['sender_id'] = $this->session->userdata['user_id'];
-            $data['body'] = $this->input->post('message');
-            //$data['threads'] = $this->mahana_model->reply_to_message($data['user_id'], true);
+		{   
+            $id_msg = $this->input->post('id_msg');
+            $sender_id = $this->session->userdata['user_id'];
+            $body = $this->input->post('answer');
+            $this->mahana_model->reply_to_message($id_msg,$sender_id, $body);
             
-            $this->load->template('pages/messages', $data);
+            //$this->load->template('pages/messages', $data);
+            redirect('message/display_messages_user','refresh');
         }
     }
 }
