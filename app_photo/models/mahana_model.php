@@ -207,14 +207,17 @@ class Mahana_model extends CI_Model
         ' JOIN ' . $this->db->dbprefix . USER_TABLE_TABLENAME . ' ON (' . USER_TABLE_ID . ' = m.sender_id) '.
         ' JOIN ' . $this->db->dbprefix . 'msg_status s ON (s.message_id = m.id AND s.user_id = ? ) ' .
         ' WHERE p.user_id = ? ' ;
-
+        
         if (!$full_thread)
         {
             $sql .= ' AND m.cdate >= p.cdate';
         }
 
+        $sql .= ' GROUP BY p.thread_id';
+        
         $sql .= ' ORDER BY t.id ' . $order_by. ', m.cdate '. $order_by;
-
+        
+        
         $query = $this->db->query($sql, array($user_id, $user_id));
 
         return $query->result_array();
