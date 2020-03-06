@@ -26,6 +26,9 @@
         margin-top: .4em;
     }
 }
+.rating{
+    text-align: center;
+}
 
 
 @media (min-width: 600px) {
@@ -58,6 +61,13 @@
         div{
             padding-left: 1em;
         }
+        
+    }
+    
+    .rating{
+        margin: 1em auto;
+        display: flex;
+        flex-direction: column;
         
     }
   
