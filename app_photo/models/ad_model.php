@@ -38,7 +38,19 @@ class Ad_model extends CI_Model {
         $query = $this->db->get();
         return $query->row_array();
     }
-
+/*    
+    public function get_owner($ad)
+    {
+        $this->db->select('first_name, last_name');
+        $this->db->from('users');
+        $this->db->join('ad','ad.owner = users.id');
+        // si l'utilisateur n'a pas les droits 'supervisor', seules les annonces activées sont sélectionnées
+        // !$this->is_admin() ? $this->db->where('ad.active',1) : '';
+        $this->db->where('id_ad',$ad);
+        $query = $this->db->get();
+        return $query->row_array();
+    }
+*/
     public function get_ads($filter='DESC')
     {
         $this->db->select('*');

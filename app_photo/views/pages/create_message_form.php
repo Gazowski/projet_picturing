@@ -20,7 +20,7 @@
             </div>
 
             <!-- intégrer au formulaire -->
-            <p>Owner : <?= $ad['owner'] ?></p>
+            <p>Owner : <?= $ad['first_name'] ?> <?= $ad['last_name'] ?></p>
             <p>From : <?= $profil->first_name ?> <?= $profil->last_name ?></p>
 
             <?php echo form_open("message/create_message");?>

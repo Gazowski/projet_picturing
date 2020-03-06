@@ -40,7 +40,7 @@ class Message extends CI_Controller {
             redirect($_SERVER['HTTP_REFERER']); 
         }
 
-        //Initialisation dese variables
+        //Initialisation des variables
         $id_ad = $this->session->userdata['id_ad'];
         $id_member = $this->session->userdata['user_id'];
 
@@ -49,7 +49,7 @@ class Message extends CI_Controller {
         $this->data['profil'] = $this->member_model->get_member($id_member);
 
         //Validation du message/body À FAIRE!!!
-        $this->form_validation->set_rules('message', 'Votre message', 'trim|required');
+        $this->form_validation->set_rules('message', 'votre message', 'trim|required');
 
         // Pas sûre d'être à la bonne place?
         if ($this->form_validation->run() === TRUE)
@@ -124,9 +124,15 @@ class Message extends CI_Controller {
             $id_msg = $this->input->post('id_msg');
             $sender_id = $this->session->userdata['user_id'];
             $body = $this->input->post('answer');
+            $body = trim($body);
+            
+            if ($body == 0) {
+                $this->session->set_flashdata('message', 'Vous devez remplir le champ message');
+                redirect("message/display_messages_user", 'refresh');
+            }
+
             $this->mahana_model->reply_to_message($id_msg,$sender_id, $body);
             
-            //$this->load->template('pages/messages', $data);
             redirect('message/display_messages_user','refresh');
         }
     }
