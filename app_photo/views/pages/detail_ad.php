@@ -46,10 +46,10 @@
                 contentEditable='false'><?= $ad['price'] ?></span> CAD$</h3> 
   </div>
   
-  
+  <p>Auteur : <b><?= $ad['first_name'] ?> <?= $ad['last_name'] ?></b></p>
   
   <div class="soumission display_none" data-btn-bid>
-      <a class="button" href="<?= base_url(); ?>index.php/message/create_message">Soumissionner <b><?= $ad['first_name'] ?> <?= $ad['last_name'] ?></b></a>
+      <a class="button" href="<?= base_url(); ?>index.php/message/create_message">Soumissionner</a>
   </div>
   
   <!-- Affichages des boutons modifier/supprimer ----------------->
@@ -60,50 +60,13 @@
   <!-- Fin Affichages des boutons modifier/supprimer ----------------->
   
   <!-- Affichages champs de notation et boutons noter ----------------->
+  
   <div class="display_none rating" data-rating>
-    <input type='range' 
-            name='note' 
-            class="notation"
-            min='0' max='10'
-            step='1'
-            value='5' 
-            data-note>
-    <button class="button"
-            data-btn-noter>Noter <b><?= $ad['first_name'] ?> <?= $ad['last_name'] ?></b></button>
+    <h4>Évaluer l'auteur</h4>
+    <div class="rating">
+      <span data-star='5'>☆</span><span data-star='4'>☆</span><span data-star='3'>☆</span><span data-star='2'>☆</span><span data-star='1'>☆</span>
+    </div>
   </div> 
   <!--Fin Affichages champs de notation et boutons noter ----------------->
 
 </div>
-
-
-
-<!-- ---------------------------------------------- -->    
-<!-- 
-<?php /**
-     * liste des message rattachés à cette annonce
-     * */ 
-?>
-
-<?php if(isset($threads)) { ?>
-<section class="" data-component='thread'>
-    <ul class="">
-        <?php foreach($threads as $row) {?>
-            <li class="" data-thread=<?= $row['thread_id']?>>
-                <div class="">    
-                    <p>le <?= $row['cdate'] ?></p>
-                    <p><?= $row['user_name'] ?> à écrit</p>
-                    <p><?= $row['body'] ?></p>
-                </div>
-                <div data-conversation></li>
-            </li>
-        <?php } ?>
-    </ul>
-</section>
-<?php } ?> -->
-
-
-    
-    
-
-    
- 

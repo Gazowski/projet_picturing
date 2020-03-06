@@ -6917,6 +6917,10 @@ form select::-ms-expand {
   font-weight: normal;
 }
 
+.content_form div {
+  text-align: center;
+}
+
 @media (min-width: 600px) {
   .form {
     width: calc(70% - 4em);
@@ -7096,7 +7100,6 @@ footer .content_f {
       -ms-flex-pack: justify;
           justify-content: space-between;
   margin-bottom: 0em;
-  height: 10%;
 }
 
 footer .content_f a {
@@ -7429,7 +7432,7 @@ td, th {
     width: 85%;
   }
   .soumission {
-    width: 25%;
+    width: 30%;
     margin: 0 auto;
   }
   .titre_img_desc_prix {
@@ -7456,7 +7459,7 @@ td, th {
     margin: 0 auto;
   }
   .desc_prix {
-    width: 50%;
+    width: 95%;
     display: -webkit-box;
     display: -ms-flexbox;
     display: flex;
@@ -7485,10 +7488,13 @@ td, th {
 
 @media (min-width: 900px) {
   .detail_ad {
-    width: 45%;
+    width: 35%;
   }
   .detail_ad .img_titre {
     width: 80%;
+  }
+  .soumission {
+    width: 70%;
   }
   .secondary_photos {
     width: 45%;
@@ -7633,6 +7639,29 @@ td, th {
 
 .creat_usager {
   margin: 0 auto;
+}
+
+.rating > span:hover:before {
+  content: "\2605";
+  position: absolute;
+}
+
+.rating {
+  unicode-bidi: bidi-override;
+  direction: rtl;
+  display: block;
+}
+
+.rating > span {
+  display: inline-block;
+  position: relative;
+  width: 1.1em;
+}
+
+.rating > span:hover:before,
+.rating > span:hover ~ span:before {
+  content: "\2605";
+  position: absolute;
 }
 
 .button {
