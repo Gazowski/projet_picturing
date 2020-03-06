@@ -20,6 +20,7 @@ export class Thread {
     }
 
     open_thread = () =>{
+        this.thread.removeEventListener('click',this.open_thread)
         console.log("zone messages = " + this.thread.querySelector('[data-conversation]'))
         
         let paramAjax = {
