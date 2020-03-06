@@ -25,7 +25,6 @@
 }
 
 form select{
-    //@include centrer;
     width: 100%;
     margin: 0 auto;
     appearance: none;
@@ -54,6 +53,9 @@ form select{
     h1{
         font-weight: normal;
     }
+}
+.content_form div{
+    text-align: center;
 }
 
 //--------menu_navigation_Tablette-----------//
