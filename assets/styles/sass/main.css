@@ -1,3 +1,4 @@
+@charset "UTF-8";
 /*!
  * Font Awesome Free 5.12.1 by @fontawesome - https://fontawesome.com
  * License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License)
@@ -7423,8 +7424,17 @@ td, th {
   margin-top: .4em;
 }
 
+.auteur {
+  margin: 0 auto;
+  padding-top: 1em;
+}
+
 .rating {
   text-align: center;
+}
+
+.rating > span {
+  color: #bd006b;
 }
 
 @media (min-width: 600px) {
@@ -7662,6 +7672,24 @@ td, th {
 .rating > span:hover ~ span:before {
   content: "\2605";
   position: absolute;
+}
+
+.Stars {
+  --percent: calc(var(--rating) / 5 * 100%);
+  display: inline-block;
+  font-size: 1.5em;
+  font-family: Times;
+  line-height: 1;
+}
+
+.Stars::before {
+  content: '★★★★★';
+  letter-spacing: 3px;
+  background: -webkit-gradient(linear, left top, right top, from(#bd006b), to(#bdbdbd));
+  background: linear-gradient(90deg, #bd006b var(--percent), #bdbdbd var(--percent));
+  background-clip: text;
+  -webkit-background-clip: text;
+  color: transparent;
 }
 
 .button {

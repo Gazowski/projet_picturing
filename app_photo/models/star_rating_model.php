@@ -8,13 +8,14 @@ class Star_rating_model extends CI_Model{
     }
 
 
-    public function get_rating(){
+    public function get_rating()
+    {
 
-              // Note de l'utilisateur
+      // Note de l'utilisateur
       $this->db-> select ('rating');
       $this->db-> from ('rating');
       $this->db-> where ("rated_user", $rated_user);
-     // $this->db-> where ("rater_user", $rater_user);
+      // $this->db-> where ("rater_user", $rater_user);
       $userRatingquery = $this->db->get();
 
       $userpostResult = $userRatingquery->row_array();
@@ -27,7 +28,8 @@ class Star_rating_model extends CI_Model{
     }
 
 
-    public function get_rating_average(){
+    public function get_rating_average()
+    {
 
         // Note de l'utilisateur
         $this->db->select ('ROUND (AVG (rating), 1) as averageRating');
@@ -46,17 +48,14 @@ class Star_rating_model extends CI_Model{
                                 "rating"=>$userRating, "averageagerating"=>$cote);
         
 
-        return $user_arr;
-        
+        return $user_arr;       
 
     }
 
-
-
-
-    public function user_rating( $rated_user, $rating) {
+    public function user_rating($rated_user, $rater_user, $rating) {
       $data = array(
         'rated_user' => $rated_user,
+        'rater_user' => $rater_user,
         'rating' => $rating,
       );
 

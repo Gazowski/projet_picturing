@@ -220,11 +220,15 @@ class Ajax_controller extends CI_Controller {
 
     public function rate_user()
     {
+        if (!isset($this->session->userdata['user_id']))
+        {
+            $this->session->set_flashdata('message', 'Vous devez être connecté');
+            redirect('auth', 'refresh');
+        }
+        $rater_user = $this->session->userdata['user_id'];
         $rated_user = $this->ajax_data->rated_user;
         $rating = $this->ajax_data->rating;
-        echo $this->star_rating_model->user_rating($rated_user, $rating);
-
-
+        echo $this->star_rating_model->user_rating($rated_user,$rater_user, $rating);
     }
 
     public function messages_thread()
