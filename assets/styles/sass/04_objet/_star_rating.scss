@@ -7,17 +7,21 @@
    unicode-bidi: bidi-override;
    direction: rtl;
    display:block;
-}
-.rating > span {
+ }
+ .rating > span {
    display: inline-block;
    position: relative;
    width: 1.1em;
-}
-.rating > span:hover:before,
-.rating > span:hover ~ span:before {
-   content: "\2605";
-   position: absolute;
-}
+   color: $c-medium-theme;
+ }
+ .rating > span:hover:before,
+ .rating > span:hover ~ span:before {
+    content: "\2605";
+    position: absolute;
+   
+ }
+
+
 
 // star en lecture seule
 
@@ -39,3 +43,4 @@
      color: transparent;
    }
  }
+
