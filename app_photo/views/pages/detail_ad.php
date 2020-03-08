@@ -9,6 +9,7 @@
       data-table='ad'
       data-user='<?= isset($_SESSION['user_id']) ? $_SESSION['user_id'] : 0 ;?>'
       data-owner='<?= $ad['owner']?>'>
+      
   <div class="titre_img_desc_prix">
     <div class="img_titre">
       <div>
