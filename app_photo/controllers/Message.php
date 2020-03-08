@@ -100,7 +100,7 @@ class Message extends CI_Controller {
             $data['user_id'] = $this->session->userdata['user_id']; 
             $data['threads'] = $this->mahana_model->get_all_threads($data['user_id']);
 
-            var_dump($data['threads']);
+//var_dump($data['threads']);
             
             $this->load->template('pages/messages', $data);
         }
@@ -126,13 +126,16 @@ class Message extends CI_Controller {
             $body = $this->input->post('answer');
             $body = trim($body);
             
-            if ($body == 0) {
+            /*if ($body == 0) {
                 $this->session->set_flashdata('message', 'Vous devez remplir le champ message');
                 redirect("message/display_messages_user", 'refresh');
-            }
+            }*/
+// var_dump($id_msg);
+// var_dump($body);
+// var_dump($sender_id);
 
+// die;
             $this->mahana_model->reply_to_message($id_msg,$sender_id, $body);
-            
             redirect('message/display_messages_user','refresh');
         }
     }

@@ -36,7 +36,7 @@ class Ad extends CI_Controller {
         
         $data['title'] = 'Liste des Annonces'; // Capitalize the first letter
         $data['ad'] = $this->ad_model->get_ads();
-
+		
         $this->load->template('pages/tile',$data);
     }
 

@@ -76,7 +76,7 @@ class Mahana_model extends CI_Model
 
         if ($recipients = $this->_get_thread_participants($thread_id, $sender_id))
         {
-            $statuses[] = array('message_id' => $msg_id, 'user_id' => $sender_id,'status' => MSG_STATUS_READ);
+            $statuses[] = array('message_id' => $msg_id, 'user_id' => $sender_id, 'status' => MSG_STATUS_READ);
 
             foreach ($recipients as $recipient)
             {
