@@ -6950,6 +6950,30 @@ form select::-ms-expand {
   margin-bottom: 6rem;
 }
 
+.-ie-parent {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: stretch;
+      -ms-flex-align: stretch;
+          align-items: stretch;
+  -ms-flex-wrap: wrap;
+      flex-wrap: wrap;
+  width: 80%;
+  margin: auto;
+}
+
+.-ie-parent .child img {
+  height: 13em;
+}
+
 .prix {
   display: -webkit-box;
   display: -ms-flexbox;
@@ -7666,6 +7690,7 @@ td, th {
   display: inline-block;
   position: relative;
   width: 1.1em;
+  color: #bd006b;
 }
 
 .rating > span:hover:before,

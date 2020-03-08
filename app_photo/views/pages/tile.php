@@ -2,7 +2,7 @@
   <h2 data-title><?= $title ?></h2>
   <?php $filter() ?> 
   <div class="line_t"></div>
-  <div class="parent" data-component="Ad">
+  <div class="<?= $is_IE ?>parent" data-component="Ad">
   <?php if(isset($create_ad)) { ?>
       <a href='index.php/ad/create_ad' class='child create_ad'>
         <div>
