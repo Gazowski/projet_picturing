@@ -125,18 +125,14 @@ class Message extends CI_Controller {
             $sender_id = $this->session->userdata['user_id'];
             $body = $this->input->post('answer');
             $body = trim($body);
-            
-            /*if ($body == 0) {
+
+            if ($body == "") {
                 $this->session->set_flashdata('message', 'Vous devez remplir le champ message');
                 redirect("message/display_messages_user", 'refresh');
-            }*/
-// var_dump($id_msg);
-// var_dump($body);
-// var_dump($sender_id);
-
-// die;
-            $this->mahana_model->reply_to_message($id_msg,$sender_id, $body);
-            redirect('message/display_messages_user','refresh');
+            }else{
+                $this->mahana_model->reply_to_message($id_msg, $sender_id, $body);
+                redirect('message/display_messages_user','refresh');
+            }
         }
     }
 }
