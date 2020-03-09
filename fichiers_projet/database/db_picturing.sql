@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1:3306
--- Generation Time: Mar 03, 2020 at 05:57 PM
+-- Generation Time: Mar 09, 2020 at 03:10 PM
 -- Server version: 5.7.28
 -- PHP Version: 7.3.12
 
@@ -161,6 +161,27 @@ CREATE TABLE IF NOT EXISTS `login_attempts` (
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `message`
+--
+
+DROP TABLE IF EXISTS `message`;
+CREATE TABLE IF NOT EXISTS `message` (
+  `id_message` int(11) NOT NULL AUTO_INCREMENT,
+  `title` varchar(250) NOT NULL,
+  `date` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  `text_message` varchar(250) DEFAULT NULL,
+  `writer` int(11) UNSIGNED NOT NULL,
+  `ad` int(11) DEFAULT NULL,
+  PRIMARY KEY (`id_message`),
+  KEY `writer` (`writer`),
+  KEY `ad` (`ad`)
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+-- --------------------------------------------------------
+
 --
 -- Table structure for table `msg_messages`
 --
@@ -174,14 +195,15 @@ CREATE TABLE IF NOT EXISTS `msg_messages` (
   `sender_id` int(11) NOT NULL,
   `cdate` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8;
 
 --
 -- Dumping data for table `msg_messages`
 --
 
 INSERT INTO `msg_messages` (`id`, `thread_id`, `body`, `priority`, `sender_id`, `cdate`) VALUES
-(1, 1, 'je suis un message de soumission', 0, 1, '2020-03-03 15:18:30');
+(1, 1, 'je suis un message de soumission', 0, 1, '2020-03-03 15:18:30'),
+(2, 2, 'yo gael', 0, 1, '2020-03-09 14:00:46');
 
 -- --------------------------------------------------------
 
@@ -203,6 +225,8 @@ CREATE TABLE IF NOT EXISTS `msg_participants` (
 
 INSERT INTO `msg_participants` (`user_id`, `thread_id`, `cdate`) VALUES
 (1, 1, '2020-03-03 15:18:30'),
+(1, 2, '2020-03-09 14:00:46'),
+(4, 2, '2020-03-09 14:00:46'),
 (31, 1, '2020-03-03 15:18:30');
 
 -- --------------------------------------------------------
@@ -225,7 +249,9 @@ CREATE TABLE IF NOT EXISTS `msg_status` (
 
 INSERT INTO `msg_status` (`message_id`, `user_id`, `status`) VALUES
 (1, 1, 1),
-(1, 31, 0);
+(1, 31, 0),
+(2, 1, 1),
+(2, 4, 0);
 
 -- --------------------------------------------------------
 
@@ -238,14 +264,15 @@ CREATE TABLE IF NOT EXISTS `msg_threads` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `subject` text,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8;
 
 --
 -- Dumping data for table `msg_threads`
 --
 
 INSERT INTO `msg_threads` (`id`, `subject`) VALUES
-(1, '31');
+(1, '31'),
+(2, '43');
 
 -- --------------------------------------------------------
 
@@ -263,7 +290,14 @@ CREATE TABLE IF NOT EXISTS `rating` (
   PRIMARY KEY (`id_rating`),
   KEY `rated_user` (`rated_user`),
   KEY `rater_user` (`rater_user`)
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `rating`
+--
+
+INSERT INTO `rating` (`id_rating`, `rated_user`, `rater_user`, `date`, `rating`) VALUES
+(1, 2, 1, '2020-03-09 10:00:14', 4);
 
 -- --------------------------------------------------------
 
@@ -308,13 +342,13 @@ CREATE TABLE IF NOT EXISTS `users` (
 --
 
 INSERT INTO `users` (`id`, `ip_address`, `username`, `password`, `email`, `activation_selector`, `activation_code`, `forgotten_password_selector`, `forgotten_password_code`, `forgotten_password_time`, `remember_selector`, `remember_code`, `created_on`, `last_login`, `active`, `first_name`, `last_name`, `company`, `company_number`, `address`, `phone`, `website`, `social_network`) VALUES
-(1, '127.0.0.1', 'administrator', '$2y$12$yHML2PEkkL35NkGWKV.nVevBdB8aiebuOAD6.4.2ru7HoNiqW.6.y', 'admin@admin.com', NULL, '', NULL, NULL, NULL, NULL, NULL, 1268889823, 1583245267, 1, 'Admin', 'istrator', 'ADMIN', NULL, 'nouvelle adresse', '0', NULL, NULL),
+(1, '127.0.0.1', 'administrator', '$2y$12$yHML2PEkkL35NkGWKV.nVevBdB8aiebuOAD6.4.2ru7HoNiqW.6.y', 'admin@admin.com', NULL, '', NULL, NULL, NULL, NULL, NULL, 1268889823, 1583759374, 1, 'Admin', 'istrator', 'ADMIN', NULL, 'nouvelle adresse', '0', NULL, NULL),
 (2, '1.0.0.127', 'billy', '1234', 'bill.baroud@bill.com', NULL, NULL, NULL, NULL, NULL, NULL, NULL, 1234, NULL, 1, 'bill', 'baroud', 'maisonneuve', NULL, NULL, NULL, NULL, NULL),
 (3, '::1', 'robert@bidochon.com', '$2y$10$0zhTu/7nKvxZY0J1NUuFFelzWXJXn0P1Q2cMimQwgIj2AqM.mC.Pa', 'robert@bidochon.com', NULL, NULL, NULL, NULL, NULL, NULL, NULL, 1581901478, 1583159432, 1, 'robert', 'bidochon', 'les bidochon', NULL, NULL, '1234', NULL, NULL),
 (4, '::1', 'gael@gael.com', '$2y$10$v/sakCF4JqKmfIb4JKZ9g.ErxtnkMhDRZmkfXPpyv/pUTePsoEHcC', 'gael@gael.com', NULL, NULL, NULL, NULL, NULL, NULL, NULL, 1582204232, NULL, 0, 'gael', 'comeau', 'college', 1234, 'chez nous', '1234', '', ''),
-(5, '::1', 'salah@salah.com', '$2y$10$kN3B0Jac.1Yfb7ZjvpRsCe1drphYa5aS5MHzDIOK5JO/uNQNgrUvm', 'salah@salah.com', NULL, NULL, NULL, NULL, NULL, NULL, NULL, 1582205922, NULL, 1, 'salah', 'salhi', 'laval inc.', 1234, 'laval', '1234', '', ''),
+(5, '::1', 'salah@salah.com', '$2y$10$kN3B0Jac.1Yfb7ZjvpRsCe1drphYa5aS5MHzDIOK5JO/uNQNgrUvm', 'salah@salah.com', NULL, NULL, NULL, NULL, NULL, NULL, NULL, 1582205922, 1583262046, 1, 'salah', 'salhi', 'laval inc.', 1234, 'laval', '1234', '', ''),
 (6, '::1', 'olivier@olivier.com', '$2y$10$6i3JjNfLAYjNTsmcmFbvAehc0PsMBkHIRYiOgTi.RrBHLAFJ7/lw6', 'olivier@olivier.com', NULL, NULL, NULL, NULL, NULL, NULL, NULL, 1582206222, NULL, 1, 'olivier', 'raude', 'deLorimier inc', 1234, 'montreal', '1234', '', ''),
-(7, '::1', 'kervens@kervens.com', '$2y$10$.5bn217iCyqO3XmivOmejegCVBbVZWSXk7XLEC/EUOrCQ7JD7AY2q', 'kervens@kervens.com', NULL, NULL, NULL, NULL, NULL, NULL, NULL, 1582206572, 1582921582, 1, 'kervens', 'antoine', 'haiti inc', 1234, 'brossard', '1234', '', ''),
+(7, '::1', 'kervens@kervens.com', '$2y$10$.5bn217iCyqO3XmivOmejegCVBbVZWSXk7XLEC/EUOrCQ7JD7AY2q', 'kervens@kervens.com', NULL, NULL, NULL, NULL, NULL, NULL, NULL, 1582206572, 1583758488, 1, 'kervens', 'antoine', 'haiti inc', 1234, 'brossard', '1234', '', ''),
 (8, '::1', 'gael_04@gael.com', '$2y$10$cwA0Lb9V4ezEm2n28etXZ.tVd8L11YwpZHkBAXBq9pIXggQhllOkG', 'gael_04@gael.com', NULL, NULL, NULL, NULL, NULL, NULL, NULL, 1582211065, NULL, 0, 'gael', 'gael', 'college', 1234, '', '1234', '', ''),
 (9, '::1', 'gael_05@gael.com', '$2y$10$gb.iZqUPOVOVLr7KJF0ISeIrleRnEwwfeUCC1ErvLxC6XrE6HdKLi', 'gael_05@gael.com', NULL, NULL, NULL, NULL, NULL, NULL, NULL, 1582211201, NULL, 0, 'gael', 'gael', 'college', 1234, 'chez nous', '1234', '', ''),
 (10, '::1', 'gael_6@gael.com', '$2y$10$1PBnrh/rxQENo35/MqxAduKGdxoVq6NBy4ABPvIXXN5Vhg0ocA/We', 'gael_6@gael.com', NULL, NULL, NULL, NULL, NULL, NULL, NULL, 1582211322, NULL, 0, 'gael', 'gael', 'college', 1234, 'ici', '1234', '', ''),

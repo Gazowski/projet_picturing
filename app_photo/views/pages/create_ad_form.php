@@ -35,7 +35,7 @@
                         
                         
                                     <?php 
-                                          $opt = ['default' => '-- choisir un type --'];
+                                          $opt = ['' => '-- choisir un type --'];
                                           foreach($type['option'] as $key=>$option)
                                                 {
                                                       $opt[$option->category] = $option->category;

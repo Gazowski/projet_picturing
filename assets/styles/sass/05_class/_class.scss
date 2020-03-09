@@ -76,6 +76,13 @@
     pointer-events: none;
     opacity: .5;
 }
+#infoMessage{
+    margin: 0 auto;
+    
+    p{
+        color: red;
+    }
+}
 
 
 //--------menu_navigation_Tablette-----------//

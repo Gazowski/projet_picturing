@@ -16,10 +16,7 @@
             <li>inscris depuis le : <span><?= $profil->created_on ?></span></li>
             <li>Note : <span><?= $profil->avg_rate != null ? $profil->avg_rate : 'pas encore d\'évaluation' ?></span></li>
         </ul>
-        <div class="mod_sup">
-            <button class="button" data-btn-modif>Modifier</button>
-            <button class="button" data-btn-delete>Supprimer mon compte</button>
-        </div>
+        <?php if(isset($member_btn)) { $member_btn(); } ?>
     </div>
     
     <div class="mess_ann">

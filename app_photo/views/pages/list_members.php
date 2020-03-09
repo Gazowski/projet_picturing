@@ -21,7 +21,7 @@
                         <td>".$membre['company']."</td>
                         <td>".$membre['name']."</td>
                         <td class='Stars' style='--rating: ".$membre['avg_rate'].";'></td>
-                        <td><button class='button' data-active=".$membre['active']."></button></td>                
+                        <td><a class='button' href='index.php/member/".$membre['id']."'>Voir</a></td>                
                     </tr>";
             }      
         ?>
