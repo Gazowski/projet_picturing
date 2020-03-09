@@ -148,8 +148,8 @@ class Ad extends CI_Controller {
 
 		// validate form input
 		$this->form_validation->set_rules('title', 'Titre de l\'annonce', 'trim|required');
-		$this->form_validation->set_rules('category', 'Catégorie', 'required');
-		$this->form_validation->set_rules('type', 'Type', 'required');
+		$this->form_validation->set_rules('category', 'Catégorie', 'trim|required');
+		$this->form_validation->set_rules('type', 'Type', 'trim|required');
 		$this->form_validation->set_rules('description','Description', 'trim');
 		$this->form_validation->set_rules('price', 'Prix', 'trim|required');
 		$this->form_validation->set_rules('location','Adresse','trim');
@@ -222,6 +222,8 @@ class Ad extends CI_Controller {
 			$this->load->template('pages/create_ad_form',$this->data);
 		}
 	}
+
+
 
     /**
 	 * photo_form()
