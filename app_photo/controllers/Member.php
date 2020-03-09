@@ -141,6 +141,18 @@ class Member extends CI_Controller {
         }
         
         $data['title'] = 'Profil';
+        $data['profil'] = $this->member_model->get_member($id_member);
+        $data['profil']->last_login = unix_to_human($data['profil']->last_login,true,'eu');
+        $data['profil']->created_on = unix_to_human($data['profil']->created_on,true,'eu');
+
+
+        /**
+         * affichage des boutons
+         * - les boutons sont créer dans des vues 'btn'
+         * - les vues sont appelés dans des fonctions anonymes
+         * - en fonction des droits de l'utilisateur , les fonctions anomymes sont stockées dans des variables (ce qui perment de ne pas éxucuter la fonction dès qu'on l'appelle)
+         * - la vue bouton btn est ensuite appelée directement dans la vue principale via la variable-fonction
+         */        
 
         // affichage des bouton modifier / supprimer
         $member_btn_view = function(){
@@ -148,10 +160,24 @@ class Member extends CI_Controller {
         };
         $data['member_btn'] = $this->session->userdata['user_id'] == $id_member ? $member_btn_view : null;
         
-        // affichage du bouton activer / bannir /debannir
-        $data['profil'] = $this->member_model->get_member($id_member);
-        $data['profil']->last_login = unix_to_human($data['profil']->last_login,true,'eu');
-        $data['profil']->created_on = unix_to_human($data['profil']->created_on,true,'eu');
+        //affichage du bouton superviseur
+        $this->member_active = $data['profil']->active;
+        $supervisor_btn_view = function(){
+            $data['is_enabled'] = $this->member_active;
+            $this->load->view('pages/btn_member/supervisor_btn',$data);
+        };
+        // le bouton est affiché si l'utilisateur est superviseur ou + et si il ne visualise pas son profil
+        $is_supervisor = $this->session->userdata['user_role'] >= 40 && $this->session->userdata['user_id'] != $id_member;
+        $data['supervisor_btn'] = $is_supervisor ? $supervisor_btn_view : null;
+        
+        // affichage bouton administrateur
+        $admin_btn_view = function(){
+            $this->load->view('pages/btn_member/admin_btn');
+        }; 
+        // bouton affiché si admin
+        $is_admin = $this->session->userdata['user_role'] >= 50 && $this->session->userdata['user_id'] != $id_member;
+        $data['admin_btn'] = $is_admin ? $admin_btn_view : null;
+
 
         $this->load->template('pages/detail_member.php',$data);
     }
