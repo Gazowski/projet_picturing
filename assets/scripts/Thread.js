@@ -89,7 +89,7 @@ class Conversation{
         <form method="POST" action="index.php/message/reply">
         <textarea name="answer" rows="3" cols="33"></textarea>
         <input type="hidden" name="id_msg" value="${conversation[0].id}">
-        <input class="button" type="submit" value="Repondre">
+        <input class="button" type="submit" value="repondre">
       
         </form>
         `
