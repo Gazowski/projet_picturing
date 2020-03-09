@@ -14,6 +14,7 @@ https://coolors.co/
 
 
 ## amélioration à faire
+* pas de possibilité de creer un nouveau type de catégorie !!!
 * css pour le rating https://css-tricks.com/star-ratings/
 * installer babel (pour compatibilité ES5)
 * version ie en flexbox
