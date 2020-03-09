@@ -65,7 +65,7 @@ class Member extends CI_Controller {
             redirect($_SERVER['HTTP_REFERER']); 
         }        
         
-        $data['title'] = 'Liste des Fournisseurs'; // Capitalize the first letter
+        $data['title'] = 'Liste des Clients'; 
         $data['membres'] = $this->member_model->get_by_type('name = "Client"');     
         
         $this->load->template('pages/list_members',$data);
@@ -141,7 +141,14 @@ class Member extends CI_Controller {
         }
         
         $data['title'] = 'Profil';
+
+        // affichage des bouton modifier / supprimer
+        $member_btn_view = function(){
+            $this->load->view('pages/btn_member/member_btn');
+        };
+        $data['member_btn'] = $this->session->userdata['user_id'] == $id_member ? $member_btn_view : null;
         
+        // affichage du bouton activer / bannir /debannir
         $data['profil'] = $this->member_model->get_member($id_member);
         $data['profil']->last_login = unix_to_human($data['profil']->last_login,true,'eu');
         $data['profil']->created_on = unix_to_human($data['profil']->created_on,true,'eu');

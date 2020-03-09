@@ -50,6 +50,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 |		my-controller/my-method	-> my_controller/my_method
 */
 $route['ajax_controller/(:any)'] = 'ajax_controller/$1';
+$route['member/(:num)'] = 'member/member/$1'; 
 $route['member/(:any)'] = 'member/$1';
 $route['message/(:any)'] = 'message/$1';
 $route['auth/(:any)'] = 'auth/$1';

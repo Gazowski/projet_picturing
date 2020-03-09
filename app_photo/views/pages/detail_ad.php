@@ -49,6 +49,7 @@
   
   <div class="auteur">Auteur : <b><?= $ad['first_name'] ?> <?= $ad['last_name'] ?></b></div>
   
+  <!-- Affichage du bouton soumissionner  ----------------->
   <div class="soumission display_none" data-btn-bid>
       <a class="button" href="<?= base_url(); ?>index.php/message/create_message">Soumissionner</a>
   </div>
