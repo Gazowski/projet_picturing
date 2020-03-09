@@ -13,7 +13,7 @@
     <article class="msg">
         <?php foreach($threads as $row) {?>
             <div class="" data-thread="<?= $row['thread_id'] ?>">
-                <div class="titre_form">  
+                <div class="titre_form" data-msg>  
                     <h1><?= $row['subject'] ?></h1>
                 </div>
                 <div class="convers" data-conversation></div>
