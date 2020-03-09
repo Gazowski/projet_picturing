@@ -16,9 +16,11 @@
             <li>inscris depuis le : <span><?= $profil->created_on ?></span></li>
             <li>Note : <span><?= $profil->avg_rate != null ? $profil->avg_rate : 'pas encore d\'évaluation' ?></span></li>
         </ul>
-        <?php if(isset($member_btn)) { $member_btn(); } ?>
-        <?php if(isset($supervisor_btn)) { $supervisor_btn(); } ?>
-        <?php if(isset($admin_btn)) { $admin_btn(); } ?>
+        <div class="btn_ban_upgarde">
+            <?php if(isset($member_btn)) { $member_btn(); } ?>
+            <?php if(isset($supervisor_btn)) { $supervisor_btn(); } ?>
+            <?php if(isset($admin_btn)) { $admin_btn(); } ?>
+        </div>
     </div>
 </section>
 
