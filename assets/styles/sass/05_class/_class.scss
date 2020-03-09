@@ -16,6 +16,13 @@
         background-color: $c-medium-theme;
     }
 }
+a.button{
+    display:block;
+    text-align: center;
+    &:hover{
+		color:white;
+	}
+}
 .soumission .button{
     color: white;
     width: 95%;

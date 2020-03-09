@@ -46,7 +46,7 @@ export class Detail {
     
     add_action_to_btn_supervisor = () =>{
         this._btn_supervisor.addEventListener('click',()=>{
-            display_alert('Voulez-vous activez ce membre ?',this.activate_elt)
+            display_alert(`Voulez-vous activez ${this.table == 'ad' ? 'cette annonce' : 'ce membre'} ?`,this.activate_elt)
         })
     }
 
