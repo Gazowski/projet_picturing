@@ -8,24 +8,18 @@
 https://coolors.co/
 
 ## correction à faire
-* creation d'une annonce possible sans photo ni description
 * page home admin : lorsque tous les users sont activés seul l'entete du tableau reste affiché (au lieu d'une phrase)
 * dans l'admin onglet Membres revoir l'affichage des listes fournisseurs et clients.
 
 
 ## amélioration à faire
 * pas de possibilité de creer un nouveau type de catégorie !!!
-* css pour le rating https://css-tricks.com/star-ratings/
 * installer babel (pour compatibilité ES5)
-* version ie en flexbox
 * activer la recherche
 * différencier les services des produits (label/tag? code couleur? icone?...) 
 * ajouter un plugin seo
 * ajouter un plugin pour connection par facebook
-* priviligier un pluggin pour le rating
-* plugin messagerie https://github.com/jrmadsen67/Mahana-Messaging-library-for-CodeIgniter
 * faire le header en sticky (ou avoir le menu toujours accessible)
-* afficher le titre au dessus de filtre
 * ajouter un breadcrumb (plugin)
 
 ## Plan du site
