@@ -1,5 +1,5 @@
 
-<div class="filter" data-component='filter'>
+<!-- <div class="filter" data-component='filter'>
     <div class="select_cont">
         <select name="filter" id="filter">
             <option value="">Filtre</option>  
@@ -8,5 +8,5 @@
             <?php } ?>
         </select>
     </div>    
-</div>
+</div> -->
 

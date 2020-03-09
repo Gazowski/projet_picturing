@@ -20,7 +20,7 @@
                         <td>".$membre['email']."</td>
                         <td>".$membre['company']."</td>
                         <td>".$membre['name']."</td>
-                        <td>".$membre['avg_rate']."</td>
+                        <td class='Stars' style='--rating: ".$membre['avg_rate'].";'></td>
                         <td><button class='button' data-active=".$membre['active']."></button></td>                
                     </tr>";
             }      
