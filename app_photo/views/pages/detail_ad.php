@@ -8,7 +8,8 @@
       data-component='detail' 
       data-table='ad'
       data-user='<?= isset($_SESSION['user_id']) ? $_SESSION['user_id'] : 0 ;?>'
-      data-owner='<?= $ad['owner']?>'>
+      data-owner='<?= $ad['owner']?>'
+      data-id-elt='<?= $ad['id_ad'] ?>'>
       
   <div class="titre_img_desc_prix">
     <div class="img_titre">
@@ -48,6 +49,9 @@
   </div>
   
   <div class="auteur">Auteur : <b><?= $ad['first_name'] ?> <?= $ad['last_name'] ?></b></div>
+  
+  <!-- Affichage du bouton activer  ----------------->
+  <?php if(isset($supervisor_btn)) { $supervisor_btn(); } ?>
   
   <!-- Affichage du bouton soumissionner  ----------------->
   <div class="soumission display_none" data-btn-bid>

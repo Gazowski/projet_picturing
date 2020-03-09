@@ -31,8 +31,8 @@ class Row{
 
     init = () =>{
         this.init_message()
-        this.add_name_to_button()
-        this.add_action_to_button()
+        if(this._button) this.add_name_to_button()
+        if(this._button) this.add_action_to_button()
     }
 
     init_message = () =>{
