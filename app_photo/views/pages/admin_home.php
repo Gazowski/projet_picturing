@@ -21,7 +21,7 @@
                         <td><?= $member['email'] ?></td>
                         <td><?= $member['company'] ?></td>
                         <td><?= $member['name'] ?></td>
-                        <td><button class='button' data-active="<?= $member['active'] ?>">Activer</button></td>                
+                        <td><a class='button' href='index.php/member/<?= $member['id'] ?>'>Profil</a></td>                
                     </tr>
                 <?php } ?>
             </table>

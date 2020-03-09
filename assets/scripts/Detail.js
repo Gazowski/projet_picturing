@@ -6,6 +6,7 @@ export class Detail {
         // declaration des variables 
         console.log(el);
         this._el = el
+        this._id_elt = this._el.querySelector('[data-id-elt]')
         this._btn_modif = this._el.querySelector('[data-btn-modif]')
         this._data = this._el.querySelectorAll('li span')
         this._editable_data = this._el.querySelectorAll('[data-editable]')
@@ -58,12 +59,16 @@ export class Detail {
             method : "POST",
             json : true,
             action : `index.php/ajax_controller/activate_member`,
-            data_to_send : this.id
+            data_to_send : this._el.dataset.idElt
         }
         requeteAjax(paramAjax, (reponse_ajax) => {
             console.log(reponse_ajax)
-            if(reponse_ajax == 1)
-            display_alert('le membre à été activé');
+            if(reponse_ajax == 1){
+                display_alert('le membre à été activé');
+                window.setTimeout(()=>{
+                    window.location = document.referrer
+                }, 1500);
+            }
         })
     }
 

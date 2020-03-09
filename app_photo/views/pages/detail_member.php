@@ -1,11 +1,14 @@
 <!-- affichage d'un membre -->
 
-<section class="form_det_member" data-component='detail' data-table='member'>
+<section class="form_det_member" 
+        data-component='detail'  
+        data-table='member'
+        data-id-elt = <?= $profil->id ?> >
     <div class="titre_profil">
         <h1><?= $title ?></h1>
     </div>
     <div class="detail_ad detail_member">
-        <ul data-member = <?= $profil->id ?> >
+        <ul>
             <li>prénom : <span id='first_name' contenteditable='false' data-editable><?= $profil->first_name ?></span></li>
             <li>nom : <span id='last_name' contenteditable='false' data-editable><?= $profil->last_name ?></span></li>
             <li>courriel : <span id='email' contenteditable='false' data-editable><?= $profil->email ?></span></li>
