@@ -81,6 +81,7 @@ class Conversation{
             this._conversation_field.innerHTML += `
                 <i>le ${message.cdate}</i> message de <b>${message.user_name}</b>
                 <p>${message.body}</p>
+                <div class="line_n"></div>
             `
         }
 
@@ -89,6 +90,7 @@ class Conversation{
         <textarea name="answer" rows="3" cols="33"></textarea>
         <input type="hidden" name="id_msg" value="${conversation[0].id}">
         <input class="button" type="submit" value="repondre">
+      
         </form>
         `
 

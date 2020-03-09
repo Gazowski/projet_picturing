@@ -29,7 +29,14 @@ a{
     list-style-type: none;
     &:hover{
         color: $c-medium-theme; 
-    }
+	}
+	&.button:hover{
+		color:white;
+	}
+}
+
+li{
+	list-style:none;
 }
 
 input[type ="text"],input[type = "password"],textarea{

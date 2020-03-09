@@ -6,15 +6,18 @@ export class Detail {
         // declaration des variables 
         console.log(el);
         this._el = el
+        this._id_elt = this._el.querySelector('[data-id-elt]')
         this._btn_modif = this._el.querySelector('[data-btn-modif]')
         this._data = this._el.querySelectorAll('li span')
         this._editable_data = this._el.querySelectorAll('[data-editable]')
         this._btn_bid = this._el.querySelector('[data-btn-bid]')
         this._btn_owner = this._el.querySelector('[data-btn-owner]')
         this._btn_delete = this._el.querySelector('[data-btn-delete]')
+        this._btn_supervisor = this._el.querySelector('[data-active]')
         this._rating = this._el.querySelector('[data-rating]')
         this._stars = this._el.querySelectorAll('[data-star]')
 
+        this.table = this._el.dataset.table
         this.ajax_data = {}
 
         // initialise les comportements
@@ -22,18 +25,52 @@ export class Detail {
     }
 
     init = (e) =>{
-        console.log('btn_bid = ' + this._btn_bid)
-        console.log('btn_owner = ' + this._btn_owner)
+        if(this._btn_supervisor){
+            this.add_name_to_btn_supervisor()
+            this.add_action_to_btn_supervisor() 
+        }
         if(this._btn_bid) this.display_btn_bid()
         if(this._btn_owner) this.display_btn_owner()
         if(this._rating) this.display_rating()
-        this._btn_modif.addEventListener('click',this.modify_data) // pas de fonction fleché car l'évènement doit être supprimer
-        this._btn_delete.addEventListener('click',()=>{
-            display_alert('confirmez la suppression',this.delete_data)        
-        })
+        if(this._btn_modif) this._btn_modif.addEventListener('click',this.modify_data) // pas de fonction fleché car l'évènement doit être supprimer
+        if (this._btn_delete) this._btn_delete.addEventListener('click',()=>{ display_alert('confirmez la suppression',this.delete_data) })
         for(let star of this._stars){
             star.addEventListener('click',()=>{this.rate_user(star)})
         }
+    }
+
+    add_name_to_btn_supervisor = () =>{
+        let name = this._btn_supervisor.dataset.active == 1 ? 'Bannir' : 'Activer'
+        this._btn_supervisor.innerHTML = name
+    }
+    
+    add_action_to_btn_supervisor = () =>{
+        this._btn_supervisor.addEventListener('click',()=>{
+            display_alert('Voulez-vous activez ce membre ?',this.activate_elt)
+        })
+    }
+
+    banish_user = () =>{
+        // utiliser le tag <base> pour mémoriser l'url de base 
+        // https://developer.mozilla.org/fr/docs/Web/HTML/Element/base
+    }
+
+    activate_elt = () =>{
+        let paramAjax = {
+            method : "POST",
+            json : true,
+            action : `index.php/ajax_controller/activate_${this.table}`,
+            data_to_send : this._el.dataset.idElt
+        }
+        requeteAjax(paramAjax, (reponse_ajax) => {
+            console.log(reponse_ajax)
+            if(reponse_ajax == 1){
+                display_alert(this.table == 'ad' ? 'l\'annonce a été activée' : 'le membre à été activé');
+                window.setTimeout(()=>{
+                    window.location = document.referrer
+                }, 1500);
+            }
+        })
     }
 
     display_btn_bid = () =>{

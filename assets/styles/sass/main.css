@@ -6427,6 +6427,14 @@ a:hover {
   color: #bd006b;
 }
 
+a.button:hover {
+  color: white;
+}
+
+li {
+  list-style: none;
+}
+
 input[type="text"], input[type="password"], textarea {
   width: 99%;
 }
@@ -7295,7 +7303,7 @@ tr:nth-of-type(odd) {
 th {
   background: #bd006b;
   color: white;
-  font-weight: bold;
+  font-weight: 600;
 }
 
 td, th {
@@ -7459,6 +7467,10 @@ td, th {
 
 .rating > span {
   color: #bd006b;
+}
+
+.modif_supp {
+  margin: 0 auto;
 }
 
 @media (min-width: 600px) {
@@ -7717,6 +7729,26 @@ td, th {
   color: transparent;
 }
 
+.msg {
+  width: 90%;
+  margin: 2em auto;
+}
+
+.msg .titre_form {
+  border-bottom: 5px solid #bdbdbd;
+}
+
+.msg .convers {
+  background-color: #bdbdbd;
+  width: 90%;
+  margin: 0 auto;
+  text-align: center;
+}
+
+.msg .convers textarea {
+  width: 95%;
+}
+
 .button {
   -webkit-box-align: center;
       -ms-flex-align: center;
@@ -7818,6 +7850,14 @@ td, th {
 .unactive {
   pointer-events: none;
   opacity: .5;
+}
+
+#infoMessage {
+  margin: 0 auto;
+}
+
+#infoMessage p {
+  color: red;
 }
 
 @media (min-width: 600px) {

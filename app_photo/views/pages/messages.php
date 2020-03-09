@@ -10,16 +10,18 @@
     <div class="titre_form">  
             <h1><?= $page_title ?></h1>
     </div>
-    <ul class="">
+    <article class="msg">
         <?php foreach($threads as $row) {?>
-            <li class="" data-thread="<?= $row['thread_id'] ?>">
+            <div class="" data-thread="<?= $row['thread_id'] ?>">
                 <div class="titre_form" data-msg>  
                     <h1><?= $ad['title'] ?></h1>
                 </div>
-                <div data-conversation></div>
-            </li>
+              
+                <div class="convers" data-conversation></div>
+                
+            </div>
         <?php } ?>
-    </ul>
+    </article>
 </section>
 <?php } ?>
 
