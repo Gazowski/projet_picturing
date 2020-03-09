@@ -16,15 +16,6 @@
                 <div class="titre_form">  
                     <h1><?= $row['subject'] ?></h1>
                 </div>
-                
-                <!-- <p><?= $row['body'] ?></p>
-                <p><?= $row['cdate'] ?></p>
-                
-
-                <div class="">
-                    <a class="button" href="">Répondre</a>
-                </div> -->
-
                 <div data-conversation></div>
             </li>
         <?php } ?>
