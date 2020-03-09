@@ -17,6 +17,7 @@ export class Detail {
         this._rating = this._el.querySelector('[data-rating]')
         this._stars = this._el.querySelectorAll('[data-star]')
 
+        this.table = this._el.dataset.table
         this.ajax_data = {}
 
         // initialise les comportements
@@ -58,13 +59,13 @@ export class Detail {
         let paramAjax = {
             method : "POST",
             json : true,
-            action : `index.php/ajax_controller/activate_member`,
+            action : `index.php/ajax_controller/activate_${this.table}`,
             data_to_send : this._el.dataset.idElt
         }
         requeteAjax(paramAjax, (reponse_ajax) => {
             console.log(reponse_ajax)
             if(reponse_ajax == 1){
-                display_alert('le membre à été activé');
+                display_alert(this.table == 'ad' ? 'l\'annonce a été activée' : 'le membre à été activé');
                 window.setTimeout(()=>{
                     window.location = document.referrer
                 }, 1500);

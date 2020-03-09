@@ -54,6 +54,7 @@ $route['member/(:num)'] = 'member/member/$1';
 $route['member/(:any)'] = 'member/$1';
 $route['message/(:any)'] = 'message/$1';
 $route['auth/(:any)'] = 'auth/$1';
+$route['ad/(:num)'] = 'ad/display_ad/$1';
 $route['(:any)'] = 'ad/$1';
 $route['default_controller'] = 'ad/display_all';
 $route['404_override'] = '';

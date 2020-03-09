@@ -41,7 +41,43 @@ class Ad extends CI_Controller {
 		];
 		$this->session->set_userdata($this->agent);
 	}
-    
+	
+	/**
+     * display_ad() : affiche l'annonce passée en paramètre
+     * @param { int } $id_ad : identifiant de l'annonce
+     * Accessible pour tous
+     */
+	public function display_ad($id_ad)
+    {
+        if ( ! file_exists(APPPATH.'views/pages/detail_ad.php'))
+        {
+            // Whoops, we don't have a page for that!
+            show_404();
+        }
+
+        // enregistrement du owner ed l'id annonce en session (permet de restreindre la modif au owner seul)
+        
+		$data['title'] = 'Information Annonce';        
+        $data['ad'] = $this->ad_model->get_ad($id_ad);
+        $this->session->set_userdata('ad_owner',$data['ad']['owner']);
+		$this->session->set_userdata('id_ad',$id_ad);
+
+		//affichage du bouton superviseur
+		$this->ad_active = $data['ad']['active'];
+		$supervisor_btn_view = function(){
+			$data['is_enabled'] = $this->ad_active;
+			$this->load->view('pages/btn_member/supervisor_btn',$data);
+		};
+		// le bouton est affiché si l'utilisateur est superviseur ou + et si l'annnonce n'est pas active
+		$is_supervisor = $this->session->userdata['user_role'] >= 40 && $data['ad']['active'] == 0 ;
+		$data['supervisor_btn'] = $is_supervisor ? $supervisor_btn_view : null;
+
+		//var_dump($data);
+		
+		
+        $this->load->template('pages/detail_ad',$data);
+	}
+	
     public function display_all()
     {
 

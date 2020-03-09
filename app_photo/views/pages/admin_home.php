@@ -46,7 +46,7 @@
                         <td><?= $ad['name'] ?></td>
                         <td><?= $ad['first_name'] . ' ' . $ad['last_name'] ?></td>
                         <td><?= $ad['price'] ?>$</td>
-                        <td><button class='button' data-active="<?= $ad['ad_active'] ?>"></button></td>                
+                        <td><a class='button' href='index.php/ad/<?= $ad['id_ad'] ?>'> Voir Annonce </a></td>                
                     </tr>
                 <?php } ?>
             </table>

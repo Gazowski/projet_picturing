@@ -26,7 +26,7 @@ class Ad_model extends CI_Model {
 
     public function get_ad($ad)
     {
-        $this->db->select('*');
+        $this->db->select('*','ad.active as ad_active');
         $this->db->from('ad');
         $this->db->join('category','category.id_category = ad.category');
         $this->db->join('users','users.id = ad.owner');
