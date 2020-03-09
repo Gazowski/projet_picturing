@@ -27,9 +27,9 @@ export class Ad {
                 requeteAjax(paramAjax, (reponse_ajax) => {
                     this._el.classList.remove('parent')
                     this._el.innerHTML = reponse_ajax
-                    let filter = document.querySelector('[data-component="filter"]'),
+                    let //filter = document.querySelector('[data-component="filter"]'),
                         new_el = document.querySelector('[data-component="detail"]')
-                    filter.remove()
+                    //filter.remove()
                     new Detail(new_el)
                 })
             })
