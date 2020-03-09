@@ -4,13 +4,14 @@
    margin: 2em auto;
   
    .titre_form{
-       border-bottom: 5px solid $c-light-grey; ;
+       border-bottom: 3px solid $c-light-grey; ;
    }
    .convers{
        background-color: $c-light-grey ;
        width: 90%;
        margin: 0 auto;
        text-align: center;
+       box-shadow: 0 5px 15px rgba(0,0,0,0.3);
        textarea{
            width: 95%;
        }
