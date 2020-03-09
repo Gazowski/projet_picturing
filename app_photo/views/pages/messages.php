@@ -16,7 +16,9 @@
                 <div class="titre_form" data-msg>  
                     <h1><?= $row['subject'] ?></h1>
                 </div>
+              
                 <div class="convers" data-conversation></div>
+                
             </div>
         <?php } ?>
     </article>
