@@ -2,6 +2,8 @@
 
 node_modules
 
+assets/img
+
 config/database.php
 application/cache/*
 !application/cache/index.html
