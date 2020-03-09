@@ -45,7 +45,8 @@ class MY_Loader extends CI_Loader {
         $vars['filter'] =  (strpos($page, 'list') || strpos($page,'tile')) ? $filter_view : '';
 
         // si le navigateur est IE
-        $vars['is_IE'] = $_SESSION['is_IE'] ? '-ie-' : ''; 
+        if(isset($_SESSION['is_IE']))
+            $vars['is_IE'] = $_SESSION['is_IE'] ? '-ie-' : ''; 
 
         $this->view('pages/head', $vars);
         $this->view($header, $vars);
