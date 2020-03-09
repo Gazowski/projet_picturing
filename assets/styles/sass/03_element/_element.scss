@@ -29,7 +29,10 @@ a{
     list-style-type: none;
     &:hover{
         color: $c-medium-theme; 
-    }
+	}
+	&.button:hover{
+		color:white;
+	}
 }
 
 li{
