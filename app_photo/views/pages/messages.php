@@ -18,10 +18,10 @@
                 </div>
                 
                 <!-- <p><?= $row['body'] ?></p>
-                <p><?= $row['cdate'] ?></p> -->
+                <p><?= $row['cdate'] ?></p>
                 
 
-                <!-- <div class="">
+                <div class="">
                     <a class="button" href="">Répondre</a>
                 </div> -->
 

@@ -48,7 +48,7 @@ class Message extends CI_Controller {
         $this->data['ad'] = $this->ad_model->get_ad($id_ad);
         $this->data['profil'] = $this->member_model->get_member($id_member);
 
-        //Validation du message/body À FAIRE!!!
+        //Validation du message/body
         $this->form_validation->set_rules('message', 'votre message', 'trim|required');
 
         // Pas sûre d'être à la bonne place?
@@ -131,6 +131,7 @@ class Message extends CI_Controller {
                 redirect("message/display_messages_user", 'refresh');
             }else{
                 $this->mahana_model->reply_to_message($id_msg, $sender_id, $body);
+                $this->session->set_flashdata('message', 'Votre message a bien été envoyé');
                 redirect('message/display_messages_user','refresh');
             }
         }
