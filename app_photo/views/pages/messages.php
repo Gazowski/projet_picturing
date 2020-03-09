@@ -14,7 +14,7 @@
         <?php foreach($threads as $row) {?>
             <li class="" data-thread="<?= $row['thread_id'] ?>">
                 <div class="titre_form" data-msg>  
-                    <h1><?= $row['subject'] ?></h1>
+                    <h1><?= $ad['title'] ?></h1>
                 </div>
                 <div data-conversation></div>
             </li>

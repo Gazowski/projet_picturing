@@ -19,6 +19,22 @@ export class Thread {
             //this.thread.addEventListener('click', (e)=>this.open_thread)
         }
     }
+
+    /* display_title = () => {
+        this._msg = this._el.querySelector('[data-msg]')
+
+        console.log("zone messages = " + this._el.querySelector('[data-conversation]'))
+        
+        let paramAjax = {
+            method : "POST",
+            json : true,
+            action : "index.php/ajax_controller/messages_thread",
+            data_to_send : this._el.dataset.thread
+        }
+        requeteAjax(paramAjax,(reponse_ajax) => {
+            this.display_conversation(reponse_ajax)
+        })
+    } */
 }
 
 class Conversation{
@@ -36,6 +52,7 @@ class Conversation{
         }
     }
 
+    // On va chercher les données pour la vue par une requête AJAX
     open_conversation = () => {
         this._msg = this._el.querySelector('[data-msg]')
         this._msg.removeEventListener('click',this.open_conversation)
@@ -53,10 +70,12 @@ class Conversation{
         })
     }
     
+    // On insère les données dans la vue
     display_conversation = (conversation) =>{
 
         conversation = JSON.parse(conversation)
-
+        // console.log(conversation)
+        
         for(let message of conversation){
             console.log(message.thread_id)
             this._conversation_field.innerHTML += `
@@ -76,6 +95,7 @@ class Conversation{
         this._msg.addEventListener('click',this.close_conversation)
     }
 
+    // transformer les 2 fonctions en une ternaire
     close_conversation = () => {
         
         this._msg.addEventListener('click',this.reopen_conversation)
@@ -88,12 +108,6 @@ class Conversation{
     reopen_conversation = () => {     
         
         this._msg.removeEventListener('click',this.reopen_conversation)
-
-        /* if (conversation_field.style.display = "none"){
-            conversation_field.style.display = null
-        }else{
-            conversation_field.style.display = "none"
-        } */
 
         this._conversation_field.style.display = null
         
