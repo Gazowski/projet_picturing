@@ -24,17 +24,21 @@ export class Thread {
 class Conversation{
     constructor(el){
         this._el = el
-
+        this._messages = this._el.querySelectorAll('[data-msg]')
+        
         this.init()
     }
 
     init = () =>{
-        this._el.addEventListener('click',this.open_conversation)
+        for(let msg of this._messages){
+            this._conversation_field = this._el.querySelector('[data-conversation]')
+            msg.addEventListener('click',this.open_conversation)
+        }
     }
 
     open_conversation = () => {
-        this._el.removeEventListener('click',this.open_conversation)
-        console.log(this._el.dataset.thread)
+        this._msg = this._el.querySelector('[data-msg]')
+        this._msg.removeEventListener('click',this.open_conversation)
 
         console.log("zone messages = " + this._el.querySelector('[data-conversation]'))
         
@@ -50,39 +54,49 @@ class Conversation{
     }
     
     display_conversation = (conversation) =>{
+
         conversation = JSON.parse(conversation)
-        //console.log(thread.id)
-        let conversation_field = this._el.querySelector('[data-conversation]')
 
-        if (conversation_field.hidden = true)
-        {
-            conversation_field.hidden = false;
-            conversation_field.innerHTML = ` `
-
-
-            for(let message of conversation){
-                console.log(message.thread_id)
-                conversation_field.innerHTML += `
-                    <i>le ${message.cdate}</i> message de <b>${message.user_name}</b>
-                    <p>${message.body}</p>
-                `
-            }
-            //console.log(message.thread_id);
-            conversation_field.innerHTML += `
-            <form method="POST" action="index.php/message/reply">
-            <textarea name="answer" rows="3" cols="33"></textarea>
-            <input type="hidden" name="id_msg" value="${conversation[0].id}">
-            <input class="button" type="submit" value="repondre">
-            </form>
+        for(let message of conversation){
+            console.log(message.thread_id)
+            this._conversation_field.innerHTML += `
+                <i>le ${message.cdate}</i> message de <b>${message.user_name}</b>
+                <p>${message.body}</p>
             `
         }
-        this._el.addEventListener('click',this.close_conversation)
+
+        this._conversation_field.innerHTML += `
+        <form method="POST" action="index.php/message/reply">
+        <textarea name="answer" rows="3" cols="33"></textarea>
+        <input type="hidden" name="id_msg" value="${conversation[0].id}">
+        <input class="button" type="submit" value="repondre">
+        </form>
+        `
+
+        this._msg.addEventListener('click',this.close_conversation)
     }
 
     close_conversation = () => {
-        let conversation_field = this._el.querySelector('[data-conversation]')
+        
+        this._msg.addEventListener('click',this.reopen_conversation)
+        
+        this._conversation_field.style.display = "none"
 
-        conversation_field.hidden = true;        
-        this._el.addEventListener('click',this.open_conversation)
+        this._msg.addEventListener('click',this.reopen_conversation)      
+    }
+    
+    reopen_conversation = () => {     
+        
+        this._msg.removeEventListener('click',this.reopen_conversation)
+
+        /* if (conversation_field.style.display = "none"){
+            conversation_field.style.display = null
+        }else{
+            conversation_field.style.display = "none"
+        } */
+
+        this._conversation_field.style.display = null
+        
+        this._msg.addEventListener('click',this.close_conversation)        
     }
 }

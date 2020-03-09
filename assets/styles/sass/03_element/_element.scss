@@ -32,6 +32,10 @@ a{
     }
 }
 
+li{
+	list-style:none;
+}
+
 input[type ="text"],input[type = "password"],textarea{
     width: 99%;
 }

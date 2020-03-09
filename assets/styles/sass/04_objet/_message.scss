@@ -1,0 +1,19 @@
+.msg{
+   
+   width: 90%;
+   margin: 2em auto;
+  
+   .titre_form{
+       border-bottom: 5px solid $c-light-grey; ;
+   }
+   .convers{
+       background-color: $c-light-grey ;
+       width: 90%;
+       margin: 0 auto;
+       text-align: center;
+       textarea{
+           width: 95%;
+       }
+   }
+
+}
