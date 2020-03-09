@@ -40,7 +40,7 @@ class Message extends CI_Controller {
             redirect($_SERVER['HTTP_REFERER']); 
         }
 
-        //Initialisation dese variables
+        //Initialisation des variables
         $id_ad = $this->session->userdata['id_ad'];
         $id_member = $this->session->userdata['user_id'];
 
@@ -48,16 +48,17 @@ class Message extends CI_Controller {
         $this->data['ad'] = $this->ad_model->get_ad($id_ad);
         $this->data['profil'] = $this->member_model->get_member($id_member);
 
-        //Validation du message/body À FAIRE!!!
-        $this->form_validation->set_rules('message', 'Votre message', 'trim|required');
+        //Validation du message/body
+        $this->form_validation->set_rules('message', 'votre message', 'trim|required');
 
         // Pas sûre d'être à la bonne place?
         if ($this->form_validation->run() === TRUE)
         {
+            //A réécrire!!!
             $subject = $this->session->userdata['id_ad'];
             $body = $this->input->post('message');
             $sender_id = $this->session->userdata['user_id'];
-            $recipients = $this->session->userdata['id_ad'];
+            $recipients = $this->session->userdata['ad_owner'];
         }
 
         if ($this->form_validation->run() === TRUE && $this->mahana_model->send_new_message($sender_id, $recipients, $subject, $body))
@@ -80,8 +81,10 @@ class Message extends CI_Controller {
         }
     } 
 
-//////logique pour afficher la liste des messages par utilisateur////
-    
+/**
+ * logique pour afficher la liste des messages par utilisateur
+ */
+
     public function display_messages_user()
     {
         if ( ! file_exists(APPPATH.'views/pages/messages.php'))
@@ -89,44 +92,48 @@ class Message extends CI_Controller {
             // Whoops, we don't have a page for that!
             show_404();
         }
-        // Si il y a un message concernant l'annonce et que l'utilisateur connecté est l'owner, le message est affiché dans son annonce
-		if ($this->session->userdata['user_id'] = $this->session->userdata['ad_owner'])
-		{      
-            $this->data['page_title'] = 'Liste de vos Messages'; // Capitalize the first letter
-            $sender = $this->mahana_model->get_message();
-            var_dump($sender);
-            die;
-            $this->msg = $this->mahana_messaging->get_message($msg_id, $sender_id); 
-			$data['create_message'] = true;
+        
+        // Si il y a un message concernant l'annonce et que l'utilisateur connecté le message est affiché dans la vue
+        if (isset($this->session->userdata['user_id']))
+        {      
+            $data['page_title'] = 'Liste de vos Messages'; // Capitalize the first letter
+            $data['user_id'] = $this->session->userdata['user_id']; 
+            $data['threads'] = $this->mahana_model->get_all_threads($data['user_id']);
+
+//var_dump($data['threads']);
             
-            //$is_admin = $this->ion_auth->is_admin();
-            $this->load->template('pages/messages', $this->data, $this->msg);
+            $this->load->template('pages/messages', $data);
         }
     }
 
-//////logique pour afficher la liste des messages dans les annonces////
-
-    public function display_messages_ad()
+    /**
+     * logique pour répondre aux messages
+     */
+    
+    public function reply()
     {
-        if ( ! file_exists(APPPATH.'views/pages/detail_ad.php'))
+        if ( ! file_exists(APPPATH.'views/pages/messages.php'))
         {
             // Whoops, we don't have a page for that!
             show_404();
         }
-        // Si il y a un message concernant l'annonce et que l'utilisateur connecté est l'owner, le message est affiché dans son annonce
-        
-        if ($this->session->userdata['user_role'] >= $this->SUPPLIER)
-		{      
-            $data['title'] = 'Liste des Messages de votre Annonce'; // Capitalize the first letter
-            $msg = $this->mahana_messaging->get_message($msg_id, $sender_id); 
-			$data['create_message'] = true;
-            
-            //$is_admin = $this->ion_auth->is_admin();
-            $this->load->template('pages/messages',$msg,$data);
-        } else {
-            $this->session->set_flashdata('message', 'Vous devez être connecté en tant que fournisseur');
-            redirect($_SERVER['HTTP_REFERER']); 
-        }
+    
+        // Si il y a un message concernant l'annonce et que l'utilisateur connecté est l'owner, le message est affiché dans la vue
+        if (isset($this->session->userdata['user_id']))
+		{   
+            $id_msg = $this->input->post('id_msg');
+            $sender_id = $this->session->userdata['user_id'];
+            $body = $this->input->post('answer');
+            $body = trim($body);
 
-    } 
+            if ($body == "") {
+                $this->session->set_flashdata('message', 'Vous devez remplir le champ message');
+                redirect("message/display_messages_user", 'refresh');
+            }else{
+                $this->mahana_model->reply_to_message($id_msg, $sender_id, $body);
+                $this->session->set_flashdata('message', 'Votre message a bien été envoyé');
+                redirect('message/display_messages_user','refresh');
+            }
+        }
+    }
 }

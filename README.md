@@ -14,6 +14,9 @@ https://coolors.co/
 
 
 ## amélioration à faire
+* css pour le rating https://css-tricks.com/star-ratings/
+* installer babel (pour compatibilité ES5)
+* version ie en flexbox
 * activer la recherche
 * différencier les services des produits (label/tag? code couleur? icone?...) 
 * ajouter un plugin seo

@@ -3,12 +3,12 @@
        {
            "format": "expanded",
            "extensionName": ".css",
-           "savePath": "/css"
+           "savePath": "/assets/styles/sass"
        },
        {
            "extensionName": ".min.css",
            "format": "compressed",
-           "savePath": "/dist/css"
+           "savePath": "/assets/styles/sass/dist/"
        }
    ],
    "liveSassCompile.settings.excludeList": [
@@ -18,10 +18,6 @@
    "liveSassCompile.settings.generateMap": true,
    "liveSassCompile.settings.autoprefix": [
        "> 1%",
-       "last 2 versions",
-       {"browserslist" : [
-        "defaults"
-      ]}
-       
+       "last 2 versions",       
    ]
 }

@@ -12,6 +12,20 @@
   margin-bottom: 6rem;
     
 }
+
+// version IE
+.-ie-parent {
+  @include flexbox(flex,row,center,stretch);
+  flex-wrap: wrap;
+  width:80%;
+  margin: auto;
+
+  .child{
+    img{
+      height: 13em;
+    }
+  }
+}
    
 .prix{
   display: flex;

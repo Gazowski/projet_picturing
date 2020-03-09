@@ -17,7 +17,7 @@ export class Ad {
         for(let tile of this._elTiles){
             tile.addEventListener('click',()=>{
                 sessionStorage.setItem('id_ad', tile.dataset.jsTile);
-                sessionStorage.setItem('owner', tile.dataset.jsOwner);
+                //sessionStorage.setItem('owner', tile.dataset.jsOwner);
 
                 let paramAjax = {
                     method : "GET",
@@ -35,5 +35,4 @@ export class Ad {
             })
         }
     }
-
 }

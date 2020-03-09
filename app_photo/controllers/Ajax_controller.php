@@ -12,10 +12,11 @@ class Ajax_controller extends CI_Controller {
     {
         parent::__construct();
         $this->load->database();
-        $this->load->library(['users','ion_auth']);
+        $this->load->library(['users','ion_auth','mahana_messaging']);
         $this->load->model('ion_auth_model');
         $this->load->model('ad_model');
         $this->load->model('star_rating_model');
+        $this->load->model('mahana_model');
 
         $this->ajax_data = '';
         $this->clean_json_data();        
@@ -66,8 +67,38 @@ class Ajax_controller extends CI_Controller {
         
 		$data['title'] = 'Information Annonce';        
         $data['ad'] = $this->ad_model->get_ad($id_ad);
+        // parametre pour mahana model
+        $user_id = isset($this->session->userdata['user_id']) ? $this->session->userdata['user_id'] : false;
+        
+
+        /****       EFFACER LA ZONE SUIVANTE SI CONFLIT ***** */
+
+                        // je suis fournisseur de l'annonce
+                        // je veux voir tous les threads de l'annonce
+                        if($user_id && false)
+                        {
+                            $data['threads'] = $this->mahana_model->get_all_threads_by_ad($id_ad);
+                        }
+
+        /****        FIN DE LA ZONE A EFFACER      *********/
+
+        // je suis soumissionnaire de l'annonce
+        // je veux voir mon thread de soumission
+        // else if($user_id && !empty($this->mahana_model->get_full_thread_by_ad($id_ad,$user_id,true)))
+        // {
+        //     $data['threads'] = $this->mahana_model->get_full_thread_by_ad($id_ad,$user_id,true);
+        // }
+        // je ne suis simple visiteur
+        // je ne vois aucun thread
+        else
+        {
+            $data['threads'] = null;
+        }
+
+        //var_dump($data['threads']);
+
         $this->session->set_userdata('ad_owner',$data['ad']['owner']);
-        $this->session->set_userdata('id_ad',$data['ad']['id_ad']);
+        $this->session->set_userdata('id_ad',$id_ad);
         $this->load->view('pages/detail_ad',$data);
     }
 
@@ -189,11 +220,23 @@ class Ajax_controller extends CI_Controller {
 
     public function rate_user()
     {
-       $this->input->get('note', true);
-       $this->input->get('owner', true);
-       echo $this->star_rating_model->get_rating();
-      // echo $this->star_rating_model->user_rating($rated_user, $rating)
-      //$this->load->view('pages/star_rating_view',$data);
+        if (!isset($this->session->userdata['user_id']))
+        {
+            $this->session->set_flashdata('message', 'Vous devez être connecté');
+            redirect('auth', 'refresh');
+        }
+        $rater_user = $this->session->userdata['user_id'];
+        $rated_user = $this->ajax_data->rated_user;
+        $rating = $this->ajax_data->rating;
+        echo $this->star_rating_model->user_rating($rated_user,$rater_user, $rating);
+    }
 
+    public function messages_thread()
+    {
+        $id_thread = $this->ajax_data;
+        $user_id = $this->session->userdata['user_id'];
+        //var_dump($this->mahana_model->get_full_thread($id_thread,$user_id,true));
+        $conversation = $this->mahana_model->get_full_thread($id_thread,$user_id,true);
+        echo json_encode($conversation);
     }
 }

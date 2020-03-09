@@ -1,12 +1,15 @@
 <?php
   $photos = explode(',',$ad['photo']);
   $secondary_photos = array_slice($photos,1);
+  $owner_name = $ad['first_name'];
+  //var_dump($threads);
 ?>
 <div class="detail_ad" 
       data-component='detail' 
       data-table='ad'
       data-user='<?= isset($_SESSION['user_id']) ? $_SESSION['user_id'] : 0 ;?>'
       data-owner='<?= $ad['owner']?>'>
+      
   <div class="titre_img_desc_prix">
     <div class="img_titre">
       <div>
@@ -44,7 +47,7 @@
                 contentEditable='false'><?= $ad['price'] ?></span> CAD$</h3> 
   </div>
   
-  
+  <div class="auteur">Auteur : <b><?= $ad['first_name'] ?> <?= $ad['last_name'] ?></b></div>
   
   <div class="soumission display_none" data-btn-bid>
       <a class="button" href="<?= base_url(); ?>index.php/message/create_message">Soumissionner</a>
@@ -56,46 +59,15 @@
     <button class="button" data-btn-delete>supprimer</button>
   </div>  
   <!-- Fin Affichages des boutons modifier/supprimer ----------------->
-  
+  <div class="line"></div>  
   <!-- Affichages champs de notation et boutons noter ----------------->
+  
   <div class="display_none rating" data-rating>
-    <input type='text' name='note' class="notation" data-note>
-    <button class="button" data-btn-noter>Noter</button>
+    <h4>Évaluer l'auteur</h4>
+    <div class="rating">
+      <span data-star='5'>☆</span><span data-star='4'>☆</span><span data-star='3'>☆</span><span data-star='2'>☆</span><span data-star='1'>☆</span>
+    </div>
   </div> 
   <!--Fin Affichages champs de notation et boutons noter ----------------->
 
 </div>
-
-
-
-<!-- ---------------------------------------------- -->    
-
-<?php /**
-     * liste des message rattachés à cette annonce
-     * */ 
-?>
-
-<?php if(isset($message)) { ?>
-<section class="">
-    <ul class="">
-        <?php foreach($message as $row) {?>
-            <li class="">
-                <div class="">    
-                    <h3><?= $row['title'] ?></h3>
-                    <p><?= $row['date'] ?></p>
-                    <p><?= $row['text_message'] ?></p>
-                    <p><?= $row['writer'] ?></p>
-                    <p><?= $row['ad'] ?></p>
-                </div>
-            </li>
-        <?php } ?>
-    </ul>
-</section>
-<?php } ?>
-
-
-    
-    
-
-    
- 

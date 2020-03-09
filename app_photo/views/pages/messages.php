@@ -1,36 +1,34 @@
 <?php /**
      * liste des message rattachés à cette annonce
      * */ 
-    var_dump($_SESSION);
+    //var_dump($user_id);
+    //var_dump($threads);
 ?>
 
-<!-- <?php //if(isset($message)) { ?> -->
-<section class="form">
-<div class="titre_form">  
+<?php if(isset($threads)) { ?>
+<section class="form" data-component='thread'>
+    <div class="titre_form">  
             <h1><?= $page_title ?></h1>
-      </div>
+    </div>
     <ul class="">
-        <?php foreach($msg as $row) {?>
-            <li class="">
-                <div class="">    
-                    <p><?= $row['sender_id'] ?></p>
-                    <h3><?= $row['subject'] ?></h3>
-                    <p><?= $row['body'] ?></p>
-                    <p><?= $row['text_message'] ?></p>
+        <?php foreach($threads as $row) {?>
+            <li class="" data-thread="<?= $row['thread_id'] ?>">
+                <div class="titre_form">  
+                    <h1><?= $row['subject'] ?></h1>
                 </div>
-                  <?php foreach($message as $row) {?>
-                    <li class="">
-                        <div class="">    
-                            <p><?= $row['writer'] ?></p>
-                            <h3><?= $row['subject'] ?></h3>
-                            <p><?= $row['date'] ?></p>
-                            <p><?= $row['text_message'] ?></p>
-                        </div>
-                    </li>
-                  <?php } ?>
-              </ul>
+                
+                <!-- <p><?= $row['body'] ?></p>
+                <p><?= $row['cdate'] ?></p>
+                
+
+                <div class="">
+                    <a class="button" href="">Répondre</a>
+                </div> -->
+
+                <div data-conversation></div>
             </li>
         <?php } ?>
     </ul>
 </section>
-<!-- <?php //} ?> -->
+<?php } ?>
+

@@ -12,9 +12,8 @@ export class Detail {
         this._btn_bid = this._el.querySelector('[data-btn-bid]')
         this._btn_owner = this._el.querySelector('[data-btn-owner]')
         this._btn_delete = this._el.querySelector('[data-btn-delete]')
-        this._btn_rating = this._el.querySelector('[data-rating]')
-        this._btn_noter = this._el.querySelector('[data-btn-noter]')
-        this._input_rating = this._el.querySelector('[data-note]')
+        this._rating = this._el.querySelector('[data-rating]')
+        this._stars = this._el.querySelectorAll('[data-star]')
 
         this.ajax_data = {}
 
@@ -25,16 +24,16 @@ export class Detail {
     init = (e) =>{
         console.log('btn_bid = ' + this._btn_bid)
         console.log('btn_owner = ' + this._btn_owner)
-        console.log('btn_rating = ' + this._btn_noter)
         if(this._btn_bid) this.display_btn_bid()
         if(this._btn_owner) this.display_btn_owner()
-        if(this._btn_noter) this. display_rating()
+        if(this._rating) this.display_rating()
         this._btn_modif.addEventListener('click',this.modify_data) // pas de fonction fleché car l'évènement doit être supprimer
         this._btn_delete.addEventListener('click',()=>{
             display_alert('confirmez la suppression',this.delete_data)        
         })
-
-        this._btn_noter.addEventListener('click', this.rate_user)
+        for(let star of this._stars){
+            star.addEventListener('click',()=>{this.rate_user(star)})
+        }
     }
 
     display_btn_bid = () =>{
@@ -51,7 +50,7 @@ export class Detail {
 
     display_rating = () => {
         if(this._el.dataset.user != 0 && this._el.dataset.user != this._el.dataset.owner){
-            this._btn_rating.classList.remove('display_none')
+            this._rating.classList.remove('display_none')
         }
     }
     
@@ -86,10 +85,11 @@ export class Detail {
         for(let data of this._editable_data){
             if(data.contentEditable == 'false') { 
                 data.contentEditable = true
-                data.classList.add('editable') 
-            } else { 
+                data.classList.add('editable')
+            }
+            else { 
                 data.contentEditable = false
-                data.classList.remove('editable') 
+                data.classList.remove('editable')
             }
         }       
     }
@@ -128,18 +128,24 @@ export class Detail {
     }
 
 
-     /**
+    /**
      * envoi des données ajax pour noter un user
      */
-    rate_user = () =>{
+    rate_user = (star) =>{
+        console.log(star.dataset.star)
+        let ajax_data = {
+            'rated_user' : this._el.dataset.owner,
+            'rating' : star.dataset.star
+        }
         let paramAjax = {
-            method : "GET",
-            action : `index.php/ajax_controller/rate_user/${this._el.dataset.owner}/${this._input_rating.value}`,
-           
+            method : "POST",
+            json : true,
+            action : `index.php/ajax_controller/rate_user`,
+            data_to_send : ajax_data,                       
         }
         requeteAjax(paramAjax, (reponse_ajax) => {
             console.log(reponse_ajax)
-            if(reponse_ajax == 1){
+            if(reponse_ajax){
                 display_alert('la note a été enregistrée')
             }
         })
@@ -166,5 +172,3 @@ export class Detail {
         })
     }
 }
-
-

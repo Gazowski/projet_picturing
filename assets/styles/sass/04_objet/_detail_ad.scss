@@ -26,6 +26,17 @@
         margin-top: .4em;
     }
 }
+.auteur{
+    margin: 0 auto ;
+    padding-top: 1em;
+}
+
+.rating{
+    text-align: center;
+    > span{
+        color: $c-medium-theme ;
+    }
+}
 
 
 @media (min-width: 600px) {
@@ -34,7 +45,7 @@
       
     }
     .soumission{
-        width: 25%;
+        width: 30%;
         margin: 0 auto;
     }
     .titre_img_desc_prix{
@@ -51,7 +62,7 @@
         
     }
     .desc_prix{
-        width: 50%;
+        width: 95%;
         display: flex;
         flex-direction: column;
         justify-content: space-between;
@@ -60,19 +71,27 @@
         }
         
     }
-  
-
     
+    .rating{
+        margin: 1em auto;
+        display: flex;
+        flex-direction: column;
+        
+    }
+     
 }
   
 @media (min-width: 900px) {
     .detail_ad{
-        width: 32%;
+        width: 35%;
 
         .img_titre{
             width: 80%;
-          
         }
+        
+    }
+    .soumission{
+        width: 70%;
     }
     
     .secondary_photos{
@@ -89,6 +108,13 @@
             margin-top: .4em;
         }
     }
-  
-
+    .rating{
+    
+        margin: 1em auto;
+        display: flex;
+        flex-direction: column;   
+    }
+    .desc_prix{
+        width: 100%;
+    }
 }

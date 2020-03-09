@@ -12,17 +12,35 @@ class Ad extends CI_Controller {
     {
         parent::__construct();
         $this->load->database();
-        $this->load->library(['users','ion_auth', 'session']);
+        $this->load->library(['users','ion_auth', 'session','user_agent']);
         $this->load->model('ion_auth_model');
-        $this->load->model('ad_model');
+		$this->load->model('ad_model');
+		
 		$this->is_admin = $this->ion_auth->is_admin();
+		$this->detect_browser();
 		
 		$this->CLIENT = 10;
 		$this->SUPPLIER = 20;
 		$this->GOLDEN_SUPPLIER = 30;
 		$this->SUPERVISOR = 40;
 		$this->ADMIN = 40;
-    }
+	}
+
+	/**
+	 * detect_browser
+	 * enregistre le nom et la version du navigateur en variable session
+	 * initialise la variable session is_IE a 'true' ou 'false' si le navigateur est IE
+	 * (surtout utilisé dans la fonction template de core/MY_Loader)
+	 */	
+	private function detect_browser()
+	{
+		$this->agent = [
+			'agent_name' => $this->agent->is_browser() ?  $this->agent->browser() : null,
+			'agent_version' => $this->agent->is_browser() ?  $this->agent->version() : null,
+			'is_IE' => $this->agent->is_browser() && $this->agent->browser() == 'Internet Explorer' ? true : false ,
+		];
+		$this->session->set_userdata($this->agent);
+	}
     
     public function display_all()
     {
@@ -36,7 +54,7 @@ class Ad extends CI_Controller {
         
         $data['title'] = 'Liste des Annonces'; // Capitalize the first letter
         $data['ad'] = $this->ad_model->get_ads();
-
+		
         $this->load->template('pages/tile',$data);
     }
 

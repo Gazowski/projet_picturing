@@ -1,0 +1,46 @@
+.rating > span:hover:before {
+    content: "\2605";
+    position: absolute;
+}
+
+.rating {
+   unicode-bidi: bidi-override;
+   direction: rtl;
+   display:block;
+ }
+ .rating > span {
+   display: inline-block;
+   position: relative;
+   width: 1.1em;
+   color: $c-medium-theme;
+ }
+ .rating > span:hover:before,
+ .rating > span:hover ~ span:before {
+    content: "\2605";
+    position: absolute;
+   
+ }
+
+
+
+// star en lecture seule
+
+ 
+.Stars {
+   --percent: calc(var(--rating) / 5 * 100%);
+   
+   display: inline-block;
+   font-size: 1.5em;
+   font-family: Times; // make sure ★ appears correctly
+   line-height: 1;
+   
+   &::before {
+     content: '★★★★★';
+     letter-spacing: 3px;
+     background: linear-gradient(90deg, $c-medium-theme var(--percent), $c-light-grey var(--percent));
+     background-clip: text;
+     -webkit-background-clip: text;
+     color: transparent;
+   }
+ }
+

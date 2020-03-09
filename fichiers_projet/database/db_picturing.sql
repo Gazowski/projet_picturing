@@ -161,27 +161,6 @@ CREATE TABLE IF NOT EXISTS `login_attempts` (
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
--- --------------------------------------------------------
-
---
--- Table structure for table `message`
---
-
-DROP TABLE IF EXISTS `message`;
-CREATE TABLE IF NOT EXISTS `message` (
-  `id_message` int(11) NOT NULL AUTO_INCREMENT,
-  `title` varchar(250) NOT NULL,
-  `date` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP,
-  `text_message` varchar(250) DEFAULT NULL,
-  `writer` int(11) UNSIGNED NOT NULL,
-  `ad` int(11) DEFAULT NULL,
-  PRIMARY KEY (`id_message`),
-  KEY `writer` (`writer`),
-  KEY `ad` (`ad`)
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
-
--- --------------------------------------------------------
-
 --
 -- Table structure for table `msg_messages`
 --
