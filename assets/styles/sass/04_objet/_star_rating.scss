@@ -21,11 +21,8 @@
    
  }
 
-
-
 // star en lecture seule
 
- 
 .Stars {
    --percent: calc(var(--rating) / 5 * 100%);
    

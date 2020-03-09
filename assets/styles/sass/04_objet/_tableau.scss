@@ -1,5 +1,5 @@
 
-
+// scss des tableaux listes
 .text_tab h3{
 	text-align: center;
 	
@@ -24,7 +24,7 @@ tr:nth-of-type(odd) {
 th { 
 	background: $c-medium-theme; 
 	color: white; 
-	font-weight: bold; 
+	font-weight: 600; 
 	}
 
 td, th { 
