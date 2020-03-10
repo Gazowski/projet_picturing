@@ -7,7 +7,7 @@
             <th>Prénom</th>
             <th>Nom</th>
             <th>Courriel</th>
-            <th>Entprise</th>
+            <th>Entreprise</th>
             <th>Groupe</th>
             <th>Note</th>
             <th>Action</th>

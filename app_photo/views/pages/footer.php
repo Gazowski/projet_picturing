@@ -63,8 +63,7 @@
 			<p>Salhi Mohand Salah.</p>
 		</div>
 		<div class="address">
-			<p>Pour le compte du :</p>
-			<p>Projet web 2</p> 
+			<p>Pour le compte du : Projet web 2</p>
 			<p>pour le programme :</p> 
 			<p>Conception et programmation des sites web</p> 
 		</div>
