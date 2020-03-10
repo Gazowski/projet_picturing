@@ -79,7 +79,7 @@ class Conversation{
         for(let message of conversation){
             console.log(message.thread_id)
             this._conversation_field.innerHTML += `
-                <i>le ${message.cdate}</i> message de <b>${message.user_name}</b>
+                <i>le ${message.cdate}</i> message de <b><a href='/index.php/member/7'>${message.user_name}</a></b>
                 <p>${message.body}</p>
                 <div class="line_n"></div>
             `
@@ -93,6 +93,7 @@ class Conversation{
       
         </form>
         `
+
 
         this._msg.addEventListener('click',this.close_conversation)
     }

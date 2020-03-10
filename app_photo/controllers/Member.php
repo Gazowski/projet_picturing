@@ -21,6 +21,33 @@ class Member extends CI_Controller {
     }
 
 
+
+      /**
+     * affichage des tous les fournisseurs
+     * accessible par superviseur et +
+     */
+    
+    public function display_all_supervisor()
+    {
+        
+        if ( ! file_exists(APPPATH.'views/pages/list.php'))
+        {
+            // Whoops, we don't have a page for that!
+            show_404();
+        }
+        if (!isset($this->session->userdata['user_role']) || $this->session->userdata['user_role'] < 50)
+        {
+            $this->session->set_flashdata('message', 'Vous devez avoir les droits d\'administrateur');
+            redirect($_SERVER['HTTP_REFERER']); 
+        }        
+        
+        $data['title'] = 'Liste des superviseurs'; // Capitalize the first letter
+        $data['membres'] = $this->member_model->get_by_type('name = "Superviseur"');     
+        
+        $this->load->template('pages/list_members',$data);
+    }
+
+
     /**
      * affichage des tous les fournisseurs
      * accessible par superviseur et +
@@ -59,7 +86,7 @@ class Member extends CI_Controller {
             // Whoops, we don't have a page for that!
             show_404();
         }
-        if (!isset($this->session->userdata['user_role']) || $this->session->userdata['user_role'] < 40)
+        if (!isset($this->session->userdata['user_role']) || $this->session->userdata['user_role'] < 30)
         {
             $this->session->set_flashdata('message', 'Vous devez avoir les droits de superviseur');
             redirect($_SERVER['HTTP_REFERER']); 
