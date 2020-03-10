@@ -94,25 +94,11 @@ class Conversation{
         </form>
         `
 
-        this._msg.addEventListener('click',this.close_conversation)
+        // this._msg.addEventListener('click',this.close_conversation)
+        this._msg.addEventListener('click',this.toggle_conversation)
     }
 
-    // transformer les 2 fonctions en une ternaire
-    close_conversation = () => {
-        
-        this._msg.addEventListener('click',this.reopen_conversation)
-        
-        this._conversation_field.style.display = "none"
-
-        this._msg.addEventListener('click',this.reopen_conversation)      
-    }
-    
-    reopen_conversation = () => {     
-        
-        this._msg.removeEventListener('click',this.reopen_conversation)
-
-        this._conversation_field.style.display = null
-        
-        this._msg.addEventListener('click',this.close_conversation)        
+    toggle_conversation = () => {
+        this._conversation_field.classList.toggle('display_none')
     }
 }

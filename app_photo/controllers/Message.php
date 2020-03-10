@@ -99,15 +99,17 @@ class Message extends CI_Controller {
             $data['page_title'] = 'Liste de vos Messages'; // Capitalize the first letter
             $data['user_id'] = $this->session->userdata['user_id']; 
             $data['threads'] = $this->mahana_model->get_all_threads($data['user_id']);
-            $data['id_ad'] = $data['threads'][0]['subject'];
-            $data['ad'] = $this->ad_model->get_ad($data['id_ad']);
-
-            // var_dump($data['threads']);
-            // var_dump($data['id_ad']);
-            // var_dump($_SESSION);
-
-            // die;
+            $threads = $this->mahana_model->get_all_threads($data['user_id']);
             
+            $data['ads'] = [];
+            foreach($threads as $thread){
+
+                $id_ad = $thread['subject'];
+                $data['ads'][] = $this->ad_model->get_ad($id_ad);
+                // var_dump($data['ads']);
+            }
+            // die;
+
             $this->load->template('pages/messages', $data);
         }
     }
