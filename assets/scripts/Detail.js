@@ -45,14 +45,28 @@ export class Detail {
     }
     
     add_action_to_btn_supervisor = () =>{
-        this._btn_supervisor.addEventListener('click',()=>{
-            display_alert(`Voulez-vous activez ${this.table == 'ad' ? 'cette annonce' : 'ce membre'} ?`,this.activate_elt)
-        })
+        if(this._btn_supervisor.dataset.active == 0){
+            this._btn_supervisor.addEventListener('click',()=>{ this.confirm_activation() })
+        } else {
+            this._btn_supervisor.removeEventListener('click',()=>{ this.confirm_activation() })
+            this._btn_supervisor.addEventListener('click',()=>{ this.confirm_banish() })
+        }
+        
+    }
+
+    confirm_banish = () =>{
+        display_alert(`Voulez-vous bannir ce membre' ?`,this.banish_user)
     }
 
     banish_user = () =>{
+        this._btn_supervisor.removeEventListener('click',()=>{ this.confirm_banish() })
+        
         // utiliser le tag <base> pour mémoriser l'url de base 
         // https://developer.mozilla.org/fr/docs/Web/HTML/Element/base
+    }
+
+    confirm_activation = () =>{    
+        display_alert(`Voulez-vous activez ${this.table == 'ad' ? 'cette annonce' : 'ce membre'} ?`,this.activate_elt)
     }
 
     activate_elt = () =>{
