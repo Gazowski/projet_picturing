@@ -51,8 +51,9 @@
   <div class="auteur">Auteur : <b><?= $ad['first_name'] ?> <?= $ad['last_name'] ?></b></div>
   
   <!-- Affichage du bouton activer  ----------------->
-  <?php if(isset($supervisor_btn)) { $supervisor_btn(); } ?>
-  
+  <div class="btn_activ">
+    <?php if(isset($supervisor_btn)) { $supervisor_btn(); } ?>
+  </div>
   <!-- Affichage du bouton soumissionner  ----------------->
   <div class="soumission display_none" data-btn-bid>
       <a class="button" href="<?= base_url(); ?>index.php/message/create_message">Soumissionner</a>
@@ -64,7 +65,7 @@
     <button class="button" data-btn-delete>supprimer</button>
   </div>  
   <!-- Fin Affichages des boutons modifier/supprimer ----------------->
-  <div class="line"></div>  
+
   <!-- Affichages champs de notation et boutons noter ----------------->
   
   <div class="display_none rating" data-rating>
