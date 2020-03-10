@@ -79,7 +79,7 @@ class Conversation{
         for(let message of conversation){
             console.log(message.thread_id)
             this._conversation_field.innerHTML += `
-                <i>le ${message.cdate}</i> message de <b>${message.user_name}</b>
+                <i>le ${message.cdate}</i> message de <b><a href='/index.php/member/7'>${message.user_name}</a></b>
                 <p>${message.body}</p>
                 <div class="line_n"></div>
             `
@@ -94,25 +94,16 @@ class Conversation{
         </form>
         `
 
+<<<<<<< HEAD
+
         this._msg.addEventListener('click',this.close_conversation)
+=======
+        // this._msg.addEventListener('click',this.close_conversation)
+        this._msg.addEventListener('click',this.toggle_conversation)
+>>>>>>> 6117c2122ae56ebecd381808b8f545ceb909ed96
     }
 
-    // transformer les 2 fonctions en une ternaire
-    close_conversation = () => {
-        
-        this._msg.addEventListener('click',this.reopen_conversation)
-        
-        this._conversation_field.style.display = "none"
-
-        this._msg.addEventListener('click',this.reopen_conversation)      
-    }
-    
-    reopen_conversation = () => {     
-        
-        this._msg.removeEventListener('click',this.reopen_conversation)
-
-        this._conversation_field.style.display = null
-        
-        this._msg.addEventListener('click',this.close_conversation)        
+    toggle_conversation = () => {
+        this._conversation_field.classList.toggle('display_none')
     }
 }
