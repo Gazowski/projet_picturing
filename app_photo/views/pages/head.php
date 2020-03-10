@@ -17,6 +17,7 @@
         
         <!-- Police de caractères -->
         <link href="https://fonts.googleapis.com/css?family=Montserrat:400,600,900&display=swap" rel="stylesheet">
+        
         <!-- Feuilles de style -->
         <link rel="stylesheet" href="<?= base_url(); ?>assets/styles/sass/main.css">
 
