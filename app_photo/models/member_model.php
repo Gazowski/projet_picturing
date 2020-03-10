@@ -63,7 +63,7 @@ class Member_model extends CI_Model {
             ON rate.rated_user = user.id
             JOIN users_groups ugp ON ugp.user_id = user.id
             JOIN groups gp ON gp.id = ugp.group_id
-            WHERE gp.name = '.$type );
+            WHERE '.$type );
             return $query->result_array();
         }
 
