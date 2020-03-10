@@ -1,0 +1,33 @@
+{
+  "name": "projet_picturing",
+  "version": "1.0.0",
+  "description": "* https://www.linguee.fr/\r * https://www.wordreference.com/\r ### générateur de couleurs\r https://coolors.co/",
+  "main": "index.js",
+  "dependencies": {
+    "babel-preset-es2015-rollup": "^3.0.0",
+    "rollup-plugin-babel": "^4.4.0",
+    "rollup": "^2.0.3"
+  },
+  "devDependencies": {
+    "@babel/cli": "^7.8.4",
+    "@babel/core": "^7.8.7",
+    "@babel/plugin-proposal-class-properties": "^7.8.3",
+    "@babel/preset-env": "^7.8.7",
+    "webpack": "^4.42.0",
+    "webpack-cli": "^3.3.11"
+  },
+  "scripts": {
+    "build": "babel assets/scripts -d assets/scripts/babel"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Gazowski/projet_picturing.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Gazowski/projet_picturing/issues"
+  },
+  "homepage": "https://github.com/Gazowski/projet_picturing#readme"
+}
