@@ -94,13 +94,8 @@ class Conversation{
         </form>
         `
 
-<<<<<<< HEAD
-
-        this._msg.addEventListener('click',this.close_conversation)
-=======
         // this._msg.addEventListener('click',this.close_conversation)
         this._msg.addEventListener('click',this.toggle_conversation)
->>>>>>> 6117c2122ae56ebecd381808b8f545ceb909ed96
     }
 
     toggle_conversation = () => {
