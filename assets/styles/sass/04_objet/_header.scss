@@ -111,11 +111,9 @@ header{
 
   /* Bounce In */
 .logo_el {
-	display: inline-block;
-	vertical-align: middle;
+	
 	-webkit-transform: perspective(1px) translateZ(0);
 	transform: perspective(1px) translateZ(0);
-	box-shadow: 0 0 1px rgba(0, 0, 0, 0);
 	-webkit-transition-duration: 0.5s;
 	transition-duration: 0.5s;
   }
@@ -126,8 +124,7 @@ header{
 	transition-timing-function: cubic-bezier(0.47, 2.02, 0.31, -0.36);
   }
 //-----------------fin animation logo---------------//
-
-
+ 
 
 //--------menu_navigation_mobile-----------//
 

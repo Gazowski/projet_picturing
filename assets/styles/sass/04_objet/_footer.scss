@@ -23,6 +23,7 @@ footer {
         }
         p {
             color: $c-light-grey;
+           
         }
     }
     
@@ -86,7 +87,7 @@ footer {
             padding: 0;
             width: 50%;
             p {
-                font-size: .8vw;
+                font-size: .8em;
                 margin: .1em 0 .1em .2em;
                 padding: 0;
             }
@@ -109,6 +110,7 @@ footer {
         .medias {
             font-size: 1.5em;
             margin-left: 15em;
+            
         }   
     }   
 }
