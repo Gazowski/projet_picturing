@@ -69,19 +69,6 @@
 }
 
 //--------animation tuile-------------//
-@-webkit-keyframes hvr-pop {
-	50% {
-		-webkit-transform: scale(1.2);
-		transform: scale(1.2);
-	}
-}
-
-@keyframes hvr-pop {
-	50% {
-		-webkit-transform: scale(1.05);
-		transform: scale(1.05);
-	}
-}
 
 .child {
 	-webkit-transform: perspective(1px) translateZ(0);
