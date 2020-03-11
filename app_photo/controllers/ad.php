@@ -41,6 +41,11 @@ class Ad extends CI_Controller {
 			'is_IE' => $this->agent->is_browser() && $this->agent->browser() == 'Internet Explorer' ? true : false ,
 		];
 		$this->session->set_userdata($this->agent);
+		if($this->agent['is_IE'])
+		{
+			$this->session->set_flashdata('message', 'Ce site n\'est pas compatible avec Internet Explorer !');
+		}
+
 	}
 	
 	/**
