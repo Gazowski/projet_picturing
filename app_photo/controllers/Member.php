@@ -16,6 +16,7 @@ class Member extends CI_Controller {
         parent::__construct();
         $this->load->model('member_model');
         $this->load->model('ad_model');
+        $this->load->model('ban_model');
         $this->load->library(['ion_auth']);
         $this->load->helper('date');
     }
@@ -166,11 +167,11 @@ class Member extends CI_Controller {
             $this->session->set_flashdata('message', 'Vous n\'avez pas les droits');
             redirect($_SERVER['HTTP_REFERER']); 
         }
-        
         $data['title'] = 'Profil';
         $data['profil'] = $this->member_model->get_member($id_member);
         $data['profil']->last_login = unix_to_human($data['profil']->last_login,true,'eu');
         $data['profil']->created_on = unix_to_human($data['profil']->created_on,true,'eu');
+        $data['profil']->is_banish = $this->ban_model->is_banish($id_member) ? true : false;
 
 
         /**

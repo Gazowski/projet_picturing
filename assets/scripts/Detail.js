@@ -40,36 +40,76 @@ export class Detail {
     }
 
     add_name_to_btn_supervisor = () =>{
-        let name = this._btn_supervisor.dataset.active == 1 ? 'Bannir' : 'Activer'
+        let name = ''
+        if(this._el.dataset.banish == 1) name = 'Débannir'
+        else if(this._btn_supervisor.dataset.active == 1) name = 'Bannir'
+        else name = 'Activer'
         this._btn_supervisor.innerHTML = name
     }
     
     add_action_to_btn_supervisor = () =>{
-        if(this._btn_supervisor.dataset.active == 0){
-            this._btn_supervisor.addEventListener('click',()=>{ this.confirm_activation() })
-        } else {
-            this._btn_supervisor.removeEventListener('click',()=>{ this.confirm_activation() })
+        console.log(this._el.dataset.banish)
+        if(this._el.dataset.banish == 1){
+            this._btn_supervisor.addEventListener('click',()=>{ this.confirm_unban() })
+        } else if(this._btn_supervisor.dataset.active == 1){
             this._btn_supervisor.addEventListener('click',()=>{ this.confirm_banish() })
-        }
-        
+        } else {
+            this._btn_supervisor.addEventListener('click',()=>{ this.confirm_activation() })
+        }        
     }
 
+    confirm_unban = () =>{
+        display_alert('Voulez vous débannir ce membre', this.unban_member)
+    }
+
+    unban_member = () =>{
+        this._btn_supervisor.removeEventListener('click',()=>{ this.confirm_unban() })
+        let paramAjax = {
+            method : "POST",
+            json : true,
+            action : `index.php/ajax_controller/unban_member`,
+            data_to_send : this._el.dataset.idElt
+        }
+        requeteAjax(paramAjax, (reponse_ajax) => {
+            console.log(reponse_ajax)
+            if(reponse_ajax){
+                display_alert('le membre à été débanni');
+                window.setTimeout(()=>{
+                    window.location = document.referrer
+                }, 1500);
+            }
+        }) 
+    }
+    
     confirm_banish = () =>{
         display_alert(`Voulez-vous bannir ce membre' ?`,this.banish_user)
     }
-
+    
     banish_user = () =>{
         this._btn_supervisor.removeEventListener('click',()=>{ this.confirm_banish() })
-        
-        // utiliser le tag <base> pour mémoriser l'url de base 
-        // https://developer.mozilla.org/fr/docs/Web/HTML/Element/base
+        let paramAjax = {
+            method : "POST",
+            json : true,
+            action : `index.php/ajax_controller/ban_member`,
+            data_to_send : this._el.dataset.idElt
+        }
+        requeteAjax(paramAjax, (reponse_ajax) => {
+            console.log(reponse_ajax)
+            if(reponse_ajax){
+                display_alert('le membre à été banni');
+                window.setTimeout(()=>{
+                    window.location = document.referrer
+                }, 1500);
+            }
+        })        
     }
-
+    
     confirm_activation = () =>{    
         display_alert(`Voulez-vous activez ${this.table == 'ad' ? 'cette annonce' : 'ce membre'} ?`,this.activate_elt)
     }
-
+    
     activate_elt = () =>{
+        this._btn_supervisor.removeEventListener('click',()=>{ this.confirm_activation() })
         let paramAjax = {
             method : "POST",
             json : true,
