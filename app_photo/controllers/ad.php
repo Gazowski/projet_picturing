@@ -89,9 +89,6 @@ class Ad extends CI_Controller {
 		// le bouton est affiché si l'utilisateur est superviseur ou + et si l'annnonce n'est pas active
 		$is_supervisor = $this->session->userdata['user_role'] >= 40 && $data['ad']['active'] == 0 ;
 		$data['supervisor_btn'] = $is_supervisor ? $supervisor_btn_view : null;
-
-		//var_dump($data);
-		
 		
         $this->load->template('pages/detail_ad',$data);
 	}
@@ -146,7 +143,7 @@ class Ad extends CI_Controller {
         
         
         $data['title'] = 'Liste des services';
-        $data['ad'] = $this->ad_model->get_ad_servive();
+        $data['ad'] = $this->ad_model->get_ad_service();
 
         $this->load->template('pages/tile',$data);
 	}

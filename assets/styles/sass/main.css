@@ -6427,10 +6427,6 @@ a:hover {
   color: #bd006b;
 }
 
-a.button:hover {
-  color: white;
-}
-
 li {
   list-style: none;
 }
@@ -7621,6 +7617,19 @@ td, th {
   -webkit-box-direction: normal;
       -ms-flex-direction: column;
           flex-direction: column;
+  width: 88%;
+  margin: 0 auto;
+}
+
+.btn_ban_upgarde {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  text-align: center;
 }
 
 @media (min-width: 600px) {
@@ -7638,6 +7647,15 @@ td, th {
     display: -webkit-box;
     display: -ms-flexbox;
     display: flex;
+    -webkit-box-orient: horizontal;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: row;
+            flex-direction: row;
+    -webkit-box-pack: justify;
+        -ms-flex-pack: justify;
+            justify-content: space-between;
+  }
+  .btn_ban_upgarde {
     -webkit-box-orient: horizontal;
     -webkit-box-direction: normal;
         -ms-flex-direction: row;
@@ -7735,7 +7753,7 @@ td, th {
 }
 
 .msg .titre_form {
-  border-bottom: 5px solid #bdbdbd;
+  border-bottom: 3px solid #bdbdbd;
 }
 
 .msg .convers {
@@ -7743,10 +7761,17 @@ td, th {
   width: 90%;
   margin: 0 auto;
   text-align: center;
+  -webkit-box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+          box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
 }
 
 .msg .convers textarea {
   width: 95%;
+}
+
+.msg .convers p {
+  font-size: .9em;
+  padding: .3em;
 }
 
 .button {
@@ -7768,6 +7793,15 @@ td, th {
 
 .button:hover {
   background-color: #bd006b;
+}
+
+a.button {
+  display: block;
+  text-align: center;
+}
+
+a.button:hover {
+  color: white;
 }
 
 .soumission .button {
@@ -7858,6 +7892,12 @@ td, th {
 
 #infoMessage p {
   color: red;
+}
+
+.line_n {
+  border-bottom: 1px solid #bd006b;
+  width: 85%;
+  margin: 0 auto 2em;
 }
 
 @media (min-width: 600px) {

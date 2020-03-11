@@ -16,8 +16,36 @@ class Member extends CI_Controller {
         parent::__construct();
         $this->load->model('member_model');
         $this->load->model('ad_model');
+        $this->load->model('ban_model');
         $this->load->library(['ion_auth']);
         $this->load->helper('date');
+    }
+
+
+
+      /**
+     * affichage des tous les fournisseurs
+     * accessible par superviseur et +
+     */
+    
+    public function display_all_supervisor()
+    {
+        
+        if ( ! file_exists(APPPATH.'views/pages/list.php'))
+        {
+            // Whoops, we don't have a page for that!
+            show_404();
+        }
+        if (!isset($this->session->userdata['user_role']) || $this->session->userdata['user_role'] < 50)
+        {
+            $this->session->set_flashdata('message', 'Vous devez avoir les droits d\'administrateur');
+            redirect($_SERVER['HTTP_REFERER']); 
+        }        
+        
+        $data['title'] = 'Liste des superviseurs'; // Capitalize the first letter
+        $data['membres'] = $this->member_model->get_by_type('name = "Superviseur"');     
+        
+        $this->load->template('pages/list_members',$data);
     }
 
 
@@ -59,7 +87,7 @@ class Member extends CI_Controller {
             // Whoops, we don't have a page for that!
             show_404();
         }
-        if (!isset($this->session->userdata['user_role']) || $this->session->userdata['user_role'] < 40)
+        if (!isset($this->session->userdata['user_role']) || $this->session->userdata['user_role'] < 30)
         {
             $this->session->set_flashdata('message', 'Vous devez avoir les droits de superviseur');
             redirect($_SERVER['HTTP_REFERER']); 
@@ -139,11 +167,11 @@ class Member extends CI_Controller {
             $this->session->set_flashdata('message', 'Vous n\'avez pas les droits');
             redirect($_SERVER['HTTP_REFERER']); 
         }
-        
         $data['title'] = 'Profil';
         $data['profil'] = $this->member_model->get_member($id_member);
         $data['profil']->last_login = unix_to_human($data['profil']->last_login,true,'eu');
         $data['profil']->created_on = unix_to_human($data['profil']->created_on,true,'eu');
+        $data['profil']->is_banish = $this->ban_model->is_banish($id_member) ? true : false;
 
 
         /**

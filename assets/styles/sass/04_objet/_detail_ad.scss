@@ -2,7 +2,7 @@
     display: flex;
     flex-direction: column;
     width: 95%;
-    margin: 0 auto 2em;
+    margin: 1em auto 2em;
     border: 1px solid $c-light-grey;
     justify-content: center;
     padding: .5em;
@@ -38,8 +38,17 @@
     }
 }
 .modif_supp{
+    width: 95%;
+    display: flex;
+    flex-direction: row;
     margin: 0 auto;
+    justify-content: space-between;
 }
+.btn_activ{
+   margin: 0 auto;
+
+}
+
 
 
 @media (min-width: 600px) {
@@ -81,6 +90,9 @@
         flex-direction: column;
         
     }
+    .btn_activ{
+        margin: 0 auto; 
+     }
      
 }
   
@@ -120,4 +132,5 @@
     .desc_prix{
         width: 100%;
     }
+    
 }

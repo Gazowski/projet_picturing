@@ -56,8 +56,16 @@
 		</div>
 
 		<div class="address">
-			<p>cité des douze chalets</p>
-			<p>Laval des rapides</p>
+			<p>Projet réalisé par la collaboration de :</p>
+			<p>Hyppolite Kervens Antoine,</p> 
+			<p>Comeau Gael,</p> 
+			<p>Raude Olivier,</p> 
+			<p>Salhi Mohand Salah.</p>
+		</div>
+		<div class="address">
+			<p>Pour le compte du : Projet web 2</p>
+			<p>pour le programme :</p> 
+			<p>Conception et programmation des sites web</p> 
 		</div>
 
 		<div class="medias">

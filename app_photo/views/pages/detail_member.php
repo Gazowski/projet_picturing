@@ -3,7 +3,8 @@
 <section class="form_det_member" 
         data-component='detail'  
         data-table='member'
-        data-id-elt = <?= $profil->id ?> >
+        data-id-elt = <?= $profil->id ?> 
+        data-banish = <?= $profil->is_banish ?>>
     <div class="titre_profil">
         <h1><?= $title ?></h1>
     </div>

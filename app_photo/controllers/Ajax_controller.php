@@ -12,11 +12,12 @@ class Ajax_controller extends CI_Controller {
     {
         parent::__construct();
         $this->load->database();
-        $this->load->library(['users','ion_auth','mahana_messaging']);
+        $this->load->library(['ion_auth','mahana_messaging']);
         $this->load->model('ion_auth_model');
         $this->load->model('ad_model');
         $this->load->model('star_rating_model');
         $this->load->model('mahana_model');
+        $this->load->model('ban_model');
 
         $this->ajax_data = '';
         $this->clean_json_data();        
@@ -209,4 +210,40 @@ class Ajax_controller extends CI_Controller {
         $conversation = $this->mahana_model->get_full_thread($id_thread,$user_id,true);
         echo json_encode($conversation);
     }
+
+    /**
+     * ban_member
+     * appel le méthode ban_member du model ban_model
+     */
+    public function ban_member()
+    {
+        // redirection si l'utilisateur n'a pas le niveau supervisor
+        if (!isset($this->session->userdata['user_role']) || $this->session->userdata['user_role'] < 40)
+        {
+            $this->session->set_flashdata('message', 'Vous devez être connecté entant que Superviseur');
+            redirect('auth', 'refresh');
+        }
+        $id_member = $this->ajax_data;
+        $id_supervisor = $this->session->userdata['user_id'];
+        echo $this->ban_model->ban_member($id_member,$id_supervisor);
+    }
+
+    /**
+     * unban_member
+     * appel le méthode unban_member du model ban_model
+     */
+    public function unban_member()
+    {
+        // redirection si l'utilisateur n'a pas le niveau supervisor
+        if (!isset($this->session->userdata['user_role']) || $this->session->userdata['user_role'] < 40)
+        {
+            $this->session->set_flashdata('message', 'Vous devez être connecté entant que Superviseur');
+            redirect('auth', 'refresh');
+        }
+        $id_member = $this->ajax_data;
+        $id_supervisor = $this->session->userdata['user_id'];
+        echo $this->ban_model->unban_member($id_member);
+    }
+
+
 }

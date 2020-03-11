@@ -19,22 +19,6 @@ export class Thread {
             //this.thread.addEventListener('click', (e)=>this.open_thread)
         }
     }
-
-    /* display_title = () => {
-        this._msg = this._el.querySelector('[data-msg]')
-
-        console.log("zone messages = " + this._el.querySelector('[data-conversation]'))
-        
-        let paramAjax = {
-            method : "POST",
-            json : true,
-            action : "index.php/ajax_controller/messages_thread",
-            data_to_send : this._el.dataset.thread
-        }
-        requeteAjax(paramAjax,(reponse_ajax) => {
-            this.display_conversation(reponse_ajax)
-        })
-    } */
 }
 
 class Conversation{
@@ -74,12 +58,15 @@ class Conversation{
     display_conversation = (conversation) =>{
 
         conversation = JSON.parse(conversation)
-        // console.log(conversation)
-        
+        console.log(conversation)
+
+        let emptyTest = conversation.length;
+        console.log(emptyTest);
+
         for(let message of conversation){
             console.log(message.thread_id)
             this._conversation_field.innerHTML += `
-                <i>le ${message.cdate}</i> message de <b>${message.user_name}</b>
+                <i>le ${message.cdate}</i> message de <b><a href='/index.php/member/7'>${message.user_name}</a></b>
                 <p>${message.body}</p>
                 <div class="line_n"></div>
             `
@@ -94,25 +81,10 @@ class Conversation{
         </form>
         `
 
-        this._msg.addEventListener('click',this.close_conversation)
+        this._msg.addEventListener('click',this.toggle_conversation)
     }
 
-    // transformer les 2 fonctions en une ternaire
-    close_conversation = () => {
-        
-        this._msg.addEventListener('click',this.reopen_conversation)
-        
-        this._conversation_field.style.display = "none"
-
-        this._msg.addEventListener('click',this.reopen_conversation)      
-    }
-    
-    reopen_conversation = () => {     
-        
-        this._msg.removeEventListener('click',this.reopen_conversation)
-
-        this._conversation_field.style.display = null
-        
-        this._msg.addEventListener('click',this.close_conversation)        
+    toggle_conversation = () => {
+        this._conversation_field.classList.toggle('display_none')
     }
 }

@@ -26,13 +26,13 @@ class Ad_model extends CI_Model {
 
     public function get_ad($ad)
     {
-        $this->db->select('*','ad.active as ad_active');
-        $this->db->from('ad');
-        $this->db->join('category','category.id_category = ad.category');
-        $this->db->join('users','users.id = ad.owner');
+        $this->db->select('ad.*,u.id,u.first_name,u.last_name,c.*');
+        $this->db->from('ad as ad');
+        $this->db->join('category as c','c.id_category = ad.category');
+        $this->db->join('users as u','u.id = ad.owner');
         // si l'utilisateur n'a pas les droits 'supervisor', seules les annonces activées sont sélectionnées
         !$this->is_admin() ? $this->db->where('ad.active',1) : '';
-        $this->db->where('id_ad',$ad);
+        $this->db->where('ad.id_ad',$ad);
         $query = $this->db->get();
         return $query->row_array();
     }
@@ -63,7 +63,7 @@ class Ad_model extends CI_Model {
         return $query->result_array();
     }
 
-    public function get_ad_servive()
+    public function get_ad_service()
     {
         
         $this->db->select('*');

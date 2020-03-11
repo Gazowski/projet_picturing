@@ -93,6 +93,7 @@ class MY_Loader extends CI_Loader {
                     
                 ],
                 'Membres' => [
+                    'Superviseurs' => 'index.php/Member/display_all_supervisor',
                     'Membres' => 'index.php/Member/display_all',
                     'Fournisseurs' => 'index.php/Member/display_all_supplier',
                     'Clients' => 'index.php/Member/display_all_client',
@@ -135,6 +136,28 @@ class MY_Loader extends CI_Loader {
             ]; 
         }
 
+
+        else if ($this->is_goldenSupplier)
+        {
+                $menu = [
+                'Annonces' => [
+                    'Produits' => 'index.php/ad/display_all_product',
+                    'Services' => 'index.php/ad/display_all_service',
+                    'Annonces' =>  'index.php/ad/display_all',
+                    
+                ],
+               
+                'Mon compte' => [
+                    'Mon profil' =>  'index.php/member/member',
+                    'Mes messages' =>  'index.php/message/display_messages_user',
+                    'Mes annonces' =>  'index.php/ad/member_ads',
+                    'Clients' => 'index.php/Member/display_all_client',
+                    
+                ],
+                'A propos' => 'index.php/ad/a_propos',
+            ];
+        }
+
         else if ($this->is_supplier)
         {
             $menu = [
@@ -152,6 +175,8 @@ class MY_Loader extends CI_Loader {
                 ],
                 'A propos' => 'index.php/ad/a_propos',
             ];
+
+          
         }
 
         else if($this->is_client)
@@ -172,6 +197,8 @@ class MY_Loader extends CI_Loader {
                 'A propos' => 'index.php/ad/a_propos',
             ];
         }
+
+  
 
         else
         {
