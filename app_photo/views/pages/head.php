@@ -21,6 +21,6 @@
         <link rel="stylesheet" href="<?= base_url(); ?>assets/styles/sass/main.css">
 
         <!-- integration du script -->
-        <script type="module" src="<?= base_url(); ?>assets/scripts/main.js"></script>
+        <script type="module" src="<?= base_url(); ?>assets/scripts/bundle/main.js"></script>
 	</head>
 <body>
