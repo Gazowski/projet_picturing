@@ -1,79 +1,84 @@
+.detail_member {
 
-.detail_member{
+	width: 94%;
+	margin-top: 0;
 
-    width: 94%;
-    margin-top: 0;
-    
-    .button{
-        text-align: center; 
-    }
-    
-    ul li {
-        line-height: 1.8;
-    } 
-}
-.titre_profil{
-    width: 94%;
-    text-align: center;
-    color: white;
-    background-color: $c-medium-theme;
-    padding: .1em;
-    margin: 3em auto 0;
+	.button {
+		text-align: center;
+	}
+
+	ul li {
+		line-height: 1.8;
+	}
 }
 
-.mess_ann{
-    display: flex;
-    flex-direction: column;
-    justify-content: flex-start;
-    width: 95%;
-    margin: 0 auto;
-    text-align: center;
-    margin-bottom: 2em; 
+.titre_profil {
+	width: 94%;
+	text-align: center;
+	color: white;
+	background-color: $c-medium-theme;
+	padding: .1em;
+	margin: 3em auto 0;
 }
-.mod_sup{
-    display: flex;
-    flex-direction: column;
-    width: 88%;
-    margin: 0 auto;
+
+.mess_ann {
+	display: flex;
+	flex-direction: column;
+	justify-content: flex-start;
+	width: 95%;
+	margin: 0 auto;
+	text-align: center;
+	margin-bottom: 2em;
 }
-.btn_ban_upgarde{
-    display: flex;
-    flex-direction: column;
-    text-align: center;
-   
+
+.mod_sup {
+	display: flex;
+	flex-direction: column;
+	width: 88%;
+	margin: 0 auto;
+}
+
+.btn_ban_upgarde {
+	display: flex;
+	flex-direction: column;
+	text-align: center;
+
 }
 
 @media (min-width: 600px) {
-   
-    .mess_ann{
-       flex-direction: row;
-       justify-content: space-between;
-       width: 85%;  
-    }
-    .mod_sup{
-        display: flex;
-        flex-direction: row;
-        justify-content: space-between;
-    }
-    .btn_ban_upgarde{
-        
-        flex-direction: row;
-        justify-content: space-between;
-      
-        
-    }
-}
-@media (min-width: 900px) { 
-    .mess_ann{
-       width: 25%;  
-    }
-    .detail_member{
-        width: 35%;
-    }
-    .titre_profil{
-        width: 35%;
-      
-    }
-}
-  
 
+	.mess_ann {
+		flex-direction: row;
+		justify-content: space-between;
+		width: 85%;
+	}
+
+	.mod_sup {
+		display: flex;
+		flex-direction: row;
+		justify-content: space-between;
+	}
+
+	.btn_ban_upgarde {
+
+		flex-direction: row;
+		justify-content: space-between;
+
+
+	}
+}
+
+@media (min-width: 900px) {
+	.mess_ann {
+		width: 25%;
+	}
+
+	.detail_member {
+		width: 35%;
+	}
+
+	.titre_profil {
+		width: 35%;
+
+	}
+}

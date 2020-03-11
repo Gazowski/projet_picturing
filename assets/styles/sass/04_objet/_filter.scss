@@ -7,7 +7,7 @@
 /* Transition */
 
 .filter {
-	
+
 	align-items: center;
 	display: flex;
 	flex-direction: column;
@@ -20,18 +20,18 @@
 @media (min-width: 600px) {
 	.filter {
 		flex-direction: row;
-		margin: .3em auto; 
+		margin: .3em auto;
 	}
-	
+
 }
 
 //--------menu_navigation_Grand écran-----------//
 @media (min-width: 900px) {
 
-		.filter {
+	.filter {
 		flex-direction: row;
 		align-content: flex-start;
-		
+
 	}
-		
+
 }

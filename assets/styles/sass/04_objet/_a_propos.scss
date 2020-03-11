@@ -1,20 +1,22 @@
-.apropos{
-    width: 95%;
-    margin: 7em auto;
-    border: 1px solid $c-light-grey;
-    padding: 1em;
-    box-shadow: 1px -1px 38px -12px $c-medium-theme;
-    h2{
-        color: $c-medium-theme;
-    }
-    .map iframe{
-        width: 100%;
-        
-    }
+.apropos {
+	width: 95%;
+	margin: 7em auto;
+	border: 1px solid $c-light-grey;
+	padding: 1em;
+	box-shadow: 1px -1px 38px -12px $c-medium-theme;
+
+	h2 {
+		color: $c-medium-theme;
+	}
+
+	.map iframe {
+		width: 100%;
+
+	}
 }
 
 @media (min-width: 900px) {
-    .apropos{
-        width: 45%;
-    }
-  } 
+	.apropos {
+		width: 45%;
+	}
+}
