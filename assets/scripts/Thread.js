@@ -58,15 +58,15 @@ class Conversation{
     display_conversation = (conversation) =>{
 
         conversation = JSON.parse(conversation)
-        console.log(conversation)
+        //console.log(conversation)
 
         let emptyTest = conversation.length;
-        console.log(emptyTest);
+        //console.log(emptyTest);
 
         for(let message of conversation){
             console.log(message.thread_id)
             this._conversation_field.innerHTML += `
-                <i>le ${message.cdate}</i> message de <b><a href='/index.php/member/7'>${message.user_name}</a></b>
+                <i>le ${message.cdate}</i> message de <b><a href='${document.baseURI}/member/${message.sender_id}'>${message.user_name}</a></b>
                 <p>${message.body}</p>
                 <div class="line_n"></div>
             `
