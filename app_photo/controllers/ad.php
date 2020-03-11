@@ -12,12 +12,12 @@ class Ad extends CI_Controller {
     {
         parent::__construct();
         $this->load->database();
-        $this->load->library(['ion_auth','session','user_agent','breadcrumbs']);
+        $this->load->library(['ion_auth','session','user_agent']);
         $this->load->model('ion_auth_model');
 		$this->load->model('ad_model');
 		
 		$this->is_admin = $this->ion_auth->is_admin();
-		$this->breadcrumb();
+		//$this->breadcrumb();
 		$this->detect_browser();
 		
 		$this->CLIENT = 10;
@@ -44,25 +44,10 @@ class Ad extends CI_Controller {
 	}
 	
 	/**
-     * display_ad() : affiche l'annonce passée en paramètre
-     * @param { int } $id_ad : identifiant de l'annonce
-     * Accessible pour tous
-     */
-
-	 // Breadcrumb
-	 private function breadcrumb(){
-
-		// add breadcrumbs
-		$this->breadcrumbs->push('Section', '/section');
-		$this->breadcrumbs->push('Page', '/section/page');
-
-		// unshift crumb
-		$this->breadcrumbs->unshift('Home', '/');
-
-		// output
-		$this->data['breadcrumbs'] = $this->breadcrumbs->show();
-	}
-
+	 * display_ad() : affiche l'annonce passée en paramètre
+	 * @param { int } $id_ad : identifiant de l'annonce
+	 * Accessible pour tous
+	 */
 	public function display_ad($id_ad)
     {
         if ( ! file_exists(APPPATH.'views/pages/detail_ad.php'))
@@ -71,7 +56,8 @@ class Ad extends CI_Controller {
             show_404();
         }
 
-        // enregistrement du owner ed l'id annonce en session (permet de restreindre la modif au owner seul)
+		// enregistrement du owner ed l'id annonce en session (permet de restreindre la modif au owner seul)
+
         
 		$this->data['title'] = 'Information Annonce';        
         $this->data['ad'] = $this->ad_model->get_ad($id_ad);
@@ -88,6 +74,7 @@ class Ad extends CI_Controller {
 		$is_supervisor = $this->session->userdata['user_role'] >= 40 && $this->data['ad']['active'] == 0 ;
 		$this->data['supervisor_btn'] = $is_supervisor ? $supervisor_btn_view : null;
 		
+	
         $this->load->template('pages/detail_ad',$this->data);
 	}
 	
@@ -99,7 +86,10 @@ class Ad extends CI_Controller {
             // Whoops, we don't have a page for that!
             show_404();
         }
-        
+		
+		$this->data['breadcrumbs'] = [
+			'Accueil' => 'index.php/ad/display_all',
+		];
         
         $this->data['title'] = 'Liste des Annonces'; // Capitalize the first letter
         $this->data['ad'] = $this->ad_model->get_ads();
