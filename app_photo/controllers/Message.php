@@ -47,7 +47,7 @@ class Message extends CI_Controller {
         $this->data['page_title'] = 'Écrivez votre message';
         $this->data['ad'] = $this->ad_model->get_ad($id_ad);
         $this->data['profil'] = $this->member_model->get_member($id_member);
-
+        
         //Validation du message/body
         $this->form_validation->set_rules('message', 'votre message', 'trim|required');
 
@@ -104,7 +104,7 @@ class Message extends CI_Controller {
             // Ajout d'une alerte "vous n'avez pas de message"
             if (empty($threads)){
                 $this->session->set_flashdata('message', 'Vous n\'avez pas de message');
-                
+                redirect($_SERVER['HTTP_REFERER']);
             } else {
                 $data['ads'] = [];
                 foreach($threads as $thread){

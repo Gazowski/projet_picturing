@@ -43,17 +43,6 @@ class MY_Loader extends CI_Loader {
             $this->view('pages/filter',$filter);
         };
         $vars['filter'] =  (strpos($page, 'list') || strpos($page,'tile')) ? $filter_view : '';
-
-        // Breadcrumb
-        // $this->mybreadcrumb->add('Home', base_url());
-        // $this->mybreadcrumb->add('Cities', base_url('cities/listing'));
-
-        // $this->mybreadcrumb->render();
-
-        // $data['breadcrumbs'] = $this->mybreadcrumb->render();
-        
-        // $this->load->view('pages/header_catalog',$data);
-        // $this->load->view('pages/header_admin',$data);
         
         // si le navigateur est IE
         if(isset($_SESSION['is_IE']))
@@ -61,10 +50,10 @@ class MY_Loader extends CI_Loader {
 
         $this->view('pages/head', $vars);
         $this->view($header, $vars);
+        $this->view('pages/breadcrumbs', $vars);        
         $this->view('pages/alert');        
         $this->view($page, $vars);
         $this->view('pages/footer', $vars);
-       
     }
 
     private function init_role()
@@ -80,7 +69,7 @@ class MY_Loader extends CI_Loader {
     {
         return isset($_SESSION['user_role']) && $_SESSION['user_role'] >= $value; 
     }
-
+    
     private function menu()
     {       
         if ($this->is_admin) 

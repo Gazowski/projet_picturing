@@ -12,11 +12,12 @@ class Ad extends CI_Controller {
     {
         parent::__construct();
         $this->load->database();
-        $this->load->library(['ion_auth','session','user_agent','mybreadcrumb']);
+        $this->load->library(['ion_auth','session','user_agent','breadcrumbs']);
         $this->load->model('ion_auth_model');
 		$this->load->model('ad_model');
 		
 		$this->is_admin = $this->ion_auth->is_admin();
+		$this->breadcrumb();
 		$this->detect_browser();
 		
 		$this->CLIENT = 10;
@@ -49,20 +50,17 @@ class Ad extends CI_Controller {
      */
 
 	 // Breadcrumb
-	 public function breadcrumb(){
+	 private function breadcrumb(){
 
-		 $this->mybreadcrumb->add('Home', base_url());
-		 $this->mybreadcrumb->add('Cities', base_url('cities/listing'));
-	
-		 $this->mybreadcrumb->render();
-	
-		 $data['breadcrumbs'] = $this->mybreadcrumb->render();
-		 
-		//  var_dump($data['breadcrumbs']);
-		//  die;
-		 
-		 $this->load->view('pages/header_catalog',$data);
-		 $this->load->view('pages/header_admin',$data);
+		// add breadcrumbs
+		$this->breadcrumbs->push('Section', '/section');
+		$this->breadcrumbs->push('Page', '/section/page');
+
+		// unshift crumb
+		$this->breadcrumbs->unshift('Home', '/');
+
+		// output
+		$this->data['breadcrumbs'] = $this->breadcrumbs->show();
 	}
 
 	public function display_ad($id_ad)
@@ -75,22 +73,22 @@ class Ad extends CI_Controller {
 
         // enregistrement du owner ed l'id annonce en session (permet de restreindre la modif au owner seul)
         
-		$data['title'] = 'Information Annonce';        
-        $data['ad'] = $this->ad_model->get_ad($id_ad);
-        $this->session->set_userdata('ad_owner',$data['ad']['owner']);
+		$this->data['title'] = 'Information Annonce';        
+        $this->data['ad'] = $this->ad_model->get_ad($id_ad);
+        $this->session->set_userdata('ad_owner',$this->data['ad']['owner']);
 		$this->session->set_userdata('id_ad',$id_ad);
 
 		//affichage du bouton superviseur
-		$this->ad_active = $data['ad']['active'];
+		$this->ad_active = $this->data['ad']['active'];
 		$supervisor_btn_view = function(){
-			$data['is_enabled'] = $this->ad_active;
-			$this->load->view('pages/btn_member/supervisor_btn',$data);
+			$this->data['is_enabled'] = $this->ad_active;
+			$this->load->view('pages/btn_member/supervisor_btn',$this->data);
 		};
 		// le bouton est affiché si l'utilisateur est superviseur ou + et si l'annnonce n'est pas active
-		$is_supervisor = $this->session->userdata['user_role'] >= 40 && $data['ad']['active'] == 0 ;
-		$data['supervisor_btn'] = $is_supervisor ? $supervisor_btn_view : null;
+		$is_supervisor = $this->session->userdata['user_role'] >= 40 && $this->data['ad']['active'] == 0 ;
+		$this->data['supervisor_btn'] = $is_supervisor ? $supervisor_btn_view : null;
 		
-        $this->load->template('pages/detail_ad',$data);
+        $this->load->template('pages/detail_ad',$this->data);
 	}
 	
     public function display_all()
@@ -103,10 +101,10 @@ class Ad extends CI_Controller {
         }
         
         
-        $data['title'] = 'Liste des Annonces'; // Capitalize the first letter
-        $data['ad'] = $this->ad_model->get_ads();
+        $this->data['title'] = 'Liste des Annonces'; // Capitalize the first letter
+        $this->data['ad'] = $this->ad_model->get_ads();
 		
-        $this->load->template('pages/tile',$data);
+        $this->load->template('pages/tile',$this->data);
     }
 
 
@@ -123,10 +121,10 @@ class Ad extends CI_Controller {
         }
         
         
-        $data['title'] = 'Liste des Produits'; // Capitalize the first letter
-        $data['ad'] = $this->ad_model->get_ad_product();
+        $this->data['title'] = 'Liste des Produits'; // Capitalize the first letter
+        $this->data['ad'] = $this->ad_model->get_ad_product();
 
-        $this->load->template('pages/tile',$data);
+        $this->load->template('pages/tile',$this->data);
 	}
 	
 
@@ -142,10 +140,10 @@ class Ad extends CI_Controller {
         }
         
         
-        $data['title'] = 'Liste des services';
-        $data['ad'] = $this->ad_model->get_ad_service();
+        $this->data['title'] = 'Liste des services';
+        $this->data['ad'] = $this->ad_model->get_ad_service();
 
-        $this->load->template('pages/tile',$data);
+        $this->load->template('pages/tile',$this->data);
 	}
 	
 	public function member_ads()
@@ -171,11 +169,11 @@ class Ad extends CI_Controller {
 		// si fournisseur connectés sélectionnés les annonces créés par le fournisseur
 		if ($this->session->userdata['user_role'] >= $this->SUPPLIER)
 		{   
-			$data['title'] = 'Mes Annonces'; 
-			$data['ad'] = $this->ad_model->get_member_ads();
-			$data['create_ad'] = true;
+			$this->data['title'] = 'Mes Annonces'; 
+			$this->data['ad'] = $this->ad_model->get_member_ads();
+			$this->data['create_ad'] = true;
 			
-			$this->load->template('pages/tile',$data);
+			$this->load->template('pages/tile',$this->data);
         }
 	}
 
@@ -207,7 +205,7 @@ class Ad extends CI_Controller {
 
 		if ($this->form_validation->run() === TRUE)
 		{
-			$data = [
+			$this->data = [
 				'title' => $this->input->post('title'),
 				'category' => $this->input->post('category'),
 				'description' => $this->input->post('description'),
@@ -219,7 +217,7 @@ class Ad extends CI_Controller {
 			$this->type = $this->input->post('type');
         }
         // ajout de l'annonce dans la DB
-		if ($this->form_validation->run() === TRUE && $this->ad_model->add_ad($data))
+		if ($this->form_validation->run() === TRUE && $this->ad_model->add_ad($this->data))
 		{
 			
 			// ouverture du formulaire d'ajout photo
@@ -288,11 +286,11 @@ class Ad extends CI_Controller {
 	 */
 	public function photo_form()
 	{
-		$data['message'] = '';
-		$data['title'] = 'Ajout photo';
+		$this->data['message'] = '';
+		$this->data['title'] = 'Ajout photo';
 		$this->session->set_userdata('nb_photo', $this->type == 'produit' ? 3 : 1);
-		$data['nb_photo'] = $this->session->userdata['nb_photo'];
-		$this->load->template('pages/photo_form',$data);
+		$this->data['nb_photo'] = $this->session->userdata['nb_photo'];
+		$this->load->template('pages/photo_form',$this->data);
 	}
 	
 	public function upload_photo()
@@ -318,9 +316,9 @@ class Ad extends CI_Controller {
 			}
 			else
 			{
-				$data = array('upload_data' => $this->upload->data());
+				$this->data = array('upload_data' => $this->upload->data());
 				// on récupère le nom du fichier téléverser et on le mémorise
-				$photo_url[] = 'assets/img/' . $data['upload_data']['file_name'];
+				$photo_url[] = 'assets/img/' . $this->data['upload_data']['file_name'];
 			} 
 		}
 		// récupération de l'id de la derniere annonce ajouté
@@ -352,10 +350,10 @@ class Ad extends CI_Controller {
         }
         
         
-        $data['title'] = 'A propos'; // Capitalize the first letter
-       // $data['ad'] = $this->ad_model->get_ads();
+        $this->data['title'] = 'A propos'; // Capitalize the first letter
+       // $this->data['ad'] = $this->ad_model->get_ads();
 
-        $this->load->template('pages/a_propos',$data);
+        $this->load->template('pages/a_propos',$this->data);
     }
 
 
