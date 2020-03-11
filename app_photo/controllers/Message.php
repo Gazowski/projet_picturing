@@ -101,14 +101,18 @@ class Message extends CI_Controller {
             $data['threads'] = $this->mahana_model->get_all_threads($data['user_id']);
             $threads = $this->mahana_model->get_all_threads($data['user_id']);
             
-            $data['ads'] = [];
-            foreach($threads as $thread){
-
-                $id_ad = $thread['subject'];
-                $data['ads'][] = $this->ad_model->get_ad($id_ad);
-                // var_dump($data['ads']);
+            // Ajout d'une alerte "vous n'avez pas de message"
+            if (empty($threads)){
+                $this->session->set_flashdata('message', 'Vous n\'avez pas de message');
+                
+            } else {
+                $data['ads'] = [];
+                foreach($threads as $thread){
+    
+                    $id_ad = $thread['subject'];
+                    $data['ads'][] = $this->ad_model->get_ad($id_ad);
+                }
             }
-            // die;
 
             $this->load->template('pages/messages', $data);
         }
