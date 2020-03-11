@@ -498,8 +498,8 @@ class Auth extends CI_Controller
 		$this->form_validation->set_rules('company', $this->lang->line('create_user_validation_company_label'), 'trim');
 		$this->form_validation->set_rules('company_number', $this->lang->line('create_user_validation_company_number_label'), 'trim');
 		$this->form_validation->set_rules('address', $this->lang->line('create_user_validation_adress_label'), 'trim');
-		$this->form_validation->set_rules('website', $this->lang->line('create_user_validation_website_label'), 'trim');
 		$this->form_validation->set_rules('social_network', $this->lang->line('create_user_validation_social_network_label'), 'trim');
+		$this->form_validation->set_rules('website', $this->lang->line('create_user_validation_website_label'), 'trim');
 		$this->form_validation->set_rules('password', $this->lang->line('create_user_validation_password_label'), 'required|min_length[' . $this->config->item('min_password_length', 'ion_auth') . ']|matches[password_confirm]');
 		$this->form_validation->set_rules('password_confirm', $this->lang->line('create_user_validation_password_confirm_label'), 'required');
 		
@@ -508,7 +508,7 @@ class Auth extends CI_Controller
 			$email = strtolower($this->input->post('email'));
 			$identity = ($identity_column === 'email') ? $email : $this->input->post('identity');
 			$password = $this->input->post('password');
-			
+			$social_network = [$this->input->post('social_network1'),$this->input->post('social_network2'),$this->input->post('social_network3')];
 			$additional_data = [
 				'first_name' => $this->input->post('first_name'),
 				'last_name' => $this->input->post('last_name'),
@@ -519,7 +519,7 @@ class Auth extends CI_Controller
 				'company_number' => $this->input->post('company_number'),
 				'address' => $this->input->post('address'),
 				'website' => $this->input->post('website'),
-				'social_network' => $this->input->post('social_network'),
+				'social_network' => implode(',',$social_network),
 			];
 			// ATTENTION : le group est traité comme un parametre seul dans register()
 			$group = array(isset($_POST['golden_supplier']) ? $this->input->post('golden_supplier') : $this->input->post('group'));
@@ -603,9 +603,21 @@ class Auth extends CI_Controller
 				'type' => 'text',
 				'value' => $this->form_validation->set_value('website'),
 			];
-			$this->data['social_network'] = [
-				'name' => 'social_network',
-				'id' => 'social_network',
+			$this->data['social_network1'] = [
+				'name' => 'social_network1',
+				'id' => 'social_network1',
+				'type' => 'text',
+				'value' => $this->form_validation->set_value('social_network'),
+			];
+			$this->data['social_network2'] = [
+				'name' => 'social_network2',
+				'id' => 'social_network2',
+				'type' => 'text',
+				'value' => $this->form_validation->set_value('social_network'),
+			];
+			$this->data['social_network3'] = [
+				'name' => 'social_network3',
+				'id' => 'social_network3',
 				'type' => 'text',
 				'value' => $this->form_validation->set_value('social_network'),
 			];

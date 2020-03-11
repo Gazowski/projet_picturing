@@ -24,7 +24,7 @@
                   
                   <div class="select_cont">
                   <?php
-                        $opt = ['default' => '-- choisir un type --'];
+                        $opt = ['' => '-- choisir un type --'];
                         foreach($group['option'] as $key=>$option)
                         {
                               $opt[$key] = $option;
@@ -79,9 +79,9 @@
                   </p>   
                   <p>
                         <?php echo lang('create_user_social_network_label', 'social_network');?> <br />
-                        <?php echo form_input($social_network);?>
-                        <?php echo form_input($social_network);?>
-                        <?php echo form_input($social_network);?>
+                        <?php echo form_input($social_network1);?>
+                        <?php echo form_input($social_network2);?>
+                        <?php echo form_input($social_network3);?>
                   </p>   
                   <p>
                         <?php echo lang('create_user_password_label', 'password');?> <br />

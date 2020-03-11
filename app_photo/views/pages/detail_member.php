@@ -17,6 +17,12 @@
             <li>groupe : <span><?= $profil->name ?></span></li>
             <li>derniere connection : <span><?= $profil->last_login ?></span></li>
             <li>inscris depuis le : <span><?= $profil->created_on ?></span></li>
+            <li>site web : <span><?= $profil->website?><span></li>
+            <li>médias sociaux :
+                <ul><?php foreach($profil->social_network as $s_n) { ?>
+                    <li><a href='https://<?= $s_n ?>'><?= $s_n ?></a></li>
+                <?php } ?></ul>
+            </li>
             <li>Note : <span class='Stars' style='--rating:<?= $profil->avg_rate; ?>'></span></li>
         </ul>
         <div class="btn_ban_upgarde">

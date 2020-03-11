@@ -171,6 +171,7 @@ class Member extends CI_Controller {
         $data['profil'] = $this->member_model->get_member($id_member);
         $data['profil']->last_login = unix_to_human($data['profil']->last_login,true,'eu');
         $data['profil']->created_on = unix_to_human($data['profil']->created_on,true,'eu');
+        $data['profil']->social_network = explode(',',$data['profil']->social_network);
         $data['profil']->is_banish = $this->ban_model->is_banish($id_member) ? true : false;
 
 

@@ -16,7 +16,7 @@ class Member_model extends CI_Model {
         {
                 
             $query = $this->db->query('
-                SELECT DISTINCT user.id, user.email, user.created_on, user.last_login, user.active, user.first_name, user.last_name, user.company, user.address, gp.name, rate.avg_rate
+                SELECT DISTINCT user.id, user.email, user.created_on, user.last_login, user.active, user.first_name, user.last_name, user.company, user.address, gp.name, user.website, user.social_network, rate.avg_rate
                 FROM users user
                 LEFT OUTER JOIN (
                     SELECT ROUND(AVG(rating),1) as avg_rate, rated_user
@@ -30,7 +30,7 @@ class Member_model extends CI_Model {
         }
         else{
             $sql = '
-            SELECT DISTINCT user.id, user.email, user.created_on, user.last_login, user.active, user.first_name, user.last_name, user.company, user.address, gp.name, rate.avg_rate
+            SELECT DISTINCT user.id, user.email, user.created_on, user.last_login, user.active, user.first_name, user.last_name, user.company, user.address, gp.name, user.website, user.social_network, rate.avg_rate
             FROM users user
             LEFT OUTER JOIN (
                 SELECT ROUND(AVG(rating),1) as avg_rate, rated_user
