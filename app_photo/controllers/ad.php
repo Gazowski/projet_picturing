@@ -12,7 +12,7 @@ class Ad extends CI_Controller {
     {
         parent::__construct();
         $this->load->database();
-        $this->load->library(['users','ion_auth', 'session','user_agent']);
+        $this->load->library(['ion_auth', 'session','user_agent']);
         $this->load->model('ion_auth_model');
 		$this->load->model('ad_model');
 		
@@ -125,7 +125,7 @@ class Ad extends CI_Controller {
         
         
         $data['title'] = 'Liste des services';
-        $data['ad'] = $this->ad_model->get_ad_servive();
+        $data['ad'] = $this->ad_model->get_ad_service();
 
         $this->load->template('pages/tile',$data);
 	}

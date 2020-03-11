@@ -12,7 +12,7 @@ class Message extends CI_Controller {
     {
         parent::__construct();
         $this->load->database();
-        $this->load->library(['users','ion_auth', 'session']);
+        $this->load->library(['ion_auth', 'session']);
         $this->load->library('mahana_messaging');
         $this->load->model('ion_auth_model');
         $this->load->model('ad_model');

@@ -63,7 +63,7 @@ class Ad_model extends CI_Model {
         return $query->result_array();
     }
 
-    public function get_ad_servive()
+    public function get_ad_service()
     {
         
         $this->db->select('*');
