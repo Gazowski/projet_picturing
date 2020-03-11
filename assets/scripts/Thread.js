@@ -19,22 +19,6 @@ export class Thread {
             //this.thread.addEventListener('click', (e)=>this.open_thread)
         }
     }
-
-    /* display_title = () => {
-        this._msg = this._el.querySelector('[data-msg]')
-
-        console.log("zone messages = " + this._el.querySelector('[data-conversation]'))
-        
-        let paramAjax = {
-            method : "POST",
-            json : true,
-            action : "index.php/ajax_controller/messages_thread",
-            data_to_send : this._el.dataset.thread
-        }
-        requeteAjax(paramAjax,(reponse_ajax) => {
-            this.display_conversation(reponse_ajax)
-        })
-    } */
 }
 
 class Conversation{
@@ -74,8 +58,11 @@ class Conversation{
     display_conversation = (conversation) =>{
 
         conversation = JSON.parse(conversation)
-        // console.log(conversation)
-        
+        console.log(conversation)
+
+        let emptyTest = conversation.length;
+        console.log(emptyTest);
+
         for(let message of conversation){
             console.log(message.thread_id)
             this._conversation_field.innerHTML += `
@@ -94,13 +81,7 @@ class Conversation{
         </form>
         `
 
-<<<<<<< HEAD
-
-        this._msg.addEventListener('click',this.close_conversation)
-=======
-        // this._msg.addEventListener('click',this.close_conversation)
         this._msg.addEventListener('click',this.toggle_conversation)
->>>>>>> 6117c2122ae56ebecd381808b8f545ceb909ed96
     }
 
     toggle_conversation = () => {

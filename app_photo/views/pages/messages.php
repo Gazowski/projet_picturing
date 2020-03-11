@@ -17,6 +17,7 @@
 ?>
 
 <?php if(isset($threads)) { ?>
+
 <section class="form" data-component='thread'>
     <div class="titre_form">  
             <h1><?= $page_title ?></h1>
@@ -35,5 +36,6 @@
         <?php $i++; } ?>
     </article>
 </section>
+
 <?php } ?>
 
