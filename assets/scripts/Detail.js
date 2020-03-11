@@ -14,6 +14,7 @@ export class Detail {
         this._btn_owner = this._el.querySelector('[data-btn-owner]')
         this._btn_delete = this._el.querySelector('[data-btn-delete]')
         this._btn_supervisor = this._el.querySelector('[data-active]')
+        this._btn_upgrade_to_supervisor = this._el.querySelector('[data-upgrade-to-supervisor]')
         this._rating = this._el.querySelector('[data-rating]')
         this._stars = this._el.querySelectorAll('[data-star]')
 
@@ -33,11 +34,19 @@ export class Detail {
         if(this._btn_owner) this.display_btn_owner()
         if(this._rating) this.display_rating()
         if(this._btn_modif) this._btn_modif.addEventListener('click',this.modify_data) // pas de fonction fleché car l'évènement doit être supprimer
-        if (this._btn_delete) this._btn_delete.addEventListener('click',()=>{ display_alert('confirmez la suppression',this.delete_data) })
+        if(this._btn_delete) this._btn_delete.addEventListener('click',()=>{ display_alert('confirmez la suppression',this.delete_data) })
+        if(this._btn_upgrade_to_supervisor) this._btn_upgrade_to_supervisor.addEventListener('click',()=>{ display_alert('confirmez la promotion',this.upgrade_to_supervisor) })
         for(let star of this._stars){
             star.addEventListener('click',()=>{this.rate_user(star)})
         }
     }
+
+    /**
+     * le bouton superviseur à 3 états
+     * - activer
+     * - bannir
+     * - débannit
+     */
 
     add_name_to_btn_supervisor = () =>{
         let name = ''
@@ -99,7 +108,7 @@ export class Detail {
                 display_alert('le membre à été banni');
                 window.setTimeout(()=>{
                     window.location = document.referrer
-                }, 1500);
+                }, 2000);
             }
         })        
     }
@@ -122,10 +131,12 @@ export class Detail {
                 display_alert(this.table == 'ad' ? 'l\'annonce a été activée' : 'le membre à été activé');
                 window.setTimeout(()=>{
                     window.location = document.referrer
-                }, 1500);
+                }, 2000);
             }
         })
     }
+
+    /******** fin traitement bouton superviseur **************/
 
     display_btn_bid = () =>{
         if(this._el.dataset.user != this._el.dataset.owner){
@@ -199,6 +210,7 @@ export class Detail {
     }
 
     /**
+     * send_data_to_db()
      * envoi des données ajax pour le membre ou un annonce
      * l'id n'est pas envoyé directement. Pour éviter le piratage elle gérer en PHP dans une variable session
      * aussi bien pour le membre que l'annonce
@@ -214,12 +226,16 @@ export class Detail {
             console.log(reponse_ajax)
             if(reponse_ajax == 1){
                 display_alert('les modifications ont été enregistrées')
+                window.setTimeout(()=>{
+                    window.location = document.referrer
+                }, 2000);
             }
         })
     }
 
 
     /**
+     * rate_user
      * envoi des données ajax pour noter un user
      */
     rate_user = (star) =>{
@@ -244,7 +260,7 @@ export class Detail {
 
     /**
      * suppression annonce ou compte
-     * l'id usager ou l'id annonce est stocké en variable session et traité du coté PHP
+     * l'id usager ou l'id annonce est stocké en variable session et traité du coté PHP (protection contre la suppression par le front)
      */
     delete_data = () => {
         let paramAjax = {
@@ -257,8 +273,33 @@ export class Detail {
             console.log(reponse_ajax)
             if(reponse_ajax == 1){                
                 display_alert('suppression effectuée')
+                // si suppression de compte , redirection vers le login
                 let new_url = this._el.dataset.table == 'ad' ? document.referrer : `${document.baseURI}/auth/logout`
-                setTimeout(location.href = new_url,2500)
+                window.setTimeout(()=>{
+                    window.location = new_url
+                }, 2000)
+            }
+        })
+    }
+
+    /**
+     * upgrade_to_supervisor()
+     * passer le membre superviseur
+     */
+    upgrade_to_supervisor = () =>{
+        let paramAjax = {
+            method : "POST",
+            json : true,
+            action : `index.php/ajax_controller/upgrade_to_supervisor`,
+            data_to_send : this._el.dataset.idElt
+        }
+        requeteAjax(paramAjax, (reponse_ajax) => {
+            console.log(reponse_ajax)
+            if(reponse_ajax == 1){                
+                display_alert('le membre à été promu !')
+                window.setTimeout(()=>{
+                    window.location = document.referrer
+                }, 2000)
             }
         })
     }

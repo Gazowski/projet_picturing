@@ -1,2 +1,2 @@
 
-<button class='button' data-get-supervisor>Passer superviseur</button>
+<button class='button' data-upgrade-to-supervisor>Passer superviseur</button>

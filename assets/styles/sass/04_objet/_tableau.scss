@@ -1,52 +1,52 @@
-
 // scss des tableaux listes
-.text_tab h3{
+.text_tab h3 {
 	text-align: center;
-	
+
 }
 
-table { 
-	border-collapse: collapse; 
-    margin:2em auto;
+table {
+	border-collapse: collapse;
+	margin: 2em auto;
 }
 
-.table{
+.table {
 	overflow-x: scroll;
 	width: 95%;
 	margin: 0 auto;
 }
 
 /* Zebra striping */
-tr:nth-of-type(odd) { 
-	background: #eee; 
-	}
+tr:nth-of-type(odd) {
+	background: #eee;
+}
 
-th { 
-	background: $c-medium-theme; 
-	color: white; 
-	font-weight: 600; 
-	}
+th {
+	background: $c-medium-theme;
+	color: white;
+	font-weight: 600;
+}
 
-td, th { 
-	padding: 10px; 
-	border: 1px solid #ccc; 
-	text-align: left; 
+td,
+th {
+	padding: 10px;
+	border: 1px solid #ccc;
+	text-align: left;
 	font-size: 18px;
-	}
+}
 
 //-----------------------------
 
 @media (min-width: 900px) {
-    .table{
+	.table {
 		width: 69%;
-    }
+	}
 
 }
+
 @media (min-width: 1200px) {
-    .table{
+	.table {
 		width: 80%;
-		overflow-x:hidden;
-    }
+		overflow-x: hidden;
+	}
 
 }
-

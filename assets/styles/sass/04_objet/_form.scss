@@ -1,33 +1,42 @@
 .form {
-    border: 1px solid $c-light-grey;
-    box-shadow: 0 5px 15px rgba(0,0,0,0.3);
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
-    margin: 1em auto;
-    width: calc(100% - 4em);
-    .button_container{
-        height: 2em;
-        padding:1em;
-        position: relative;
-        .button{
-            @include centrer;
-        }  
-    }
-    h1{
-      font-size: 1.3em;
-    }
-    .content_form {
-        p{font-size: .9em;}
-        a{margin-left: 2em;}
-    
-    } 
+	border: 1px solid $c-light-grey;
+	box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+	display: flex;
+	flex-direction: column;
+	justify-content: space-between;
+	margin: 1em auto;
+	width: calc(100% - 4em);
+
+	.button_container {
+		height: 2em;
+		padding: 1em;
+		position: relative;
+
+		.button {
+			@include centrer;
+		}
+	}
+
+	h1 {
+		font-size: 1.3em;
+	}
+
+	.content_form {
+		p {
+			font-size: .9em;
+		}
+
+		a {
+			margin-left: 2em;
+		}
+
+	}
 }
 
-form select{
-    width: 100%;
-    margin: 0 auto;
-    appearance: none;
+form select {
+	width: 100%;
+	margin: 0 auto;
+	appearance: none;
 	background: $c-dark-grey;
 	background-image: none;
 	border: 0 !important;
@@ -44,35 +53,38 @@ form select{
 	}
 }
 
-.titre_form{
-    color: white;
-    display: flex;
-    justify-content: space-around;
-    
-    background-color: $c-medium-theme;
-    h1{
-        font-weight: normal;
-    }
+.titre_form {
+	color: white;
+	display: flex;
+	justify-content: space-around;
+
+	background-color: $c-medium-theme;
+
+	h1 {
+		font-weight: normal;
+	}
 }
-.content_form div{
-    text-align: center;
+
+.content_form div {
+	text-align: center;
 }
 
 //--------menu_navigation_Tablette-----------//
 @media (min-width: 600px) {
-    .form {
-        width: calc(70% - 4em);
-    }
-    .button{
-        margin-top: 1em; 
-    }
-	
+	.form {
+		width: calc(70% - 4em);
+	}
+
+	.button {
+		margin-top: 1em;
+	}
+
 }
 
 //--------menu_navigation_Grand écran-----------//
 @media (min-width: 900px) {
-    .form {
-        width: calc(35% - 4em);
-    }
-	
+	.form {
+		width: calc(35% - 4em);
+	}
+
 }

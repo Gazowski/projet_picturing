@@ -16,6 +16,13 @@ class Ban_model extends CI_Model {
         $this->ADMIN = 50;
     }
 
+    /**
+     * ban_member() : bannissement d'un membre
+     * ajoute une ligne dans la table 'banishement' et desactive le membre dans la table user
+     * @param int $id_member : identifiant du membre a bannir
+     * @param int $id_supervisor : identifiant de l'administrateur qui bannit
+     * @return bool : true si le bannissement a été ajouté et si le membre a été désactivé
+     */
     public function ban_member($id_member,$id_supervisor)
     {
         $data = [
@@ -29,6 +36,12 @@ class Ban_model extends CI_Model {
         return $is_ban && $is_disabled;
     }
 
+    /**
+     * unban_member() : débanni le membre passé en paramètre
+     * ajoute un date de 'unban' dans la table 'banishement' et active le membre dans la table 'user'
+     * @param int $id_member : identifiant du membre à débannir
+     * @return bool : true si date de unban a été ajouté et que le membre est activé
+     */
     public function unban_member($id_member)
     {
         $this->db->where('banished_member',$id_member);
@@ -43,6 +56,7 @@ class Ban_model extends CI_Model {
 
     /**
      * is_banish : vérifie si un membre est banni
+     * vérifie si l'ID membre est présent et si la date unban == null
      * @param int $id_member  id du membre a bannir
      * @return bool true si un banissement est en cours , false sinon
      */

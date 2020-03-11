@@ -12,7 +12,7 @@ class Message extends CI_Controller {
     {
         parent::__construct();
         $this->load->database();
-        $this->load->library(['ion_auth', 'session']);
+        $this->load->library(['ion_auth', 'session','form_validation']);
         $this->load->library('mahana_messaging');
         $this->load->model('ion_auth_model');
         $this->load->model('ad_model');
@@ -67,14 +67,15 @@ class Message extends CI_Controller {
             $this->session->set_flashdata('message', 'Votre message a bien été envoyé');
 			redirect("/ad/display_all", 'refresh');
         }
-        else{
+        else
+        {
             $this->data['message_error'] = (validation_errors() ? validation_errors() : ($this->ion_auth->errors() ? $this->ion_auth->errors() : $this->session->flashdata('message_error')));
 
             $this->data['body'] = [
                 'name' => 'message',
                 'id' => 'message',
                 'type' => 'text',
-                'value' => $this->form_validation->set_value('body'),
+                'value' => $this->form_validation->set_value('message'),
             ];
             
             $this->load->template('pages/create_message_form', $this->data);

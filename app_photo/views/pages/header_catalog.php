@@ -77,7 +77,7 @@
                 <div class="menu_search_compte_el">
                 <div class="search_compte_el">    
                     
-                    <div class="compte_el">
+                    <div class="compte_el unactive">
                         <form action="/search" id="searchthis" method="get" class="search-container">
                             <input id="search" name="search" type="text" placeholder="Recherche" />
                             <a><i id = "icone_search" class="fas fa-search"></i></a>

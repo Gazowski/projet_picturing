@@ -1,136 +1,152 @@
-.detail_ad{
-    display: flex;
-    flex-direction: column;
-    width: 95%;
-    margin: 1em auto 2em;
-    border: 1px solid $c-light-grey;
-    justify-content: center;
-    padding: .5em;
+.detail_ad {
+	display: flex;
+	flex-direction: column;
+	width: 95%;
+	margin: 1em auto 2em;
+	border: 1px solid $c-light-grey;
+	justify-content: center;
+	padding: .5em;
 }
 
-.soumission{
-    width:100%;
-    text-align: center;
-    font-weight: medium;
-}
-.secondary_photos{
-
-    width: 94%;
-    display: flex;
-    flex-direction: row;
-    img {
-        width: 50%;
-        -o-object-fit: cover;
-        object-fit: cover;
-        margin-left: .4em;
-        margin-top: .4em;
-    }
-}
-.auteur{
-    margin: 0 auto ;
-    padding-top: 1em;
+.soumission {
+	width: 100%;
+	text-align: center;
+	font-weight: medium;
 }
 
-.rating{
-    text-align: center;
-    > span{
-        color: $c-medium-theme ;
-    }
+.secondary_photos {
+
+	width: 94%;
+	display: flex;
+	flex-direction: row;
+
+	img {
+		width: 50%;
+		-o-object-fit: cover;
+		object-fit: cover;
+		margin-left: .4em;
+		margin-top: .4em;
+	}
 }
-.modif_supp{
-    width: 95%;
-    display: flex;
-    flex-direction: row;
-    margin: 0 auto;
-    justify-content: space-between;
+
+.auteur {
+	margin: 0 auto;
+	padding-top: 1em;
 }
-.btn_activ{
-   margin: 0 auto;
+
+.rating {
+	text-align: center;
+
+	>span {
+		color: $c-medium-theme;
+	}
+}
+
+.modif_supp {
+	width: 95%;
+	display: flex;
+	flex-direction: row;
+	margin: 0 auto;
+	justify-content: space-between;
+}
+
+.btn_activ {
+	margin: 0 auto;
 
 }
 
 
 
 @media (min-width: 600px) {
-    .detail_ad{
-        width: 85%;
-      
-    }
-    .soumission{
-        width: 30%;
-        margin: 0 auto;
-    }
-    .titre_img_desc_prix{
-        display: flex;
-        flex-direction: column;
-        
-        justify-content: space-between;
-    }
-    .img_titre{
-        width: 94%;
-        display: flex;
-        flex-direction: column;
-        margin: 0 auto;
-        
-    }
-    .desc_prix{
-        width: 95%;
-        display: flex;
-        flex-direction: column;
-        justify-content: space-between;
-        div{
-            padding-left: 1em;
-        }
-        
-    }
-    
-    .rating{
-        margin: 1em auto;
-        display: flex;
-        flex-direction: column;
-        
-    }
-    .btn_activ{
-        margin: 0 auto; 
-     }
-     
+	.detail_ad {
+		width: 85%;
+
+	}
+
+	.soumission {
+		width: 30%;
+		margin: 0 auto;
+	}
+
+	.titre_img_desc_prix {
+		display: flex;
+		flex-direction: column;
+
+		justify-content: space-between;
+	}
+
+	.img_titre {
+		width: 94%;
+		display: flex;
+		flex-direction: column;
+		margin: 0 auto;
+
+	}
+
+	.desc_prix {
+		width: 95%;
+		display: flex;
+		flex-direction: column;
+		justify-content: space-between;
+
+		div {
+			padding-left: 1em;
+		}
+
+	}
+
+	.rating {
+		margin: 1em auto;
+		display: flex;
+		flex-direction: column;
+
+	}
+
+	.btn_activ {
+		margin: 0 auto;
+	}
+
 }
-  
+
 @media (min-width: 900px) {
-    .detail_ad{
-        width: 35%;
+	.detail_ad {
+		width: 35%;
 
-        .img_titre{
-            width: 80%;
-        }
-        
-    }
-    .soumission{
-        width: 70%;
-    }
-    
-    .secondary_photos{
+		.img_titre {
+			width: 80%;
+		}
 
-        width: 45%;
-        margin: 0 auto;
-        display: flex;
-        flex-direction: row;
-        img {
-            width: 50%;
-            -o-object-fit: cover;
-            object-fit: cover;
-            margin-left: .4em;
-            margin-top: .4em;
-        }
-    }
-    .rating{
-    
-        margin: 1em auto;
-        display: flex;
-        flex-direction: column;   
-    }
-    .desc_prix{
-        width: 100%;
-    }
-    
+	}
+
+	.soumission {
+		width: 70%;
+	}
+
+	.secondary_photos {
+
+		width: 45%;
+		margin: 0 auto;
+		display: flex;
+		flex-direction: row;
+
+		img {
+			width: 50%;
+			-o-object-fit: cover;
+			object-fit: cover;
+			margin-left: .4em;
+			margin-top: .4em;
+		}
+	}
+
+	.rating {
+
+		margin: 1em auto;
+		display: flex;
+		flex-direction: column;
+	}
+
+	.desc_prix {
+		width: 100%;
+	}
+
 }

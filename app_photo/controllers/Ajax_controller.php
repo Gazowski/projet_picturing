@@ -245,5 +245,25 @@ class Ajax_controller extends CI_Controller {
         echo $this->ban_model->unban_member($id_member);
     }
 
+    /**
+     * uprgrade_to_supervisor
+     * vérifie si l'utilisateur connecté est admin
+     * supprime le membre dont l'id est en parametre ajax de tout groupes
+     * l'ajoute au groupe superviseur
+     */
+    public function upgrade_to_supervisor()
+    {
+        // redirection si l'utilisateur n'a pas le niveau administrator
+        if (!isset($this->session->userdata['user_role']) || $this->session->userdata['user_role'] < 50)
+        {
+            $this->session->set_flashdata('message', 'Vous devez être connecté entant que Administrateur');
+            redirect('auth', 'refresh');
+        }
+        $id_member = $this->ajax_data;
+        $is_removed = $this->ion_auth->remove_from_group(NULL, $id_member);
+        $is_added =  $this->ion_auth->add_to_group(6, $id_member); // 6 = groupe superviseur
+        echo $is_removed && $is_added;
+    }
+
 
 }

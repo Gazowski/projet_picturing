@@ -1,97 +1,97 @@
 .entete_admin {
-  width: 100%;
-  background-image: url("../../logo/header_image_admin.png");
-  background-repeat: repeat;
-  background-position: center;
-  height: 6em;
-  
+	width: 100%;
+	background-image: url("../../logo/header_image_admin.png");
+	background-repeat: repeat;
+	background-position: center;
+	height: 6em;
+
 }
 
 .logo_compte_admin_el {
-  display: none;
+	display: none;
 }
 
 .logo_compte_admin {
 
-  display: flex;
-  flex-direction: row;
-  justify-content: flex-end;
+	display: flex;
+	flex-direction: row;
+	justify-content: flex-end;
 
 
 
-  align-items: center;
+	align-items: center;
 
-  .logo {
-    width: 7em;
-    margin-right: 3.6em;
-  }
+	.logo {
+		width: 7em;
+		margin-right: 3.6em;
+	}
 }
 
 .menu_el_admin {
-  display: none;
+	display: none;
 }
 
 // --------------------------------SCSS pour grand ecran----------------------------------//
 
 @media (min-width: 900px) {
 
-  .logo_compte_admin {
+	.logo_compte_admin {
 
-    display: none;
-  }
+		display: none;
+	}
 
-  .logo_compte_admin_el {
-     
-    .mon_compte a {
-      color: $c-light-grey;
-      
-      &:hover {
-        color: $c-medium-theme;
-      }
-    }
-    }
+	.logo_compte_admin_el {
 
-    
+		.mon_compte a {
+			color: $c-light-grey;
 
-  // menu de navigation de l'administrateur //
-  
-  .menu_el_admin {
-    display: block;
-    width: 100%;
-    background-color: $c-light-grey;
-    padding: 0;
+			&:hover {
+				color: $c-medium-theme;
+			}
+		}
+	}
 
-    #menu_el {
-      width: 69%;
-      margin: 0 auto;
-      padding-top: .9em;
-      padding-left: 1em;
-      padding-right: 1em;
-      font-size: 1.1em;
-    }
 
-    ul {
-      margin-top: 0;
-    }
-  }
 
-  //------------fin du menu de navigation-------//
+	//----------------menu de navigation de l'administrateur--------------------//
 
-  .logo_compte_admin_el {
-    width: 69%;
-    margin: 0 auto;
-    display: flex;
-    flex-direction: row;
-    justify-content: flex-end;
-    padding-top: 2em;
+	.menu_el_admin {
+		display: block;
+		width: 100%;
+		background-color: $c-light-grey;
+		padding: 0;
 
-    align-items: center;
+		#menu_el {
+			width: 69%;
+			margin: 0 auto;
+			padding-top: .9em;
+			padding-left: 1em;
+			padding-right: 1em;
+			font-size: 1.1em;
+		}
 
-    .logo {
-      width: 7em;
-      margin-right: 3.6em;
-    }
-  }
+		ul {
+			margin-top: 0;
+		}
+	}
+
+	//------------fin du menu de navigation-------//
+
+	.logo_compte_admin_el {
+		width: 69%;
+		margin: 0 auto;
+		display: flex;
+		flex-direction: row;
+		justify-content: flex-end;
+		padding-top: 2em;
+
+		align-items: center;
+
+		.logo {
+			width: 7em;
+			margin-right: 3.6em;
+		}
+	}
 
 
 }
