@@ -90,7 +90,8 @@ CREATE TABLE IF NOT EXISTS `banishement` (
   `id_banishement` int(11) NOT NULL AUTO_INCREMENT,
   `banished_member` int(11) UNSIGNED NOT NULL,
   `admin_member` int(11) UNSIGNED NOT NULL,
-  `date` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  `date_ban` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  `date_unban` int(11) DEFAULT NULL
   PRIMARY KEY (`id_banishement`),
   KEY `banished_member` (`banished_member`),
   KEY `admin_member` (`admin_member`)
