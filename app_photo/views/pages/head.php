@@ -9,7 +9,7 @@
         <meta name='keywords' content='photographie, réparation, scéance photo, appareil photo'>
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <base href="<?= base_url(); ?>index.php">
-        <!-- L'élément <base> définit l'URL de base à utiliser pour recomposer toutes les URL relatives contenues dans un document. 
+        <!-- L'élément <base> définit l'URL de base à utiliser pour recomposer toutes les URL relatives contenues dans un document en javascript. 
         Il ne peut y avoir qu'un seul élément <base> au sein d'un document.
         Il est possible d'accéder à l'URL de base d'un document via un script en utilisant document.baseURI -->
         
