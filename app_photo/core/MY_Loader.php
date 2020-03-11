@@ -44,6 +44,17 @@ class MY_Loader extends CI_Loader {
         };
         $vars['filter'] =  (strpos($page, 'list') || strpos($page,'tile')) ? $filter_view : '';
 
+        // Breadcrumb
+        // $this->mybreadcrumb->add('Home', base_url());
+        // $this->mybreadcrumb->add('Cities', base_url('cities/listing'));
+
+        // $this->mybreadcrumb->render();
+
+        // $data['breadcrumbs'] = $this->mybreadcrumb->render();
+        
+        // $this->load->view('pages/header_catalog',$data);
+        // $this->load->view('pages/header_admin',$data);
+        
         // si le navigateur est IE
         if(isset($_SESSION['is_IE']))
             $vars['is_IE'] = $_SESSION['is_IE'] ? '-ie-' : ''; 

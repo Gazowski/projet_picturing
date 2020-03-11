@@ -12,7 +12,7 @@ class Ad extends CI_Controller {
     {
         parent::__construct();
         $this->load->database();
-        $this->load->library(['users','ion_auth', 'session','user_agent']);
+        $this->load->library(['users','ion_auth','session','user_agent','mybreadcrumb']);
         $this->load->model('ion_auth_model');
 		$this->load->model('ad_model');
 		
@@ -47,6 +47,24 @@ class Ad extends CI_Controller {
      * @param { int } $id_ad : identifiant de l'annonce
      * Accessible pour tous
      */
+
+	 // Breadcrumb
+	 public function breadcrumb(){
+
+		 $this->mybreadcrumb->add('Home', base_url());
+		 $this->mybreadcrumb->add('Cities', base_url('cities/listing'));
+	
+		 $this->mybreadcrumb->render();
+	
+		 $data['breadcrumbs'] = $this->mybreadcrumb->render();
+		 
+		//  var_dump($data['breadcrumbs']);
+		//  die;
+		 
+		 $this->load->view('pages/header_catalog',$data);
+		 $this->load->view('pages/header_admin',$data);
+	}
+
 	public function display_ad($id_ad)
     {
         if ( ! file_exists(APPPATH.'views/pages/detail_ad.php'))

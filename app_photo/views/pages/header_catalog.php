@@ -1,4 +1,6 @@
-
+<?php 
+    var_dump($breadcrumps);
+?>
 <header>
       <!-- ----------------- header petit ecran ---------------------- --> 
     <section class="entete">
@@ -49,10 +51,12 @@
                     <a href="<?= base_url(); ?>index.php/auth/<?= $action ?>"><i class="<?= $icon ?>"></i></a>
                 </div>
             
+                <div>
+                    <p><?= $breadcrumbs ?></p>
+                </div>
                
         </section>
     
-      
       
     </section>
 
@@ -106,7 +110,9 @@
                 </div>
                
             </div>
-            
+            <div>
+                <?php $breadcrumbs ?>
+            </div>
     </section>
     <div class="line"></div>  
 </header>
