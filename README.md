@@ -8,6 +8,18 @@
 https://coolors.co/
 
 ## correction à faire
+* mise a jour de la db (maj table 'banishement'):
+si vous ne voulez pas effacer et recopier toute la  table, effacer uniquement la table banishement et copier les lignes suivantes (sous l'onglet SQL) :
+```SQL
+CREATE TABLE `banishement` (
+  `id_banishement` int(11) NOT NULL,
+  `banished_member` int(11) UNSIGNED NOT NULL,
+  `admin_member` int(11) UNSIGNED NOT NULL,
+  `date_ban` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  `date_unban` int(11) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+```
+
 * page home admin : lorsque tous les users sont activés seul l'entete du tableau reste affiché (au lieu d'une phrase)
 * dans l'admin onglet Membres revoir l'affichage des listes fournisseurs et clients.
 
