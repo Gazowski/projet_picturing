@@ -202,10 +202,9 @@ class Member extends CI_Controller {
         $admin_btn_view = function(){
             $this->load->view('pages/btn_member/admin_btn');
         }; 
-        // bouton affiché si admin
-        $is_admin = $this->session->userdata['user_role'] >= 50 && $this->session->userdata['user_id'] != $id_member;
+        // bouton affiché si l'utilisateur est admin , si il ne visite pas son profil et si le  si le membre visité n'est pas superviseur
+        $is_admin = $this->session->userdata['user_role'] >= 50 && $this->session->userdata['user_id'] != $id_member && $data['profil']->name != 'Superviseur';
         $data['admin_btn'] = $is_admin ? $admin_btn_view : null;
-
 
         $this->load->template('pages/detail_member.php',$data);
     }
