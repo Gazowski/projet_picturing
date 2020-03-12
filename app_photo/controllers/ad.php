@@ -56,7 +56,7 @@ class Ad extends CI_Controller {
      */
 	private function breadcrumbs($second = null,$third = null)
     {
-        $my_breadcrumbs = [ 'Accueil' => $this->session->userdata['user_role'] >= 40 ? 'index.php/member/admin_home':'index.php/ad/display_all' ];
+        $my_breadcrumbs = [ 'Accueil' => isset($this->session->userdata['user_role']) && $this->session->userdata['user_role'] >= 40 ? 'index.php/member/admin_home':'index.php/ad/display_all' ];
         if($second && !$third)
         {
             $my_breadcrumbs[' / '.$second] = $_SERVER['PHP_SELF'];
