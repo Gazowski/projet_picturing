@@ -102,7 +102,7 @@ class Ad extends CI_Controller {
 		$this->data['supervisor_btn'] = $is_supervisor ? $supervisor_btn_view : null;
 		
 		// breadcrumb
-		$this->data['breadcrumbs'] = $this->breadcrumbs('annonces');
+		$this->data['breadcrumbs'] = $this->breadcrumbs('liste','annonce');
 	
         $this->load->template('pages/detail_ad',$this->data);
 	}
@@ -116,13 +116,11 @@ class Ad extends CI_Controller {
             show_404();
         }
 		
-		$this->data['breadcrumbs'] = [
-			'Accueil' => 'index.php/ad/display_all',
-		];
-        
         $this->data['title'] = 'Liste des Annonces'; // Capitalize the first letter
-        $this->data['ad'] = $this->ad_model->get_ads();
+		$this->data['ad'] = $this->ad_model->get_ads();
 		
+
+		$this->data['breadcrumbs'] = $this->breadcrumbs();
         $this->load->template('pages/tile',$this->data);
     }
 
@@ -144,7 +142,7 @@ class Ad extends CI_Controller {
         $this->data['ad'] = $this->ad_model->get_ad_product();
 
 		// breadcrumb
-		$this->data['breadcrumbs'] = $this->breadcrumbs('annonces','produits');
+		$this->data['breadcrumbs'] = $this->breadcrumbs('liste');
 
         $this->load->template('pages/tile',$this->data);
 	}
@@ -166,7 +164,7 @@ class Ad extends CI_Controller {
         $this->data['ad'] = $this->ad_model->get_ad_service();
 
 		// breadcrumb
-		$this->data['breadcrumbs'] = $this->breadcrumbs('annonces','services');
+		$this->data['breadcrumbs'] = $this->breadcrumbs('liste');
 
         $this->load->template('pages/tile',$this->data);
 	}
@@ -199,7 +197,7 @@ class Ad extends CI_Controller {
 			$this->data['create_ad'] = true;
 			
 			// breadcrumb
-			$this->data['breadcrumbs'] = $this->breadcrumbs('annonces', 'vos annonces');
+			$this->data['breadcrumbs'] = $this->breadcrumbs('mes annonces');
 
 			$this->load->template('pages/tile',$this->data);
         }

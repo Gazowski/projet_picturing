@@ -1,4 +1,4 @@
-<div>
+<section class="breadcrumbs">
     <p>
     <?php 
     if(isset($breadcrumbs)){
@@ -7,4 +7,4 @@
         <?php }
     } ?>
     </p>
-</div>
+</section>
