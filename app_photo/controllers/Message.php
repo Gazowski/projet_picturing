@@ -26,6 +26,28 @@ class Message extends CI_Controller {
 		$this->ADMIN = 40;
     }
 
+    /**
+     * breadcrumbs() : affiche le fil d'arianne
+     * @param string $second (optionnel) : le nom de la 2e page dans le fil d'arianne
+     * @param string $third (optionnel) : le nom de la 3e page dans le fil d'arianne
+     * @return array : le fil d'arianne a afficher avec les liens vers les pages
+     */
+    private function breadcrumbs($second = null,$third = null)
+    {
+        $my_breadcrumbs = [ 'Accueil' => $this->session->userdata['user_role'] >= 40 ? 'index.php/ad/admin_home':'index.php/ad/display_all' ];
+        if($second && !$third)
+        {
+            $my_breadcrumbs[' / '.$second] = $_SERVER['PHP_SELF'];
+        }
+        else if($second && $third)
+        {
+            $my_breadcrumbs[' / '.$second] = $_SERVER['HTTP_REFERER'];
+            $my_breadcrumbs[' / '.$third] = $_SERVER['PHP_SELF'];
+        }
+
+        return $my_breadcrumbs;
+    }
+
     public function create_message()
     {
         if ( ! file_exists(APPPATH.'views/pages/detail_member.php'))
@@ -78,6 +100,9 @@ class Message extends CI_Controller {
                 'value' => $this->form_validation->set_value('message'),
             ];
             
+            // breadcrumb
+			$this->data['breadcrumbs'] = $this->breadcrumbs('annonces','votre message');
+
             $this->load->template('pages/create_message_form', $this->data);
         }
     } 
@@ -114,6 +139,9 @@ class Message extends CI_Controller {
                     $data['ads'][] = $this->ad_model->get_ad($id_ad);
                 }
             }
+
+            // breadcrumb
+            $this->data['breadcrumbs'] = $this->breadcrumbs('messages');
 
             $this->load->template('pages/messages', $data);
         }

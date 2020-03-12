@@ -47,6 +47,28 @@ class Ad extends CI_Controller {
 		}
 
 	}
+
+	/**
+     * breadcrumbs() : affiche le fil d'arianne
+     * @param string $second (optionnel) : le nom de la 2e page dans le fil d'arianne
+     * @param string $third (optionnel) : le nom de la 3e page dans le fil d'arianne
+     * @return array : le fil d'arianne a afficher avec les liens vers les pages
+     */
+	private function breadcrumbs($second = null,$third = null)
+    {
+        $my_breadcrumbs = [ 'Accueil' => $this->session->userdata['user_role'] >= 40 ? 'index.php/member/admin_home':'index.php/ad/display_all' ];
+        if($second && !$third)
+        {
+            $my_breadcrumbs[' / '.$second] = $_SERVER['PHP_SELF'];
+        }
+        else if($second && $third)
+        {
+            $my_breadcrumbs[' / '.$second] = $_SERVER['HTTP_REFERER'];
+            $my_breadcrumbs[' / '.$third] = $_SERVER['PHP_SELF'];
+        }
+
+        return $my_breadcrumbs;
+    }
 	
 	/**
 	 * display_ad() : affiche l'annonce passée en paramètre
@@ -79,6 +101,8 @@ class Ad extends CI_Controller {
 		$is_supervisor = $this->session->userdata['user_role'] >= 40 && $this->data['ad']['active'] == 0 ;
 		$this->data['supervisor_btn'] = $is_supervisor ? $supervisor_btn_view : null;
 		
+		// breadcrumb
+		$this->data['breadcrumbs'] = $this->breadcrumbs('annonces');
 	
         $this->load->template('pages/detail_ad',$this->data);
 	}
@@ -119,6 +143,9 @@ class Ad extends CI_Controller {
         $this->data['title'] = 'Liste des Produits'; // Capitalize the first letter
         $this->data['ad'] = $this->ad_model->get_ad_product();
 
+		// breadcrumb
+		$this->data['breadcrumbs'] = $this->breadcrumbs('annonces','produits');
+
         $this->load->template('pages/tile',$this->data);
 	}
 	
@@ -137,6 +164,9 @@ class Ad extends CI_Controller {
         
         $this->data['title'] = 'Liste des services';
         $this->data['ad'] = $this->ad_model->get_ad_service();
+
+		// breadcrumb
+		$this->data['breadcrumbs'] = $this->breadcrumbs('annonces','services');
 
         $this->load->template('pages/tile',$this->data);
 	}
@@ -168,6 +198,9 @@ class Ad extends CI_Controller {
 			$this->data['ad'] = $this->ad_model->get_member_ads();
 			$this->data['create_ad'] = true;
 			
+			// breadcrumb
+			$this->data['breadcrumbs'] = $this->breadcrumbs('annonces', 'vos annonces');
+
 			$this->load->template('pages/tile',$this->data);
         }
 	}
@@ -263,6 +296,9 @@ class Ad extends CI_Controller {
 				'value' => $this->form_validation->set_value('location'),
 			];
 
+			// breadcrumb
+			$data['breadcrumbs'] = $this->breadcrumbs('annonces','votre annonce');
+
 			$this->load->template('pages/create_ad_form',$this->data);
 		}
 	}
@@ -346,7 +382,10 @@ class Ad extends CI_Controller {
         
         
         $this->data['title'] = 'A propos'; // Capitalize the first letter
-       // $this->data['ad'] = $this->ad_model->get_ads();
+	   // $this->data['ad'] = $this->ad_model->get_ads();
+	   
+	   	// breadcrumb
+		$data['breadcrumbs'] = $this->breadcrumbs('à propos');
 
         $this->load->template('pages/a_propos',$this->data);
     }
