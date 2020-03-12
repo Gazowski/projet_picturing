@@ -56,7 +56,7 @@
 		</div>
 
 		<div class="address">
-			<p>Projet réalisé par la collaboration de :</p>
+			<p>Projet réalisé par la collaboration :</p>
 			<p>Hyppolite Kervens Antoine,</p> 
 			<p>Comeau Gael,</p> 
 			<p>Raude Olivier,</p> 
