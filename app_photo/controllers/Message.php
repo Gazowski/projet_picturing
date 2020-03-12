@@ -101,7 +101,7 @@ class Message extends CI_Controller {
             ];
             
             // breadcrumb
-			$this->data['breadcrumbs'] = $this->breadcrumbs('annonces','votre message');
+			$this->data['breadcrumbs'] = $this->breadcrumbs('liste','votre message');
 
             $this->load->template('pages/create_message_form', $this->data);
         }
@@ -141,7 +141,7 @@ class Message extends CI_Controller {
             }
 
             // breadcrumb
-            $this->data['breadcrumbs'] = $this->breadcrumbs('messages');
+            $data['breadcrumbs'] = $this->breadcrumbs('messages');
 
             $this->load->template('pages/messages', $data);
         }

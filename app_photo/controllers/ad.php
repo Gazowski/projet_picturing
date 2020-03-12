@@ -383,7 +383,7 @@ class Ad extends CI_Controller {
 	   // $this->data['ad'] = $this->ad_model->get_ads();
 	   
 	   	// breadcrumb
-		$data['breadcrumbs'] = $this->breadcrumbs('à propos');
+		$this->data['breadcrumbs'] = $this->breadcrumbs('à propos');
 
         $this->load->template('pages/a_propos',$this->data);
     }
