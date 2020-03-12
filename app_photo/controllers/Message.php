@@ -163,6 +163,20 @@ class Message extends CI_Controller {
         if (isset($this->session->userdata['user_id']))
 		{   
             $id_msg = $this->input->post('id_msg');
+            var_dump($id_msg);
+            // die;
+            $user_id = $this->session->userdata['user_id']; 
+            var_dump($user_id);
+            // die;
+            $status_id = $this->mahana_model->get_all_threads($user_id);
+            var_dump($status_id);
+            // die;
+            $status_id = 1;
+            var_dump($status_id);
+            // die;
+
+            $this->mahana_model->update_message_status($id_msg, $user_id, $status_id);
+            
             $sender_id = $this->session->userdata['user_id'];
             $body = $this->input->post('answer');
             $body = trim($body);
@@ -176,5 +190,21 @@ class Message extends CI_Controller {
                 redirect('message/display_messages_user','refresh');
             }
         }
+
+        // {
+        //     $id_msg = $this->input->post('id_msg');
+        //     $sender_id = $this->session->userdata['user_id'];
+        //     $body = $this->input->post('answer');
+        //     $body = trim($body);
+
+        //     if ($body == "") {
+        //         $this->session->set_flashdata('message', 'Vous devez remplir le champ message');
+        //         redirect("message/display_messages_user", 'refresh');
+        //     }else{
+        //         $this->mahana_model->reply_to_message($id_msg, $sender_id, $body);
+        //         $this->session->set_flashdata('message', 'Votre message a bien été envoyé');
+        //         redirect('message/display_messages_user','refresh');
+        //     }
+        // }
     }
 }
