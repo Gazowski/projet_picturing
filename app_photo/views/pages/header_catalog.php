@@ -1,6 +1,4 @@
-<!-- <?php 
-    var_dump($breadcrumb);
-?> -->
+
 <header>
       <!-- ----------------- header petit ecran ---------------------- --> 
     <section class="entete">
@@ -109,9 +107,6 @@
                 </div>
                
             </div>
-            <!-- <div>
-                <?php $breadcrumbs ?>
-            </div> -->
     </section>
     <div class="line"></div>  
 </header>
