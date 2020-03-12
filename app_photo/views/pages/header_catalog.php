@@ -50,10 +50,6 @@
                 <div class="mon_compte">
                     <a href="<?= base_url(); ?>index.php/auth/<?= $action ?>"><i class="<?= $icon ?>"></i></a>
                 </div>
-            
-                <div>
-                    <p><?= $output ?></p>
-                </div>
                
         </section>
     
