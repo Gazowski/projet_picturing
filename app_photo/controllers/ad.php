@@ -329,7 +329,7 @@ class Ad extends CI_Controller {
 		$config['max_size']             = 2000; // kB
 		$config['max_width']            = 2000; // px
 		$config['max_height']           = 2000; // px
-
+		
 		$this->load->library('upload', $config);
 
 		$url_photo = [];
@@ -337,19 +337,20 @@ class Ad extends CI_Controller {
 		// on vérifie l'ajout de chaque photo
 		for($i=1;$i<=$nb_photo;$i++)
 		{
-			if ( ! $this->upload->do_upload('photo'.$i))
+			if (!empty($_FILES['photo'.$i]['name']) && !$this->upload->do_upload('photo'.$i))
 			{
 				$this->session->set_flashdata('message', $this->upload->display_errors());
 				// retour vers le formulaire d'ajout photo
 				redirect("photo_form", 'refresh');
 			}
-			else
-			{
-				$this->data = array('upload_data' => $this->upload->data());
+			else if(!empty($_FILES['photo'.$i]['name']))
+			{ 
+				$data = array('upload_data' => $this->upload->data());
 				// on récupère le nom du fichier téléverser et on le mémorise
-				$photo_url[] = 'assets/img/' . $this->data['upload_data']['file_name'];
-			} 
+				$photo_url[] = 'assets/img/' . $data['upload_data']['file_name'];
+			}
 		}
+
 		// récupération de l'id de la derniere annonce ajouté
 		$last_ad = $this->session->flashdata('last_ad');
 		// on enregistre le lien de la photo dans la db (le 1e paramètre est laissé vide , le model prendra la dernière id insérer)
