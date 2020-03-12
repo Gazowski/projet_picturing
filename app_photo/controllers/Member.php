@@ -23,7 +23,29 @@ class Member extends CI_Controller {
 
 
 
-      /**
+    /**
+     * breadcrumbs() : affiche le fil d'arianne
+     * @param string $second (optionnel) : le nom de la 2e page dans le fil d'arianne
+     * @param string $third (optionnel) : le nom de la 3e page dans le fil d'arianne
+     * @return array : le fil d'arianne a afficher avec les liens vers les pages
+     */
+    private function breadcrumbs($second = null,$third = null)
+    {
+        $my_breadcrumbs = [ 'Accueil' => $this->session->userdata['user_role'] >= 40 ? 'index.php/member/admin_home':'index.php/ad/display_all' ];
+        if($second && !$third)
+        {
+            $my_breadcrumbs[' / '.$second] = $_SERVER['PHP_SELF'];
+        }
+        else if($second && $third)
+        {
+            $my_breadcrumbs[' / '.$second] = $_SERVER['HTTP_REFERER'];
+            $my_breadcrumbs[' / '.$third] = $_SERVER['PHP_SELF'];
+        }
+
+        return $my_breadcrumbs;
+    }
+
+    /**
      * affichage des tous les fournisseurs
      * accessible par superviseur et +
      */
@@ -43,7 +65,10 @@ class Member extends CI_Controller {
         }        
         
         $data['title'] = 'Liste des superviseurs'; // Capitalize the first letter
-        $data['membres'] = $this->member_model->get_by_type('name = "Superviseur"');     
+        $data['membres'] = $this->member_model->get_by_type('name = "Superviseur"');
+        
+        // breadcrumb
+        $data['breadcrumbs'] = $this->breadcrumbs('liste');
         
         $this->load->template('pages/list_members',$data);
     }
@@ -69,7 +94,10 @@ class Member extends CI_Controller {
         }        
         
         $data['title'] = 'Liste des Fournisseurs'; // Capitalize the first letter
-        $data['membres'] = $this->member_model->get_by_type('name = "Fournisseur" OR name = "Fournisseur Or"');     
+        $data['membres'] = $this->member_model->get_by_type('name = "Fournisseur" OR name = "Fournisseur Or"');
+
+        // breadcrumb
+        $data['breadcrumbs'] = $this->breadcrumbs('liste');
         
         $this->load->template('pages/list_members',$data);
     }
@@ -94,7 +122,10 @@ class Member extends CI_Controller {
         }        
         
         $data['title'] = 'Liste des Clients'; 
-        $data['membres'] = $this->member_model->get_by_type('name = "Client"');     
+        $data['membres'] = $this->member_model->get_by_type('name = "Client"');    
+        
+        // breadcrumb
+        $data['breadcrumbs'] = $this->breadcrumbs('liste');
         
         $this->load->template('pages/list_members',$data);
     }
@@ -118,6 +149,9 @@ class Member extends CI_Controller {
         
         $data['title'] = 'Liste des Membres'; // Capitalize the first letter
         $data['membres'] = $this->member_model->get_member();
+
+        // breadcrumb
+        $data['breadcrumbs'] = $this->breadcrumbs('liste');
         
         $this->load->template('pages/list_members',$data);
     }
@@ -141,6 +175,9 @@ class Member extends CI_Controller {
         $data['title'] = 'Page Administrateur';
         $data['unactive_member'] = $this->member_model->get_unactive_member();
         $data['unactive_ad'] = $this->ad_model->get_unactive_ad();
+
+        // breadcrumb
+        $data['breadcrumbs'] = $this->breadcrumbs();
 
         $this->load->template('pages/admin_home',$data);
 
@@ -206,6 +243,9 @@ class Member extends CI_Controller {
         // bouton affiché si l'utilisateur est admin , si il ne visite pas son profil et si le  si le membre visité n'est pas superviseur
         $is_admin = $this->session->userdata['user_role'] >= 50 && $this->session->userdata['user_id'] != $id_member && $data['profil']->name != 'Superviseur';
         $data['admin_btn'] = $is_admin ? $admin_btn_view : null;
+
+        // breadcrumb
+        $data['breadcrumbs'] = $this->breadcrumbs('liste','profil');
 
         $this->load->template('pages/detail_member.php',$data);
     }
