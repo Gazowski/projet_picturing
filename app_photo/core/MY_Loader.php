@@ -88,11 +88,11 @@ class MY_Loader extends CI_Loader {
                     'Clients' => 'index.php/Member/display_all_client',
                     
                 ],
-                '<span class="">Mon compte</span>' => [
+                'Mon compte' => [
                     'Mon profil' =>  'index.php/member/member',
-                    '<span class="">Mes messages</span>' =>  'index.php/message/display_messages_user',
+                    'Mes messages' =>  'index.php/message/display_messages_user',
                     'Mes annonces' =>  'index.php/ad/member_ads',
-                     'Activation' =>  'index.php/Member/admin_home',
+                    'Activation' =>  'index.php/Member/admin_home',
                     
                 ],
                 'A propos' => 'index.php/ad/a_propos',
