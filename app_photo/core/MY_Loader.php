@@ -177,10 +177,10 @@ class MY_Loader extends CI_Loader {
                     'Annonces' =>  'index.php/ad/display_all',
                     
                 ],
-                'Mon compte' =>[
-                    'Mon profil' =>  'index.php/member/member',
-                    'Mes annonces' =>  'index.php/ad/member_ads',                    
-                ], 
+                
+                'Mon profil' =>  'index.php/member/member',
+                                     
+                 
                 'A propos' => 'index.php/ad/a_propos',
             ];
         }
