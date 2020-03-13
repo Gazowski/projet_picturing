@@ -119,6 +119,20 @@ class Mahana_model extends CI_Model
 
         return $query->result_array();
     }
+    
+    function get_unread_message_by_user($user_id)
+    {
+        $sql = 'SELECT m.*, s.status, t.subject, ' . USER_TABLE_USERNAME .
+        ' FROM ' . $this->db->dbprefix . 'msg_messages m ' .
+        ' JOIN ' . $this->db->dbprefix . 'msg_threads t ON (m.thread_id = t.id) ' .
+        ' JOIN ' . $this->db->dbprefix . USER_TABLE_TABLENAME . ' ON (' . USER_TABLE_ID . ' = m.sender_id) '.
+        ' JOIN ' . $this->db->dbprefix . 'msg_status s ON (s.message_id = m.id AND s.user_id = ? ) ' .
+        ' WHERE s.status = 0 ' ;
+
+        $query = $this->db->query($sql, array($user_id));
+
+        return $query->result_array();
+    }
 
     // ------------------------------------------------------------------------
 

@@ -12,9 +12,11 @@ class Ad extends CI_Controller {
     {
         parent::__construct();
         $this->load->database();
-        $this->load->library(['ion_auth','session','user_agent']);
+        $this->load->library(['ion_auth','session','user_agent','mahana_messaging']);
         $this->load->model('ion_auth_model');
+        $this->load->model('mahana_model');
 		$this->load->model('ad_model');
+		$this->data['msg_unread'] = $this->is_msg_unread();
 		
 		$this->is_admin = $this->ion_auth->is_admin();
 		//$this->breadcrumb();
@@ -70,6 +72,22 @@ class Ad extends CI_Controller {
         return $my_breadcrumbs;
     }
 	
+	private function is_msg_unread(){
+
+		if (isset($this->session->userdata['user_id'])){
+			$user_id = $this->session->userdata['user_id'];
+			$msg_status = $this->mahana_model->get_unread_message_by_user($user_id);
+			
+			if (empty($msg_status)){
+				return false;
+			} else {
+				return true;
+			}
+		}
+		return false;
+	}
+
+
 	/**
 	 * display_ad() : affiche l'annonce passée en paramètre
 	 * @param { int } $id_ad : identifiant de l'annonce
