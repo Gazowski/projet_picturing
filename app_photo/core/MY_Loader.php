@@ -25,7 +25,8 @@ class MY_Loader extends CI_Loader {
     {
         $this->init_role(); 
         
-        $vars['menu'] = $this->menu($vars['msg_unread']); 
+        //$vars['menu'] = $this->menu($vars['msg_unread']); 
+        $vars['menu'] = $this->menu(false); 
 
         // icone connexion / déconnexion
         $vars['icon'] = !isset($_SESSION['user_id']) ? 'fas fa-user' : 'fas fa-sign-out-alt';
