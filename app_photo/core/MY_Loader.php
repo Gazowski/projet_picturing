@@ -1,5 +1,5 @@
  
-    <?php
+<?php
 defined('BASEPATH') OR exit('No direct script access allowed');
 /**
  * MY_Loader
@@ -73,7 +73,7 @@ class MY_Loader extends CI_Loader {
     
     private function menu($msg_unread)
     {       
-        $display_none = $msg_unread ? 'display_none' : '';
+        $display_none = $msg_unread ? '' : 'display_none';
         if ($this->is_admin) 
         {
             $menu = [
@@ -116,9 +116,9 @@ class MY_Loader extends CI_Loader {
                     'Clients' => 'index.php/Member/display_all_client',
                     
                 ],
-                'Mon compte' => [
+                'Mon compte <i class="fas fa-envelope ' . $display_none . '"></i>' => [
                     'Mon profil' =>  'index.php/member/member',
-                    'Mes messages' =>  'index.php/message/display_messages_user',
+                    'Mes messages <i class="fas fa-envelope ' . $display_none . '"></i>' =>  'index.php/message/display_messages_user',
                     'Mes annonces' =>  'index.php/ad/member_ads',
                     'Activation' =>  'index.php/Member/admin_home',
                     
@@ -138,9 +138,9 @@ class MY_Loader extends CI_Loader {
                     
                 ],
                
-                'Mon compte' => [
+                'Mon compte <i class="fas fa-envelope ' . $display_none . '"></i>' => [
                     'Mon profil' =>  'index.php/member/member',
-                    'Mes messages' =>  'index.php/message/display_messages_user',
+                    'Mes messages <i class="fas fa-envelope ' . $display_none . '"></i>' =>  'index.php/message/display_messages_user',
                     'Mes annonces' =>  'index.php/ad/member_ads',
                     'Clients' => 'index.php/Member/display_all_client',
                     
@@ -158,10 +158,10 @@ class MY_Loader extends CI_Loader {
                     'Annonces' =>  'index.php/ad/display_all',
                     
                 ],
-                'Mon compte' => [
+                'Mon compte <i class="fas fa-envelope ' . $display_none . '"></i>' => [
                     'Mon profil' =>  'index.php/member/member',
+                    'Mes messages <i class="fas fa-envelope ' . $display_none . '"></i>' =>  'index.php/message/display_messages_user',
                     'Mes annonces' =>  'index.php/ad/member_ads',
-                    'Mes messages' =>  'index.php/message/display_messages_user',
                     
                 ],
                 'A propos' => 'index.php/ad/a_propos',
@@ -180,7 +180,11 @@ class MY_Loader extends CI_Loader {
                     
                 ],
                 
-                'Mon profil' =>  'index.php/member/member',
+                'Mon compte <i class="fas fa-envelope ' . $display_none . '"></i>' => [
+                    'Mon profil' =>  'index.php/member/member',
+                    'Mes messages <i class="fas fa-envelope ' . $display_none . '"></i>' =>  'index.php/message/display_messages_user',
+                    'Mon profil' =>  'index.php/member/member',
+                ],
                                      
                  
                 'A propos' => 'index.php/ad/a_propos',
