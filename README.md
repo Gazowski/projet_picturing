@@ -8,6 +8,7 @@
 https://coolors.co/
 
 ## correction à faire
+* Member_model, méthode getByType = pas de protection SQL
 * mise a jour de la db (maj table 'banishement'):
 si vous ne voulez pas effacer et recopier toute la  table, copier les lignes suivantes (sous l'onglet SQL) :
 ```SQL
@@ -25,12 +26,10 @@ CREATE TABLE IF NOT EXISTS `banishement` (
 ```
 
 * page home admin : lorsque tous les users sont activés seul l'entete du tableau reste affiché (au lieu d'une phrase)
-* dans l'admin onglet Membres revoir l'affichage des listes fournisseurs et clients.
 
 
 ## amélioration à faire
 * pas de possibilité de creer un nouveau type de catégorie !!!
-* installer babel (pour compatibilité ES5)
 * activer la recherche
 * différencier les services des produits (label/tag? code couleur? icone?...) 
 * ajouter un plugin seo
