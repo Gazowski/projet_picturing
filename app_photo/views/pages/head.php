@@ -14,7 +14,7 @@
         Il est possible d'accéder à l'URL de base d'un document via un script en utilisant document.baseURI -->
         
         <title>picturing</title>
-        
+        <link rel="icon" type="image/png" href="<?= base_url(); ?>assets/logo/logo_picturing_ico.png" />
         <!-- Police de caractères -->
         <link href="https://fonts.googleapis.com/css?family=Montserrat:400,600,900&display=swap" rel="stylesheet">
         <!-- Feuilles de style -->
