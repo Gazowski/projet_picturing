@@ -23,8 +23,9 @@ class MY_Loader extends CI_Loader {
      */    
     public function template($page, $vars = array())
     {
-        $this->init_role();
-        $vars['menu'] = $this->menu(); 
+        $this->init_role(); 
+        
+        $vars['menu'] = $this->menu($vars['msg_unread']); 
 
         // icone connexion / déconnexion
         $vars['icon'] = !isset($_SESSION['user_id']) ? 'fas fa-user' : 'fas fa-sign-out-alt';
@@ -70,8 +71,9 @@ class MY_Loader extends CI_Loader {
         return isset($_SESSION['user_role']) && $_SESSION['user_role'] >= $value; 
     }
     
-    private function menu()
+    private function menu($msg_unread)
     {       
+        $display_none = $msg_unread ? 'display_none' : '';
         if ($this->is_admin) 
         {
             $menu = [
@@ -88,9 +90,9 @@ class MY_Loader extends CI_Loader {
                     'Clients' => 'index.php/Member/display_all_client',
                     
                 ],
-                'Mon compte' => [
+                'Mon compte <i class="fas fa-envelope ' . $display_none . '"></i>' => [
                     'Mon profil' =>  'index.php/member/member',
-                    'Mes messages' =>  'index.php/message/display_messages_user',
+                    'Mes messages <i class="fas fa-envelope ' . $display_none . '"></i>' =>  'index.php/message/display_messages_user',
                     'Mes annonces' =>  'index.php/ad/member_ads',
                     'Activation' =>  'index.php/Member/admin_home',
                     
